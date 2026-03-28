@@ -81,7 +81,8 @@ async function main(args) {
     ["contributor runtime evaluation guide", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "04-contributor-runtime-evaluation.md")],
     ["contributor app-fit cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "05-contributor-app-fit-cases.md")],
     ["contributor audit cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "06-contributor-audit-cases.md")],
-    ["contributor reference cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "07-contributor-reference-cases.md")]
+    ["contributor reference cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "07-contributor-reference-cases.md")],
+    ["contributor runtime evaluation results", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "08-contributor-runtime-evaluation-results.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));

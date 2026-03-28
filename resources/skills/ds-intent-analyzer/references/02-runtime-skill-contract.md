@@ -124,10 +124,17 @@ Low-evidence fallback behavior:
 ### One-screen or partial screenshot asks
 - avoid system-level certainty
 - focus on visible hierarchy, pattern clues, and likely fix-first areas
+- keep the answer explicitly screen-level unless additional context is provided
+- do not widen a partial audit into broad formation guidance unless it is clearly marked tentative
 
 ### Unknown or niche references
 - say the precedent is unresolved or weakly grounded
 - explain what the user appears attracted to instead of pretending confident knowledge
+
+### Hybrid-sensitive comparisons
+- treat the outcome as provisional when two reference logics remain materially plausible
+- explain bounded borrowing from each side instead of forcing a clean winner
+- state what evidence would resolve or narrow the comparison
 
 ---
 
@@ -216,10 +223,11 @@ Keep one shared output shape, but change emphasis by primary mode:
   - emphasize constraints, posture candidates, pattern gravity, and the next clarification needed
 - UI / DS Audit
   - emphasize strongest positives, biggest weaknesses, fix-first area, and Smart Suggestions
+  - if the evidence is only one screen or a partial artifact, stay explicitly screen-level
 - Formation Recommendation
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
-  - emphasize what to borrow carefully, what not to copy blindly, and confidence limits
+  - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
 
 ---
 
@@ -274,6 +282,8 @@ When heavy-phase is justified:
 - Do not overstate confidence from weak or partial evidence.
 - Do not drift into giant component inventories.
 - Do not overbuild theming, governance, or abstraction too early.
+- Do not turn one-screen audits into system-wide formation claims.
+- Do not present hybrid-sensitive comparisons as settled when the fit is still provisional.
 
 When confidence is low, the correct response is the smallest useful next move, not a louder answer.
 

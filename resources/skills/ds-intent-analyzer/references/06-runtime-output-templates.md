@@ -82,6 +82,7 @@ This version adds:
 - What is directly observed:
 - What is inferred:
 - What is still missing:
+- if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Next step
 - what should be clarified, collected, or stabilized next
@@ -233,12 +234,14 @@ This version adds:
 - which design systems are useful references
 - what to borrow
 - what not to copy blindly
+- if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
 
 ## Confidence note
 - Evidence quality: E0 / E1 / E2 / E3
 - strongest evidence:
 - weakest evidence:
 - what would raise confidence:
+- if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Final recommendation
 - what to stabilize first
@@ -348,6 +351,7 @@ What this recommendation is trying to support.
 - Evidence quality:
 - key unknowns:
 - what to test next:
+- if the recommendation is reference-led and still hybrid-sensitive, say what remains provisional and what evidence would resolve it
 
 ---
 
