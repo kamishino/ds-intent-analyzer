@@ -453,3 +453,115 @@ What should we actually borrow, and what should we avoid copying into an unrelat
 - reducing the answer to “make it look like Porsche”
 - ignoring the difference between controlled expression and direct style copying
 - treating brand polish as a replacement for product-fit reasoning
+
+---
+
+## RF-13 — Clarity or EUI for a Dense Internal Product
+
+### Prompt bundle
+
+```text
+We are shaping a dense internal product with admin flows, analytics, and repeated operational review work.
+The team is split between Clarity and Elastic UI Framework.
+We need practical implementation support, but the day-to-day product reality is still more workflow-heavy than platform-heavy.
+Which reference should lead, and what should we borrow carefully from the other?
+```
+
+### Input type and evidence strength
+- Input type: product brief + named-system comparison
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to the bounded reference comparison
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- distinguishes workflow clarity from platform composability instead of flattening both references into “enterprise libraries”
+- chooses the strongest lean and keeps the secondary force bounded
+- explains what to borrow from the non-leading reference without drifting into prestige or breadth ranking
+- keeps the reasoning tied to dense internal product jobs rather than framework familiarity
+
+### Must-not-do failures
+- choosing only by implementation breadth or docs polish
+- treating Clarity and EUI as interchangeable enterprise defaults
+- sounding final without acknowledging the workflow-versus-platform boundary in the prompt
+
+---
+
+## RF-14 — Gestalt for a Brand-Led Product, but What Actually Transfers?
+
+### Prompt bundle
+
+```text
+Our consumer product feels too generic and the team wants to look at Gestalt because it feels polished and cohesive.
+We still need reusable code and accessible defaults, but we do not want to copy Pinterest's product personality.
+What should we actually borrow, and what should we avoid transplanting?
+```
+
+### Input type and evidence strength
+- Input type: design-direction ask + one brand-led reference
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- anti-sameness guidance tied to tone control and implementation-backed coherence
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats Gestalt as a brand-led consumer reference with bounded platform support
+- explains what is reusable in terms of coherence, restraint, and accessible product guidance
+- warns against copying Pinterest-specific discovery tone or consumer surface cues
+- keeps the answer grounded in the user's own product personality and reuse needs
+
+### Must-not-do failures
+- recommending visual cloning because Gestalt feels polished
+- ignoring the difference between reusable implementation support and direct brand transplantation
+- treating consumer-product polish as a shortcut around product-fit reasoning
+
+---
+
+## RF-15 — Backpack Feels Friendly, but Is That the Right Borrow?
+
+### Prompt bundle
+
+```text
+Our team likes Backpack because it feels friendly, usable, and well-organized.
+We are not building a travel product, but we do care about accessibility, localisation, and repeated high-volume user journeys.
+What should we borrow carefully from Backpack, and what should we not carry over?
+```
+
+### Input type and evidence strength
+- Input type: design-direction ask + one brand-led reference
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to accessibility, localisation, and borrowing guidance
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- identifies Backpack as a brand-led consumer system with strong accessibility and localisation value
+- explains what transfers beyond travel-specific product logic
+- keeps the borrowing guidance focused on clarity, content discipline, and repeated-journey support
+- explicitly warns against importing travel-product assumptions or surface friendliness without fit analysis
+
+### Must-not-do failures
+- reducing the answer to “Backpack is friendly, so use it”
+- ignoring accessibility and localisation as the deeper reusable lessons
+- transplanting travel-specific patterns into an unrelated product

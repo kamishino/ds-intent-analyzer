@@ -126,6 +126,24 @@ Do not use them to shortcut product judgment.
 - **Do not copy blindly:** infrastructure-heavy operational models for products that need stronger commerce logic, lighter foundations, or clearer brand tone
 - **Developer guidance cue:** if the team is split between Carbon and PatternFly, start from repeated operational jobs before comparing docs polish or ecosystem maturity
 
+### Clarity Design System
+- **Best used for:** enterprise application work where inclusive defaults, implementation assets, and practical workflow clarity matter more than distinctive brand expression
+- **Likely posture:** Workflow-first with accessibility discipline
+- **Likely archetype:** Enterprise Workflow with bounded Developer Toolkit / Platform traits
+- **Strongest reusable lesson:** enterprise-first systems can keep inclusion and accessibility as a real foundation instead of a late compliance layer
+- **Borrow carefully:** inclusive defaults, accessibility-backed workflow patterns, public roadmap signals, and practical implementation support for enterprise teams
+- **Do not copy blindly:** framework-shaped opinionation, enterprise tone, or heavier implementation assumptions when the product needs lighter foundations or more consumer-facing posture
+- **Developer guidance cue:** if Clarity feels “solid and accessible,” check whether the real need is enterprise workflow clarity first or simply better baseline discipline
+
+### Elastic UI Framework
+- **Best used for:** dense internal product surfaces that need composable implementation assets, theming support, and reusable patterns for data-rich workflows
+- **Likely posture:** Platform-first with workflow gravity
+- **Likely archetype:** hybrid-sensitive; strongest lean is Developer Toolkit / Platform with real Enterprise Workflow gravity
+- **Strongest reusable lesson:** a reusable implementation layer can stay paired with dense workflow patterns and theme discipline without pretending brand expression is the main job
+- **Borrow carefully:** composable patterns, theme-token setup, accessibility baselines, and documentation-backed support for dense internal product work
+- **Do not copy blindly:** Elastic-shaped data-product assumptions, platform breadth, or observability-style density where the product reality is lighter or more narrowly task-shaped
+- **Developer guidance cue:** if EUI feels like the strongest library option, separate the need for composable platform assets from the need for dense workflow patterns
+
 ### Porsche Design System
 - **Best used for:** brand-led system building where premium expression must stay controlled, portable, and implementation-aware
 - **Likely posture:** Brand-first with system discipline
@@ -134,6 +152,24 @@ Do not use them to shortcut product judgment.
 - **Borrow carefully:** tone restraint, shape language, premium perception, theming discipline, and accessibility-backed implementation quality
 - **Do not copy blindly:** luxury-brand cues, polished surface language, or premium symbolism in unrelated product contexts
 - **Developer guidance cue:** if the team says “make it feel more premium,” borrow Porsche for restraint and system discipline, not for direct visual transplantation
+
+### Gestalt
+- **Best used for:** consumer-product systems that need coherent brand tone, reusable code, and accessible product guidance across many contributors
+- **Likely posture:** Brand-first with bounded platform support
+- **Likely archetype:** Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits
+- **Strongest reusable lesson:** distinctive consumer-product tone can stay coherent at scale without giving up a usable implementation layer
+- **Borrow carefully:** cohesive tone, accessible product guidance, cross-team shared language, and restrained expression that supports product clarity
+- **Do not copy blindly:** Pinterest-specific discovery cues, soft consumer mannerisms, or visible surface polish without matching product logic
+- **Developer guidance cue:** if Gestalt feels polished, borrow coherence and restraint before copying the visible consumer surface
+
+### Backpack
+- **Best used for:** consumer-product systems where accessibility, localisation, and cross-disciplinary consistency matter across repeated high-volume journeys
+- **Likely posture:** Brand-first with accessibility discipline
+- **Likely archetype:** Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits
+- **Strongest reusable lesson:** accessibility, localisation, and content guidance can be first-class system inputs rather than add-ons behind a branded surface
+- **Borrow carefully:** localisation-aware content patterns, accessible journey support, collaborative product language, and friendly clarity across repeated user flows
+- **Do not copy blindly:** travel-specific search or booking assumptions, friendly consumer tone, or Skyscanner-shaped journey logic in unrelated products
+- **Developer guidance cue:** if Backpack feels “usable and friendly,” isolate whether that comes from localisation and accessibility discipline or from travel-product flow assumptions
 
 ### Chakra UI
 - **Best used for:** lightweight platform-style reuse and pragmatic implementation
@@ -174,6 +210,7 @@ For systems like:
 - Ant Design
 - Carbon
 - PatternFly
+- Elastic UI Framework
 
 use the lookup only as orientation.
 Deep work should still go back to stronger evidence.
@@ -196,6 +233,8 @@ When using this pack in answers:
 ### 6. Brand-led references are caution tools, not transplant kits
 For references like:
 - Porsche Design System
+- Gestalt
+- Backpack
 
 the useful reuse usually comes from:
 - controlled expression

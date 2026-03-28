@@ -1526,3 +1526,169 @@ The next high-leverage slice should expand the second runtime contrast set rathe
 - add the next small cluster of researched systems to the lookup layer
 - keep the current archetype-boundary shorthand and acceptance guards intact
 - continue avoiding workbook-style runtime heaviness
+
+---
+
+## Cycle 9 summary
+
+### Scope used
+- second contrast-set lookup distillation for:
+  - `Clarity Design System`
+  - `Elastic UI Framework`
+  - `Gestalt`
+  - `Backpack`
+- named-system lookup cases:
+  - `RF-13`
+  - `RF-14`
+  - `RF-15`
+
+### Overall result
+- 2 strong passes
+- 1 partial pass
+- 0 regressions
+
+### Current top strengths
+- brand-led references with reusable code layers are easier to explain without drifting into direct visual transplantation
+- Backpack is now more usable as a cautionary reference for accessibility, localisation, and repeated high-volume journey discipline
+- the second lookup wave preserves the product-fit and anti-prestige posture established in the first Batch A cluster
+
+### Current top weakness
+- the Clarity versus EUI boundary is decision-useful, but it still remains slightly broader than the sharper Carbon-versus-PatternFly comparison guard
+
+---
+
+## Cycle 9 — Second contrast-set lookup cases
+
+## RF-13 — Clarity or EUI for a Dense Internal Product
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should distinguish workflow-first enterprise clarity from platform-first composability instead of flattening both references into the same enterprise bucket.
+- It should choose the strongest lean and explain what to borrow from the non-leading reference.
+- The remaining weakness is that the boundary can still sound slightly broader than necessary when both implementation support and workflow density are present at once.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer can still hover a little between platform composability and workflow clarity instead of making the boundary feel as crisp as the strongest existing hybrid guards.
+
+### Recommended next action
+- Keep this as a support case for the second lookup wave, but do not promote it into the stable acceptance set ahead of sharper hybrid-boundary guards.
+
+---
+
+## RF-14 — Gestalt for a Brand-Led Product, but What Actually Transfers?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should treat Gestalt as a brand-led consumer reference with bounded platform support rather than as a generic polished system.
+- It should explain that coherence, accessible guidance, and restrained system expression are reusable, while Pinterest-shaped discovery cues are not.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as a supporting brand-led lookup guard, but rely on `RF-12` and `RF-15` as the stronger acceptance-set anchors.
+
+---
+
+## RF-15 — Backpack Feels Friendly, but Is That the Right Borrow?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now explain that Backpack is useful less for travel aesthetics and more for accessibility, localisation, and repeated-journey clarity.
+- It should clearly separate transferable discipline from Skyscanner-specific product assumptions.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main accessibility-plus-localisation cautionary borrowing guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+- `RF-09`
+- `RF-10`
+- `RF-12`
+- `RF-15`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, developer-guidance, consequence-lens, prioritization, and Batch A lookup guards
+- it now adds one high-signal consumer-system cautionary borrowing case that tests accessibility and localisation as system inputs rather than surface traits
+- it stays selective by keeping `RF-13` and `RF-14` as support cases instead of promoting every new lookup prompt
+
+---
+
+## Decision from cycle 9
+
+The second Batch A contrast set is now useful enough to keep in the runtime lookup layer without expanding the skill surface.
+
+The new contrast anchors that now have runtime value are:
+- `Clarity Design System`
+- `Elastic UI Framework`
+- `Gestalt`
+- `Backpack`
+
+The current roadmap should not return to generic runtime hardening by default.
+
+The next high-leverage choice should be one of:
+- a final small Batch A lookup wave only if the next systems add genuinely new contrast, not more of the same
+- or a pause to assess whether the runtime lookup layer is now broad enough and future work should shift back to higher-signal distillation only
