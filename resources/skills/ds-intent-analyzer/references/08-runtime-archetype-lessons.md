@@ -212,10 +212,25 @@ The archetype fits when reuse and implementation scale are primary shaping force
 - Headless UI
 - shadcn/ui
 
+## What platform maturity buys
+- stronger adoption support across teams
+- more disciplined tokens, naming, and contribution logic
+- more predictable design-to-code alignment
+- better documentation and reuse infrastructure
+
 ## Key caution
 This bucket is likely too broad and should still be treated carefully.
 At the moment, it is useful as a parent archetype, but likely needs sub-archetype testing rather than immediate hard splitting.
 When explaining this archetype to developers, do not let implementation maturity erase workflow or product-fit questions.
+
+## When workflow reality should win instead
+Do not let platform maturity lead the answer when:
+- repeated operational jobs are the primary shaping force
+- dense state handling matters more than reuse infrastructure
+- the team is still trying to stabilize patterns, not distribute a system across many product surfaces
+
+In those cases, borrow platform discipline second.
+Borrow workflow clarity first.
 
 ## Working sub-archetype candidates
 - UI Toolkit / Library
@@ -233,6 +248,7 @@ When a developer asks about a library or “mature system” in this space:
 - explain what platform-scale strengths actually buy them
 - check whether their product is truly shaped by reuse and implementation scale
 - warn against borrowing platform overhead when the real issue is still workflow or foundation clarity
+- keep the answer explicit about what maturity does not solve: unclear repeated jobs, weak state clarity, or unstable product posture
 
 ---
 
@@ -288,11 +304,22 @@ Use this archetype when:
 - emotional or sector-specific experience matters materially
 - expression must be systematized, not improvised
 
+## Bounded implementation layer
+Some brand-led systems also expose strong implementation traits:
+- theming
+- accessibility
+- framework assets
+- code distribution
+
+Treat these as supporting traits, not as proof that the system is primarily platform-first.
+Strong tooling does not erase a brand-led primary shaping force.
+
 ## Developer guidance translation
 When a developer asks why a product feels generic or wants a stronger identity:
 - explain that controlled expression can be a system concern, not just visual polish
 - keep the advice tied to product tone, hierarchy, density, and trust
 - warn against copying brand-led systems when the product reality does not justify that expression level
+- explain that the safest borrowing often comes from restraint, tone control, and system discipline rather than visible brand cues
 
 ---
 
@@ -323,6 +350,7 @@ Hybrid should explain something real, not rescue indecision.
 - caution in boundary cases
 - layered classification
 - secondary posture/archetype logic
+- strongest lean plus bounded secondary force when both materially matter
 
 ## What not to copy blindly
 - lazy “hybrid” labeling
@@ -334,6 +362,14 @@ Use this only when:
 - the product truly carries two structural forces
 - both matter in formation choices
 - forcing one answer would remove important design constraints
+
+## Runtime explanation rule
+When using a hybrid-sensitive reading in answers:
+- say which force currently leads
+- say what the bounded secondary force still explains
+- say what additional evidence would break the tie more clearly
+
+Do not use hybrid language as a softer way to avoid judgment.
 
 ---
 
@@ -357,6 +393,16 @@ Do not start from:
 - structural evidence beats slogans
 - cost of error beats aesthetic intent
 - posture beats component count
+- product reality beats famous-system maturity
+
+## Anti-sameness reminder
+Famous systems are useful because they expose tradeoffs clearly.
+They are not universal targets.
+
+When a developer wants a famous system because it feels mature or premium:
+- extract the shaping logic
+- keep the warning boundary explicit
+- avoid turning the answer into prestige-first borrowing
 
 ## Practical formation reminder
 The point of these archetypes is not to label systems elegantly.

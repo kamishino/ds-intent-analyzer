@@ -341,3 +341,115 @@ What should we do first?
 - saying `hierarchy or state clarity` without committing
 - recommending token cleanup as the first answer
 - broadening immediately into component or library change
+
+---
+
+## RF-10 — Carbon vs PatternFly When the Product Is Still Mixed
+
+### Prompt bundle
+
+```text
+We are building an internal product that mixes docs, administration, analytics, and review queues.
+The team is split between Carbon and PatternFly.
+Our product is not purely a platform, but repeated operator tasks and state-heavy actions dominate the day-to-day experience.
+Which reference should lead, and what should we borrow carefully from the other?
+```
+
+### Input type and evidence strength
+- Input type: product brief + hybrid-sensitive named-system comparison
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to the bounded comparison
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- keeps the answer explicitly hybrid-sensitive rather than forcing a fake clean split
+- identifies the strongest lean and the bounded secondary force
+- explains what to borrow from the non-leading reference without flattening the two systems
+- keeps the reasoning tied to repeated operator jobs and system scale
+
+### Must-not-do failures
+- picking only by prestige or documentation maturity
+- acting as if both systems are interchangeable enterprise references
+- sounding final when the prompt still contains a mixed product reality
+
+---
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+
+### Prompt bundle
+
+```text
+We are building a workflow-heavy product tool and the team keeps asking to standardize on Ant Design because it has everything.
+Our patterns are still stabilizing and we do not want the UI to become generic business software by default.
+Should Ant lead, or should we borrow from it more carefully?
+```
+
+### Input type and evidence strength
+- Input type: product brief + one named-system default ask
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation guidance only if it stays subordinate to the borrowing decision
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- explains that Ant Design is a workflow-heavy reference, not a universal default
+- distinguishes pattern coverage from proof of product fit
+- gives a bounded borrowing recommendation instead of only rejecting or endorsing it
+- keeps the answer practical for developers deciding whether to standardize early
+
+### Must-not-do failures
+- treating breadth as the deciding factor
+- endorsing Ant because it is complete without checking product tone and workflow reality
+- turning the answer into anti-library ideology
+
+---
+
+## RF-12 — Porsche Feels Premium, but What Should We Borrow?
+
+### Prompt bundle
+
+```text
+Our team wants the product to feel more premium and less generic.
+Someone suggested Porsche Design System as a reference.
+What should we actually borrow, and what should we avoid copying into an unrelated product?
+```
+
+### Input type and evidence strength
+- Input type: design-direction ask + one brand-led reference
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- anti-sameness guidance tied directly to controlled expression and tone discipline
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats Porsche as a brand-led cautionary reference rather than a visual target
+- explains what is reusable in terms of restraint, tone control, and system discipline
+- explicitly warns against transplanting luxury-brand cues into an unrelated product
+- keeps the answer grounded in product fit rather than aspiration
+
+### Must-not-do failures
+- reducing the answer to “make it look like Porsche”
+- ignoring the difference between controlled expression and direct style copying
+- treating brand polish as a replacement for product-fit reasoning

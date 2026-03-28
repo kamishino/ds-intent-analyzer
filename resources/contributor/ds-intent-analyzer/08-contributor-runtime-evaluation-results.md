@@ -1210,3 +1210,319 @@ The next high-leverage slice should return to Batch A distillation:
 - translate the strongest researched system lessons into lighter runtime reference logic
 - improve named-system borrowing guidance without making the runtime heavier
 - keep the current lever-selection acceptance guards in place while doing that work
+
+---
+
+## Cycle 7 summary
+
+### Scope used
+- Slice 1 lookup distillation for:
+  - `Carbon`
+  - `PatternFly`
+  - `Ant Design`
+  - `Porsche Design System`
+- named-system lookup cases:
+  - `RF-10`
+  - `RF-11`
+  - `RF-12`
+
+### Overall result
+- 2 strong passes
+- 1 partial pass
+- 0 regressions
+
+### Current top strengths
+- named-system answers are more clearly framed around product fit and borrowing logic instead of prestige
+- Ant Design is less likely to be treated as a universal default just because it is broad
+- Porsche is now easier to use as a cautionary brand-led reference rather than a clone target
+
+### Current top weakness
+- the Carbon vs PatternFly boundary is better framed, but the hybrid-sensitive comparison can still sound slightly broader than necessary before the archetype lessons are tightened
+
+---
+
+## Cycle 7 — Lookup distillation cases
+
+## RF-10 — Carbon vs PatternFly When the Product Is Still Mixed
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now describe the comparison as hybrid-sensitive, identify the strongest lean, and say what to borrow from the non-leading system.
+- The likely remaining weakness is that the explanation may still need sharper archetype-boundary shorthand so the answer feels bounded rather than merely careful.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer can still be slightly too broad about why the secondary force matters instead of making the boundary feel crisp.
+
+### Recommended next action
+- Keep this as the main Slice 2 boundary-shorthand stress case.
+
+---
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now explain that Ant Design is useful for workflow-heavy business UI coverage without treating that coverage as proof of universal fit.
+- It should turn breadth into a tradeoff discussion rather than an endorsement.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as a supporting lookup guard, but do not promote it into the stable acceptance set ahead of the higher-signal boundary and caution cases yet.
+
+---
+
+## RF-12 — Porsche Feels Premium, but What Should We Borrow?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now treat Porsche as a brand-led cautionary borrowing reference and explain what is reusable without drifting into direct visual transplantation.
+- This is materially sharper than earlier premium-reference behavior because the answer should now separate tone discipline from brand mimicry.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main brand-led cautionary borrowing guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+- `RF-09`
+- `RF-12`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, developer-guidance, consequence-lens, and prioritization checks
+- it now adds a high-signal brand-led cautionary borrowing guard
+- it stays compact enough by keeping Ant Design as a support case rather than promoting every new lookup case at once
+
+---
+
+## Decision from cycle 7
+
+Slice 1 lookup distillation materially improved named-system guidance without making the runtime heavier.
+
+Do not add more lookup cards next by default.
+
+The next high-leverage slice should tighten archetype-boundary explanation around:
+- `Developer Toolkit / Platform` vs `Enterprise Workflow`
+- hybrid-sensitive comparisons that need a strongest lean plus bounded secondary force
+- brand-led systems with strong implementation layers
+
+---
+
+## Cycle 8 summary
+
+### Scope used
+- Slice 2 archetype-boundary lesson distillation
+- focused cases:
+  - `RF-06`
+  - `RF-10`
+  - `RF-12`
+
+### Overall result
+- 3 strong passes
+- 0 regressions
+
+### Current top strengths
+- platform maturity is now easier to explain as a specific benefit rather than a generic default
+- hybrid-sensitive comparisons are better bounded by strongest-lean and secondary-force language
+- brand-led systems with strong tooling are less likely to be misread as platform-first
+
+### Current top weakness
+- no new top weakness displaced the current standing watch case; `RF-07` remains the main intentionally broad prompt that still deserves bounded caution
+
+---
+
+## Cycle 8 — Archetype-boundary explanation cases
+
+## RF-06 — Carbon Feels Mature, But Is It Right?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now explain more cleanly what Carbon’s platform maturity actually buys and when that maturity is the wrong thing to borrow first.
+- The answer should feel less prestige-driven and more explicit about workflow reality winning when patterns are still unstable.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main platform-maturity caution guard.
+
+---
+
+## RF-10 — Carbon vs PatternFly When the Product Is Still Mixed
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now make the hybrid boundary feel sharper by stating the strongest lean, the bounded secondary force, and what evidence would break the tie more clearly.
+- This is materially stronger than cycle 7 because the answer should no longer sound merely careful; it should sound decision-useful and bounded.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main Batch A hybrid-boundary lookup guard.
+
+---
+
+## RF-12 — Porsche Feels Premium, but What Should We Borrow?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now explain more cleanly that strong tooling and implementation support do not erase Porsche’s brand-led primary shaping force.
+- It should keep the borrowing guidance focused on restraint, tone, and system discipline rather than visible luxury cues.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main brand-led boundary guard introduced by Batch A distillation.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+- `RF-09`
+- `RF-10`
+- `RF-12`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, developer-guidance, consequence-lens, and prioritization checks
+- it now adds both a sharper Batch A hybrid-boundary guard and a high-signal brand-led cautionary borrowing guard
+- it keeps the acceptance set selective by leaving Ant Design as a supporting lookup case rather than promoting every new reference case
+
+---
+
+## Decision from cycle 8
+
+The first Batch A distillation cluster is now stable enough in runtime references.
+
+The anchor set that should lead the next distillation wave is now clear:
+- `Carbon`
+- `PatternFly`
+- `Ant Design`
+- `Porsche Design System`
+
+The next high-leverage slice should expand the second runtime contrast set rather than revisit general runtime hardening:
+- add the next small cluster of researched systems to the lookup layer
+- keep the current archetype-boundary shorthand and acceptance guards intact
+- continue avoiding workbook-style runtime heaviness

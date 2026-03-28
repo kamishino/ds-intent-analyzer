@@ -22,8 +22,10 @@ Do **not** use this file as a replacement for deeper evidence when:
 Each lookup card should answer quickly:
 - what the system is most useful as a reference for
 - what posture / archetype it likely leans toward
+- what its strongest reusable lesson is
 - what to borrow carefully
 - what not to copy blindly
+- what short developer-decision cue is most useful when the ask is implementation-shaped
 
 Treat these systems as developer-decision references, not prestige defaults.
 Use them to explain tradeoffs, fit, and caution.
@@ -98,28 +100,40 @@ Do not use them to shortcut product judgment.
 - **Do not copy blindly:** brand-led motion or softness where trust/workflow clarity should dominate
 
 ### Ant Design
-- **Best used for:** workflow-heavy business UI decisions when teams need broad enterprise pattern coverage and theme flexibility
-- **Likely posture:** Workflow-first with platform gravity
-- **Likely archetype:** hybrid-sensitive; often Enterprise Workflow or Developer Toolkit / Platform
-- **Strongest reusable lesson:** broad pattern coverage for business software
-- **Borrow carefully:** operational patterns, information density, reusable UI structure, and theme architecture
-- **Do not copy blindly:** treating broad coverage as proof of fit for every product context
+- **Best used for:** workflow-heavy business UI when teams need broad enterprise pattern coverage and tokenized theming flexibility
+- **Likely posture:** Workflow-first with implementation breadth
+- **Likely archetype:** hybrid-sensitive; strongest lean is Enterprise Workflow with bounded Developer Toolkit / Platform traits
+- **Strongest reusable lesson:** dense business-software coverage plus theme architecture can accelerate operational UI without forcing a single visual formula
+- **Borrow carefully:** enterprise pattern coverage, data-heavy structure, state handling, and tokenized theming discipline
+- **Do not copy blindly:** broad component coverage as proof of product fit, or default business UI tone for every workflow product
+- **Developer guidance cue:** if the team wants Ant because it feels complete, check whether they actually need workflow coverage first or are just reaching for maturity by default
 
 ### Carbon
-- **Best used for:** explaining platform-scale system rigor when the product also has real enterprise or operational gravity
-- **Likely posture:** Platform-first with enterprise gravity
-- **Likely archetype:** hybrid-sensitive
-- **Strongest reusable lesson:** disciplined foundations and system rigor
-- **Borrow carefully:** documentation structure, foundation thinking, consistency, and accessibility discipline
-- **Do not copy blindly:** formal system weight if your product is still early and pattern-light
+- **Best used for:** platform-scale system rigor when the product also carries real enterprise and operational gravity
+- **Likely posture:** Platform-first with enterprise-workflow gravity
+- **Likely archetype:** hybrid-sensitive; strongest lean is Developer Toolkit / Platform with real Enterprise Workflow gravity
+- **Strongest reusable lesson:** ecosystem-level system building through disciplined foundations, accessibility rigor, and cross-product consistency
+- **Borrow carefully:** foundation discipline, accessibility verification, documentation structure, and multi-surface consistency thinking
+- **Do not copy blindly:** IBM-scale formality, heavy governance, or platform-weight visual language before your own patterns and adoption scale justify it
+- **Developer guidance cue:** if Carbon feels “mature,” separate what you need from it: platform rigor, enterprise clarity, or simply better workflow patterns
 
 ### PatternFly
-- **Best used for:** enterprise-workflow-heavy decision support where teams need task-heavy patterns more than generic platform prestige
-- **Likely posture:** Workflow-first with platform traits
-- **Likely archetype:** hybrid-sensitive
-- **Strongest reusable lesson:** task-heavy pattern support
-- **Borrow carefully:** management states, data-oriented structures, practical consistency
-- **Do not copy blindly:** assuming its operational model fits consumer or commerce contexts
+- **Best used for:** operations-heavy enterprise products where task states, management flows, and dense admin structure matter more than platform prestige
+- **Likely posture:** Workflow-first with bounded platform support
+- **Likely archetype:** hybrid-sensitive; strongest lean is Enterprise Workflow with Developer Toolkit / Platform support traits
+- **Strongest reusable lesson:** practical support for task-heavy management patterns, state visibility, and dense operational structure
+- **Borrow carefully:** management states, action hierarchy, dense information structure, and practical consistency across admin surfaces
+- **Do not copy blindly:** infrastructure-heavy operational models for products that need stronger commerce logic, lighter foundations, or clearer brand tone
+- **Developer guidance cue:** if the team is split between Carbon and PatternFly, start from repeated operational jobs before comparing docs polish or ecosystem maturity
+
+### Porsche Design System
+- **Best used for:** brand-led system building where premium expression must stay controlled, portable, and implementation-aware
+- **Likely posture:** Brand-first with system discipline
+- **Likely archetype:** Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits
+- **Strongest reusable lesson:** controlled premium expression can be systematized without giving up accessibility or implementation rigor
+- **Borrow carefully:** tone restraint, shape language, premium perception, theming discipline, and accessibility-backed implementation quality
+- **Do not copy blindly:** luxury-brand cues, polished surface language, or premium symbolism in unrelated product contexts
+- **Developer guidance cue:** if the team says “make it feel more premium,” borrow Porsche for restraint and system discipline, not for direct visual transplantation
 
 ### Chakra UI
 - **Best used for:** lightweight platform-style reuse and pragmatic implementation
@@ -163,6 +177,7 @@ For systems like:
 
 use the lookup only as orientation.
 Deep work should still go back to stronger evidence.
+Say what the strongest lean is, what the bounded secondary force is, and what evidence would break the tie.
 
 ### 4. Borrow principles, not surface style
 The safest reuse usually comes from:
@@ -177,6 +192,18 @@ When using this pack in answers:
 - explain why a reference fits or does not fit the product reality
 - compare tradeoffs instead of ranking prestige
 - steer away from “best library” framing when the real issue is foundations or pattern clarity
+
+### 6. Brand-led references are caution tools, not transplant kits
+For references like:
+- Porsche Design System
+
+the useful reuse usually comes from:
+- controlled expression
+- restraint
+- tone discipline
+- implementation rigor behind the tone
+
+not from copying the visible luxury surface into an unrelated product.
 
 ---
 
