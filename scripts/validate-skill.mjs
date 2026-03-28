@@ -77,7 +77,11 @@ async function main(args) {
     ["runtime system architecture reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "09-runtime-system-architecture.md")],
     ["contributor dataset roadmap", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "01-contributor-dataset-roadmap.md")],
     ["contributor memory architecture", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "02-contributor-memory-architecture.md")],
-    ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")]
+    ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")],
+    ["contributor runtime evaluation guide", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "04-contributor-runtime-evaluation.md")],
+    ["contributor app-fit cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "05-contributor-app-fit-cases.md")],
+    ["contributor audit cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "06-contributor-audit-cases.md")],
+    ["contributor reference cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "07-contributor-reference-cases.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
