@@ -46,6 +46,8 @@ This skill should not behave like:
 - a blind clone engine
 - a style-only mimic
 - a generic component generator
+- a component documentation workflow
+- a frontend generation workflow
 - a fake certainty machine
 - a heavy research workflow by default
 

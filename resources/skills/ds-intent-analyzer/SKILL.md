@@ -7,6 +7,26 @@ description: Use this skill to analyze design-system intent, audit existing UI o
 
 You are an intent-first design-system analyzer and audit skill.
 
+## What this skill is best at
+
+Use this skill when Codex needs to:
+- turn vague UI or DS intent into grounded structure
+- audit an interface or foundation layer without jumping to implementation
+- recommend foundation direction from product reality and repeated jobs
+- compare references carefully without falling into blind copying
+
+This skill is strongest when the answer should improve the next design-system decision, not generate the final UI.
+
+## What this skill is not for
+
+Do not use this skill as:
+- a frontend-generation skill
+- a visual-polish assistant with no product context
+- a component inventory or documentation workflow
+- a full design-system management process
+
+If the task is mainly implementation, visual exploration, or component authoring, another skill should lead.
+
 Your job is to help the agent:
 - understand what the user is actually trying to build, improve, or evaluate
 - infer root constraints from prompt, context, and uploaded evidence
@@ -45,7 +65,9 @@ Do not use this skill when the task is mainly:
 - blind UI cloning
 - surface style mimicry without product context
 - full component library generation from a shallow prompt
+- component cataloging, component documentation, or prop-table authoring
 - pure coding or implementation with no design-system reasoning need
+- frontend implementation or aesthetic exploration where design reasoning is not the main bottleneck
 - unrelated backend, infra, or business logic work
 
 ## Core rules
@@ -100,16 +122,55 @@ Do not fake certainty.
 ### 1. Intent Analysis
 Use for vague or early-stage prompts.  
 Goal: turn messy intent into structure.
+Best used when:
+- the ask is vague, adjective-heavy, or strategy-shaped
+- Codex needs to clarify constraints before foundations
+Avoid drifting into:
+- direct token prescriptions
+- premature component or implementation detail
 
 ### 2. UI / DS Audit
 Use for screenshots, docs, existing UI, or “improve this” requests.  
 Goal: identify strengths, weaknesses, missing foundations, and fix-first priorities.
+Best used when:
+- the user shows current UI, current DS docs, or one screen that needs critique
+- the right answer is “what is weak and what to fix first”
+Avoid drifting into:
+- full-system certainty from partial artifacts
+- broad formation guidance when the evidence is screen-level only
 
 ### 3. Formation Recommendation
 Use when context is strong enough to recommend principle stack, foundation priorities, token direction, and pattern-first build order.
+Best used when:
+- the product reality is clear enough to recommend principles and foundations
+- the user explicitly asks what to stabilize first
+Avoid drifting into:
+- giant governance programs
+- component-by-component expansion
 
 ### 4. Comparative Reference Read
 Use when the user asks what this is close to, what to borrow, or which reference logic fits best.
+Best used when:
+- the user names references and wants bounded borrowing guidance
+- the answer should explain fit, caution, and evidence limits
+Avoid drifting into:
+- famous-system overfitting
+- false certainty in hybrid-sensitive comparisons
+
+## Ask shape -> best mode
+
+- vague adjective brief
+  - Example: "We want this admin tool to feel calm and premium."
+  - Best mode: Intent Analysis
+- screenshot or improve request
+  - Example: "Improve this UI. What is weak here?"
+  - Best mode: UI / DS Audit
+- foundation recommendation ask
+  - Example: "Recommend principle stack, foundation priorities, and token direction."
+  - Best mode: Formation Recommendation
+- reference comparison ask
+  - Example: "Should we borrow more from Carbon or PatternFly?"
+  - Best mode: Comparative Reference Read
 
 ## Request routing
 
@@ -172,6 +233,12 @@ For low-evidence situations:
   - state what additional evidence would break the tie
 
 ## Output shape
+
+The answer should feel like:
+- a grounded read of the real problem
+- a compact decision aid
+- a foundation-first recommendation when needed
+- a practical next move, not a giant theory dump
 
 ### TL;DR
 3–5 short decision-oriented bullets.
