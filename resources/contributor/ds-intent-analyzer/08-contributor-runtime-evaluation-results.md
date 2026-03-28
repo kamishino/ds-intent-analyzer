@@ -637,3 +637,182 @@ The next high-leverage hardening slice should focus on:
 - keeping anti-sameness and pattern-layer diagnosis practical under implementation-framed asks
 
 Only after those behaviors feel stable should the project consider whether more dataset distillation is the best next investment.
+
+---
+
+## Cycle 4 summary
+
+### Scope used
+- lightweight UI-effect explanation lens
+- new audit cases:
+  - `AU-10`
+  - `AU-11`
+  - `AU-12`
+  - `AU-13`
+
+### Overall result
+- 3 strong passes
+- 1 partial pass
+- 0 regressions
+
+### Current top strengths
+- the runtime can now explain visual choices more concretely through likely perceived effects and user consequences
+- audit explanations are less likely to collapse into generic “make it cleaner” language
+- the skill is better positioned to translate UI details into trust, clarity, scanability, and effort consequences for developers
+
+### Current top weakness
+- the more abstract anti-sameness cases still need sharper first-move recommendations when evidence is visually flat but otherwise consistent
+
+---
+
+## Cycle 4 — Effect explanation cases
+
+## AU-10 — Softer Shape Cue in a High-Control Workflow
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should explain softer shape as a likely approachability cue while checking whether it weakens precision or trust in a high-control workflow.
+- It should avoid universal claims and keep the answer tied to product consequences.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `pass`
+
+### Strongest miss
+- Shape guidance can still remain slightly broad unless the answer identifies a tighter range of where softness is safe versus where precision should dominate.
+
+### Recommended next action
+- Keep this case as a useful supporting check for cue interpretation, but do not promote it ahead of higher-signal acceptance cases yet.
+
+---
+
+## AU-11 — Cleaner Must Mean Better Scanability, Not Just Less Stuff
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should explain that cleaner in this case means stronger scanability, emphasis, and grouping rather than simply removing visual material.
+- It should translate minimal-but-flat UI into a consequence-aware diagnosis.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main “cleaner means better scanability, not just less” guard.
+
+---
+
+## AU-12 — Generic Because Emphasis Is Too Flat
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now explain genericness through flattened emphasis, weak priority cues, and insufficient workflow differentiation rather than missing novelty alone.
+- The likely remaining weakness is that the answer can still be slightly abstract if it does not name a concrete first emphasis lever.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `12 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may correctly diagnose flat emphasis without always choosing a sharp enough first move such as stronger state priority, clearer primary actions, or more deliberate content weighting.
+
+### Recommended next action
+- Keep this case as the main anti-sameness explanation stress case for the next hardening slice.
+
+---
+
+## AU-13 — Visual Calm Conflicts With Trust or Risk Needs
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should explain how a calm, premium treatment can weaken risk signaling when important states become too quiet.
+- It should give a balance direction rather than forcing either “calm” or “strong signaling” as the only answer.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main trust-vs-calm consequence guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, and developer-guidance checks
+- it now protects concrete effect explanation for “cleaner” and trust-vs-calm tensions
+- it stays compact enough to remain practical as a recurring acceptance subset
+
+---
+
+## Decision from cycle 4
+
+The skill now uses a lightweight perceived-effect lens as a supporting explanation layer.
+
+Do not turn this into a larger psychology framework.
+
+The next high-leverage hardening slice should focus on:
+- more concrete first-move guidance in flat-emphasis or anti-sameness cases
+- sharper translation from abstract UI discomfort into one actionable visual or pattern lever
+
+Only after that should the project decide whether further consequence-lens coverage is worth expanding.

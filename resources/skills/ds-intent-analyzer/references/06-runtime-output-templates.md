@@ -76,6 +76,10 @@ This version adds:
 - What this means for scanability:
 - What this means for grouping / readability:
 - What this means for trust / conversion / efficiency:
+- Likely perceived effect:
+- What this choice makes easier:
+- What this choice makes harder:
+- What emotional or trust signal it amplifies or weakens:
 
 ## Confidence note
 - Evidence quality: E0 / E1 / E2 / E3
@@ -203,9 +207,15 @@ This version adds:
 ## Explanation bridge
 ### What users likely feel
 -
+### Likely perceived effect
+-
 ### What the UI is making harder than it should be
 -
+### What this choice is making easier or harder
+-
 ### What this implies for hierarchy, scan speed, clarity, trust, or efficiency
+-
+### What emotional or trust signal is being amplified or weakened
 -
 
 ## Improvement priorities
@@ -333,6 +343,9 @@ What this recommendation is trying to support.
 - hierarchy impact:
 - scanability impact:
 - trust / conversion / workflow impact:
+- likely perceived effect:
+- what this direction will make easier:
+- what this direction may make harsher, calmer, softer, noisier, or more controlled:
 
 ## Pattern-first build order
 1.

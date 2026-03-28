@@ -52,6 +52,10 @@ Defines semantic meaning, hierarchy, state communication, and brand-expression b
 **Role**
 Defines readability, scan speed, tone, and information hierarchy.
 
+**Likely effect**
+- changes reading comfort, perceived effort, and scan speed
+- can make the product feel calmer, denser, more serious, or more demanding
+
 **What to inspect**
 - type scale
 - heading/body hierarchy
@@ -86,6 +90,10 @@ Defines readability, scan speed, tone, and information hierarchy.
 ### 3. Spacing
 **Role**
 Defines rhythm, grouping, separation, and density behavior.
+
+**Likely effect**
+- changes grouping clarity, calm vs crowding, and cognitive load
+- can make the UI feel breathable, compressed, orderly, or noisy
 
 **What to inspect**
 - spacing scale
@@ -181,6 +189,10 @@ Defines page structure and how major content blocks relate to each other.
 **Role**
 Defines the system’s shape language and contributes to tone.
 
+**Likely effect**
+- changes perceived softness, severity, approachability, and control
+- can make controls feel friendlier, more rigid, more precise, or more casual
+
 **What to inspect**
 - radius scale
 - consistency
@@ -207,6 +219,10 @@ Defines the system’s shape language and contributes to tone.
 ### 7. Elevation / Shadow
 **Role**
 Defines depth, layering, focus, and surface distinction.
+
+**Likely effect**
+- changes depth clarity, confidence, and visual noise
+- can make surfaces feel clearer, more polished, flatter, or unnecessarily busy
 
 **What to inspect**
 - elevation levels
@@ -236,6 +252,10 @@ Defines depth, layering, focus, and surface distinction.
 ### 8. Motion
 **Role**
 Defines transition behavior, emphasis, continuity, and tone.
+
+**Likely effect**
+- changes continuity, confidence, distraction risk, and perceived polish
+- can make interactions feel smoother, more deliberate, more distracting, or more fragile
 
 **What to inspect**
 - transition speed
@@ -267,6 +287,10 @@ Defines transition behavior, emphasis, continuity, and tone.
 ### 9. Border / Stroke
 **Role**
 Defines edges, separation, affordance clarity, and quiet structure.
+
+**Likely effect**
+- changes perceived precision, rigidity, quiet structure, and harshness risk
+- can make the UI feel more exact, more severe, more orderly, or more brittle
 
 **What to inspect**
 - border thickness logic

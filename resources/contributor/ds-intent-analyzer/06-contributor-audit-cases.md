@@ -384,3 +384,168 @@ Our Style Dictionary works, but the styles still feel off. What should we fix fi
 - assuming Style Dictionary success means design-system maturity
 - recommending more primitives as the first answer
 - turning the response into generic theming advice
+
+---
+
+## AU-10 — Softer Shape Cue in a High-Control Workflow
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- internal approvals console with dense tables, escalation states, and bulk actions
+- buttons, filters, and cards all use large rounded corners
+- the team says the rounded UI feels friendlier
+- reviewers also say the product now feels slightly less precise and harder to trust during high-risk decisions
+
+User ask:
+How should we read this? Is the softer shape helping or hurting?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + focused interpretation ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- foundation guidance tied directly to shape and trust consequences
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- explains the likely perceived effect of softer shape language
+- checks that effect against product precision and trust needs
+- avoids saying rounded equals better or worse by default
+- gives a practical next move for deciding the right shape range
+
+### Must-not-do failures
+- universal claims about rounded corners
+- purely aesthetic judgment with no product consequence logic
+- drifting into unrelated component redesign
+
+---
+
+## AU-11 — Cleaner Must Mean Better Scanability, Not Just Less Stuff
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- dashboard page with many small cards, thin dividers, and light gray labels
+- the team wants it to feel cleaner
+- the current layout already looks visually minimal, but important status changes are easy to miss
+
+User ask:
+If we make this cleaner, what should that actually mean here?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + interpretive ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light foundation guidance tied to hierarchy and emphasis
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- explains that cleaner should be read through scanability, grouping, and emphasis
+- avoids equating cleaner with just less visual material
+- names what the current minimal treatment is making harder
+- gives a fix-first direction grounded in hierarchy and attention
+
+### Must-not-do failures
+- recommending generic minimalism
+- treating visual reduction as automatically better
+- skipping the explanation of user consequence
+
+---
+
+## AU-12 — Generic Because Emphasis Is Too Flat
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- operations screen uses consistent spacing and typography
+- every panel, card, and action has nearly the same visual weight
+- the team says the UI feels clean but generic
+
+User ask:
+Why does this feel generic even though it is already consistent?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + diagnosis ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- anti-sameness guidance tied directly to hierarchy and workflow emphasis
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- explains genericness through flattened emphasis rather than missing novelty alone
+- ties the answer to hierarchy, state emphasis, and repeated job visibility
+- avoids recommending arbitrary flair
+- identifies a concrete fix-first lever
+
+### Must-not-do failures
+- equating originality with decoration
+- suggesting visual flair without product logic
+- skipping the consequence of flat emphasis
+
+---
+
+## AU-13 — Visual Calm Conflicts With Trust or Risk Needs
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- financial review screen uses ultra-light dividers, muted state colors, soft shadows, and subtle status emphasis
+- the team says it feels calm and premium
+- operators say risky states do not stand out enough and important actions feel too quiet
+
+User ask:
+How should we balance the calm feeling with the need for stronger trust and risk signaling?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + tension ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- posture clarification tied directly to trust and state visibility
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- explains the perceived effect of calmer visual treatment
+- identifies where that calmness is undermining trust or risk readability
+- keeps the recommendation consequence-aware rather than taste-based
+- gives a practical balance direction instead of forcing either extreme
+
+### Must-not-do failures
+- saying premium calm is always correct
+- saying stronger signaling always means visual harshness
+- reducing the answer to subjective taste

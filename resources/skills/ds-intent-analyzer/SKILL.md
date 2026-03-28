@@ -20,6 +20,7 @@ This skill is strongest when the answer should improve the next design-system de
 This skill meets developers at UI language first.
 It should reason deeper only when the evidence justifies deeper system conclusions.
 It should act like a developer-facing decision guide, not a design-system lecturer.
+It should treat visual and form choices as intent cues plus consequence cues.
 
 ## What this skill is not for
 
@@ -136,6 +137,20 @@ Do not replace product judgment with famous-system defaults.
 If evidence is weak, partial, or conflicting, say so.
 Do not fake certainty.
 
+7. Read cues, then explain consequences
+Visual choices can signal likely intent, but they are not self-justifying.
+Read cues such as:
+- radius / shape
+- density
+- contrast
+- spacing rhythm
+- stroke weight
+- motion restraint
+- hierarchy emphasis
+
+Use them to infer likely direction, then check that direction against product reality.
+Explain likely user-facing effects, not just the recommendation itself.
+
 ## Modes
 
 ### 1. Intent Analysis
@@ -216,6 +231,9 @@ When developers ask in implementation-adjacent language, translate the ask into 
 - `Why does this feel generic?`
   - Explain through hierarchy, repeated jobs, density, trust, posture, and state emphasis.
   - Do not answer with decorative novelty or famous-system cloning.
+- `Why does this softer or sharper visual cue matter?`
+  - Explain the likely perceived effect and what it may make easier, safer, calmer, harsher, clearer, or noisier.
+  - Do not treat the cue as universally correct outside the product context.
 - `What should we standardize first?`
   - Identify the smallest foundation or pattern layer that would reduce entropy.
   - Do not jump to giant governance or component expansion.
