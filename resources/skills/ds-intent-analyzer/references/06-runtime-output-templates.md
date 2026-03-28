@@ -82,6 +82,7 @@ This version adds:
 - What emotional or trust signal it amplifies or weakens:
 - First lever to change:
 - Why this lever first:
+- Why it outranks adjacent candidates:
 - What should wait:
 
 ## Confidence note
@@ -224,6 +225,8 @@ This version adds:
 -
 ### Why this lever first
 -
+### Why it outranks adjacent candidates
+-
 ### What should wait
 -
 
@@ -240,6 +243,7 @@ This version adds:
 - hierarchy or clarity fixes with good ROI
 - first lever to change:
 - why this lever first:
+- why it outranks adjacent candidates:
 
 ### Structural improvements
 - foundation-level fixes
@@ -359,6 +363,7 @@ What this recommendation is trying to support.
 - what this direction may make harsher, calmer, softer, noisier, or more controlled:
 - first lever to stabilize:
 - why this lever first:
+- why it outranks adjacent candidates:
 - what should wait:
 
 ## Pattern-first build order
@@ -386,3 +391,4 @@ What this recommendation is trying to support.
 
 Use this template to reduce ambiguity, not to fake completeness.
 If evidence is weak, the output should stay provisional.
+If one visible lever is already the clearest candidate, do not present nearby alternatives as co-equal first moves.

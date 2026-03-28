@@ -303,3 +303,41 @@ What should we do first?
 - recommending token cleanup as the automatic first answer
 - giving a flat list of improvements with no prioritization
 - acting as if more shared styles will solve weak emphasis by themselves
+
+---
+
+## RF-09 — Tokens Exist, but State Contrast Should Lead First
+
+### Prompt bundle
+
+```text
+We already have semantic tokens, a component library, and consistent layout patterns.
+The product still feels wrong because risky and routine states look too similar, and review decisions do not stand out enough.
+The team keeps debating whether this is a hierarchy problem or a token cleanup problem.
+What should we do first?
+```
+
+### Input type and evidence strength
+- Input type: implementation-framed product prompt
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- audit framing where the answer needs to choose state contrast before broader hierarchy or token work
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- identifies risky-vs-routine state contrast as the sharpest first lever
+- explains why state contrast outranks broader hierarchy cleanup here
+- avoids reducing the answer to token cleanup volume
+- says what should wait
+
+### Must-not-do failures
+- saying `hierarchy or state clarity` without committing
+- recommending token cleanup as the first answer
+- broadening immediately into component or library change

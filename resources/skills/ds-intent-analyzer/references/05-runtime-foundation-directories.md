@@ -18,6 +18,10 @@ The goal is to:
 **Role**
 Defines semantic meaning, hierarchy, state communication, and brand-expression boundaries.
 
+**First-move clues**
+- if risky and routine states blend together, inspect state contrast here before general hierarchy cleanup
+- if the screen already scans structurally but urgency still disappears, inspect action and state emphasis here before spacing or layout work
+
 **What to inspect**
 - semantic roles
 - neutral scale
@@ -59,6 +63,7 @@ Defines readability, scan speed, tone, and information hierarchy.
 **First-move clues**
 - if users cannot tell what matters first, inspect hierarchy roles and weight contrast here before adding more tokens
 - if dense information feels tiring, inspect text-role compression and line-height clarity here before changing layout
+- if headings are clear but risky and routine actions still read the same, typography is probably secondary and state emphasis should lead instead
 
 **What to inspect**
 - type scale
@@ -102,6 +107,7 @@ Defines rhythm, grouping, separation, and density behavior.
 **First-move clues**
 - if sections blur together, inspect grouping rhythm here before adding more visual styling
 - if the UI feels busy but not information-rich, inspect spacing hierarchy before reducing content
+- if groups are internally readable but priorities still feel flat, spacing is probably secondary and emphasis should lead instead
 
 **What to inspect**
 - spacing scale
@@ -169,6 +175,7 @@ Defines page structure and how major content blocks relate to each other.
 **First-move clues**
 - if everything feels equally important, inspect layout emphasis here before adding decorative differentiation
 - if primary actions or repeated tasks disappear into the page, inspect region weighting here before token work
+- if the page feels crowded but stable, inspect grouping boundaries before changing templates or adding more surfaces
 
 **What to inspect**
 - page templates
@@ -208,6 +215,7 @@ Defines the system’s shape language and contributes to tone.
 **First-move clues**
 - if the UI feels softer than the product risk allows, inspect shape range here before changing the whole visual language
 - if controls feel overly rigid for a low-stress context, inspect shape consistency here before introducing motion or color variation
+- if tone feels slightly off but priorities are already unclear, shape is probably secondary and emphasis should lead instead
 
 **What to inspect**
 - radius scale
@@ -319,6 +327,7 @@ Defines edges, separation, affordance clarity, and quiet structure.
 **First-move clues**
 - if the UI feels exact but harsh, inspect stroke emphasis here before changing shape or typography
 - if important states are too quiet, inspect whether border/stroke contrast is muting priority before adding more components
+- if separators are tidy but the screen still feels generic, stroke is probably secondary and region or action emphasis should lead instead
 
 **What to inspect**
 - border thickness logic

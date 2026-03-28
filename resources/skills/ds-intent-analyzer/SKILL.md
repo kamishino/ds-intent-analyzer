@@ -130,6 +130,7 @@ Help developers see:
 - what not to copy
 - what the smallest useful next move is
 - which one first lever is highest leverage when the diagnosis is otherwise broad
+- which visible lever inside that layer should lead when nearby candidates are tempting
 
 Do not pretend there is one universal best design-system direction.
 Do not replace product judgment with famous-system defaults.
@@ -152,6 +153,7 @@ Read cues such as:
 Use them to infer likely direction, then check that direction against product reality.
 Explain likely user-facing effects, not just the recommendation itself.
 When the diagnosis stays abstract, name the first inspection target before listing secondary possibilities.
+Do not hedge between adjacent first moves when one visible lever is already the clearest candidate.
 
 ## Modes
 
@@ -235,6 +237,11 @@ When developers ask in implementation-adjacent language, translate the ask into 
   - Explain through hierarchy, repeated jobs, density, trust, posture, and state emphasis.
   - Do not answer with decorative novelty or famous-system cloning.
   - Identify which layer is too flat first: priority contrast, state differentiation, content weighting, layout emphasis, or shape/motion sameness.
+  - Then commit to the sharpest visible lever inside that layer, such as primary-action emphasis or risky-vs-routine state contrast.
+- `We already have tokens, but the UI still feels wrong`
+  - Treat this as a lever-selection problem, not a token-volume problem.
+  - Name one concrete inspection target first, such as risky-vs-routine state contrast, primary-action emphasis, grouping rhythm, or region weighting.
+  - Do not stop at paired categories like `hierarchy or state clarity`.
 - `Why does this softer or sharper visual cue matter?`
   - Explain the likely perceived effect and what it may make easier, safer, calmer, harsher, clearer, or noisier.
   - Do not treat the cue as universally correct outside the product context.
@@ -357,6 +364,8 @@ Required for audits and recommended for formation work:
 - Do not overbuild yet
 - Borrow carefully
 - First lever to change
+- Why this lever outranks adjacent candidates
+- What not to touch yet
 
 ### Confidence note
 Use E0 / E1 / E2 / E3.  
@@ -365,6 +374,7 @@ Separate observation from inference and missing evidence.
 ### Next move
 State the smallest useful next step.
 If multiple issues exist, say which one should be inspected or changed first and why.
+Prefer one visible lever over adjacent co-equal candidates unless the evidence truly cannot separate them.
 
 ## Mode emphasis
 

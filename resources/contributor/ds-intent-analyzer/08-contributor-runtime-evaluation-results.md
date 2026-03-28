@@ -997,3 +997,216 @@ The next high-leverage hardening slice should focus on:
 - reducing hedging between nearby first-move candidates in anti-sameness and token-present-but-still-wrong cases
 
 Only after that should the project decide whether another evaluation-led hardening slice is still needed before dataset distillation resumes.
+
+---
+
+## Cycle 6 summary
+
+### Scope used
+- visible-lever selection hardening
+- stable acceptance rerun with no regressions observed
+- lever-selection cases:
+  - `AU-12`
+  - `AU-15`
+  - `AU-16`
+  - `RF-07`
+  - `RF-09`
+
+### Overall result
+- 4 strong passes
+- 1 partial pass
+- 0 regressions
+
+### Current top strengths
+- the runtime is now better at committing to one visible lever instead of hovering between nearby first moves
+- anti-sameness answers are less likely to stop at broad emphasis language alone
+- implementation-framed prompts are more clearly routed away from token cleanup when a sharper visible lever is available
+
+### Current top weakness
+- `RF-07` still remains slightly softer than the sharper lever-selection cases when the prompt does not specify whether state contrast or action emphasis is the clearer lead
+
+---
+
+## Cycle 6 — Lever-selection cases
+
+## AU-12 — Generic Because Emphasis Is Too Flat
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now move past broad flat-emphasis diagnosis and commit to a visible lever such as stronger primary-action emphasis or clearer risky-vs-routine contrast.
+- It is materially sharper than cycle 5 because the output should now say why that lever outranks adjacent emphasis moves instead of merely listing them.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this case as an anti-sameness acceptance guard, but rely on `AU-15` as the sharper visible-lever stress case going forward.
+
+---
+
+## AU-15 — Generic Because Primary Actions Do Not Lead
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should identify primary-action emphasis as the clearest visible lever and explain why it leads before spacing, layout, or novelty.
+- This is now the cleanest test that the skill can commit to one action-hierarchy lever inside a broader sameness diagnosis.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main visible-lever anti-sameness guard.
+
+---
+
+## AU-16 — Crowded but Consistent, Grouping Should Lead
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now separate grouping rhythm from broader layout or token work and choose grouping as the first visible lever.
+- It should say clearly that crowded-but-consistent is not the same as broken foundations.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this case as a supporting lever-selection check, but do not promote it ahead of the sharper anti-sameness and implementation-framed guards yet.
+
+---
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now avoid generic paired guidance and push harder toward one concrete inspection target.
+- It is materially sharper than cycle 5 because the answer should no longer default to `hierarchy or state clarity` as a co-equal pair.
+- The remaining weakness is that the prompt itself is still broad enough to leave a small amount of justified softness when no sharper visible signal is supplied.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may still need one more level of prompt specificity before the sharpest visible lever is completely unambiguous.
+
+### Recommended next action
+- Keep this case as a standing watch case, but treat the broader prioritization weakness as sufficiently reduced for the next roadmap shift.
+
+---
+
+## RF-09 — Tokens Exist, but State Contrast Should Lead First
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now commit to risky-vs-routine state contrast as the clearest first lever and explain why it outranks broader hierarchy cleanup.
+- This is the sharpest implementation-framed test for avoiding adjacent lever hedging.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main implementation-framed visible-lever guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+- `RF-09`
+
+Why this set:
+- it preserves the low-evidence, hybrid-sensitive, developer-guidance, consequence-lens, and prioritization checks
+- it now protects visible-lever commitment under both audit and implementation-framed prompts
+- it stays compact enough to remain practical while replacing softer stress cases with sharper ones where useful
+
+---
+
+## Decision from cycle 6
+
+Visible-lever selection is now strong enough to stop treating prioritization hardening as the top roadmap focus.
+
+Keep `RF-07` as a standing watch case, but do not block the roadmap on making that prompt perfectly sharp under intentionally broad evidence.
+
+The next high-leverage slice should return to Batch A distillation:
+- translate the strongest researched system lessons into lighter runtime reference logic
+- improve named-system borrowing guidance without making the runtime heavier
+- keep the current lever-selection acceptance guards in place while doing that work

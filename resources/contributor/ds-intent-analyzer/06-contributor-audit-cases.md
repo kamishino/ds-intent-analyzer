@@ -591,3 +591,85 @@ There are a lot of things we could change. What should we change first?
 - listing several “Priority 1” actions with no true prioritization
 - recommending more tokens as the default answer
 - confusing polish requests with the highest-leverage fix
+
+---
+
+## AU-15 — Generic Because Primary Actions Do Not Lead
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- workflow screen has tidy spacing, consistent cards, and a calm neutral palette
+- primary actions, routine actions, and secondary filters all carry nearly the same visual weight
+- operators can scan the page, but they cannot quickly tell what should lead the next step
+
+User ask:
+Why does this still feel generic and indecisive even though the screen is clean?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + diagnosis ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- anti-sameness guidance tied directly to action hierarchy and product workflow
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- identifies primary-action emphasis as the sharpest visible first lever
+- explains why action leadership matters more than decorative differentiation here
+- avoids hedging between hierarchy, spacing, and layout when action emphasis is already the clearest candidate
+- says what should wait
+
+### Must-not-do failures
+- treating spacing cleanup as equal to action emphasis
+- recommending novelty or brand flair as the first answer
+- naming several adjacent first moves as co-equal
+
+---
+
+## AU-16 — Crowded but Consistent, Grouping Should Lead
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- admin screen uses a stable type scale, consistent colors, and clear semantic states
+- filters, helper text, inline actions, and supporting metadata sit close together inside each region
+- teams say the screen feels crowded, but not chaotic
+
+User ask:
+What should we change first before we touch tokens or layout templates?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + prioritization ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light foundation guidance only if it stays subordinate to the chosen grouping fix
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- identifies grouping rhythm as the first visible lever
+- explains why grouping leads before token cleanup or layout-template work
+- keeps the answer practical and screen-level
+- says what should wait
+
+### Must-not-do failures
+- recommending token cleanup first
+- jumping to layout-template redesign first
+- treating grouping and layout as equal first moves
