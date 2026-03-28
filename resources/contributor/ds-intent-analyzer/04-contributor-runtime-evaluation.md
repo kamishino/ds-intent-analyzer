@@ -174,6 +174,25 @@ This subset covers:
 
 ---
 
+## UI-language doctrine subset
+
+Use these cases when checking whether the skill still meets developers at UI language first:
+
+- `AU-05` from `06-contributor-audit-cases.md`
+- `AU-06` from `06-contributor-audit-cases.md`
+- `AU-07` from `06-contributor-audit-cases.md`
+- `AU-08` from `06-contributor-audit-cases.md`
+- `AU-09` from `06-contributor-audit-cases.md`
+
+This subset covers:
+- bare improve asks with no explicit design-system vocabulary
+- style discomfort phrasing
+- Storybook inconsistency requests
+- anti-sameness pressure
+- style-guide and Style Dictionary framing
+
+---
+
 ## Common failure patterns to watch for
 
 - adjective -> tokens shortcut
@@ -183,6 +202,8 @@ This subset covers:
 - famous-system overfitting
 - ignoring contradictions between artifact and brief
 - generic next steps that do not change the decision
+- forcing design-system terminology before the user needs it
+- turning Storybook or Style Dictionary asks into token-first prescriptions
 
 ---
 

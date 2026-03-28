@@ -181,3 +181,206 @@ What is weak here and what should we fix first?
 - pretending the whole commerce flow is understood
 - inventing governance or token architecture from one mobile screen
 - confusing visual polish with conversion clarity
+
+---
+
+## AU-05 — Bare UI-Language Improve Ask
+
+### Prompt bundle
+
+```text
+Make it better.
+```
+
+### Input type and evidence strength
+- Input type: natural-language prompt only
+- Evidence strength: very low
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light intent-analysis clarification only if it stays subordinate to asking for the smallest useful artifact
+
+### Expected confidence floor/ceiling
+- Floor: E0
+- Ceiling: E0
+
+### Must-have answer traits
+- treats the ask as a valid UI-language entrypoint rather than misuse
+- defaults to audit-first behavior instead of formation recommendation
+- says the evidence is too thin for design conclusions
+- asks for the smallest useful next artifact, screen, route, or Storybook story
+
+### Must-not-do failures
+- lecturing about design systems before helping
+- immediate token or component prescriptions
+- pretending the target screen or workflow is already understood
+
+---
+
+## AU-06 — Styles Feel Off, Make It Cleaner
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- one admin page screenshot only
+- mixed card elevations across sections
+- filters and search sit in a crowded top row
+- table headers, row density, and side-panel spacing feel inconsistent
+
+User ask:
+Can you make it cleaner? The styles feel off.
+```
+
+### Input type and evidence strength
+- Input type: one-screen artifact summary + short ask
+- Evidence strength: low to medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light formation hints only if tied directly to visible inconsistency
+
+### Expected confidence floor/ceiling
+- Floor: E0
+- Ceiling: E1
+
+### Must-have answer traits
+- treats style discomfort as a clue, not a final diagnosis
+- translates “cleaner” into hierarchy, spacing, grouping, and semantic consistency checks
+- stays tightly screen-level unless more context is provided
+- gives a practical fix-first area and small Smart Suggestions
+
+### Must-not-do failures
+- rebranding language with no visible evidence
+- direct token overhaul from one screen
+- expanding into component catalog recommendations
+
+---
+
+## AU-07 — Storybook Feels Inconsistent
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- Storybook shows 4 button radii across different stories
+- form fields use inconsistent label spacing and helper text treatment
+- tables, cards, and empty states use different padding rhythms
+- status badges vary in color meaning between stories
+
+User ask:
+Storybook feels inconsistent. What should we tighten first?
+```
+
+### Input type and evidence strength
+- Input type: Storybook summary
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- foundation-stabilization guidance tied directly to the audit findings
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats Storybook inconsistency as valid evidence rather than a secondary concern
+- identifies whether the main problem is style-guide drift, foundation inconsistency, or pattern inconsistency
+- prioritizes what to tighten first in a staged way
+- avoids turning the answer into a giant governance or documentation program
+
+### Must-not-do failures
+- treating Storybook cleanup as only a story-file organization problem
+- jumping straight to a full token rewrite
+- producing a giant component inventory instead of a stabilization order
+
+---
+
+## AU-08 — This UI Feels Too Generic
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- one B2B operations screen only
+- clean but familiar dashboard layout with summary cards, filters, and a standard data table
+- typography and spacing are tidy but the page feels interchangeable with many admin products
+- state handling and workflow emphasis are visually flat
+
+User ask:
+This UI feels too generic. How should we improve it without making it flashy?
+```
+
+### Input type and evidence strength
+- Input type: one-screen artifact summary + short ask
+- Evidence strength: low to medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- comparative hints only if they stay subordinate to product-fit reasoning
+
+### Expected confidence floor/ceiling
+- Floor: E0
+- Ceiling: E1
+
+### Must-have answer traits
+- avoids treating “generic” as a request for novelty alone
+- explains how product-specific character could come from hierarchy, workflow emphasis, density, or state treatment
+- keeps anti-sameness advice grounded in visible evidence
+- gives practical next moves without prescribing a flashy visual identity
+
+### Must-not-do failures
+- recommending arbitrary visual flair
+- pushing the user toward copying a famous system
+- confusing originality with decorative styling
+
+---
+
+## AU-09 — Style Dictionary Works, But the Styles Feel Off
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- Style Dictionary exports primitive color, spacing, and type tokens successfully
+- semantic aliases exist for only a few states
+- teams still describe the UI as visually inconsistent across forms, tables, and banners
+- style guide docs focus on token names but not when to use them
+
+User ask:
+Our Style Dictionary works, but the styles still feel off. What should we fix first?
+```
+
+### Input type and evidence strength
+- Input type: style-guide and token-system summary
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- foundation recommendations tied directly to the audit diagnosis
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats the ask as a style-guide or foundation-layer diagnosis, not as proof the token system is sufficient
+- identifies semantic usage guidance and repeated UI states as likely weaknesses
+- explains what to stabilize first before adding more tokens or components
+- stays practical for developer-side maintenance work
+
+### Must-not-do failures
+- assuming Style Dictionary success means design-system maturity
+- recommending more primitives as the first answer
+- turning the response into generic theming advice

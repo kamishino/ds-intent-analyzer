@@ -1,8 +1,8 @@
-# DS Runtime Evaluation Results v1
+# DS Runtime Evaluation Results v2
 
 ## Purpose
 
-This file records the first manual runtime evaluation cycle for the current `ds-intent-analyzer` skill.
+This file records the ongoing manual runtime evaluation cycles for the current `ds-intent-analyzer` skill.
 
 Evaluation basis:
 - current shipped `SKILL.md`
@@ -114,9 +114,9 @@ It does not change shipped runtime behavior by itself.
 - Pattern-first behavior: `1`
 - Evidence precedence: `2`
 - Confidence honesty: `2`
-- Practical Smart Suggestions: `2`
+- Practical Smart Suggestions: `1`
 - Compactness / non-bloat: `2`
-- Total: `12 / 14`
+- Total: `11 / 14`
 - Result: `partial pass`
 
 ### Strongest miss
@@ -221,3 +221,269 @@ The next high-leverage hardening slice should focus on:
 - tighter low-evidence audit discipline
 
 Only after that should the project decide whether deeper dataset work is still the best next investment.
+
+---
+
+## Cycle 2 summary
+
+### Scope used
+- rerun of the current stable acceptance set
+- doctrine-aligned UI-language regression cases:
+  - `AU-05`
+  - `AU-06`
+  - `AU-07`
+  - `AU-08`
+  - `AU-09`
+
+### Overall result
+- 7 strong passes
+- 4 partial passes
+- 0 regressions
+
+### Current top strengths
+- UI-language prompts are now handled as valid entrypoints rather than as malformed design-system asks
+- Storybook and style-guide or Style Dictionary prompts can be read as practical audit evidence without forcing token-first answers
+- the runtime resists famous-system cloning and generic design-system escalation better than earlier slices
+
+### Current top weaknesses
+- the weakest low-evidence prompts still need tighter “smallest useful next move” behavior
+- anti-sameness advice can still become slightly abstract when only one screen or a vague discomfort signal is available
+- hybrid-sensitive comparison confidence remains a watch area even though doctrine alignment improved elsewhere
+
+---
+
+## Cycle 2 — Stable acceptance rerun
+
+### Case classifications
+- `AF-01` — `pass`
+- `AF-03` — `pass`
+- `AU-01` — `partial pass`
+- `AU-02` — `pass`
+- `RF-02` — `partial pass`
+- `RF-03` — `pass`
+
+### Rerun read
+- The existing acceptance set still holds and did not regress after the doctrine slice.
+- `AU-01` remains the main low-evidence audit discipline check.
+- `RF-02` remains the main confidence-scope watch case for hybrid-sensitive comparative reads.
+
+---
+
+## Cycle 2 — Doctrine expansion cases
+
+## AU-05 — Bare UI-Language Improve Ask
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now accept this ask as a valid entrypoint rather than a misuse case.
+- It should stay audit-first, acknowledge that the evidence is too thin, and ask for the smallest useful artifact instead of jumping into system advice.
+- The likely remaining weakness is that the next move could still be broader than necessary if the answer starts listing too many possible diagnostic directions at once.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `1`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `12 / 14`
+- Result: `pass`
+
+### Strongest miss
+- With almost no evidence, the answer may still offer slightly too much framework language before narrowing to the smallest useful artifact request.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main check that pure UI-language entrypoints stay valid and lightweight.
+
+---
+
+## AU-06 — Styles Feel Off, Make It Cleaner
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should translate `cleaner` and `styles feel off` into hierarchy, spacing, grouping, and semantic consistency checks rather than aesthetic jargon.
+- It should stay screen-level and practical.
+- The remaining risk is that the answer may still broaden too quickly from visible inconsistency into medium-confidence foundation advice.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `1`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `12 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may still over-interpret style discomfort into broader system causes faster than the evidence supports.
+
+### Recommended next action
+- Keep this case as a doctrine stress case, but do not promote it ahead of stronger signal cases yet.
+
+---
+
+## AU-07 — Storybook Feels Inconsistent
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should treat Storybook inconsistency as legitimate audit evidence and diagnose whether the main problem is style-guide drift, foundation inconsistency, or pattern inconsistency.
+- It should give a staged stabilization order and avoid turning the answer into a giant governance program.
+- This case now fits the product doctrine well because it starts in developer language and still reveals deeper system consequences progressively.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current doctrine-alignment level.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the clearest Storybook-to-system translation check.
+
+---
+
+## AU-08 — This UI Feels Too Generic
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should resist the temptation to answer “generic” with decorative novelty.
+- It should instead describe how character could come from workflow emphasis, hierarchy, state treatment, or density handling.
+- The likely remaining weakness is that anti-sameness advice can still sound slightly abstract unless the answer identifies one concrete visible lever to change first.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `1`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `11 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may explain why the UI feels interchangeable without always naming a concrete enough fix-first lever.
+
+### Recommended next action
+- Promote this case into the stable acceptance set because it is the best anti-sameness guard, even though it still deserves future tightening.
+
+---
+
+## AU-09 — Style Dictionary Works, But the Styles Feel Off
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should diagnose this as a style-guide or foundation-layer problem rather than proof that more primitives are needed.
+- It should prioritize semantic usage guidance, repeated state handling, and practical stabilization before calling for broader system work.
+- This case now strongly supports the doctrine because it lets the skill teach deeper system meaning without forcing design-system vocabulary first.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main style-guide or Style Dictionary translation check.
+
+---
+
+## Prioritized runtime weaknesses after cycle 2
+
+### Priority 1 — Smallest useful next move discipline for extremely thin UI asks
+Current issue:
+- the runtime now accepts prompts like `Make it better`
+- but the answer can still offer too much interpretive framing before narrowing to the smallest artifact request
+
+Why it matters:
+- this is a common real-world developer entrypoint
+
+Recommended follow-up:
+- tighten low-evidence audit behavior so bare UI-language asks ask for one next artifact before offering broader diagnostic branching
+
+### Priority 2 — Anti-sameness suggestions need more concrete fix-first levers
+Current issue:
+- the runtime can explain why a UI feels generic
+- but concrete, visible first moves are not always sharp enough under one-screen evidence
+
+Why it matters:
+- the product promise includes helping developers avoid generic cloned UI outcomes
+
+Recommended follow-up:
+- harden screen-level audit suggestions so anti-sameness guidance names one or two visible levers before broader posture language
+
+### Priority 3 — Hybrid-sensitive comparison confidence remains a recurring watch case
+Current issue:
+- doctrine alignment improved elsewhere
+- but `RF-02` still remains only a partial pass under the current acceptance set
+
+Why it matters:
+- unresolved comparative reads are still a high-risk area for false certainty
+
+Recommended follow-up:
+- keep `RF-02` in the stable acceptance set and only revisit deeper dataset work after confidence language stays bounded there
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `RF-02`
+- `RF-03`
+
+Why this set:
+- it covers all four runtime modes
+- it keeps the original low-evidence and hybrid-sensitive guardrails
+- it now includes real developer-language prompts with no explicit design-system vocabulary
+- it protects Storybook, anti-sameness, and style-guide or Style Dictionary translation behavior
+
+---
+
+## Decision from cycle 2
+
+Do not return to dataset expansion next by default.
+
+The next high-leverage hardening slice should focus on:
+- smallest-useful-next-move discipline for bare UI-language asks
+- more concrete anti-sameness suggestions under one-screen evidence
+
+Keep `RF-02` as a standing confidence-scope watch case while doing that work.
+
+Only after those checks feel stable should the project decide whether Batch A dataset deepening is again the best next investment.
