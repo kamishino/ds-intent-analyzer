@@ -83,7 +83,10 @@ async function main(args) {
     ["contributor audit cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "06-contributor-audit-cases.md")],
     ["contributor reference cases", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "07-contributor-reference-cases.md")],
     ["contributor runtime evaluation results", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "08-contributor-runtime-evaluation-results.md")],
-    ["contributor product doctrine", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "09-contributor-product-doctrine.md")]
+    ["contributor product doctrine", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "09-contributor-product-doctrine.md")],
+    ["contributor workbook distillation bridge", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "10-contributor-workbook-distillation-bridge.md")],
+    ["contributor registry schema", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "12-contributor-registry-schema.md")],
+    ["contributor evidence packet schema", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "13-contributor-evidence-packet-schema.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
