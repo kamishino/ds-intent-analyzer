@@ -1,0 +1,7 @@
+interface:
+  display_name: "Design System Intent Analyzer"
+  short_description: "Intent-first UI and design-system analysis and audit"
+  brand_color: "#2563EB"
+  default_prompt: "Use the ds-intent-analyzer skill to analyze or audit this interface with intent-first, pattern-first reasoning."
+policy:
+  allow_implicit_invocation: true

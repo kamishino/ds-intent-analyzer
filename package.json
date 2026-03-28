@@ -1,0 +1,26 @@
+{
+  "name": "ds-intent-analyzer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone Codex skill package for intent-first design-system analysis and UI audit.",
+  "type": "module",
+  "bin": {
+    "ds-intent-analyzer": "./bin/ds-intent-analyzer.mjs"
+  },
+  "scripts": {
+    "install:local": "node ./bin/ds-intent-analyzer.mjs install",
+    "sync:local": "node ./bin/ds-intent-analyzer.mjs sync",
+    "validate": "node ./scripts/validate-skill.mjs",
+    "validate:structure": "node ./scripts/validate-skill.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "codex-skill",
+    "design-system",
+    "ui-audit",
+    "intent-first"
+  ],
+  "license": "UNLICENSED"
+}
