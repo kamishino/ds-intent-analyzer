@@ -111,6 +111,19 @@ Use when context is strong enough to recommend principle stack, foundation prior
 ### 4. Comparative Reference Read
 Use when the user asks what this is close to, what to borrow, or which reference logic fits best.
 
+## Request routing
+
+Route the request by dominant evidence and the user's actual job:
+
+- intent-heavy wording, brief fragments, strategy notes, adjective-heavy prompts -> Intent Analysis
+- screenshots, current UI, existing DS docs, audit asks, or vague "improve/enhance this" requests -> UI / DS Audit
+- explicit asks for principles, foundations, token direction, or what to stabilize first -> Formation Recommendation
+- named systems, "X or Y", "what should we borrow", or reference-comparison asks -> Comparative Reference Read
+
+For mixed prompts, choose one primary mode first.
+Only borrow secondary behavior from another mode if it materially improves the answer without bloating it.
+If the request is a vague improve/enhance ask, default to UI / DS Audit.
+
 ## Inference order
 
 Always reason in this order:
@@ -127,6 +140,30 @@ Always reason in this order:
 11. Next move
 
 Do not jump directly from style wording to token conclusions.
+
+## Evidence behavior
+
+Use this evidence precedence order:
+1. uploaded or referenced artifacts
+2. imported project context
+3. user wording
+4. style adjectives or taste language
+
+If artifacts or files contradict the brief, say so explicitly.
+Do not force consistency where the evidence conflicts.
+Lower confidence and separate observation from inference.
+
+For low-evidence situations:
+- adjective-only asks
+  - keep confidence low
+  - treat descriptors as signals, not verdicts
+  - recommend the smallest useful clarification or next artifact
+- one-screen or partial screenshot cases
+  - avoid system-level certainty
+  - focus on visible hierarchy, pattern clues, and likely fix-first areas
+- unknown or niche references
+  - say the reference is unresolved or weakly grounded
+  - analyze what the user seems attracted to rather than pretending confident precedent knowledge
 
 ## Output shape
 
@@ -183,6 +220,22 @@ Separate observation from inference and missing evidence.
 ### Next move
 State the smallest useful next step.
 
+## Mode emphasis
+
+Keep one shared output shape, but adjust emphasis by primary mode:
+
+- Intent Analysis
+  - emphasize constraints, posture candidates, pattern gravity, and the next clarification needed
+- UI / DS Audit
+  - emphasize strongest positives, biggest weaknesses, fix-first area, and Smart Suggestions
+- Formation Recommendation
+  - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
+- Comparative Reference Read
+  - emphasize what to borrow carefully, what not to copy blindly, and confidence limits
+
+Archetype output is optional.
+Use it only when it improves the decision or explanation.
+
 ## Heavy-phase rule
 
 Default to instruction-first analysis.
@@ -199,21 +252,29 @@ When heavy-phase is needed:
 - use web validation only when freshness or external confirmation matters
 - increase confidence carefully, not noisily
 
+Prefer structured retrieval and reusable evidence artifacts over corpus bloat as the system evolves, but keep that evolution outside the core runtime instructions unless it materially changes runtime behavior.
+
 ## How to use the references folder
 
 Do not read every reference file automatically.
-Retrieve selectively:
-- `01-ds-analyzer-scope-v2.md` and `02-ds-agent-skill-spec-v2.md` for runtime behavior
-- `03-ds-intent-signal-dictionary-v1.md` for adjective/signal interpretation
-- `04-ds-pattern-detection-rules-v1.md` for pattern gravity
-- `05-ds-primary-directories-schema-v1.md` for foundation/token recommendations
-- `06-ds-audit-template-v2.md` for audit structure
-- `07-ds-quick-lookup-pack-v1.md` for fast reference orientation
-- `08-ds-system-design-spec-v1.md` for runtime architecture
-- `09-ds-memory-architecture-spec-v1.md` for consistency and long-term memory logic
-- `10-ds-skill-naming-convention-spec-v1.md` for naming standards when extending the skill library
-- `design-system-framework-pack-v2.md` for canonical rulebook
-- `design-system-dataset-roadmap-v2.md` and `archetype-lessons-pack-v1.md` for deeper confidence work
+Retrieve selectively by layer:
+
+- always-near-core
+  - `design-system-framework-pack-v2.md`
+  - `01-ds-analyzer-scope-v2.md`
+  - `02-ds-agent-skill-spec-v2.md`
+- common reasoning aids
+  - `03-ds-intent-signal-dictionary-v1.md`
+  - `04-ds-pattern-detection-rules-v1.md`
+  - `05-ds-primary-directories-schema-v1.md`
+  - `06-ds-audit-template-v2.md`
+  - `07-ds-quick-lookup-pack-v1.md`
+- deeper escalation only
+  - `08-ds-system-design-spec-v1.md`
+  - `09-ds-memory-architecture-spec-v1.md`
+  - `design-system-dataset-roadmap-v2.md`
+  - `archetype-lessons-pack-v1.md`
+  - `10-ds-skill-naming-convention-spec-v1.md` when naming-extension guidance is actually needed
 
 ## Guardrails
 
@@ -222,7 +283,13 @@ Retrieve selectively:
 - Do not start from component lists.
 - Do not force archetypes when evidence is weak.
 - Do not use famous systems as clone targets.
+- Do not overfit to famous design systems when the product reality differs.
+- Do not overstate confidence from weak or partial evidence.
+- Do not turn style-family prompts directly into token prescriptions.
+- Do not drift into giant component inventories.
 - Do not overbuild theming, governance, or abstraction too early.
+
+When confidence is low, the correct behavior is to offer the smallest useful next move rather than inflate the answer.
 
 ## Final principle
 
