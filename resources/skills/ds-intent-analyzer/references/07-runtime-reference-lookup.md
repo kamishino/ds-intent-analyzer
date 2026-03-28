@@ -25,6 +25,10 @@ Each lookup card should answer quickly:
 - what to borrow carefully
 - what not to copy blindly
 
+Treat these systems as developer-decision references, not prestige defaults.
+Use them to explain tradeoffs, fit, and caution.
+Do not use them to shortcut product judgment.
+
 ---
 
 ## Lookup cards
@@ -94,23 +98,23 @@ Each lookup card should answer quickly:
 - **Do not copy blindly:** brand-led motion or softness where trust/workflow clarity should dominate
 
 ### Ant Design
-- **Best used for:** broad business UI reference and quick enterprise/platform orientation
+- **Best used for:** workflow-heavy business UI decisions when teams need broad enterprise pattern coverage and theme flexibility
 - **Likely posture:** Workflow-first with platform gravity
 - **Likely archetype:** hybrid-sensitive; often Enterprise Workflow or Developer Toolkit / Platform
 - **Strongest reusable lesson:** broad pattern coverage for business software
-- **Borrow carefully:** operational patterns, information density, reusable UI structure
+- **Borrow carefully:** operational patterns, information density, reusable UI structure, and theme architecture
 - **Do not copy blindly:** treating broad coverage as proof of fit for every product context
 
 ### Carbon
-- **Best used for:** structured enterprise/system thinking with strong maturity signals
+- **Best used for:** explaining platform-scale system rigor when the product also has real enterprise or operational gravity
 - **Likely posture:** Platform-first with enterprise gravity
 - **Likely archetype:** hybrid-sensitive
 - **Strongest reusable lesson:** disciplined foundations and system rigor
-- **Borrow carefully:** documentation structure, foundation thinking, consistency
+- **Borrow carefully:** documentation structure, foundation thinking, consistency, and accessibility discipline
 - **Do not copy blindly:** formal system weight if your product is still early and pattern-light
 
 ### PatternFly
-- **Best used for:** operational software patterns, admin-heavy complexity, and structured guidance
+- **Best used for:** enterprise-workflow-heavy decision support where teams need task-heavy patterns more than generic platform prestige
 - **Likely posture:** Workflow-first with platform traits
 - **Likely archetype:** hybrid-sensitive
 - **Strongest reusable lesson:** task-heavy pattern support
@@ -167,6 +171,12 @@ The safest reuse usually comes from:
 - foundation logic
 - token discipline
 - governance lessons
+
+### 5. Explain to developers in product-fit language
+When using this pack in answers:
+- explain why a reference fits or does not fit the product reality
+- compare tradeoffs instead of ranking prestige
+- steer away from “best library” framing when the real issue is foundations or pattern clarity
 
 ---
 

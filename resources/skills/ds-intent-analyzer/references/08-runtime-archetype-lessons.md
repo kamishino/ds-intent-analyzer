@@ -215,6 +215,7 @@ The archetype fits when reuse and implementation scale are primary shaping force
 ## Key caution
 This bucket is likely too broad and should still be treated carefully.
 At the moment, it is useful as a parent archetype, but likely needs sub-archetype testing rather than immediate hard splitting.
+When explaining this archetype to developers, do not let implementation maturity erase workflow or product-fit questions.
 
 ## Working sub-archetype candidates
 - UI Toolkit / Library
@@ -226,6 +227,12 @@ Use this archetype when:
 - system adoption across teams matters heavily
 - implementation and reuse shape the system as much as end-user product reality
 - infrastructure quality is part of the product strategy
+
+## Developer guidance translation
+When a developer asks about a library or “mature system” in this space:
+- explain what platform-scale strengths actually buy them
+- check whether their product is truly shaped by reuse and implementation scale
+- warn against borrowing platform overhead when the real issue is still workflow or foundation clarity
 
 ---
 
@@ -280,6 +287,12 @@ Use this archetype when:
 - identity is part of the product value
 - emotional or sector-specific experience matters materially
 - expression must be systematized, not improvised
+
+## Developer guidance translation
+When a developer asks why a product feels generic or wants a stronger identity:
+- explain that controlled expression can be a system concern, not just visual polish
+- keep the advice tied to product tone, hierarchy, density, and trust
+- warn against copying brand-led systems when the product reality does not justify that expression level
 
 ---
 
@@ -352,6 +365,7 @@ The point is to help decide:
 - which foundations must stabilize first
 - which patterns matter most
 - what should not be overbuilt too early
+- how to guide developers toward the best fit rather than a one-size-fits-all reference choice
 
 ---
 

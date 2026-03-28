@@ -487,3 +487,153 @@ The next high-leverage hardening slice should focus on:
 Keep `RF-02` as a standing confidence-scope watch case while doing that work.
 
 Only after those checks feel stable should the project decide whether Batch A dataset deepening is again the best next investment.
+
+---
+
+## Cycle 3 summary
+
+### Scope used
+- developer-guidance runtime read
+- new developer-decision cases:
+  - `RF-05`
+  - `RF-06`
+  - `RF-07`
+
+### Overall result
+- 2 strong passes
+- 1 partial pass
+- 0 regressions
+
+### Current top strengths
+- the runtime can now steer library-shaped asks back toward product-fit and stabilization decisions
+- famous-system maturity is less likely to be treated as a default answer
+- the skill is better positioned to explain design-system tradeoffs to developers in practical language
+
+### Current top weakness
+- token-present-but-still-wrong cases can still drift slightly abstract unless the answer names the next concrete diagnostic layer more sharply
+
+---
+
+## Cycle 3 — Developer-guidance cases
+
+## RF-05 — UI Library Ask for a Workflow-Heavy Product
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now treat this as a product-fit and borrowing question rather than a popularity ranking.
+- It should explain whether the team needs a library choice yet or whether lighter foundation and pattern stabilization should come first.
+- This case aligns well with the new developer-guidance layer because the answer can stay practical without collapsing into implementation fandom.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main developer-library decision guard.
+
+---
+
+## RF-06 — Carbon Feels Mature, But Is It Right?
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should distinguish Carbon’s maturity from the user’s actual product readiness and pattern stability.
+- It should explain what Carbon is useful as a reference for while warning against importing platform-scale weight too early.
+- This is now a high-value case because it tests whether the skill guides without imposing and avoids prestige-first reasoning.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main famous-system maturity caution check.
+
+---
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should explain that tokens do not prove pattern clarity, posture fit, or strong product direction.
+- It should steer the answer toward the next diagnostic layer rather than suggesting more tokens or an immediate library switch.
+- The likely remaining weakness is that the answer can still sound slightly abstract unless it identifies the next concrete layer to inspect first.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `12 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may still describe the diagnosis correctly without naming a concrete enough first inspection target such as state handling, hierarchy drift, or repeated workflow patterns.
+
+### Recommended next action
+- Keep this case as a developer-guidance stress case, but do not promote it ahead of the stronger signal cases yet.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+
+Why this set:
+- it preserves the existing low-evidence and hybrid-sensitive checks
+- it now protects developer-library decision guidance
+- it protects against prestige-first adoption of famous mature systems
+- it keeps the pack compact enough to remain practical
+
+---
+
+## Decision from cycle 3
+
+Do not expand runtime capability breadth next.
+
+The next high-leverage hardening slice should focus on:
+- sharper concrete next-step guidance when tokens exist but the UI still feels wrong
+- keeping anti-sameness and pattern-layer diagnosis practical under implementation-framed asks
+
+Only after those behaviors feel stable should the project consider whether more dataset distillation is the best next investment.

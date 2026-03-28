@@ -155,3 +155,113 @@ Should we move in that direction, and what should we avoid copying?
 - treating Primer as the default “good system”
 - recommending broad copying without fit analysis
 - ignoring workflow density and product posture
+
+---
+
+## RF-05 — UI Library Ask for a Workflow-Heavy Product
+
+### Prompt bundle
+
+```text
+We are building a workflow-heavy operations product with tables, review queues, and status-heavy actions.
+The team keeps asking which UI library we should standardize on.
+Should we choose a library first, or should we stabilize something lighter before that?
+```
+
+### Input type and evidence strength
+- Input type: product brief + implementation-framed ask
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation guidance only if it stays subordinate to product-fit reasoning
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats the ask as a product-fit and borrowing question, not a popularity ranking
+- explains whether the real decision is library choice, foundation stabilization, or pattern clarification
+- names what to borrow carefully if a reference is mentioned or implied
+- keeps the answer practical for developers rather than abstractly anti-library
+
+### Must-not-do failures
+- picking a library by popularity or component count alone
+- treating implementation maturity as proof of product fit
+- turning the answer into a design-system lecture with no decision guidance
+
+---
+
+## RF-06 — Carbon Feels Mature, But Is It Right?
+
+### Prompt bundle
+
+```text
+The team wants Carbon because it feels mature and complete.
+Our product is an internal workflow tool, but we are still early and our patterns are not stable yet.
+Is Carbon actually the right direction for us?
+```
+
+### Input type and evidence strength
+- Input type: product prompt + famous-system ask
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints tied directly to why Carbon may or may not fit
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- distinguishes Carbon’s maturity from the user’s actual product readiness
+- explains what Carbon is useful as a reference for
+- warns against copying platform weight before patterns are stable
+- gives a practical next move for deciding lighter vs heavier system direction
+
+### Must-not-do failures
+- treating maturity as the main deciding factor
+- recommending Carbon as a default “safe” answer
+- ignoring the product’s early-stage instability
+
+---
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+
+### Prompt bundle
+
+```text
+We already have tokens and shared styles, but the UI still feels wrong and generic.
+How should we think about this before we add more components or switch libraries?
+```
+
+### Input type and evidence strength
+- Input type: implementation-framed prompt
+- Evidence strength: low to medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- audit framing where the answer needs to distinguish foundations from pattern or posture problems
+
+### Expected confidence floor/ceiling
+- Floor: E0
+- Ceiling: E1
+
+### Must-have answer traits
+- explains that tokens alone do not prove product-fit or pattern clarity
+- steers the answer toward foundations, pattern pressure, posture, or anti-sameness diagnosis
+- avoids immediately prescribing more token work or a library switch
+- gives a smallest useful next move
+
+### Must-not-do failures
+- recommending more tokens as the default fix
+- acting as if a library switch is automatically the right answer
+- reducing the problem to styling polish alone

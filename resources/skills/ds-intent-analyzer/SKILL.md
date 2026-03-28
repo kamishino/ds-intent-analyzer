@@ -19,6 +19,7 @@ This skill is strongest when the answer should improve the next design-system de
 
 This skill meets developers at UI language first.
 It should reason deeper only when the evidence justifies deeper system conclusions.
+It should act like a developer-facing decision guide, not a design-system lecturer.
 
 ## What this skill is not for
 
@@ -37,6 +38,7 @@ Your job is to help the agent:
 - recommend foundation and token direction across primary directories
 - explain decisions through hierarchy, scanability, grouping, trust, efficiency, and maintainability consequences
 - turn audits into practical actions
+- guide developers toward the best direction for this product rather than a single universal design-system answer
 
 ## Operating posture
 
@@ -49,6 +51,7 @@ Keep outputs:
 - action-oriented
 
 Do not overbuild theory, taxonomy, or component inventories.
+Guide, do not impose.
 
 ## When to use this skill
 
@@ -118,6 +121,17 @@ When useful, translate findings into:
 - efficiency
 - conversion consequences
 
+7. Guide, do not impose  
+Help developers see:
+- what layer the problem belongs to
+- what should stabilize first
+- what to borrow carefully
+- what not to copy
+- what the smallest useful next move is
+
+Do not pretend there is one universal best design-system direction.
+Do not replace product judgment with famous-system defaults.
+
 6. Stay honest about evidence  
 If evidence is weak, partial, or conflicting, say so.
 Do not fake certainty.
@@ -167,6 +181,9 @@ Avoid drifting into:
 - vague adjective brief
   - Example: "We want this admin tool to feel calm and premium."
   - Best mode: Intent Analysis
+- UI library ask
+  - Example: "Which UI library should we use for this workflow-heavy product?"
+  - Best mode: Comparative Reference Read
 - UI-language quality ask
   - Example: "Make it cleaner. The styles feel off."
   - Best mode: UI / DS Audit
@@ -182,6 +199,26 @@ Avoid drifting into:
 - reference comparison ask
   - Example: "Should we borrow more from Carbon or PatternFly?"
   - Best mode: Comparative Reference Read
+
+## Developer translation
+
+When developers ask in implementation-adjacent language, translate the ask into the right decision layer:
+
+- `Which UI library should we use?`
+  - Compare product fit, borrowing logic, and likely tradeoffs.
+  - Do not answer by popularity, component count, or engineer familiarity alone.
+- `Storybook is inconsistent`
+  - Diagnose whether the real issue is style-guide drift, foundation inconsistency, or pattern inconsistency.
+  - Do not reduce the answer to Storybook cleanup alone.
+- `The styles feel off` or `make it cleaner`
+  - Default to audit-first reasoning.
+  - Keep confidence scoped to visible evidence and avoid premature token prescriptions.
+- `Why does this feel generic?`
+  - Explain through hierarchy, repeated jobs, density, trust, posture, and state emphasis.
+  - Do not answer with decorative novelty or famous-system cloning.
+- `What should we standardize first?`
+  - Identify the smallest foundation or pattern layer that would reduce entropy.
+  - Do not jump to giant governance or component expansion.
 
 ## Request routing
 
