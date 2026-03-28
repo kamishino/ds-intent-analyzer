@@ -32,6 +32,8 @@ Use this file to guide:
 
 Do not use this file as a substitute for deeper framework reasoning when the task needs classification, formation logic, or evidence-quality interpretation.
 
+This runtime should meet developers at UI language first and translate that language into the appropriate depth of system reasoning rather than forcing design-system terminology too early.
+
 ---
 
 ## Runtime positioning

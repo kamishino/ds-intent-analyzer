@@ -17,6 +17,9 @@ Use this skill when Codex needs to:
 
 This skill is strongest when the answer should improve the next design-system decision, not generate the final UI.
 
+This skill meets developers at UI language first.
+It should reason deeper only when the evidence justifies deeper system conclusions.
+
 ## What this skill is not for
 
 Do not use this skill as:
@@ -88,6 +91,8 @@ Treat adjectives and taste words as signals, not conclusions.
 
 3. Pattern-first, not component-first  
 Detect repeated jobs, repeated flows, and consequence patterns before suggesting foundations or tokens.
+
+Token-first, component-first, or system-management logic can be useful later, but they are not the default starting point for this skill.
 
 4. Foundation-first recommendations  
 Work through primary directories before drifting into component detail:
@@ -162,8 +167,14 @@ Avoid drifting into:
 - vague adjective brief
   - Example: "We want this admin tool to feel calm and premium."
   - Best mode: Intent Analysis
+- UI-language quality ask
+  - Example: "Make it cleaner. The styles feel off."
+  - Best mode: UI / DS Audit
 - screenshot or improve request
   - Example: "Improve this UI. What is weak here?"
+  - Best mode: UI / DS Audit
+- Storybook consistency ask
+  - Example: "Storybook feels inconsistent. What should we tighten first?"
   - Best mode: UI / DS Audit
 - foundation recommendation ask
   - Example: "Recommend principle stack, foundation priorities, and token direction."
