@@ -265,3 +265,41 @@ How should we think about this before we add more components or switch libraries
 - recommending more tokens as the default fix
 - acting as if a library switch is automatically the right answer
 - reducing the problem to styling polish alone
+
+---
+
+## RF-08 — Token Work Should Wait While Hierarchy Clarity Comes First
+
+### Prompt bundle
+
+```text
+We already have semantic tokens, a component library, and shared styles.
+The product still feels hard to scan and the team keeps asking for more token cleanup.
+The current screens mostly suffer from weak primary-action emphasis, busy data density, and low distinction between routine and risky states.
+What should we do first?
+```
+
+### Input type and evidence strength
+- Input type: implementation-framed product prompt
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- audit framing where the answer needs to choose hierarchy or state clarity before more token work
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- says token work should not lead if the real issue is hierarchy or state emphasis
+- names the first inspection target clearly
+- explains why that lever is higher leverage than more token cleanup
+- avoids giving multiple equal first moves
+
+### Must-not-do failures
+- recommending token cleanup as the automatic first answer
+- giving a flat list of improvements with no prioritization
+- acting as if more shared styles will solve weak emphasis by themselves

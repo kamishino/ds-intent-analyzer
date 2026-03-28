@@ -816,3 +816,184 @@ The next high-leverage hardening slice should focus on:
 - sharper translation from abstract UI discomfort into one actionable visual or pattern lever
 
 Only after that should the project decide whether further consequence-lens coverage is worth expanding.
+
+---
+
+## Cycle 5 summary
+
+### Scope used
+- first-move prioritization hardening
+- key cases:
+  - `AU-12`
+  - `AU-14`
+  - `RF-07`
+  - `RF-08`
+
+### Overall result
+- 2 strong passes
+- 2 partial passes
+- 0 regressions
+
+### Current top strengths
+- the runtime is better at naming a first inspection target instead of stopping at broad discomfort diagnosis
+- implementation-framed asks are less likely to collapse into token cleanup by default
+- the output is more explicit about what should wait
+
+### Current top weakness
+- anti-sameness cases can still be one step too abstract when the answer names the correct layer but not the most visible lever inside that layer
+
+---
+
+## Cycle 5 — First-move prioritization cases
+
+## AU-12 — Generic Because Emphasis Is Too Flat
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now explain genericness through flat emphasis and choose a visible first lever such as stronger state priority, clearer primary actions, or more deliberate content weighting.
+- The likely remaining weakness is that the answer may still hedge between several nearby emphasis moves instead of naming the sharpest one.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `1`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer can still stop one step short of committing to the most visible first lever inside the emphasis problem.
+
+### Recommended next action
+- Keep this case as the main anti-sameness prioritization stress case.
+
+---
+
+## AU-14 — Many Possible Fixes, But One Lever Should Lead
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now pick one highest-leverage first move and say what should wait.
+- It should keep the answer grounded in task visibility, hierarchy, or state emphasis rather than spreading effort across polish, tokens, and layout at once.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main prioritization-discipline guard.
+
+---
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should better separate token completeness from hierarchy, pattern, or posture weakness and name the next layer to inspect.
+- The likely remaining weakness is that it can still describe the right layer without always choosing the sharpest first lever inside it.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `1`
+- Compactness / non-bloat: `2`
+- Total: `13 / 14`
+- Result: `partial pass`
+
+### Strongest miss
+- The answer may still stop at “inspect hierarchy or state clarity” rather than committing to which one should lead first.
+
+### Recommended next action
+- Keep this case as the core implementation-framed stress case for the next slice.
+
+---
+
+## RF-08 — Token Work Should Wait While Hierarchy Clarity Comes First
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now explicitly say that token cleanup should wait when hierarchy and state emphasis are the higher-leverage problems.
+- It should choose one first inspection target and explain why it outranks more shared-style work.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main “do not start with tokens” prioritization guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, developer-guidance, and consequence-lens checks
+- it now protects first-move prioritization discipline under both audit and implementation-framed asks
+- it keeps the pack compact enough to remain practical
+
+---
+
+## Decision from cycle 5
+
+The next runtime priority is now first-move prioritization under abstract discomfort prompts.
+
+Do not broaden the capability surface next.
+
+The next high-leverage hardening slice should focus on:
+- choosing the sharpest visible lever inside an already-correct diagnosis
+- reducing hedging between nearby first-move candidates in anti-sameness and token-present-but-still-wrong cases
+
+Only after that should the project decide whether another evaluation-led hardening slice is still needed before dataset distillation resumes.

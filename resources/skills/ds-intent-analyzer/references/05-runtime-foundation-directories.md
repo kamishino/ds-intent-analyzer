@@ -56,6 +56,10 @@ Defines readability, scan speed, tone, and information hierarchy.
 - changes reading comfort, perceived effort, and scan speed
 - can make the product feel calmer, denser, more serious, or more demanding
 
+**First-move clues**
+- if users cannot tell what matters first, inspect hierarchy roles and weight contrast here before adding more tokens
+- if dense information feels tiring, inspect text-role compression and line-height clarity here before changing layout
+
 **What to inspect**
 - type scale
 - heading/body hierarchy
@@ -94,6 +98,10 @@ Defines rhythm, grouping, separation, and density behavior.
 **Likely effect**
 - changes grouping clarity, calm vs crowding, and cognitive load
 - can make the UI feel breathable, compressed, orderly, or noisy
+
+**First-move clues**
+- if sections blur together, inspect grouping rhythm here before adding more visual styling
+- if the UI feels busy but not information-rich, inspect spacing hierarchy before reducing content
 
 **What to inspect**
 - spacing scale
@@ -158,6 +166,10 @@ Defines structural alignment, layout predictability, and scan behavior.
 **Role**
 Defines page structure and how major content blocks relate to each other.
 
+**First-move clues**
+- if everything feels equally important, inspect layout emphasis here before adding decorative differentiation
+- if primary actions or repeated tasks disappear into the page, inspect region weighting here before token work
+
 **What to inspect**
 - page templates
 - navigation/content/sidebar structure
@@ -193,6 +205,10 @@ Defines the system’s shape language and contributes to tone.
 - changes perceived softness, severity, approachability, and control
 - can make controls feel friendlier, more rigid, more precise, or more casual
 
+**First-move clues**
+- if the UI feels softer than the product risk allows, inspect shape range here before changing the whole visual language
+- if controls feel overly rigid for a low-stress context, inspect shape consistency here before introducing motion or color variation
+
 **What to inspect**
 - radius scale
 - consistency
@@ -223,6 +239,10 @@ Defines depth, layering, focus, and surface distinction.
 **Likely effect**
 - changes depth clarity, confidence, and visual noise
 - can make surfaces feel clearer, more polished, flatter, or unnecessarily busy
+
+**First-move clues**
+- if important layers do not stand out, inspect surface distinction here before adding more border or color complexity
+- if the UI feels noisy, inspect unnecessary depth variation here before flattening everything else
 
 **What to inspect**
 - elevation levels
@@ -256,6 +276,10 @@ Defines transition behavior, emphasis, continuity, and tone.
 **Likely effect**
 - changes continuity, confidence, distraction risk, and perceived polish
 - can make interactions feel smoother, more deliberate, more distracting, or more fragile
+
+**First-move clues**
+- if the UI feels fragile or overly busy, inspect motion restraint here after hierarchy and state clarity are stable
+- do not use motion as the first fix when the real issue is static emphasis or grouping
 
 **What to inspect**
 - transition speed
@@ -291,6 +315,10 @@ Defines edges, separation, affordance clarity, and quiet structure.
 **Likely effect**
 - changes perceived precision, rigidity, quiet structure, and harshness risk
 - can make the UI feel more exact, more severe, more orderly, or more brittle
+
+**First-move clues**
+- if the UI feels exact but harsh, inspect stroke emphasis here before changing shape or typography
+- if important states are too quiet, inspect whether border/stroke contrast is muting priority before adding more components
 
 **What to inspect**
 - border thickness logic

@@ -80,6 +80,9 @@ This version adds:
 - What this choice makes easier:
 - What this choice makes harder:
 - What emotional or trust signal it amplifies or weakens:
+- First lever to change:
+- Why this lever first:
+- What should wait:
 
 ## Confidence note
 - Evidence quality: E0 / E1 / E2 / E3
@@ -217,6 +220,12 @@ This version adds:
 -
 ### What emotional or trust signal is being amplified or weakened
 -
+### First lever to change
+-
+### Why this lever first
+-
+### What should wait
+-
 
 ## Improvement priorities
 ### Priority 1
@@ -229,6 +238,8 @@ This version adds:
 - fast, visible improvements
 - light refactor suggestions
 - hierarchy or clarity fixes with good ROI
+- first lever to change:
+- why this lever first:
 
 ### Structural improvements
 - foundation-level fixes
@@ -346,6 +357,9 @@ What this recommendation is trying to support.
 - likely perceived effect:
 - what this direction will make easier:
 - what this direction may make harsher, calmer, softer, noisier, or more controlled:
+- first lever to stabilize:
+- why this lever first:
+- what should wait:
 
 ## Pattern-first build order
 1.

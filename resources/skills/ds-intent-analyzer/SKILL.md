@@ -129,6 +129,7 @@ Help developers see:
 - what to borrow carefully
 - what not to copy
 - what the smallest useful next move is
+- which one first lever is highest leverage when the diagnosis is otherwise broad
 
 Do not pretend there is one universal best design-system direction.
 Do not replace product judgment with famous-system defaults.
@@ -150,6 +151,7 @@ Read cues such as:
 
 Use them to infer likely direction, then check that direction against product reality.
 Explain likely user-facing effects, not just the recommendation itself.
+When the diagnosis stays abstract, name the first inspection target before listing secondary possibilities.
 
 ## Modes
 
@@ -228,15 +230,18 @@ When developers ask in implementation-adjacent language, translate the ask into 
 - `The styles feel off` or `make it cleaner`
   - Default to audit-first reasoning.
   - Keep confidence scoped to visible evidence and avoid premature token prescriptions.
+  - Name the first inspection target before broadening into multiple possible causes.
 - `Why does this feel generic?`
   - Explain through hierarchy, repeated jobs, density, trust, posture, and state emphasis.
   - Do not answer with decorative novelty or famous-system cloning.
+  - Identify which layer is too flat first: priority contrast, state differentiation, content weighting, layout emphasis, or shape/motion sameness.
 - `Why does this softer or sharper visual cue matter?`
   - Explain the likely perceived effect and what it may make easier, safer, calmer, harsher, clearer, or noisier.
   - Do not treat the cue as universally correct outside the product context.
 - `What should we standardize first?`
   - Identify the smallest foundation or pattern layer that would reduce entropy.
   - Do not jump to giant governance or component expansion.
+  - Prefer one first lever over a flat list of equal-priority fixes.
 
 ## Request routing
 
@@ -351,6 +356,7 @@ Required for audits and recommended for formation work:
 - Structural improvements
 - Do not overbuild yet
 - Borrow carefully
+- First lever to change
 
 ### Confidence note
 Use E0 / E1 / E2 / E3.  
@@ -358,6 +364,7 @@ Separate observation from inference and missing evidence.
 
 ### Next move
 State the smallest useful next step.
+If multiple issues exist, say which one should be inspected or changed first and why.
 
 ## Mode emphasis
 

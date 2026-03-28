@@ -549,3 +549,45 @@ How should we balance the calm feeling with the need for stronger trust and risk
 - saying premium calm is always correct
 - saying stronger signaling always means visual harshness
 - reducing the answer to subjective taste
+
+---
+
+## AU-14 — Many Possible Fixes, But One Lever Should Lead
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- operations dashboard with muted hierarchy, similar card weights, small status chips, and inconsistent spacing between filter groups
+- product managers want more polish
+- developers want more tokens
+- designers think the layout is the main problem
+
+User ask:
+There are a lot of things we could change. What should we change first?
+```
+
+### Input type and evidence strength
+- Input type: artifact summary + prioritization ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light foundation guidance only if it supports the chosen first lever
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- chooses one highest-leverage first move instead of giving many equal-priority fixes
+- explains why that lever comes before polish, token work, or broader redesign
+- keeps the rationale tied to hierarchy, state emphasis, grouping, or task visibility
+- says what should wait
+
+### Must-not-do failures
+- listing several “Priority 1” actions with no true prioritization
+- recommending more tokens as the default answer
+- confusing polish requests with the highest-leverage fix
