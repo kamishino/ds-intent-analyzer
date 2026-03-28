@@ -358,11 +358,9 @@ The point is to help decide:
 # 8. Recommended Use in the Next Cycle
 
 Use this file together with:
-- `design-system-framework-pack-v2.md`
-- `design-system-dataset-roadmap-v2.md`
+- `01-runtime-framework.md`
 
 Recommended sequence:
 1. use the Framework Pack to classify
-2. use the Dataset + Roadmap to understand confidence and research state
-3. use this Lessons Pack to turn classification into decisions and reusable lessons
-
+2. use this Lessons Pack to turn classification into decisions and reusable lessons
+3. if maintainer-only research confidence context is needed, consult the contributor dataset roadmap in the source repo

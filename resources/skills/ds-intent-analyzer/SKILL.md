@@ -260,21 +260,20 @@ Do not read every reference file automatically.
 Retrieve selectively by layer:
 
 - always-near-core
-  - `design-system-framework-pack-v2.md`
-  - `01-ds-analyzer-scope-v2.md`
-  - `02-ds-agent-skill-spec-v2.md`
+  - `01-runtime-framework.md`
+  - `02-runtime-skill-contract.md`
 - common reasoning aids
-  - `03-ds-intent-signal-dictionary-v1.md`
-  - `04-ds-pattern-detection-rules-v1.md`
-  - `05-ds-primary-directories-schema-v1.md`
-  - `06-ds-audit-template-v2.md`
-  - `07-ds-quick-lookup-pack-v1.md`
+  - `03-runtime-signal-dictionary.md`
+  - `04-runtime-pattern-rules.md`
+  - `05-runtime-foundation-directories.md`
+  - `06-runtime-output-templates.md`
+  - `07-runtime-reference-lookup.md`
 - deeper escalation only
-  - `08-ds-system-design-spec-v1.md`
-  - `09-ds-memory-architecture-spec-v1.md`
-  - `design-system-dataset-roadmap-v2.md`
-  - `archetype-lessons-pack-v1.md`
-  - `10-ds-skill-naming-convention-spec-v1.md` when naming-extension guidance is actually needed
+  - `08-runtime-archetype-lessons.md`
+  - `09-runtime-system-architecture.md`
+
+Contributor docs live outside the shipped skill tree in `resources/contributor/ds-intent-analyzer/`.
+Do not treat them as normal runtime retrieval material.
 
 ## Guardrails
 

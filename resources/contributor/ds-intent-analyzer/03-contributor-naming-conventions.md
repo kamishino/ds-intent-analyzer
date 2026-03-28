@@ -266,21 +266,21 @@ Inside `references/`, use ordered, readable file names.
 
 ### Recommended pattern
 ```text
-NN-[domain]-[artifact]-vN.md
+NN-[audience]-[topic].md
 ```
 
 ### Examples
-- `01-ds-analyzer-scope-v2.md`
-- `02-ds-agent-skill-spec-v2.md`
-- `03-ds-intent-signal-dictionary-v1.md`
-- `08-ds-system-design-spec-v1.md`
-- `09-ds-memory-architecture-spec-v1.md`
+- `01-runtime-framework.md`
+- `02-runtime-skill-contract.md`
+- `03-runtime-signal-dictionary.md`
+- `01-contributor-dataset-roadmap.md`
+- `03-contributor-naming-conventions.md`
 
 ### Rules
 - use numeric prefix for reading order
-- include domain prefix
-- make artifact type explicit
-- put version at the end
+- make the audience explicit
+- make the topic explicit
+- keep versioning inside the document heading when needed
 - keep naming consistent across the pack
 
 ---

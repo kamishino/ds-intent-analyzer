@@ -37,6 +37,15 @@ async function assertExists(targetPath, label, failures, checks) {
   }
 }
 
+async function exists(targetPath) {
+  try {
+    await access(targetPath, constants.F_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function main(args) {
   const rootDir = parseRootArg(args);
   const failures = [];
@@ -56,7 +65,19 @@ async function main(args) {
     ["done plans directory", path.join(rootDir, ".local", "plans", "done")],
     ["canonical SKILL", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "SKILL.md")],
     ["canonical skill README", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "README.md")],
-    ["canonical skill agent metadata", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "agents", "openai.yaml")]
+    ["canonical skill agent metadata", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "agents", "openai.yaml")],
+    ["runtime framework reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "01-runtime-framework.md")],
+    ["runtime skill contract reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "02-runtime-skill-contract.md")],
+    ["runtime signal dictionary reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "03-runtime-signal-dictionary.md")],
+    ["runtime pattern rules reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "04-runtime-pattern-rules.md")],
+    ["runtime foundation directories reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "05-runtime-foundation-directories.md")],
+    ["runtime output templates reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "06-runtime-output-templates.md")],
+    ["runtime reference lookup reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "07-runtime-reference-lookup.md")],
+    ["runtime archetype lessons reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "08-runtime-archetype-lessons.md")],
+    ["runtime system architecture reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "09-runtime-system-architecture.md")],
+    ["contributor dataset roadmap", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "01-contributor-dataset-roadmap.md")],
+    ["contributor memory architecture", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "02-contributor-memory-architecture.md")],
+    ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
@@ -140,6 +161,25 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to read AGENTS.md: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  const runtimeRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references");
+  const oldShippedPaths = [
+    path.join(runtimeRoot, "01-ds-analyzer-scope-v2.md"),
+    path.join(runtimeRoot, "02-ds-agent-skill-spec-v2.md"),
+    path.join(runtimeRoot, "09-ds-memory-architecture-spec-v1.md"),
+    path.join(runtimeRoot, "10-ds-skill-naming-convention-spec-v1.md"),
+    path.join(runtimeRoot, "design-system-dataset-roadmap-v2.md")
+  ];
+
+  for (const oldPath of oldShippedPaths) {
+    if (await exists(oldPath)) {
+      failures.push(`Contributor-only or deprecated runtime file must not remain in shipped skill tree: ${oldPath}`);
+    }
+  }
+
+  if (failures.length === 0) {
+    checks.push("OK   production-only runtime reference tree");
   }
 
   try {

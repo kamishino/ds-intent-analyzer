@@ -10,7 +10,7 @@ This package is a Codex-ready skill scaffold for intent-first design-system anal
 ## Contents
 - `SKILL.md` — skill metadata + operating instructions
 - `agents/openai.yaml` — optional Codex metadata
-- `references/` — project documents the skill can read selectively
+- `references/` — production-ready runtime documents the skill can read selectively
 - `assets/` — reserved for templates or future examples
 
 ## Recommended install path
@@ -26,7 +26,10 @@ Then ask Codex to use the skill explicitly, or let it invoke the skill implicitl
 The skill is intentionally instruction-first.
 It does not require scripts for v1.
 
-## Naming note
+## Source-repo note
 
-This scaffold follows `10-ds-skill-naming-convention-spec-v1.md`.
-If you create sibling skills later, keep the same machine-name and reference-file conventions.
+In the source repo, maintainer-only docs live outside the shipped skill tree under:
+
+`resources/contributor/ds-intent-analyzer/`
+
+`install` and `sync` only ship the production-ready skill payload under `resources/skills/ds-intent-analyzer/`.

@@ -664,8 +664,8 @@ Avoid multiple active versions of:
 
 ### Rule 2 — runtime core beats support docs
 For runtime behavior:
-- scope/spec govern
-- lookup/dataset/framework support
+- runtime contract governs
+- framework and support docs assist
 
 ### Rule 3 — keep the index derived, not hand-edited
 Source docs are edited by humans.
@@ -681,16 +681,15 @@ Do not leave old versions equally retrievable without status flags.
 ```text
 ds-agent/
   source/
-    01-ds-analyzer-scope-v2.md
-    02-ds-agent-skill-spec-v2.md
-    03-ds-intent-signal-dictionary-v1.md
-    04-ds-pattern-detection-rules-v1.md
-    05-ds-primary-directories-schema-v1.md
-    06-ds-audit-template-v2.md
-    07-ds-quick-lookup-pack-v1.md
-    design-system-framework-pack-v2.md
-    design-system-dataset-roadmap-v2.md
-    archetype-lessons-pack-v1.md
+    01-runtime-framework.md
+    02-runtime-skill-contract.md
+    03-runtime-signal-dictionary.md
+    04-runtime-pattern-rules.md
+    05-runtime-foundation-directories.md
+    06-runtime-output-templates.md
+    07-runtime-reference-lookup.md
+    08-runtime-archetype-lessons.md
+    09-runtime-system-architecture.md
   build/
     chunks.jsonl
     lookup_cards.jsonl
@@ -708,6 +707,8 @@ ds-agent/
     retrieval_cases/
     routing_cases/
 ```
+
+In a source repo, contributor-only dataset, memory, and naming docs should live outside the production skill subtree.
 
 ---
 

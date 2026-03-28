@@ -327,8 +327,8 @@ If Project Source count is tight, this file can replace the need to separately k
 - design-systems-classification-memo-v1-en.docx
 
 Recommended minimal source set for the DS project:
-1. `design-system-framework-pack-v2.md`
-2. `design-system-dataset-roadmap-v2.md`
+1. `resources/skills/ds-intent-analyzer/references/01-runtime-framework.md`
+2. `resources/contributor/ds-intent-analyzer/01-contributor-dataset-roadmap.md`
 
 Optional keepers only if space allows:
 - raw matrix sheet or spreadsheet
