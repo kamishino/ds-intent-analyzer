@@ -21,6 +21,12 @@ For one-off real-world prompt smoke checks, use:
 
 That playbook defines the installed-runtime-first forward-test flow and a compact readout format.
 
+For full-pack forward-test runs across all current contributor scenarios, use:
+- `15-contributor-forward-test-results.md`
+
+That file is for answer-shape outcomes only.
+It is not a replacement for rubric-based evaluation cycles.
+
 ---
 
 ## What this pack covers
@@ -63,6 +69,11 @@ Forward-tests are lighter than full evaluation cycles:
 - they smoke-test one real-world prompt
 - they compare expected answer shape rather than exact prose
 - they should still reuse an existing case id when possible
+
+Batch forward-tests stay lighter too:
+- they can cover the full pack
+- they record compact `pass / partial pass / regression` outcomes only
+- they do not duplicate full rubric scoring per case
 
 ---
 

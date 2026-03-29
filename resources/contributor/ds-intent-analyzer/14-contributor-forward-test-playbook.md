@@ -6,8 +6,9 @@ This playbook defines a lightweight manual forward-test for the **Design System 
 
 Use it when a maintainer wants to:
 - test one real-world developer prompt against the installed skill
-- inspect the answer shape, not exact prose
-- record one compact readout
+- run the full contributor scenario pack through the installed skill
+- inspect answer shape, not exact prose
+- record compact readouts
 - compare future reruns without building a harness
 
 This playbook is contributor-facing only.
@@ -30,7 +31,23 @@ Source-of-truth reminder:
 
 ---
 
-## Canonical forward-test flow
+## Forward-test modes
+
+This playbook supports two modes:
+- one-off smoke check
+- full-pack forward-test run
+
+Use the one-off mode when:
+- you want a fast reality check on one prompt
+- you are validating one recent runtime change
+
+Use the full-pack mode when:
+- you want one installed-runtime pass across all current contributor scenarios
+- you want a broad answer-shape read without running full evaluation scoring
+
+---
+
+## One-off forward-test flow
 
 1. Sync the installed skill copy.
    - command: `npm run sync:local`
@@ -42,6 +59,30 @@ Source-of-truth reminder:
 
 Forward-tests are manual smoke checks.
 They are not benchmark runs and they do not require exact wording matches.
+
+---
+
+## Full-pack forward-test flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+3. Run every current contributor case:
+   - `AF-01` to `AF-04`
+   - `AU-01` to `AU-16`
+   - `RF-01` to `RF-16`
+4. For each case:
+   - paste the existing `Prompt bundle` into Codex
+   - let `$ds-intent-analyzer` lead
+   - compare the response against expected answer shape
+   - record one compact outcome
+5. Store the batch run in `15-contributor-forward-test-results.md`.
+
+Do not add full rubric scoring here.
+Use outcome-oriented readouts only:
+- `pass`
+- `partial pass`
+- `regression`
 
 ---
 
@@ -130,6 +171,9 @@ Outcome: pass | partial pass | regression
 Keep the readout short.
 Do not turn it into a transcript dump.
 
+For full-pack runs, reuse the same shape for every case.
+Do not add full rubric rows or long narrative recap.
+
 ---
 
 ## Comparison rule
@@ -154,6 +198,11 @@ Use the broader evaluation pack when you need:
 - recurring acceptance-set checks
 - rubric scoring across many cases
 - contributor-side cycle summaries in `08-contributor-runtime-evaluation-results.md`
+
+Use `15-contributor-forward-test-results.md` when you need:
+- one installed-runtime pass across the full 36-case pack
+- answer-shape coverage without rubric duplication
+- compact rerun comparison by case family
 
 The canonical forward-test scenario in this playbook reuses:
 - `RF-16` from `07-contributor-reference-cases.md`
