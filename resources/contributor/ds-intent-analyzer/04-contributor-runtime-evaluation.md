@@ -16,6 +16,11 @@ The goal is to measure whether the current skill runtime:
 This evaluation pack is contributor-facing only.
 It is not part of the shipped skill bundle.
 
+For one-off real-world prompt smoke checks, use:
+- `14-contributor-forward-test-playbook.md`
+
+That playbook defines the installed-runtime-first forward-test flow and a compact readout format.
+
 ---
 
 ## What this pack covers
@@ -53,6 +58,11 @@ For each case:
 
 Do not grade on prose style alone.
 Grade on decision usefulness and runtime behavior.
+
+Forward-tests are lighter than full evaluation cycles:
+- they smoke-test one real-world prompt
+- they compare expected answer shape rather than exact prose
+- they should still reuse an existing case id when possible
 
 ---
 

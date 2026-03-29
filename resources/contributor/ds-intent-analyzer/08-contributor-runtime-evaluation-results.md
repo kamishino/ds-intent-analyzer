@@ -1854,3 +1854,26 @@ When evidence is thin or bounded, the runtime should add one tiny qualifier if u
 - `still hybrid-sensitive`
 
 Do not add a mandatory legend or footnote by default.
+
+---
+
+## Forward-test example
+
+This is a contributor-side example readout from the forward-test playbook.
+It is not a benchmark cycle.
+
+### FT-01 — URL-only reference page smoke check
+
+- Forward-test name: `FT-01`
+- Prompt used: `RF-16` URL-only design-system reference page prompt
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: the answer stays page-level, names what the page signals, and says what it would not overclaim
+- Strongest miss: if the answer starts inferring full-system maturity or token logic from the page, mark the run down immediately
+- Outcome: `pass`
+
+What this example proves:
+- the installed runtime copy is the default forward-test target
+- one real-world developer prompt can be checked without exact-prose matching
+- confidence readability and bounded-evidence behavior can be logged in one compact readout
