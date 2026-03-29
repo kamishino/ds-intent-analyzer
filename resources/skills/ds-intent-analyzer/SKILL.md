@@ -349,6 +349,49 @@ If the request is a vague improve/enhance ask, default to UI / DS Audit.
 - Do not give a single “best design system” or “best UI kit” by default.
 - Rank references by product fit, not prestige or popularity.
 
+## Skill coordination
+
+Use this skill as the decision guide when direction is still unclear.
+If the workflow is now moving into visual build or frontend implementation, `frontend-skill` is the canonical companion skill and should lead execution.
+The same rule can apply to another execution or visual skill, but `frontend-skill` is the default example.
+
+Use the relationship like this:
+- `ds-intent-analyzer` -> `frontend-skill`
+  - default when product fit, direction, constraints, or reference logic still need to be locked
+  - this skill should produce the bounded decision package first
+- `frontend-skill` -> `ds-intent-analyzer`
+  - allowed when direction is already stable and the job is mainly build work
+  - this skill should re-enter as a bounded checker if the build drifts from the locked direction
+
+Do not let both skills co-lead at the same time.
+If the job is still "what direction should this take?", this skill should lead.
+If the job is now "build the UI from the locked direction", `frontend-skill` should lead.
+
+When the user explicitly wants build work next, a conditional `Frontend handoff` block may appear near the end of the answer.
+Show that block only when:
+- the user explicitly wants UI build next
+- the user mentions frontend implementation or `frontend-skill`
+- the current answer is stable enough to guide build work, or needs to name the specific blockers before build starts
+
+Omit or block the handoff when:
+- evidence is too thin
+- direction is still unresolved
+- the answer is still page-level, screen-level, or exploratory only
+
+The handoff must be anti-hallucination-first.
+`frontend-skill` may build only from:
+- observed evidence
+- locked decisions from this answer
+- accepted project memory
+- bounded reference guidance
+
+Do not let the build side invent:
+- new vibe or brand direction
+- new product constraints
+- new screen specifics or structure that were never decided
+
+If missing decisions materially affect the build, ask or return to this skill instead of freestyling.
+
 ## Inference order
 
 Always reason in this order:
@@ -483,6 +526,22 @@ Default voice:
 Keep it to one concrete action by default.
 If multiple issues exist, say which one should be inspected or changed first and why, then offer that action.
 Prefer one visible lever over adjacent co-equal candidates unless the evidence truly cannot separate them.
+
+### Frontend handoff
+Conditional.
+Use only when frontend execution is clearly next and the direction is stable enough to guide a build, or when the answer needs to say exactly what is blocking build.
+
+The handoff should include:
+- Build goal
+- Grounded product truths
+- Locked direction
+- Safe references to borrow from
+- Do not invent
+- Open questions blocking build
+- Recommended first build target
+
+If evidence is too thin, do not fake a build-ready handoff.
+Either omit the block or use it to say why frontend execution should wait.
 
 ## Mode emphasis
 

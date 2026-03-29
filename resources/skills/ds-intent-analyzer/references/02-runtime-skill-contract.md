@@ -37,6 +37,7 @@ Do not use this file as a substitute for deeper framework reasoning when the tas
 
 This runtime should meet developers at UI language first and translate that language into the appropriate depth of system reasoning rather than forcing design-system terminology too early.
 This runtime should prefer the smallest explicit mechanism over hidden or abstract machinery.
+This runtime should make multi-skill sequencing explicit when frontend execution becomes part of the workflow.
 
 ---
 
@@ -166,6 +167,59 @@ Low-evidence fallback behavior:
 
 ---
 
+## Multi-skill coordination
+
+Use `frontend-skill` as the canonical execution companion when the workflow moves from direction-setting into visual build work.
+The same contract can apply to another execution or visual skill, but `frontend-skill` is the default example.
+
+### Analyzer -> Frontend lead
+Default path when:
+- product fit, direction, or reference logic is still being decided
+- the answer needs a bounded decision package before build can start
+
+In this path:
+- `ds-intent-analyzer` leads the reasoning
+- `frontend-skill` should execute within the locked direction and evidence bounds from the analyzer output
+
+### Frontend first -> Analyzer check
+Allowed when:
+- direction is already stable enough for build work
+- the user is mainly asking for frontend execution now
+
+In this path:
+- `frontend-skill` leads the build
+- `ds-intent-analyzer` may re-enter as a bounded checker if the build appears to drift from the locked direction, evidence, or project memory
+
+Do not let both skills co-lead the same step.
+Pick one lead job first, then hand off explicitly.
+
+### Precedence for frontend handoff
+When frontend execution is being handed off, use this order:
+1. current evidence
+2. locked analyzer decisions from the current accepted answer
+3. accepted project memory
+4. bounded reference guidance
+
+Do not let later layers override earlier ones without saying so explicitly.
+
+### Anti-hallucination rule
+The execution side may build from:
+- observed evidence
+- locked analyzer decisions
+- accepted project memory
+- bounded reference cues
+
+It should not invent:
+- new vibe or brand direction
+- new product constraints
+- new screen-level specifics that were never decided
+
+If a missing decision would materially change the build:
+- ask for it explicitly, or
+- return to analyzer mode instead of freestyling
+
+---
+
 ## Inference order
 
 Always reason in this order:
@@ -246,6 +300,21 @@ Optional.
 Offer it only when the result contains stable, reusable project decisions.
 Use explicit user-facing wording rather than hidden memory behavior.
 
+### Frontend handoff
+Conditional.
+Use only when frontend execution is clearly the next job and the answer is stable enough to guide build work, or needs to mark the specific blockers before build starts.
+
+The handoff should state:
+- build goal
+- grounded product truths
+- locked direction
+- safe references to borrow from
+- do not invent
+- open questions blocking build
+- recommended first build target
+
+If evidence is too thin, the correct output is to withhold or block the handoff, not to improvise a build-ready direction.
+
 ---
 
 ## Mode emphasis
@@ -261,6 +330,7 @@ Keep one shared output shape, but change emphasis by primary mode:
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
+  - if frontend execution is clearly next, either emit a bounded `Frontend handoff` block or say exactly why the handoff is not ready yet
 
 ---
 

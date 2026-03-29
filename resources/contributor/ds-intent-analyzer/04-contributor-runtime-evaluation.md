@@ -11,6 +11,7 @@ The goal is to measure whether the current skill runtime:
 - respects evidence precedence
 - keeps confidence honest
 - produces practical next moves and Smart Suggestions
+- produces explicit paired-skill handoff when frontend execution is clearly next
 - behaves like useful decision help instead of an audit-theory layer
 - stays compact instead of bloating
 
@@ -77,6 +78,12 @@ Batch forward-tests stay lighter too:
 - they can cover the full pack
 - they record compact `pass / partial pass / regression` outcomes only
 - they do not duplicate full rubric scoring per case
+
+For paired-skill checks with `frontend-skill`:
+- score handoff clarity and anti-hallucination discipline mainly inside:
+  - `Practical Smart Suggestions`
+  - `Decision clarity over audit verbosity`
+- do not create a separate scoring framework just for skill coordination
 
 ---
 
@@ -167,6 +174,7 @@ For direction-seeking prompts, practical guidance may also mean:
 - asking only 1-3 project-fit questions when the decision is still blocked
 - offering 2-3 matching references with fit and cautions when the evidence is strong enough
 - avoiding single-winner prestige answers
+- when frontend execution is clearly next, emitting a structured handoff that is explicit about what is locked, what is blocked, and what must not be invented
 
 ### 7. Decision clarity over audit verbosity
 The answer should make the decision path easier, not just expand the audit.
@@ -175,11 +183,13 @@ Pass signals:
 - leads with what matters, what to fix first, and what can happen next
 - uses audit detail only to support the recommendation
 - avoids theory unless it sharpens the decision
+- in paired-skill workflows, makes the lead/follow relationship explicit instead of letting analyzer and frontend execution co-lead ambiguously
 
 Regression signals:
 - reads like an audit artifact rather than decision help
 - overexplains fundamentals that do not change the recommendation
 - buries the recommendation under directory-by-directory commentary
+- in paired-skill workflows, leaves frontend execution to infer direction from loose prose instead of a bounded handoff or explicit blocker
 
 ### 8. Compactness / non-bloat
 The answer stays concise enough for Codex runtime use.
@@ -258,6 +268,8 @@ This subset covers:
 - turning Storybook or Style Dictionary asks into token-first prescriptions
 - turning the answer into a long audit report when a shorter decision path would do
 - using fundamentals or theory that do not change the recommendation
+- ambiguous multi-skill sequencing where frontend execution starts before the direction is locked
+- frontend-facing handoff that invents vibe, product constraints, or screen specifics not grounded in the evidence
 - starting with style-direction questions when evidence is already available
 - turning a UI-library ask into a prestige ranking instead of top-fit references with cautions
 - treating provisional outputs as if they are ready for durable project memory

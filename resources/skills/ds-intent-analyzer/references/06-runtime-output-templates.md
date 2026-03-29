@@ -35,6 +35,7 @@ If evidence is already present, read it first.
 If evidence is thin, ask only 1-3 focused project-fit questions.
 If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
+If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
 
 ---
 
@@ -76,6 +77,7 @@ For implementation-framed comparison prompts, answer "what should we inspect fir
 - preferred voice: `I can ... next if you want`
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
+- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## Top 3 matching reference directions
 - include only when the evidence is strong enough
@@ -213,6 +215,7 @@ For implementation-framed comparison prompts, answer "what should we inspect fir
 - tie the action to the fix-first decision when possible
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 - for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
+- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## What is being audited
 - system / product / file set:
@@ -484,6 +487,7 @@ What this recommendation is trying to support.
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
+- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
 ## Confidence note
@@ -499,6 +503,60 @@ What this recommendation is trying to support.
 - preferred voice: `I can capture this into the project memory pack so future work starts from the same truths and decisions.`
 - preferred downstream path: `docs/design-system/project-memory.md`
 - unresolved comparisons or low-evidence recommendations should be captured only as open questions, or not at all
+
+---
+
+# D. Frontend Handoff Add-On
+
+Use this block only when:
+- the user explicitly wants UI build next
+- the user mentions frontend implementation or `frontend-skill`
+- the answer is stable enough to guide build work, or needs to name the specific blockers before build starts
+
+Do not use this block when:
+- evidence is too thin
+- direction is still unresolved
+- the answer is still page-level, screen-level, or exploratory only
+
+This add-on is anti-hallucination-first.
+It is meant for `frontend-skill` as the canonical companion example, but the same contract can guide another execution or visual skill.
+
+## Frontend handoff
+### Build goal
+- what the build step is actually trying to ship
+
+### Grounded product truths
+- audience
+- repeated jobs
+- risk / trust pressure
+- information density
+- scope boundary if the read is only page-level or screen-level
+
+### Locked direction
+- decisions that are stable enough for build
+- what has been intentionally decided
+
+### Safe references to borrow from
+- only bounded references already justified by the evidence
+- what is safe to borrow
+- what should remain only a caution or secondary cue
+
+### Do not invent
+- no new vibe or brand direction
+- no new product constraints
+- no new screen structure or UI specifics that were never decided
+- no extra reference borrowing beyond what this answer already grounded
+
+### Open questions blocking build
+- only include if missing decisions materially affect the build
+- if this section is non-empty, the handoff is blocked or provisional
+
+### Recommended first build target
+- one first surface or one first section to implement
+- keep it bounded to the current evidence level
+
+### Re-entry rule
+- if the build drifts from the locked direction or needs a missing decision, return to `ds-intent-analyzer` instead of freestyling
 
 ---
 

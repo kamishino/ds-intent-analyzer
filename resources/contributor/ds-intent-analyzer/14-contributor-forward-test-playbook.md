@@ -40,6 +40,7 @@ Source-of-truth reminder:
 This playbook supports two modes:
 - one-off smoke check
 - full-pack forward-test run
+- paired-skill handoff check
 
 Use the one-off mode when:
 - you want a fast reality check on one prompt
@@ -48,6 +49,10 @@ Use the one-off mode when:
 Use the full-pack mode when:
 - you want one installed-runtime pass across all current contributor scenarios
 - you want a broad answer-shape read without running full evaluation scoring
+
+Use the paired-skill handoff mode when:
+- you want to see how `ds-intent-analyzer` behaves right before frontend execution
+- you want to check that the answer produces a bounded handoff instead of letting build work invent direction
 
 ---
 
@@ -63,6 +68,27 @@ Use the full-pack mode when:
 
 Forward-tests are manual smoke checks.
 They are not benchmark runs and they do not require exact wording matches.
+
+---
+
+## Paired-skill handoff flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+3. Run one existing contributor case through `ds-intent-analyzer`.
+4. Immediately follow with a paired frontend-execution prompt, for example:
+   - `Now use frontend-skill to build from this direction.`
+   - `Now use frontend-skill to turn this into a first UI direction.`
+5. Check whether the analyzer answer:
+   - makes lead/follow sequencing explicit
+   - emits a structured `Frontend handoff` when build is ready
+   - withholds or blocks the handoff when evidence is too thin
+   - tells the execution side what not to invent
+6. Record one compact readout.
+
+Paired-skill checks are still answer-shape checks.
+They are not full implementation benchmarks.
 
 ---
 
@@ -152,6 +178,7 @@ Expected sections:
 - keeps the answer practical and compact
 - if more context is truly needed, asks only a small number of project-fit questions
 - does not offer project-memory capture for this thin-evidence scenario
+- if the user asks to build from this page immediately afterward, the answer should refuse or block a frontend handoff rather than inventing a full style direction
 
 ### Must-not-do failures
 
@@ -175,6 +202,7 @@ Prompt used:
 Runtime target:
 Observed primary mode:
 Observed confidence line:
+Observed handoff behavior:
 Strongest pass signal:
 Strongest miss:
 Outcome: pass | partial pass | regression
@@ -185,6 +213,11 @@ Do not turn it into a transcript dump.
 
 For full-pack runs, reuse the same shape for every case.
 Do not add full rubric rows or long narrative recap.
+
+For paired-skill checks, use `Observed handoff behavior` to note whether the runtime:
+- emitted a structured handoff
+- blocked the handoff
+- or left the build side too much room to invent
 
 ---
 
@@ -233,6 +266,65 @@ Forward-tests should also check memory discipline:
 - stable formation or stable audit workflows may end with an explicit project-memory capture offer
 - low-evidence, screen-level, or unresolved hybrid workflows should not
 - if memory capture is offered, it should be explicit and user-facing, not hidden mutation
+
+---
+
+## Paired-skill anchor checks
+
+Reuse existing case ids.
+Do not create a second taxonomy.
+
+### AF-01 + frontend build follow-up
+
+Follow-up prompt:
+
+```text
+Now use frontend-skill to build the direction.
+```
+
+Expected behavior:
+- `ds-intent-analyzer` should still lead the decision step first
+- if it emits `Frontend handoff`, that handoff should stay provisional and blocker-aware
+- it should not let the execution side invent a vibe-heavy direction from adjectives alone
+
+### AF-03 + frontend build follow-up
+
+Follow-up prompt:
+
+```text
+Now use frontend-skill to turn this into a first implementation direction.
+```
+
+Expected behavior:
+- a structured `Frontend handoff` should be allowed
+- the handoff should include locked direction, grounded product truths, and one recommended first build target
+- the answer should still mark what must not be invented
+
+### AU-01 + frontend build follow-up
+
+Follow-up prompt:
+
+```text
+Now use frontend-skill to apply this to the current screen.
+```
+
+Expected behavior:
+- the handoff should stay screen-level
+- it should not widen into system-wide formation logic
+- it should name one screen-bounded build target and keep visual invention constrained
+
+### RF-16 + frontend build follow-up
+
+Follow-up prompt:
+
+```text
+Now use frontend-skill to build from this reference.
+```
+
+Expected behavior:
+- the handoff should be withheld or explicitly blocked
+- the answer should say the evidence is still too thin for a build-ready direction
+- the runtime should not let the execution side invent full style direction from one URL-only page
 
 ---
 
