@@ -260,6 +260,8 @@ Best used when:
 Avoid drifting into:
 - famous-system overfitting
 - false certainty in hybrid-sensitive comparisons
+- paired first moves when one inspection target is already more plausible
+- broad library tie-break talk when the real decision is still workflow fit, state clarity, or pattern visibility
 
 ## Ask shape -> best mode
 
@@ -495,6 +497,8 @@ Keep one shared output shape, but adjust emphasis by primary mode:
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence is needed to resolve remaining ambiguity
+  - for implementation-framed prompts, name one first inspection target before talking about more tokens, more components, or a library switch
+  - if the comparison is still bounded, name one tie-break artifact or one repeated-job question, not a broad list of follow-ups
 
 Archetype output is optional.
 Use it only when it improves the decision or explanation.

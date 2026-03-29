@@ -135,7 +135,7 @@ Do not start with this pack if screenshots, codebase clues, docs, or product con
 - **Strongest reusable lesson:** enterprise-first systems can keep inclusion and accessibility as a real foundation instead of a late compliance layer
 - **Borrow carefully:** inclusive defaults, accessibility-backed workflow patterns, public roadmap signals, and practical implementation support for enterprise teams
 - **Do not copy blindly:** framework-shaped opinionation, enterprise tone, or heavier implementation assumptions when the product needs lighter foundations or more consumer-facing posture
-- **Developer guidance cue:** if Clarity feels “solid and accessible,” check whether the real need is enterprise workflow clarity first or simply better baseline discipline
+- **Developer guidance cue:** if Clarity feels “solid and accessible,” let it lead when day-to-day success still depends more on workflow clarity, review work, and inclusive defaults than on platform breadth
 
 ### Elastic UI Framework
 - **Best used for:** dense internal product surfaces that need composable implementation assets, theming support, and reusable patterns for data-rich workflows
@@ -144,7 +144,12 @@ Do not start with this pack if screenshots, codebase clues, docs, or product con
 - **Strongest reusable lesson:** a reusable implementation layer can stay paired with dense workflow patterns and theme discipline without pretending brand expression is the main job
 - **Borrow carefully:** composable patterns, theme-token setup, accessibility baselines, and documentation-backed support for dense internal product work
 - **Do not copy blindly:** Elastic-shaped data-product assumptions, platform breadth, or observability-style density where the product reality is lighter or more narrowly task-shaped
-- **Developer guidance cue:** if EUI feels like the strongest library option, separate the need for composable platform assets from the need for dense workflow patterns
+- **Developer guidance cue:** if EUI feels like the strongest library option, let it lead only when composable implementation breadth, theming, and cross-surface reuse now matter more than day-to-day workflow fit
+
+### Clarity vs Elastic UI Framework tie-break
+- **Let Clarity lead when:** repeated operational jobs, admin review work, and workflow clarity are the primary shaping forces
+- **Let EUI lead when:** reusable implementation breadth, theming, and platform-style distribution pressure are the stronger immediate need
+- **Fastest tie-break artifact:** inspect the product's dominant repeated-job surface first; if it wins on workflow clarity needs, start from Clarity, and if it wins on reusable platform breadth needs, start from EUI
 
 ### Porsche Design System
 - **Best used for:** brand-led system building where premium expression must stay controlled, portable, and implementation-aware

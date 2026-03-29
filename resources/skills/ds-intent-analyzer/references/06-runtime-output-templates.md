@@ -34,6 +34,7 @@ Do not turn vague style asks into long questionnaires.
 If evidence is already present, read it first.
 If evidence is thin, ask only 1-3 focused project-fit questions.
 If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
+For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
 
 ---
 
@@ -200,6 +201,9 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 - what to borrow
 - what not to copy blindly
 - if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
+- choose one strongest lean before describing the bounded secondary force
+- if the prompt is implementation-framed, name one first inspection target before library or token expansion
+- if the fit is still bounded, ask for one tie-break artifact or one repeated-job clue, not a broad bundle of follow-ups
 - prefer 2-3 matching references when the product-fit read is strong enough
 - do not rank by popularity or prestige
 
@@ -208,6 +212,7 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 - preferred voice: `I can ... next if you want`
 - tie the action to the fix-first decision when possible
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
+- for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
 
 ## What is being audited
 - system / product / file set:
@@ -347,12 +352,14 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 - what would raise confidence:
 - if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
+- if the comparison is still bounded, say exactly which single tie-break artifact would raise confidence fastest
 
 ## Final recommendation
 - what to stabilize first
 - what not to overbuild yet
 - one recommendation path, not a flat list of equal-priority theories
 - next move should be phrased as an action offer, not only an inspection note
+- if the prompt is implementation-framed, state one first inspection target and one reason it outranks adjacent candidates
 
 ## Memory capture
 - optional
@@ -472,10 +479,12 @@ What this recommendation is trying to support.
 - explain why each fits this product shape
 - explain what to borrow carefully
 - explain what not to copy
+- if one reference already leads, make that lean explicit and keep the others bounded rather than sounding undecided by default
 
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
+- if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
 ## Confidence note
 - Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
@@ -498,3 +507,4 @@ What this recommendation is trying to support.
 Use this template to reduce ambiguity, not to fake completeness.
 If evidence is weak, the output should stay provisional.
 If one visible lever is already the clearest candidate, do not present nearby alternatives as co-equal first moves.
+If one comparison lean is already stronger, do not present the secondary reference as an equal winner.

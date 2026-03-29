@@ -1878,3 +1878,187 @@ What this example proves:
 - the installed runtime copy is the default forward-test target
 - one real-world developer prompt can be checked without exact-prose matching
 - confidence readability and bounded-evidence behavior can be logged in one compact readout
+
+---
+
+## Cycle 11 summary
+
+### Scope used
+- targeted comparative tie-break hardening
+- rerun of:
+  - `RF-07`
+  - `RF-13`
+  - `RF-02`
+  - `RF-05`
+
+### Overall result
+- 4 strong passes
+- 0 regressions
+
+### Current top strengths
+- implementation-framed comparison prompts now choose one sharper first inspection target instead of hedging across adjacent levers
+- `Clarity` vs `EUI` reads are now clearer about workflow-fit versus platform-breadth tradeoffs
+- adjacent hybrid-sensitive and anti-prestige guards stayed stable during the hardening pass
+
+### Current top weakness
+- no new major weakness displaced the remaining roadmap question around whether one final small Batch A lookup wave is still worth doing
+
+---
+
+## Cycle 11 — Targeted comparative tie-break cases
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now treat this as a lever-selection problem and name one first inspection target instead of stopping at a pair like `hierarchy or state clarity`.
+- It should keep token work and library-switch talk subordinate to that first inspection target.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Decision clarity over audit verbosity: `2`
+- Compactness / non-bloat: `2`
+- Total: `16 / 16`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main guard against broad first-target hedging in implementation-framed discomfort prompts.
+
+---
+
+## RF-13 — Clarity or EUI for a Dense Internal Product
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now choose a sharper strongest lean between workflow-first clarity and platform-first breadth.
+- It should also name one faster tie-break artifact when bounded confidence remains instead of asking for a broad compare-more follow-up.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Decision clarity over audit verbosity: `2`
+- Compactness / non-bloat: `2`
+- Total: `16 / 16`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main guard for workflow-fit versus platform-breadth tie-break quality.
+
+---
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should remain bounded and useful on hybrid-sensitive comparisons while still naming one tie-break artifact if more confidence is needed.
+- The hardening for sharper leans should not make this case sound falsely final.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Decision clarity over audit verbosity: `2`
+- Compactness / non-bloat: `2`
+- Total: `16 / 16`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main hybrid-sensitive comparison guard beside the newly sharpened tie-break cases.
+
+---
+
+## RF-05 — UI Library Ask for a Workflow-Heavy Product
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should continue to resist prestige or component-count answers and keep the real decision centered on workflow fit versus lighter stabilization.
+- The sharper tie-break behavior should make the answer more explicit about what to inspect before choosing more library weight.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Decision clarity over audit verbosity: `2`
+- Compactness / non-bloat: `2`
+- Total: `16 / 16`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main anti-prestige and anti-library-first comparison guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-07`
+- `RF-08`
+- `RF-09`
+- `RF-10`
+- `RF-12`
+- `RF-13`
+- `RF-15`
+- `RF-16`
+
+Why this set:
+- it keeps the current low-evidence, hybrid-sensitive, anti-prestige, confidence-readability, and visible-lever guards
+- it now also protects the two previously unresolved comparative tie-break cases
+- it remains small enough to use as a practical recurring acceptance subset
+
+---
+
+## Decision from cycle 11
+
+The last two standing comparative watch cases are now sharp enough that the roadmap can return to the remaining Batch A lookup question instead of doing another generic runtime-hardening pass.

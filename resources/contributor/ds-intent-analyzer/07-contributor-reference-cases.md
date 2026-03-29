@@ -264,12 +264,15 @@ How should we think about this before we add more components or switch libraries
 - explains that tokens alone do not prove product-fit or pattern clarity
 - steers the answer toward foundations, pattern pressure, posture, or anti-sameness diagnosis
 - avoids immediately prescribing more token work or a library switch
+- names one first inspection target clearly instead of a paired category
+- explains why that target outranks nearby candidates
 - gives a smallest useful next move
 
 ### Must-not-do failures
 - recommending more tokens as the default fix
 - acting as if a library switch is automatically the right answer
 - reducing the problem to styling polish alone
+- stopping at broad phrasing such as `hierarchy or state clarity` when one first target is already more plausible
 
 ---
 
@@ -533,11 +536,14 @@ Which reference should lead, and what should we borrow carefully from the other?
 - chooses the strongest lean and keeps the secondary force bounded
 - explains what to borrow from the non-leading reference without drifting into prestige or breadth ranking
 - keeps the reasoning tied to dense internal product jobs rather than framework familiarity
+- names one sharper tie-break path between workflow fit and platform breadth
+- if confidence stays bounded, asks for one tie-break artifact rather than a broad compare-more request
 
 ### Must-not-do failures
 - choosing only by implementation breadth or docs polish
 - treating Clarity and EUI as interchangeable enterprise defaults
 - sounding final without acknowledging the workflow-versus-platform boundary in the prompt
+- asking for a broad library comparison follow-up when one dominant repeated-job surface would break the tie faster
 
 ---
 

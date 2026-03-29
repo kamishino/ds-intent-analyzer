@@ -113,6 +113,10 @@ Use this archetype when:
 - user efficiency matters more than emotional tone
 - pattern maturity matters more than component novelty
 
+## Decision shorthand against platform-first references
+- Workflow-first with bounded platform support means repeated jobs, state visibility, and dense task clarity lead the decision.
+- Borrow platform discipline second when implementation support is useful, but do not let platform breadth outrank workflow fit by default.
+
 ---
 
 # 3. Commerce Enablement
@@ -217,6 +221,10 @@ The archetype fits when reuse and implementation scale are primary shaping force
 - more disciplined tokens, naming, and contribution logic
 - more predictable design-to-code alignment
 - better documentation and reuse infrastructure
+
+## Decision shorthand against workflow-first references
+- Platform-first with workflow gravity means reuse, theming, distribution, and implementation breadth lead the decision, while workflow support remains important but secondary.
+- If the product's dominant repeated job still needs clearer operational support than broader platform breadth, do not let platform maturity lead the recommendation.
 
 ## Key caution
 This bucket is likely too broad and should still be treated carefully.
