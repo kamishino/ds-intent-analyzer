@@ -186,11 +186,13 @@ Should we choose a library first, or should we stabilize something lighter befor
 ### Must-have answer traits
 - treats the ask as a product-fit and borrowing question, not a popularity ranking
 - explains whether the real decision is library choice, foundation stabilization, or pattern clarification
+- if the evidence is strong enough, offers 2-3 matching references or UI-kit directions with fit and cautions
 - names what to borrow carefully if a reference is mentioned or implied
 - keeps the answer practical for developers rather than abstractly anti-library
 
 ### Must-not-do failures
 - picking a library by popularity or component count alone
+- giving one prestige-based winner by default
 - treating implementation maturity as proof of product fit
 - turning the answer into a design-system lecture with no decision guidance
 

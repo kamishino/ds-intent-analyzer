@@ -6,6 +6,7 @@ This playbook defines a lightweight manual forward-test for the **Design System 
 
 The best forward-test answer should feel like useful decision help.
 It should not feel like an audit artifact with theory attached.
+For vague direction asks, it should also feel evidence-first rather than questionnaire-first.
 
 Use it when a maintainer wants to:
 - test one real-world developer prompt against the installed skill
@@ -149,6 +150,7 @@ Expected sections:
 - leads with what matters and what the agent can help with next
 - ends with a next move that sounds like an action offer, not just a note about what to inspect
 - keeps the answer practical and compact
+- if more context is truly needed, asks only a small number of project-fit questions
 
 ### Must-not-do failures
 
@@ -157,6 +159,7 @@ Expected sections:
 - reading like a long audit of foundations instead of a useful next-decision guide
 - using raw `E0-E3` with no plain-language meaning
 - sounding system-level certain from one URL
+- asking a style quiz when the visible evidence already supports a bounded first read
 
 ---
 
@@ -193,6 +196,7 @@ A rerun still counts as a pass if it:
 - preserves the required confidence behavior
 - stays practical and compact
 - still feels decision-first rather than audit-first
+- still feels evidence-first rather than questionnaire-first
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

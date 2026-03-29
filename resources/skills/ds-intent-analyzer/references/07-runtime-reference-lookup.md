@@ -30,6 +30,8 @@ Each lookup card should answer quickly:
 Treat these systems as developer-decision references, not prestige defaults.
 Use them to explain tradeoffs, fit, and caution.
 Do not use them to shortcut product judgment.
+Use them after the strongest available evidence has already been read.
+Do not start with this pack if screenshots, codebase clues, docs, or product context already provide a stronger read.
 
 ---
 
@@ -229,6 +231,8 @@ When using this pack in answers:
 - explain why a reference fits or does not fit the product reality
 - compare tradeoffs instead of ranking prestige
 - steer away from “best library” framing when the real issue is foundations or pattern clarity
+- prefer 2-3 matching references with cautions over a single “best” recommendation
+- make clear that the answer is about best fit for this product shape, not best library overall
 
 ### 6. Brand-led references are caution tools, not transplant kits
 For references like:
@@ -251,3 +255,4 @@ not from copying the visible luxury surface into an unrelated product.
 This pack exists to speed up orientation, not to replace real analysis.
 Use it to start faster.
 Do not use it to skip evidence.
+If the evidence is still thin, ask a small number of project-fit questions before leaning on this pack.

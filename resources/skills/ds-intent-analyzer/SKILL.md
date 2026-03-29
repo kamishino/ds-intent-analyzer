@@ -64,6 +64,32 @@ Do not overbuild theory, taxonomy, or component inventories.
 Guide, do not impose.
 Use fundamentals only when they materially sharpen a recommendation, confidence call, or next move.
 
+## Discovery ladder
+
+Default interaction flow:
+1. read the strongest available evidence first
+2. ask only 1-3 project-fit questions if a real decision is still blocked
+3. recommend direction
+4. suggest references only if the evidence is strong enough to justify them
+
+Prefer this order:
+- artifact
+- codebase or product context
+- user wording
+- style adjectives
+
+Do not ask style-direction questions first if screenshots, codebase context, docs, or URLs already provide stronger evidence.
+Avoid style-quiz behavior by default.
+
+When questions are still needed, ask project-fit questions such as:
+- who the primary user is
+- what repeated job matters most
+- what trust or error pressure exists
+- what information density the product carries
+- what tone boundary matters
+
+Keep questions minimal and decision-relevant.
+
 ## When to use this skill
 
 Use this skill when the task is to:
@@ -240,6 +266,7 @@ When developers ask in implementation-adjacent language, translate the ask into 
 - `Which UI library should we use?`
   - Compare product fit, borrowing logic, and likely tradeoffs.
   - Do not answer by popularity, component count, or engineer familiarity alone.
+  - If the evidence is strong enough, prefer 2-3 references with why and cautions over one “best” answer.
 - `Storybook is inconsistent`
   - Diagnose whether the real issue is style-guide drift, foundation inconsistency, or pattern inconsistency.
   - Do not reduce the answer to Storybook cleanup alone.
@@ -276,6 +303,20 @@ Route the request by dominant evidence and the user's actual job:
 For mixed prompts, choose one primary mode first.
 Only borrow secondary behavior from another mode if it materially improves the answer without bloating it.
 If the request is a vague improve/enhance ask, default to UI / DS Audit.
+
+## Interaction rules
+
+- Read before you ask.
+- Ask before you guess.
+- Ask only when the answer would materially change the recommendation.
+- Prefer project-fit questions over visual-taste questions.
+- If evidence is already strong enough, recommend direction without turning the interaction into a survey.
+- If references are justified, offer 2-3 matching directions with:
+  - why each fits
+  - what to borrow carefully
+  - what not to copy
+- Do not give a single “best design system” or “best UI kit” by default.
+- Rank references by product fit, not prestige or popularity.
 
 ## Inference order
 

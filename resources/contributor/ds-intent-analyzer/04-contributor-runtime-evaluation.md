@@ -66,6 +66,7 @@ For each case:
 Do not grade on prose style alone.
 Grade on decision usefulness and runtime behavior.
 The best answer should feel like "here is what matters and what I can do next", not "here is a long audit of foundations".
+When style or library direction is vague, the best answer should read evidence first, ask minimally, and only then suggest references if the product-fit read is strong enough.
 
 Forward-tests are lighter than full evaluation cycles:
 - they smoke-test one real-world prompt
@@ -125,10 +126,12 @@ The answer correctly prioritizes artifacts and context over taste wording.
 Pass signals:
 - references the strongest evidence first
 - separates observation from inference
+- avoids asking questions that the visible evidence or product context already answers
 
 Regression signals:
 - lets adjectives outrank visible or provided evidence
 - ignores contradictions in the prompt bundle
+- starts with a style quiz or library ranking before reading available evidence
 
 ### 5. Confidence honesty
 The confidence level matches the evidence quality.
@@ -155,6 +158,11 @@ Regression signals:
 - offers generic advice
 - gives no next move
 - leaves the next move as a passive inspection note when a concrete action offer would be more useful
+
+For direction-seeking prompts, practical guidance may also mean:
+- asking only 1-3 project-fit questions when the decision is still blocked
+- offering 2-3 matching references with fit and cautions when the evidence is strong enough
+- avoiding single-winner prestige answers
 
 ### 7. Decision clarity over audit verbosity
 The answer should make the decision path easier, not just expand the audit.
@@ -246,6 +254,8 @@ This subset covers:
 - turning Storybook or Style Dictionary asks into token-first prescriptions
 - turning the answer into a long audit report when a shorter decision path would do
 - using fundamentals or theory that do not change the recommendation
+- starting with style-direction questions when evidence is already available
+- turning a UI-library ask into a prestige ranking instead of top-fit references with cautions
 
 ---
 

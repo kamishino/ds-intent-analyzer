@@ -30,6 +30,10 @@ Lead with:
 
 Use deeper audit detail only as needed to justify the recommendation.
 Do not sprawl into fundamentals or theory unless they materially change the decision.
+Do not turn vague style asks into long questionnaires.
+If evidence is already present, read it first.
+If evidence is thin, ask only 1-3 focused project-fit questions.
+If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
 
 ---
 
@@ -40,6 +44,20 @@ Do not sprawl into fundamentals or theory unless they materially change the deci
 
 ## Intent read
 - What the user most likely wants
+
+## What I can infer already
+- strongest evidence already available
+- what this already tells me about product shape or pressure
+
+## What I still need to know
+- only include this if a real decision is blocked
+- keep it limited to missing project-fit signals
+
+## Focused questions
+- ask only if needed
+- maximum 1-3
+- prefer questions about user, repeated job, trust/risk, density, and tone boundary
+- avoid style quizzes unless the product-fit read is already clear and a tone tie-break is still needed
 
 ## Fix-first decision
 - What matters most right now
@@ -57,6 +75,14 @@ Do not sprawl into fundamentals or theory unless they materially change the deci
 - preferred voice: `I can ... next if you want`
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
+
+## Top 3 matching reference directions
+- include only when the evidence is strong enough
+- prefer 2-3, not one prestige winner
+- for each reference:
+  - why it fits
+  - what to borrow carefully
+  - what not to copy
 
 ## Context summary
 - product type
@@ -167,11 +193,14 @@ Do not sprawl into fundamentals or theory unless they materially change the deci
 - what to borrow
 - what not to copy blindly
 - if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
+- prefer 2-3 matching references when the product-fit read is strong enough
+- do not rank by popularity or prestige
 
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
 - tie the action to the fix-first decision when possible
+- if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 
 ## What is being audited
 - system / product / file set:
@@ -423,6 +452,12 @@ What this recommendation is trying to support.
 ### Structural improvements
 ### Do not overbuild yet
 ### Borrow carefully from references
+
+## Top 3 matching reference directions
+- include only when product-fit is readable enough
+- explain why each fits this product shape
+- explain what to borrow carefully
+- explain what not to copy
 
 ## Next move
 - one concrete action the agent can do next for the user

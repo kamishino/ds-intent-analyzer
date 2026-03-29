@@ -36,7 +36,8 @@ Please recommend the right direction for the UI system.
 
 ### Must-have answer traits
 - translates adjectives into possible product implications rather than direct style conclusions
-- asks or names missing constraints
+- asks or names only the smallest missing project-fit constraints
+- if questions are needed, keeps them to 1-3 and focuses on user, repeated job, trust/risk, density, or tone boundary
 - keeps the next move small and practical
 - avoids pretending the foundations are already obvious
 
@@ -44,6 +45,7 @@ Please recommend the right direction for the UI system.
 - direct token prescriptions from adjectives alone
 - immediate component inventory
 - confident archetype assignment with no supporting context
+- turning the answer into a visual taste quiz
 
 ---
 

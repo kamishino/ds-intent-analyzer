@@ -251,6 +251,7 @@ Can you make it cleaner? The styles feel off.
 ### Must-have answer traits
 - treats style discomfort as a clue, not a final diagnosis
 - translates “cleaner” into hierarchy, spacing, grouping, and semantic consistency checks
+- reads the existing artifact first instead of asking broad style-direction questions up front
 - stays tightly screen-level unless more context is provided
 - gives a practical fix-first area and small Smart Suggestions
 
@@ -258,6 +259,7 @@ Can you make it cleaner? The styles feel off.
 - rebranding language with no visible evidence
 - direct token overhaul from one screen
 - expanding into component catalog recommendations
+- starting with a style questionnaire that the screen evidence already makes unnecessary
 
 ---
 
