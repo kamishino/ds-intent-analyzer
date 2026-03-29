@@ -5,8 +5,12 @@ import { runSyncCommand } from "../scripts/sync-skill.mjs";
 
 function printUsage() {
   console.log(`Usage:
-  ds-intent-analyzer install [--project <path>]
+  ds-intent-analyzer install [--project <path>] [--with-local-scaffold]
   ds-intent-analyzer sync [--project <path>]
+
+Install defaults to the current repo and installs the skill only.
+Pass --with-local-scaffold to create .local/project.md and plans folders.
+Sync refreshes only the installed skill copy.
 `);
 }
 

@@ -7,7 +7,7 @@ This repo is dogfood for the package, but the skill design bar stays client-repo
 The product is optimized for Codex/GPT runtime behavior first; other agents are secondary compatibility targets.
 The skill is meant to behave like a lightweight decision tool, not a heavy framework or hidden system.
 
-## Local Install
+## Client Repo Install
 
 Install dependencies and validate the repo structure:
 
@@ -16,19 +16,65 @@ npm install
 npm run validate
 ```
 
-Install the skill into a target project:
+Recommended downstream flow from inside a client repo:
+
+1. Add the package from a local path or git source.
+
+Local path example:
+
+```bash
+npm install --save-dev ../ds-intent-analyzer
+```
+
+Git source example:
+
+```bash
+npm install --save-dev git+ssh://git@github.com/your-org/ds-intent-analyzer.git
+```
+
+2. From the client repo, install the skill into the current repo:
+
+```bash
+npx ds-intent-analyzer install
+```
+
+This installs only:
+- `.agents/skills/ds-intent-analyzer/`
+
+It does **not** create `.local/` by default.
+
+3. If the client repo also wants the local dogfood scaffold, opt in explicitly:
+
+```bash
+npx ds-intent-analyzer install --with-local-scaffold
+```
+
+That creates:
+- `.local/project.md`
+- `.local/plans/`
+- `.local/plans/done/`
+
+only when they are missing.
+
+4. Refresh an installed copy later from the same client repo:
+
+```bash
+npx ds-intent-analyzer sync
+```
+
+## Maintainer / Cross-Repo Install
+
+Maintainers can still install into another repo from this package repo:
 
 ```bash
 node ./bin/ds-intent-analyzer.mjs install --project ../target-project
 ```
 
-Or use the package script, which defaults to the current directory unless you pass `--project`:
+Optional local scaffold for that target repo:
 
 ```bash
-npm run install:local -- --project ../target-project
+node ./bin/ds-intent-analyzer.mjs install --project ../target-project --with-local-scaffold
 ```
-
-The installer copies the canonical skill source into `.agents/skills/ds-intent-analyzer/` inside the target project and bootstraps `.local/project.md`, `.local/plans/`, and `.local/plans/done/` only when they are missing.
 
 Sync an installed copy from canonical source:
 
@@ -42,7 +88,9 @@ Or refresh this repo's own dogfood runtime copy:
 npm run sync:local
 ```
 
-`install` is conservative and preserves an existing installed copy. `sync` is the explicit exact-mirror path and refreshes the installed copy from `resources/skills/ds-intent-analyzer/`, removing stale files in the derived runtime directory.
+`install` is conservative and preserves an existing installed copy.
+`sync` is the explicit exact-mirror path and refreshes only the installed skill copy from `resources/skills/ds-intent-analyzer/`, removing stale files in the derived runtime directory.
+No automatic postinstall or hidden bootstrap is performed.
 
 ## Repo Layout
 
@@ -65,6 +113,7 @@ npm run sync:local
 npm run validate
 npm run validate:structure
 npm run install:local -- --project ../target-project
+npm run install:local -- --with-local-scaffold
 npm run sync:local
 ```
 

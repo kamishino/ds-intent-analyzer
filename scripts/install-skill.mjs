@@ -37,7 +37,38 @@ Keep it curated and durable. Replace the placeholders with project-specific trut
 - Decision 2: Record only durable conclusions, not temporary task notes.
 `;
 
-export function parseProjectArg(args, commandName = "install") {
+export function parseInstallArgs(args) {
+  let projectPath = ".";
+  let withLocalScaffold = false;
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    if (arg === "--project") {
+      const value = args[index + 1];
+      if (!value) {
+        throw new Error("Missing value for --project");
+      }
+      projectPath = value;
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--with-local-scaffold") {
+      withLocalScaffold = true;
+      continue;
+    }
+
+    throw new Error(`Unknown install option: ${arg}`);
+  }
+
+  return {
+    projectDir: path.resolve(projectPath),
+    withLocalScaffold
+  };
+}
+
+export function parseSyncArgs(args) {
   let projectPath = ".";
 
   for (let index = 0; index < args.length; index += 1) {
@@ -53,7 +84,7 @@ export function parseProjectArg(args, commandName = "install") {
       continue;
     }
 
-    throw new Error(`Unknown ${commandName} option: ${arg}`);
+    throw new Error(`Unknown sync option: ${arg}`);
   }
 
   return path.resolve(projectPath);
@@ -90,22 +121,28 @@ export function getRepoPaths(projectDir) {
   };
 }
 
-export async function installSkill(projectDir) {
+export async function installSkill(projectDir, options = {}) {
   const { targetRoot, localDir, plansDir, doneDir, projectBriefPath, installedSkillDir } = getRepoPaths(projectDir);
+  const { withLocalScaffold = false } = options;
 
   if (!(await pathExists(sourceSkillDir))) {
     throw new Error(`Canonical skill source is missing: ${sourceSkillDir}`);
   }
 
-  await ensureDir(localDir);
-  await ensureDir(plansDir);
-  await ensureDir(doneDir);
   await ensureDir(path.dirname(installedSkillDir));
 
-  let wroteProjectBrief = false;
-  if (!(await pathExists(projectBriefPath))) {
-    await writeFile(projectBriefPath, projectBriefTemplate, "utf8");
-    wroteProjectBrief = true;
+  let localScaffoldStatus = "not requested";
+  if (withLocalScaffold) {
+    await ensureDir(localDir);
+    await ensureDir(plansDir);
+    await ensureDir(doneDir);
+
+    if (!(await pathExists(projectBriefPath))) {
+      await writeFile(projectBriefPath, projectBriefTemplate, "utf8");
+      localScaffoldStatus = "created";
+    } else {
+      localScaffoldStatus = "preserved";
+    }
   }
 
   let copiedSkill = false;
@@ -119,13 +156,13 @@ export async function installSkill(projectDir) {
   console.log(`Project root: ${targetRoot}`);
   console.log(`Canonical source: ${sourceSkillDir}`);
   console.log(`Installed copy: ${installedSkillDir}`);
-  console.log(`Project brief: ${wroteProjectBrief ? "created" : "preserved"}`);
+  console.log(`Local scaffold: ${localScaffoldStatus}`);
   console.log(`Skill copy: ${copiedSkill ? "installed" : "preserved"}`);
 }
 
 export async function runInstallCommand(args) {
-  const projectDir = parseProjectArg(args, "install");
-  await installSkill(projectDir);
+  const { projectDir, withLocalScaffold } = parseInstallArgs(args);
+  await installSkill(projectDir, { withLocalScaffold });
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

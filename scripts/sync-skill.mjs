@@ -2,7 +2,7 @@ import { cp, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { ensureDir, getRepoPaths, parseProjectArg, pathExists } from "./install-skill.mjs";
+import { ensureDir, getRepoPaths, parseSyncArgs, pathExists } from "./install-skill.mjs";
 
 const skillName = "ds-intent-analyzer";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -10,15 +10,12 @@ const repoRoot = path.resolve(scriptDir, "..");
 const sourceSkillDir = path.join(repoRoot, "resources", "skills", skillName);
 
 export async function syncSkill(projectDir) {
-  const { targetRoot, localDir, plansDir, doneDir, installedSkillDir } = getRepoPaths(projectDir);
+  const { targetRoot, installedSkillDir } = getRepoPaths(projectDir);
 
   if (!(await pathExists(sourceSkillDir))) {
     throw new Error(`Canonical skill source is missing: ${sourceSkillDir}`);
   }
 
-  await ensureDir(localDir);
-  await ensureDir(plansDir);
-  await ensureDir(doneDir);
   await ensureDir(path.dirname(installedSkillDir));
 
   if (await pathExists(installedSkillDir)) {
@@ -34,7 +31,7 @@ export async function syncSkill(projectDir) {
 }
 
 export async function runSyncCommand(args) {
-  const projectDir = parseProjectArg(args, "sync");
+  const projectDir = parseSyncArgs(args);
   await syncSkill(projectDir);
 }
 

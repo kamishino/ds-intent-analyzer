@@ -36,7 +36,11 @@ This repo uses disciplined internal versioning while remaining a private package
 
 ## Command Boundary
 
+- From inside a client repo that has this package installed from local path or git source, install the skill with `npx ds-intent-analyzer install`
+- From inside a client repo, opt into local dogfood scaffolding with `npx ds-intent-analyzer install --with-local-scaffold`
+- From inside a client repo, refresh the installed skill copy with `npx ds-intent-analyzer sync`
 - Install the skill into a target repo with `node ./bin/ds-intent-analyzer.mjs install --project <path>`
+- Install the skill plus local scaffold into a target repo with `node ./bin/ds-intent-analyzer.mjs install --project <path> --with-local-scaffold`
 - Sync the installed skill copy from canonical source with `node ./bin/ds-intent-analyzer.mjs sync --project <path>`
 - Run the default local install target with `npm run install:local`
 - Run the default local sync target with `npm run sync:local`
@@ -93,6 +97,7 @@ For non-trivial work:
 
 Do not silently overwrite curated `.local/project.md` content during setup or install flows.
 Use `sync` only for the derived installed skill copy under `.agents/skills/ds-intent-analyzer/`; it is the explicit exact-mirror path and may replace stale files there.
+Default install into a client repo should be skill-only; `.local` bootstrap must stay explicit through `--with-local-scaffold`.
 
 ## Out Of Scope
 
