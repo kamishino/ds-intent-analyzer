@@ -1,9 +1,11 @@
 # Repo Contract
 
-This repo packages one Codex skill: `ds-intent-analyzer`.
+This repo packages one Codex/GPT-first skill: `ds-intent-analyzer`.
 The canonical source of truth lives under `resources/skills/ds-intent-analyzer/`.
 Installed runtime copies under `.agents/` are derived artifacts for local use and are not source-of-truth-owned.
 This repo is dogfood for development and validation, but the product bar and default assumptions remain client-repo-first.
+The skill is optimized for Codex/GPT runtime behavior first; other agents are secondary compatibility targets.
+The repo should behave like a lightweight decision tool, not a hidden framework or invisible system.
 
 ## Ownership
 
@@ -49,6 +51,11 @@ Keep helper entrypoints thin. Prefer the repo-local scripts in `scripts/` over a
 
 - Keep this repo single-product. Do not introduce multi-skill workspace structure or repo-wide orchestration.
 - Treat this repo as dogfood for the package, but keep design choices and default workflow optimized for downstream client repos rather than source-repo-specific behavior.
+- Preserve the repo doctrine:
+  - KISS
+  - lightweight-first
+  - Codex/GPT preferential
+  - transparent behavior
 - Keep `resources/skills/ds-intent-analyzer/` as the authoritative skill source. Do not edit installed runtime copies in `.agents/` as if they were canonical.
 - Preserve meaningful user-authored files whenever possible. Fill gaps conservatively instead of replacing healthy structure.
 - Keep `.local/project.md` as durable project memory, not task history or a generated log.
@@ -60,6 +67,7 @@ Keep helper entrypoints thin. Prefer the repo-local scripts in `scripts/` over a
   - pattern-first, not component-first
   - foundation-first recommendations
   - confidence matched to evidence
+- Keep memory capture, confidence, evidence limits, and escalation explicit when they matter. Do not let the product sound magical or hidden.
 - Use staged retrieval when working in the skill sources. Do not load the full reference pack by default when selective reading is enough.
 - Keep blind cloning, adjective-only verdicts, and generic component generation out of scope for the core skill behavior.
 - Update `.local/project.md` only when durable priorities, guardrails, open questions, or decisions change.

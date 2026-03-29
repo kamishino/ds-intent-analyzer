@@ -1,9 +1,11 @@
 # ds-intent-analyzer
 
-`ds-intent-analyzer` is a Codex skill package for intent-first design-system analysis, UI/DS audit, foundation recommendation, and comparative reference reading.
+`ds-intent-analyzer` is a Codex/GPT-first skill package for intent-first design-system analysis, UI/DS audit, foundation recommendation, and comparative reference reading.
 
 The canonical skill source lives in `resources/skills/ds-intent-analyzer/`. Everything under `.agents/` is an installed runtime copy for local use, not the source of truth.
 This repo is dogfood for the package, but the skill design bar stays client-repo-first.
+The product is optimized for Codex/GPT runtime behavior first; other agents are secondary compatibility targets.
+The skill is meant to behave like a lightweight decision tool, not a heavy framework or hidden system.
 
 ## Local Install
 
@@ -68,6 +70,11 @@ npm run sync:local
 
 ## Notes
 
-- This first slice is intentionally small and operational.
+- The repo follows four explicit product defaults:
+  - KISS
+  - lightweight-first
+  - Codex/GPT preferential
+  - transparent behavior
+- Memory capture, confidence, evidence limits, and escalation should remain explicit when they matter.
 - The root package is private and does not include publish automation, GitHub Release automation, semantic-release, or Changesets.
 - Installed runtime copies are derived artifacts and should not be edited as source-of-truth content.

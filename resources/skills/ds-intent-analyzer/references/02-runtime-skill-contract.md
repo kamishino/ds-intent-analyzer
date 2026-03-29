@@ -2,7 +2,8 @@
 
 ## Purpose
 
-This document is the canonical runtime support contract for the **Design System Intent Analyzer** as used by Codex and similar AI coding agents.
+This document is the canonical runtime support contract for the **Design System Intent Analyzer** as used by Codex/GPT first.
+Other agents are secondary compatibility targets.
 
 It exists to clarify:
 - how the skill should route requests
@@ -35,6 +36,7 @@ Use this file to guide:
 Do not use this file as a substitute for deeper framework reasoning when the task needs classification, formation logic, or evidence-quality interpretation.
 
 This runtime should meet developers at UI language first and translate that language into the appropriate depth of system reasoning rather than forcing design-system terminology too early.
+This runtime should prefer the smallest explicit mechanism over hidden or abstract machinery.
 
 ---
 
@@ -45,6 +47,7 @@ This skill should behave like:
 - a UI / DS audit layer
 - a foundation recommender
 - a pattern-first decision support layer
+- a lightweight Codex/GPT-first runtime
 
 This skill should not behave like:
 - a blind clone engine
@@ -54,6 +57,18 @@ This skill should not behave like:
 - a frontend generation workflow
 - a fake certainty machine
 - a heavy research workflow by default
+- a hidden subsystem that users cannot reason about
+
+## Codex-first and transparent operation
+
+Optimize wording and structure for Codex/GPT runtime behavior first.
+Keep the behavior explicit enough that a user or maintainer can understand:
+- what evidence led the answer
+- why confidence is bounded where it is
+- when escalation happened
+- when memory capture is being offered
+
+Do not rely on magical-sounding behavior to make the answer feel stronger.
 
 ---
 

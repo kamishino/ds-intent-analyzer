@@ -1,9 +1,9 @@
 # System Design Spec v1
-## Design System Intent Analyzer / Audit — Lightweight Agent Runtime
+## Design System Intent Analyzer / Audit — Lightweight Codex Runtime
 
 ## Purpose
 
-This document defines the recommended system design for a lightweight, intent-first AI Agent runtime that supports:
+This document defines the recommended background operating design for a lightweight, intent-first Codex/GPT runtime that supports:
 
 - design-system intent analysis
 - UI / DS audits
@@ -13,15 +13,17 @@ This document defines the recommended system design for a lightweight, intent-fi
 
 This spec is optimized for:
 
-- **AI Agent / Agent Skill usage**
+- **Codex/GPT runtime usage first**
 - **KISS and lightweight operation**
 - **staged retrieval instead of full-source loading**
 - **intent-first reasoning**
 - **pattern-first recommendations**
 - **heavy-phase escalation only when justified**
+- **transparent behavior instead of hidden machinery**
 
 This is **not** a full automation spec.
-It is a practical operating design for a reusable analyzer / audit system.
+It is background operating design for a reusable analyzer / audit system.
+It should not be treated as the default user-facing mental model for the skill.
 
 ---
 
@@ -45,6 +47,9 @@ This keeps the system:
 - less likely to drift
 - more explainable
 
+The runtime should feel simpler than this document.
+Users should experience a lightweight decision tool, not an internal framework.
+
 ---
 
 ## 2. Runtime architecture overview
@@ -53,8 +58,8 @@ This keeps the system:
 Always-on operating layer.
 
 Recommended inputs:
-- Analyzer Scope v2
-- Agent Skill Spec v2
+- `01-runtime-framework.md`
+- `02-runtime-skill-contract.md`
 
 This layer defines:
 - role

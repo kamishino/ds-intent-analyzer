@@ -20,6 +20,12 @@ The goal is to keep rigor downstream of product reality rather than upstream of 
 Meet developers and clients at **UI language first**.
 Then infer deeper system meaning only when the evidence justifies it.
 
+The governing defaults for this repo are:
+- `KISS`
+- `lightweight-first`
+- `Codex/GPT preferential`
+- `transparent`
+
 This means the skill should work well when the ask sounds like:
 - "make it cleaner"
 - "make it better"
@@ -28,6 +34,70 @@ This means the skill should work well when the ask sounds like:
 - "this UI feels too generic"
 
 The user does not need to say `design system` for the skill to do useful design-system thinking.
+
+---
+
+## Governing principles
+
+### 1. KISS
+
+Meaning:
+- use the smallest useful contract
+- prefer the smallest useful explanation
+- prefer the smallest useful artifact
+
+Operationally:
+- do not add new layers when a wording or contract fix is enough
+- do not turn one useful behavior into a heavy subsystem
+- do not let the answer sprawl into theory or framework language when a clear decision path is enough
+
+### 2. Lightweight-first
+
+Meaning:
+- use the current layer until it clearly fails
+- add structure only when existing structure cannot safely hold the behavior
+
+Operationally:
+- prefer docs, contracts, and small reference packs over automation or hidden machinery
+- prefer one compact artifact over multiple moving parts
+- keep retrieval selective, not full-pack by default
+
+### 3. Codex/GPT preferential
+
+Meaning:
+- optimize the repo and runtime for Codex/GPT behavior first
+- treat other agents as secondary compatibility, not co-equal design targets
+
+Operationally:
+- make metadata and first-screen wording legible to Codex/GPT first
+- prefer output shapes that are practical in Codex conversations
+- prefer runtime contracts that support fast, explicit, high-signal agent behavior
+
+### 4. Transparent
+
+Meaning:
+- no hidden behavior when the behavior materially affects user trust or maintainer understanding
+
+Operationally:
+- memory capture should be explicit
+- confidence should be explicit
+- evidence limits should be explicit
+- escalation should be explicit when it materially affects the answer
+- the skill should never sound magical, automatic, or invisible when its behavior is actually conditional
+
+### When these principles compete
+
+Use this priority order:
+1. transparent
+2. KISS
+3. lightweight-first
+4. Codex/GPT preferential
+
+Why:
+- hidden behavior breaks trust first
+- unnecessary complexity is the next risk
+- lightweight should win unless transparency requires one more explicit artifact
+- Codex/GPT preference should guide presentation and defaults, but not justify hidden or bloated behavior
 
 ---
 
