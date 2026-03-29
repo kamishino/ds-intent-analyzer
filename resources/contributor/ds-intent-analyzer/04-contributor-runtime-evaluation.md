@@ -147,10 +147,12 @@ The answer gives useful next moves, not vague commentary.
 Pass signals:
 - identifies fix-first areas
 - gives smallest useful next move when evidence is weak
+- phrases the next move as something the agent can do next for the user when that would help
 
 Regression signals:
 - offers generic advice
 - gives no next move
+- leaves the next move as a passive inspection note when a concrete action offer would be more useful
 
 ### 7. Compactness / non-bloat
 The answer stays concise enough for Codex runtime use.

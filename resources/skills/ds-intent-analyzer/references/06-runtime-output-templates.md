@@ -94,7 +94,10 @@ This version adds:
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Next step
-- what should be clarified, collected, or stabilized next
+- one concrete action the agent can do next for the user
+- preferred voice: `I can ... next if you want`
+- optional short prompt hint or artifact request
+- keep it to one next move unless the evidence is too ambiguous to separate candidates
 
 ---
 
@@ -274,6 +277,7 @@ This version adds:
 - what to stabilize first
 - what not to overbuild yet
 - what to review next
+- next move should be phrased as an action offer, not only an inspection note
 
 ---
 

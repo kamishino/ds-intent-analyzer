@@ -142,6 +142,7 @@ Expected sections:
 - says what is reusable to borrow carefully
 - says what it would not overclaim from one page
 - uses short user-facing confidence wording
+- ends with a next move that sounds like an action offer, not just a note about what to inspect
 - keeps the answer practical and compact
 
 ### Must-not-do failures
@@ -187,6 +188,7 @@ A rerun still counts as a pass if it:
 - stays practical and compact
 
 It does not need to repeat the same sentences.
+It should still make the next move read like something the agent can do next for the user.
 
 ---
 

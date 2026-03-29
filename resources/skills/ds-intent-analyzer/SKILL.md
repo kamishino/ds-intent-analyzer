@@ -389,8 +389,13 @@ Separate observation from inference and missing evidence.
 Do not rely on a footnote or legend to make the confidence line understandable.
 
 ### Next move
-State the smallest useful next step.
-If multiple issues exist, say which one should be inspected or changed first and why.
+State the smallest useful next step as an action offer to the user.
+Default voice:
+- `Next move: I can review the Styles and Components pages next if you want a stronger read.`
+- `Next move: I can compare this page with its Storybook and contributing docs next if you want a less surface-level audit.`
+
+Keep it to one concrete action by default.
+If multiple issues exist, say which one should be inspected or changed first and why, then offer that action.
 Prefer one visible lever over adjacent co-equal candidates unless the evidence truly cannot separate them.
 
 ## Mode emphasis
@@ -465,6 +470,7 @@ Do not treat them as normal runtime retrieval material.
 - Do not present hybrid-sensitive reference comparisons as fully settled when the fit is still provisional.
 
 When confidence is low, the correct behavior is to offer the smallest useful next move rather than inflate the answer.
+That next move should read like something the agent can do next for the user, not just a passive note about what to inspect.
 
 ## Final principle
 

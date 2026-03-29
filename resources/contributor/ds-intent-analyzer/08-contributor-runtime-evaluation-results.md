@@ -1869,8 +1869,9 @@ It is not a benchmark cycle.
 - Runtime target: installed `.agents/skills/ds-intent-analyzer/`
 - Observed primary mode: `UI / DS Audit`
 - Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed next move shape: `I can review the Styles and Components pages next if you want a stronger read.`
 - Strongest pass signal: the answer stays page-level, names what the page signals, and says what it would not overclaim
-- Strongest miss: if the answer starts inferring full-system maturity or token logic from the page, mark the run down immediately
+- Strongest miss: if the answer ends with only `open Styles and Components next` instead of an action offer, mark the run down immediately
 - Outcome: `pass`
 
 What this example proves:
