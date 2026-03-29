@@ -4,6 +4,9 @@
 
 This playbook defines a lightweight manual forward-test for the **Design System Intent Analyzer**.
 
+The best forward-test answer should feel like useful decision help.
+It should not feel like an audit artifact with theory attached.
+
 Use it when a maintainer wants to:
 - test one real-world developer prompt against the installed skill
 - run the full contributor scenario pack through the installed skill
@@ -128,8 +131,9 @@ The answer should stay compact and page-level.
 Expected sections:
 - `TL;DR`
 - `Intent read`
+- fix-first read
+- `Smart Suggestions`
 - `Signal map` or equivalent visible-signal summary
-- page-level audit read
 - `Borrow carefully`
 - `Confidence`
 - `Next move`
@@ -142,6 +146,7 @@ Expected sections:
 - says what is reusable to borrow carefully
 - says what it would not overclaim from one page
 - uses short user-facing confidence wording
+- leads with what matters and what the agent can help with next
 - ends with a next move that sounds like an action offer, not just a note about what to inspect
 - keeps the answer practical and compact
 
@@ -149,6 +154,7 @@ Expected sections:
 
 - claiming full governance maturity, full token architecture, or full archetype certainty
 - drifting into giant design-system theory or component inventory
+- reading like a long audit of foundations instead of a useful next-decision guide
 - using raw `E0-E3` with no plain-language meaning
 - sounding system-level certain from one URL
 
@@ -186,6 +192,7 @@ A rerun still counts as a pass if it:
 - stays bounded to the evidence
 - preserves the required confidence behavior
 - stays practical and compact
+- still feels decision-first rather than audit-first
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

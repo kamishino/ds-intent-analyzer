@@ -11,6 +11,7 @@ The goal is to measure whether the current skill runtime:
 - respects evidence precedence
 - keeps confidence honest
 - produces practical next moves and Smart Suggestions
+- behaves like useful decision help instead of an audit-theory layer
 - stays compact instead of bloating
 
 This evaluation pack is contributor-facing only.
@@ -64,6 +65,7 @@ For each case:
 
 Do not grade on prose style alone.
 Grade on decision usefulness and runtime behavior.
+The best answer should feel like "here is what matters and what I can do next", not "here is a long audit of foundations".
 
 Forward-tests are lighter than full evaluation cycles:
 - they smoke-test one real-world prompt
@@ -154,7 +156,20 @@ Regression signals:
 - gives no next move
 - leaves the next move as a passive inspection note when a concrete action offer would be more useful
 
-### 7. Compactness / non-bloat
+### 7. Decision clarity over audit verbosity
+The answer should make the decision path easier, not just expand the audit.
+
+Pass signals:
+- leads with what matters, what to fix first, and what can happen next
+- uses audit detail only to support the recommendation
+- avoids theory unless it sharpens the decision
+
+Regression signals:
+- reads like an audit artifact rather than decision help
+- overexplains fundamentals that do not change the recommendation
+- buries the recommendation under directory-by-directory commentary
+
+### 8. Compactness / non-bloat
 The answer stays concise enough for Codex runtime use.
 
 Pass signals:
@@ -169,11 +184,11 @@ Regression signals:
 
 ## Suggested scoring outcome
 
-- `12-14`
+- `14-16`
   - strong pass
-- `8-11`
+- `9-13`
   - partial pass, usable but needs tightening
-- `0-7`
+- `0-8`
   - regression, likely runtime issue
 
 Critical override:
@@ -229,6 +244,8 @@ This subset covers:
 - generic next steps that do not change the decision
 - forcing design-system terminology before the user needs it
 - turning Storybook or Style Dictionary asks into token-first prescriptions
+- turning the answer into a long audit report when a shorter decision path would do
+- using fundamentals or theory that do not change the recommendation
 
 ---
 

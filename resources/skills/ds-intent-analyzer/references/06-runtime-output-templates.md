@@ -1,8 +1,11 @@
-# DS Audit Template v2
+# DS Decision Guide Templates v3
 
 ## Purpose
 
-This template provides a reusable output format for the **Design System Intent Analyzer & Audit**.
+This template provides reusable output formats for the **Design System Intent Analyzer**.
+
+Decision support comes first.
+Audit detail is supporting evidence, not the product identity.
 
 Use it for:
 - user brief analysis
@@ -15,6 +18,18 @@ This version adds:
 - a lighter structure for AI Agent usage
 - an explanation bridge for UI refactor / basic design language
 - Smart Suggestions for actionability
+- stronger decision-first answer bias
+
+## Default answer bias
+
+Lead with:
+- `TL;DR`
+- fix-first decision
+- `Smart Suggestions`
+- `Next move`
+
+Use deeper audit detail only as needed to justify the recommendation.
+Do not sprawl into fundamentals or theory unless they materially change the decision.
 
 ---
 
@@ -25,6 +40,23 @@ This version adds:
 
 ## Intent read
 - What the user most likely wants
+
+## Fix-first decision
+- What matters most right now
+- What should stabilize first
+- What not to overbuild yet
+
+## Smart Suggestions
+- first lever to change
+- why this lever first
+- what it makes easier
+- what should wait
+
+## Next move
+- one concrete action the agent can do next for the user
+- preferred voice: `I can ... next if you want`
+- optional short prompt hint or artifact request
+- keep it to one next move unless the evidence is too ambiguous to separate candidates
 
 ## Context summary
 - product type
@@ -93,12 +125,6 @@ This version adds:
 - if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
-## Next step
-- one concrete action the agent can do next for the user
-- preferred voice: `I can ... next if you want`
-- optional short prompt hint or artifact request
-- keep it to one next move unless the evidence is too ambiguous to separate candidates
-
 ---
 
 # B. DS / UI Audit Template
@@ -107,6 +133,45 @@ This version adds:
 - strongest positives
 - biggest weaknesses
 - most important fix-first area
+
+## Intent read
+- what decision the user most likely needs help with
+
+## Fix-first decision
+- what to stabilize first
+- why it matters more than adjacent issues
+- what not to overbuild yet
+
+## Smart Suggestions
+
+### Quick wins
+- fast, visible improvements
+- light refactor suggestions
+- hierarchy or clarity fixes with good ROI
+- first lever to change:
+- why this lever first:
+- why it outranks adjacent candidates:
+
+### Structural improvements
+- foundation-level fixes
+- pattern-level fixes
+- token/state semantics fixes only if justified by evidence
+
+### Do not overbuild yet
+- what should wait
+- what is not justified by evidence
+- what adds maintenance before value
+
+### Borrow carefully from references
+- which design systems are useful references
+- what to borrow
+- what not to copy blindly
+- if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
+
+## Next move
+- one concrete action the agent can do next for the user
+- preferred voice: `I can ... next if you want`
+- tie the action to the fix-first decision when possible
 
 ## What is being audited
 - system / product / file set:
@@ -239,32 +304,6 @@ This version adds:
 ### Priority 2
 ### Priority 3
 
-## Smart Suggestions
-
-### Quick wins
-- fast, visible improvements
-- light refactor suggestions
-- hierarchy or clarity fixes with good ROI
-- first lever to change:
-- why this lever first:
-- why it outranks adjacent candidates:
-
-### Structural improvements
-- foundation-level fixes
-- pattern-level fixes
-- token/state semantics fixes
-
-### Do not overbuild yet
-- what should wait
-- what is not justified by evidence
-- what adds maintenance before value
-
-### Borrow carefully from references
-- which design systems are useful references
-- what to borrow
-- what not to copy blindly
-- if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
-
 ## Confidence note
 - Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
 - strongest evidence:
@@ -276,7 +315,7 @@ This version adds:
 ## Final recommendation
 - what to stabilize first
 - what not to overbuild yet
-- what to review next
+- one recommendation path, not a flat list of equal-priority theories
 - next move should be phrased as an action offer, not only an inspection note
 
 ---
@@ -384,6 +423,10 @@ What this recommendation is trying to support.
 ### Structural improvements
 ### Do not overbuild yet
 ### Borrow carefully from references
+
+## Next move
+- one concrete action the agent can do next for the user
+- preferred voice: `I can ... next if you want`
 
 ## Confidence note
 - Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
