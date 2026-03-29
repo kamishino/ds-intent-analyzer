@@ -79,11 +79,13 @@ We need a careful read because the product is not purely a developer toolkit and
 - keeps confidence scoped rather than forcing a clean label
 - explains what parts of each reference are useful
 - names what additional evidence would increase confidence
+- if the answer suggests future memory at all, keeps the unresolved comparison in open-question or provisional language rather than settled truth
 
 ### Must-not-do failures
 - making the answer sound final when the archetype is still ambiguous
 - reducing the comparison to branding or component count
 - ignoring the mixed workflow reality in the prompt
+- treating the comparison as ready for durable settled project memory
 
 ---
 

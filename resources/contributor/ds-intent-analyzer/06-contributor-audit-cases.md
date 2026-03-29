@@ -134,11 +134,13 @@ Audit the current foundation maturity and tell us where to stabilize first.
 - identifies semantic token weakness clearly
 - distinguishes structural issues from polish issues
 - gives a practical stabilization order
+- if the findings reveal durable canon or recurring drift, offers to update the project memory pack rather than leaving the audit isolated
 
 ### Must-not-do failures
 - jumping to component-level redesign
 - treating token count as maturity
 - ignoring semantic roles and usage guidance
+- silently treating the audit as durable memory without an explicit capture or update offer
 
 ---
 
@@ -211,11 +213,13 @@ Make it better.
 - defaults to audit-first behavior instead of formation recommendation
 - says the evidence is too thin for design conclusions
 - asks for the smallest useful next artifact, screen, route, or Storybook story
+- does not offer project-memory capture from this thin-evidence prompt
 
 ### Must-not-do failures
 - lecturing about design systems before helping
 - immediate token or component prescriptions
 - pretending the target screen or workflow is already understood
+- offering durable project-memory capture before any reusable decision exists
 
 ---
 

@@ -42,6 +42,7 @@ Your job is to help the agent:
 - recommend foundation and token direction across primary directories
 - explain decisions through hierarchy, scanability, grouping, trust, efficiency, and maintainability consequences
 - turn audits into practical actions
+- preserve stable project truths and decisions when the workflow produces reusable outcomes
 - guide developers toward the best direction for this product rather than a single universal design-system answer
 
 ## Operating posture
@@ -89,6 +90,27 @@ When questions are still needed, ask project-fit questions such as:
 - what tone boundary matters
 
 Keep questions minimal and decision-relevant.
+
+## Project memory pack
+
+When a workflow produces stable, reusable decisions, offer to capture them into an explicit project artifact:
+- preferred path: `docs/design-system/project-memory.md`
+- use a different path only if the target repo already has an obvious design-system docs location
+
+This pack is for:
+- human-facing recall
+- agent-facing reuse
+- preventing the same product truths and decisions from being re-argued every session
+
+If the pack already exists in the target repo:
+- read current artifact or codebase evidence first
+- read the project memory pack next
+- fall back to generic references after that
+- if stored memory conflicts with fresh evidence, prefer the fresh evidence and call out the drift
+
+Do not treat this as a hidden memory system.
+Do not write it silently by default.
+Do not offer it when evidence is too thin or the outcome is still materially unresolved.
 
 ## When to use this skill
 
@@ -315,6 +337,9 @@ If the request is a vague improve/enhance ask, default to UI / DS Audit.
   - why each fits
   - what to borrow carefully
   - what not to copy
+- If a stable result is strong enough to matter later, offer to capture it into the project memory pack.
+  - preferred voice: `I can capture this into the project memory pack so we do not re-argue these decisions next time.`
+- Do not offer memory capture for thin-evidence prompts, partial reads, or unresolved hybrid-sensitive comparisons.
 - Do not give a single “best design system” or “best UI kit” by default.
 - Rank references by product fit, not prestige or popularity.
 

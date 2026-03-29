@@ -75,6 +75,7 @@ async function main(args) {
     ["runtime reference lookup reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "07-runtime-reference-lookup.md")],
     ["runtime archetype lessons reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "08-runtime-archetype-lessons.md")],
     ["runtime system architecture reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "09-runtime-system-architecture.md")],
+    ["runtime project memory pack reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "10-runtime-project-memory-pack.md")],
     ["contributor dataset roadmap", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "01-contributor-dataset-roadmap.md")],
     ["contributor memory architecture", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "02-contributor-memory-architecture.md")],
     ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")],

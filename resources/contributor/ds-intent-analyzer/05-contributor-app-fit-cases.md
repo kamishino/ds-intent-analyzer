@@ -118,11 +118,13 @@ Recommend principle stack, foundation priorities, and token direction.
 - prioritizes foundation directories before components
 - gives a principle stack and practical token direction
 - warns against overbuilding too early
+- offers to capture the stable principle stack and stabilization direction into a project memory pack
 
 ### Must-not-do failures
 - generic dashboard advice detached from merchant workflows
 - starting from components instead of foundations
 - pretending a full system taxonomy is needed immediately
+- silently treating the result as stored memory without an explicit capture offer
 
 ---
 

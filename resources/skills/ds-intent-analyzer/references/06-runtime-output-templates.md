@@ -151,6 +151,13 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 - if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
+## Memory capture
+- optional
+- offer only if the result contains stable, reusable project truths or decisions
+- preferred voice: `I can capture this into the project memory pack so we do not re-argue these decisions next time.`
+- preferred downstream path: `docs/design-system/project-memory.md`
+- if the result is still too thin or unresolved, do not offer capture
+
 ---
 
 # B. DS / UI Audit Template
@@ -347,6 +354,13 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 - one recommendation path, not a flat list of equal-priority theories
 - next move should be phrased as an action offer, not only an inspection note
 
+## Memory capture
+- optional
+- if the audit reveals stable canon, principles, or recurring drift worth preserving, offer to capture or update the project memory pack
+- preferred downstream path: `docs/design-system/project-memory.md`
+- if the findings are still provisional, store them only as open questions or unresolved drift
+- do not offer memory capture for thin-evidence or purely screen-level reads
+
 ---
 
 # C. Foundation Recommendation Template
@@ -469,6 +483,13 @@ What this recommendation is trying to support.
 - what to test next:
 - if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the recommendation is reference-led and still hybrid-sensitive, say what remains provisional and what evidence would resolve it
+
+## Memory capture
+- optional
+- formation outputs are strong candidates for project-memory capture when principles, canon, and stabilization order are stable enough
+- preferred voice: `I can capture this into the project memory pack so future work starts from the same truths and decisions.`
+- preferred downstream path: `docs/design-system/project-memory.md`
+- unresolved comparisons or low-evidence recommendations should be captured only as open questions, or not at all
 
 ---
 

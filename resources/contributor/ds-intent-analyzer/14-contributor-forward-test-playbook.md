@@ -151,6 +151,7 @@ Expected sections:
 - ends with a next move that sounds like an action offer, not just a note about what to inspect
 - keeps the answer practical and compact
 - if more context is truly needed, asks only a small number of project-fit questions
+- does not offer project-memory capture for this thin-evidence scenario
 
 ### Must-not-do failures
 
@@ -160,6 +161,7 @@ Expected sections:
 - using raw `E0-E3` with no plain-language meaning
 - sounding system-level certain from one URL
 - asking a style quiz when the visible evidence already supports a bounded first read
+- offering durable project-memory capture from one URL-only read
 
 ---
 
@@ -221,6 +223,16 @@ The canonical forward-test scenario in this playbook reuses:
 - `RF-16` from `07-contributor-reference-cases.md`
 
 This avoids creating a parallel case taxonomy.
+
+---
+
+## Memory-capture expectation
+
+Forward-tests should also check memory discipline:
+
+- stable formation or stable audit workflows may end with an explicit project-memory capture offer
+- low-evidence, screen-level, or unresolved hybrid workflows should not
+- if memory capture is offered, it should be explicit and user-facing, not hidden mutation
 
 ---
 

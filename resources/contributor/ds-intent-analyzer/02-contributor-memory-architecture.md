@@ -708,7 +708,46 @@ Add:
 
 ---
 
-## 20. Final principle
+## 20. Lightweight Project Memory Pack bridge
+
+For the current skill stage, do not start with a database or hidden retrieval subsystem.
+
+The recommended v1 implementation shape is:
+- one explicit project artifact
+- doc-first
+- readable by humans and agents
+- updated only after approval or explicit workflow acceptance
+
+Preferred downstream path:
+- `docs/design-system/project-memory.md`
+
+Recommended pack sections:
+- `Project truths`
+- `Working principles`
+- `Active canon`
+- `Active decisions`
+- `Audit drift and hotspots`
+- `Open questions`
+- `Current next moves`
+
+This pack is the lightweight bridge from the abstract memory domains to something a real project can actually keep current.
+
+Suggested domain-to-pack mapping:
+- Constraints Memory -> `Project truths`
+- Principle Memory -> `Working principles`
+- Pattern Canon + Foundation Policy Store -> `Active canon`
+- Decision Log -> `Active decisions`
+- Audit Memory -> `Audit drift and hotspots`
+- unresolved or provisional items -> `Open questions`
+- immediate follow-up actions -> `Current next moves`
+
+KISS rules for this bridge:
+- do not store every chat detail
+- do not silently mutate the pack
+- do not store thin-evidence conclusions as settled memory
+- do not let stored memory outrank fresh evidence
+
+## 21. Final principle
 
 A strong memory layer should not turn every UI into the same UI.
 

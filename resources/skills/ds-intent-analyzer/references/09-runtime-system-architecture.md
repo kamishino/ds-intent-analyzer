@@ -227,7 +227,9 @@ Use the output contract from the skill spec / audit template.
 Only if justified by ambiguity, contradiction, missing evidence, or freshness needs.
 
 ### Step 9 — Optional memory write
-Only write durable memory when the result contains stable, reusable decisions.
+Only offer durable memory capture when the result contains stable, reusable decisions.
+Use the explicit Project Memory Pack contract from `10-runtime-project-memory-pack.md`.
+Do not treat memory as hidden background mutation.
 
 ---
 

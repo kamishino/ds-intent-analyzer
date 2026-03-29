@@ -153,11 +153,15 @@ Pass signals:
 - identifies fix-first areas
 - gives smallest useful next move when evidence is weak
 - phrases the next move as something the agent can do next for the user when that would help
+- offers project-memory capture only when the workflow has produced stable, reusable decisions
+- avoids offering project-memory capture when the evidence is too thin or the result is still unresolved
 
 Regression signals:
 - offers generic advice
 - gives no next move
 - leaves the next move as a passive inspection note when a concrete action offer would be more useful
+- offers hidden or automatic memory behavior instead of an explicit capture offer
+- offers project-memory capture for screen-level, low-evidence, or hybrid-unresolved results
 
 For direction-seeking prompts, practical guidance may also mean:
 - asking only 1-3 project-fit questions when the decision is still blocked
@@ -256,6 +260,7 @@ This subset covers:
 - using fundamentals or theory that do not change the recommendation
 - starting with style-direction questions when evidence is already available
 - turning a UI-library ask into a prestige ranking instead of top-fit references with cautions
+- treating provisional outputs as if they are ready for durable project memory
 
 ---
 

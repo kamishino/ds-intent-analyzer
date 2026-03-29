@@ -10,6 +10,7 @@ It exists to clarify:
 - what output shape the agent should default to
 - when to stay lightweight
 - when to escalate carefully
+- when to offer project-memory capture
 
 This file complements `01-runtime-framework.md`.
 
@@ -24,6 +25,7 @@ Use this file to guide:
 - request routing
 - mode selection
 - evidence precedence
+- project-memory precedence
 - inference order
 - output structure
 - confidence behavior
@@ -109,6 +111,13 @@ Use this precedence order:
 2. imported project context
 3. user wording
 4. style adjectives or taste language
+
+Project memory packs belong inside imported project context.
+If a `docs/design-system/project-memory.md` file is present, use it after current artifact/context read and before falling back to generic references.
+If fresh artifacts conflict with stored memory:
+- prefer fresh evidence
+- call out the drift or staleness explicitly
+- do not let old memory override current evidence
 
 Interpret words as signals, not verdicts.
 
@@ -217,6 +226,11 @@ Separate observation from inference and missing evidence.
 ### Next move
 State the smallest useful next step.
 
+### Memory capture
+Optional.
+Offer it only when the result contains stable, reusable project decisions.
+Use explicit user-facing wording rather than hidden memory behavior.
+
 ---
 
 ## Mode emphasis
@@ -254,8 +268,15 @@ Retrieve selectively by tier:
 ### Escalation-only runtime docs
 - `08-runtime-archetype-lessons.md`
 - `09-runtime-system-architecture.md`
+- `10-runtime-project-memory-pack.md`
 
 Contributor docs are not part of normal runtime retrieval.
+
+### Project memory artifact
+If the target repo already has `docs/design-system/project-memory.md` or an obvious equivalent:
+- retrieve it after current evidence and before generic reference lookup
+- prefer active truths and decisions over stale summaries
+- if the artifact conflicts with current evidence, treat that as drift to be resolved, not as a reason to force the old answer
 
 ---
 
@@ -273,6 +294,28 @@ When heavy-phase is justified:
 - read runtime references selectively
 - increase confidence carefully
 - use web validation only when freshness or external confirmation matters
+
+---
+
+## Project memory write gate
+
+Only offer project-memory capture when all of these are true:
+- the result contains stable, reusable product truths, principles, canon, or decisions
+- the evidence is strong enough to justify storing them
+- the outcome is not still materially unresolved
+- the capture would help future sessions avoid re-arguing the same decision
+
+Do not offer or write project memory when:
+- the evidence is too thin
+- the answer is still screen-level only
+- the comparison is still hybrid-sensitive and unresolved
+- the result is mostly a request for the next artifact rather than a usable decision
+
+When a capture is justified:
+- prefer `docs/design-system/project-memory.md`
+- store unresolved items as open questions or provisional notes, not settled truth
+- offer the capture as an explicit action for the user, not as silent mutation
+- create or update the pack only after user approval or explicit workflow acceptance
 
 ---
 
