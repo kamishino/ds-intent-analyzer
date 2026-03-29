@@ -113,10 +113,12 @@ The confidence level matches the evidence quality.
 Pass signals:
 - lowers certainty in low-evidence or hybrid-sensitive cases
 - names what is missing
+- uses confidence wording that an end-user can understand at a glance without a legend
 
 Regression signals:
 - sounds certain when the evidence is partial
 - pretends an unknown reference is well understood
+- uses raw `E0-E3` shorthand with no plain-language meaning in user-facing output
 
 ### 6. Practical Smart Suggestions
 The answer gives useful next moves, not vague commentary.
@@ -214,6 +216,11 @@ Use evaluation findings to decide:
 - whether confidence language needs tightening
 - whether certain references are too weak or too noisy
 - whether future dataset expansion should target specific failure modes
+
+For confidence-display checks, prefer at least one case from each of:
+- URL-only reference read
+- one-screen audit
+- hybrid-sensitive comparison
 
 Do not use this pack to justify immediate automation or benchmark tooling.
 

@@ -86,10 +86,11 @@ This version adds:
 - What should wait:
 
 ## Confidence note
-- Evidence quality: E0 / E1 / E2 / E3
+- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
 - What is directly observed:
 - What is inferred:
 - What is still missing:
+- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Next step
@@ -262,10 +263,11 @@ This version adds:
 - if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
 
 ## Confidence note
-- Evidence quality: E0 / E1 / E2 / E3
+- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
 - strongest evidence:
 - weakest evidence:
 - what would raise confidence:
+- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Final recommendation
@@ -380,9 +382,10 @@ What this recommendation is trying to support.
 ### Borrow carefully from references
 
 ## Confidence note
-- Evidence quality:
+- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
 - key unknowns:
 - what to test next:
+- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the recommendation is reference-led and still hybrid-sensitive, say what remains provisional and what evidence would resolve it
 
 ---

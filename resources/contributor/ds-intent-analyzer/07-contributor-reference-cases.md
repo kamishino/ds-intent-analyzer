@@ -4,6 +4,7 @@
 
 These cases test:
 - Comparative Reference Read
+- reference-backed audits with bounded confidence
 - careful borrowing behavior
 - hybrid-sensitive reference handling
 - unresolved or niche reference handling
@@ -453,6 +454,48 @@ What should we actually borrow, and what should we avoid copying into an unrelat
 - reducing the answer to “make it look like Porsche”
 - ignoring the difference between controlled expression and direct style copying
 - treating brand polish as a replacement for product-fit reasoning
+
+---
+
+## RF-16 — URL-Only Design-System Reference Page
+
+### Prompt bundle
+
+```text
+Use ds-intent-analyzer to check this design-system reference page:
+https://thc.motorway.co.uk/0566ad526/p/652544-the-highway-code
+
+Tell me:
+- what this page clearly signals
+- what looks useful to borrow carefully
+- what you would not overclaim from a single URL
+- confidence
+```
+
+### Input type and evidence strength
+- Input type: URL-only design-system reference page
+- Evidence strength: low
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- bounded reference-read hints only if they stay subordinate to the page-level audit
+
+### Expected confidence floor/ceiling
+- Floor: E0
+- Ceiling: E1
+
+### Must-have answer traits
+- keeps the read page-level or surface-level rather than claiming a full-system understanding
+- clearly separates visible signals from broader inference
+- uses short user-facing confidence wording, not raw `E0-E3` alone
+- says what would still need more evidence
+
+### Must-not-do failures
+- inferring full governance or full token architecture from one page
+- presenting raw `E0-E3` with no plain-language meaning
+- sounding system-level certain from a single URL
 
 ---
 

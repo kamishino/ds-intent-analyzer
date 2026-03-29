@@ -1692,3 +1692,165 @@ The current roadmap should not return to generic runtime hardening by default.
 The next high-leverage choice should be one of:
 - a final small Batch A lookup wave only if the next systems add genuinely new contrast, not more of the same
 - or a pause to assess whether the runtime lookup layer is now broad enough and future work should shift back to higher-signal distillation only
+
+---
+
+## Cycle 10 summary
+
+### Scope used
+- confidence-display hardening
+- confidence readability checks on:
+  - `AU-01`
+  - `RF-02`
+  - `RF-16`
+
+### Overall result
+- 3 strong passes
+- 0 regressions
+
+### Current top strengths
+- end-user confidence lines are now easier to read without losing the internal `E0-E3` discipline
+- one-screen and hybrid-sensitive cases can stay bounded without sounding cryptic
+- URL-only reference reads now have a clear page-level confidence pattern instead of relying on implicit shorthand
+
+### Current top weakness
+- no major new weakness displaced the current standing watch cases
+
+---
+
+## Cycle 10 — Confidence-display cases
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now keep the answer screen-level and express confidence in a short end-user-readable form such as `E1 - low, partial screen`.
+- This makes the boundedness easier to understand without adding a legend or longer explanation.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main one-screen confidence-readability guard.
+
+---
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Observed behavior
+- The current runtime should now express bounded confidence in a compact form such as `E2 - medium, still hybrid-sensitive` rather than using unexplained shorthand.
+- This keeps the answer decision-useful while still clearly non-final.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Keep this as the main hybrid-sensitive confidence-display guard.
+
+---
+
+## RF-16 — URL-Only Design-System Reference Page
+
+### Expected primary mode
+- UI / DS Audit
+
+### Observed behavior
+- The current runtime should now keep the read page-level and express confidence in a short form such as `E1 - low, one page only`.
+- This makes the limitation explicit for end-users without bloating the answer.
+
+### Score by rubric
+- Routing correctness: `2`
+- Constraints-first behavior: `2`
+- Pattern-first behavior: `2`
+- Evidence precedence: `2`
+- Confidence honesty: `2`
+- Practical Smart Suggestions: `2`
+- Compactness / non-bloat: `2`
+- Total: `14 / 14`
+- Result: `pass`
+
+### Strongest miss
+- No major miss at the current evaluation depth.
+
+### Recommended next action
+- Promote this case into the stable acceptance set as the main URL-only confidence-readability guard.
+
+---
+
+## Stable acceptance set
+
+Rerun these cases after every future runtime hardening slice:
+
+- `AF-01`
+- `AF-03`
+- `AU-01`
+- `AU-02`
+- `AU-05`
+- `AU-07`
+- `AU-08`
+- `AU-09`
+- `AU-11`
+- `AU-13`
+- `AU-14`
+- `AU-15`
+- `RF-02`
+- `RF-03`
+- `RF-05`
+- `RF-06`
+- `RF-08`
+- `RF-09`
+- `RF-10`
+- `RF-12`
+- `RF-15`
+- `RF-16`
+
+Why this set:
+- it preserves the existing low-evidence, hybrid-sensitive, developer-guidance, consequence-lens, prioritization, and Batch A lookup guards
+- it now adds one URL-only page-level confidence-readability guard
+- it keeps the set selective by reusing existing one-screen and hybrid-sensitive cases instead of adding a large new confidence subset
+
+---
+
+## Decision from cycle 10
+
+The runtime confidence scale should stay `E0-E3`, but end-user answers should always express it in short inline language.
+
+Default mapping:
+- `E0 - very low`
+- `E1 - low`
+- `E2 - medium`
+- `E3 - high`
+
+When evidence is thin or bounded, the runtime should add one tiny qualifier if useful, such as:
+- `one page only`
+- `partial screen`
+- `still hybrid-sensitive`
+
+Do not add a mandatory legend or footnote by default.

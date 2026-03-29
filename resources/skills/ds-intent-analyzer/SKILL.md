@@ -297,6 +297,10 @@ For low-evidence situations:
   - keep confidence low
   - treat descriptors as signals, not verdicts
   - recommend the smallest useful clarification or next artifact
+- URL-only or single-page reference asks
+  - keep the read page-level or surface-level
+  - do not claim full system maturity, governance depth, or archetype certainty from one page alone
+  - keep the confidence line short and user-facing, for example `Confidence: E1 - low, one page only`
 - one-screen or partial screenshot cases
   - avoid system-level certainty
   - keep the answer explicitly screen-level unless more context is provided
@@ -368,8 +372,21 @@ Required for audits and recommended for formation work:
 - What not to touch yet
 
 ### Confidence note
-Use E0 / E1 / E2 / E3.  
+Always use `E0 / E1 / E2 / E3` plus a very short user-facing label.  
+Default mapping:
+- `E0 - very low`
+- `E1 - low`
+- `E2 - medium`
+- `E3 - high`
+
+Keep the line inline and compact, for example:
+- `Confidence: E1 - low`
+- `Confidence: E1 - low, one page only`
+- `Confidence: E1 - low, partial screen`
+- `Confidence: E2 - medium, still hybrid-sensitive`
+
 Separate observation from inference and missing evidence.
+Do not rely on a footnote or legend to make the confidence line understandable.
 
 ### Next move
 State the smallest useful next step.
