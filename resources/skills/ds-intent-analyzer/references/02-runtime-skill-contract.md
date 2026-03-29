@@ -12,6 +12,7 @@ It exists to clarify:
 - when to stay lightweight
 - when to escalate carefully
 - when to offer project-memory capture
+- when bounded multi-agent coordination is justified
 
 This file complements `01-runtime-framework.md`.
 
@@ -218,6 +219,80 @@ If a missing decision would materially change the build:
 - ask for it explicitly, or
 - return to analyzer mode instead of freestyling
 
+## Bounded multi-agent coordination
+
+Use bounded multi-agent coordination only when:
+- the user explicitly asks for multiple agents or sub-agents, or
+- the task clearly decomposes into bounded analysis sidecars
+
+This is a Codex-first coordination contract, not a general orchestration framework.
+Keep it transparent and lightweight.
+
+### Lead agent rule
+Use one lead agent per step.
+
+The lead agent owns:
+- request routing
+- synthesis
+- final recommendation
+- confidence
+- next move
+- any project-memory capture offer
+
+Do not let multiple agents co-lead direction-setting.
+
+### Allowed sidecars in v1
+Parallel sidecars may do bounded analysis such as:
+- evidence or artifact read
+- current UI or codebase scan
+- reference lookup
+
+Sidecars should return observations, not direction-setting conclusions.
+
+### Disallowed parallelism in v1
+Do not allow:
+- multiple direction-setting agents competing at once
+- multiple builders inventing different directions
+- hidden shared state
+- implicit merge behavior that the user cannot see
+
+### Sidecar limits
+Sidecars must not decide:
+- the final recommendation
+- the locked direction
+- the confidence line
+- project-memory capture
+
+Sidecars must not invent:
+- new vibe or brand direction
+- new product constraints
+- new screen-level or workflow specifics that were never grounded
+
+### Merge rule
+The lead agent synthesizes the final decision.
+
+If sidecars conflict materially:
+- lower confidence, or
+- ask for one tie-break artifact or one repeated-job clue
+
+Do not force a fake clean merge.
+
+### Precedence for multi-agent coordination
+When multiple agents are involved, use this order:
+1. current evidence
+2. locked analyzer decisions from the current accepted answer
+3. accepted project memory
+4. bounded reference guidance
+
+Do not let later layers override earlier ones without saying so explicitly.
+
+### Relationship to frontend execution
+If frontend build is the next job:
+- finish lead-agent synthesis first
+- emit `Frontend handoff` only after the direction is stable enough
+
+Do not run unresolved multi-agent analysis and frontend build as simultaneous co-leads.
+
 ---
 
 ## Inference order
@@ -315,6 +390,24 @@ The handoff should state:
 
 If evidence is too thin, the correct output is to withhold or block the handoff, not to improvise a build-ready direction.
 
+### Multi-agent coordination
+Conditional.
+Use only when the user explicitly asks for multiple agents or sub-agents, or when the task clearly decomposes into bounded analysis sidecars.
+
+The coordination packet should state:
+- lead job
+- parallel sidecars allowed
+- shared evidence
+- locked truths
+- open questions
+- do not decide
+- do not invent
+- merge expectation
+- recommended next lead
+
+If multi-agent analysis is still unresolved, do not emit `Frontend handoff` yet.
+Keep the merge behavior explicit rather than hidden.
+
 ---
 
 ## Mode emphasis
@@ -331,6 +424,7 @@ Keep one shared output shape, but change emphasis by primary mode:
 - Comparative Reference Read
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
   - if frontend execution is clearly next, either emit a bounded `Frontend handoff` block or say exactly why the handoff is not ready yet
+  - if multiple agents are explicitly requested, keep sidecars bounded to evidence read, codebase scan, or reference lookup while the lead agent owns the final comparison
 
 ---
 
@@ -354,6 +448,7 @@ Retrieve selectively by tier:
 - `08-runtime-archetype-lessons.md`
 - `09-runtime-system-architecture.md`
 - `10-runtime-project-memory-pack.md`
+- `11-runtime-multi-agent-coordination.md`
 
 Contributor docs are not part of normal runtime retrieval.
 

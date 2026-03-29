@@ -12,6 +12,7 @@ The goal is to measure whether the current skill runtime:
 - keeps confidence honest
 - produces practical next moves and Smart Suggestions
 - produces explicit paired-skill handoff when frontend execution is clearly next
+- produces explicit bounded multi-agent sequencing when sidecars are actually useful
 - behaves like useful decision help instead of an audit-theory layer
 - stays compact instead of bloating
 
@@ -85,6 +86,13 @@ For paired-skill checks with `frontend-skill`:
   - `Decision clarity over audit verbosity`
 - do not create a separate scoring framework just for skill coordination
 
+For multi-agent or sub-agent checks:
+- score coordination clarity and anti-hidden-orchestration discipline mainly inside:
+  - `Evidence precedence`
+  - `Practical Smart Suggestions`
+  - `Decision clarity over audit verbosity`
+- do not create a second rubric just for sidecars
+
 ---
 
 ## Core scoring rubric
@@ -134,11 +142,13 @@ Pass signals:
 - references the strongest evidence first
 - separates observation from inference
 - avoids asking questions that the visible evidence or product context already answers
+- if sidecars are used, keeps them bounded to evidence read, current UI/codebase scan, or reference lookup
 
 Regression signals:
 - lets adjectives outrank visible or provided evidence
 - ignores contradictions in the prompt bundle
 - starts with a style quiz or library ranking before reading available evidence
+- uses sidecars as an excuse to hide evidence ownership or merge behavior
 
 ### 5. Confidence honesty
 The confidence level matches the evidence quality.
@@ -162,6 +172,7 @@ Pass signals:
 - phrases the next move as something the agent can do next for the user when that would help
 - offers project-memory capture only when the workflow has produced stable, reusable decisions
 - avoids offering project-memory capture when the evidence is too thin or the result is still unresolved
+- when multiple agents are explicitly requested, emits a bounded coordination packet that says who leads, what sidecars may do, and what they must not decide or invent
 
 Regression signals:
 - offers generic advice
@@ -169,12 +180,14 @@ Regression signals:
 - leaves the next move as a passive inspection note when a concrete action offer would be more useful
 - offers hidden or automatic memory behavior instead of an explicit capture offer
 - offers project-memory capture for screen-level, low-evidence, or hybrid-unresolved results
+- invites several agents to work in parallel without making ownership or merge behavior explicit
 
 For direction-seeking prompts, practical guidance may also mean:
 - asking only 1-3 project-fit questions when the decision is still blocked
 - offering 2-3 matching references with fit and cautions when the evidence is strong enough
 - avoiding single-winner prestige answers
 - when frontend execution is clearly next, emitting a structured handoff that is explicit about what is locked, what is blocked, and what must not be invented
+- when multiple agents are explicitly requested, keeping sidecars analysis-only and build work waiting until synthesis is stable
 
 ### 7. Decision clarity over audit verbosity
 The answer should make the decision path easier, not just expand the audit.
@@ -184,12 +197,14 @@ Pass signals:
 - uses audit detail only to support the recommendation
 - avoids theory unless it sharpens the decision
 - in paired-skill workflows, makes the lead/follow relationship explicit instead of letting analyzer and frontend execution co-lead ambiguously
+- in multi-agent workflows, keeps one lead agent responsible for synthesis instead of letting sidecars compete on direction
 
 Regression signals:
 - reads like an audit artifact rather than decision help
 - overexplains fundamentals that do not change the recommendation
 - buries the recommendation under directory-by-directory commentary
 - in paired-skill workflows, leaves frontend execution to infer direction from loose prose instead of a bounded handoff or explicit blocker
+- in multi-agent workflows, lets several agents co-lead, silently merge, or drift into parallel build work before direction is locked
 
 ### 8. Compactness / non-bloat
 The answer stays concise enough for Codex runtime use.
@@ -270,6 +285,8 @@ This subset covers:
 - using fundamentals or theory that do not change the recommendation
 - ambiguous multi-skill sequencing where frontend execution starts before the direction is locked
 - frontend-facing handoff that invents vibe, product constraints, or screen specifics not grounded in the evidence
+- ambiguous multi-agent sequencing where several sidecars appear to own direction-setting at once
+- hidden shared state or invisible merge logic in an answer that claims to use several agents
 - starting with style-direction questions when evidence is already available
 - turning a UI-library ask into a prestige ranking instead of top-fit references with cautions
 - treating provisional outputs as if they are ready for durable project memory

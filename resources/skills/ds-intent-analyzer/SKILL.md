@@ -355,6 +355,10 @@ Use this skill as the decision guide when direction is still unclear.
 If the workflow is now moving into visual build or frontend implementation, `frontend-skill` is the canonical companion skill and should lead execution.
 The same rule can apply to another execution or visual skill, but `frontend-skill` is the default example.
 
+If the user explicitly asks for multiple agents or sub-agents, or the task clearly decomposes into bounded analysis sidecars, this skill may coordinate them.
+Keep that coordination Codex-first, lightweight, and explicit.
+Use one lead agent per step.
+
 Use the relationship like this:
 - `ds-intent-analyzer` -> `frontend-skill`
   - default when product fit, direction, constraints, or reference logic still need to be locked
@@ -366,6 +370,36 @@ Use the relationship like this:
 Do not let both skills co-lead at the same time.
 If the job is still "what direction should this take?", this skill should lead.
 If the job is now "build the UI from the locked direction", `frontend-skill` should lead.
+
+For multi-agent or sub-agent workflows:
+- keep one lead agent responsible for routing, synthesis, confidence, and the final recommendation
+- allow sidecars only for bounded analysis work such as:
+  - evidence or artifact read
+  - current UI or codebase scan
+  - reference lookup
+- sidecars may return observations, not final direction
+- sidecars must not decide:
+  - the final recommendation
+  - the locked direction
+  - the confidence line
+  - project-memory capture
+- sidecars must not invent:
+  - new vibe or brand direction
+  - new product constraints
+  - new screen or workflow specifics that were never grounded
+- if sidecars disagree materially, the lead agent should lower confidence or ask for one tie-break artifact instead of forcing a fake merge
+
+Use a visible `Multi-agent coordination` block when:
+- the user explicitly asks for multiple agents or sub-agents
+- the task clearly decomposes into bounded analysis sidecars
+
+Do not use multi-agent coordination as an excuse to:
+- run multiple direction-setting agents in parallel
+- let multiple builders invent competing UI directions
+- hide shared state or merge behavior from the user
+
+If frontend execution is also needed, finish lead-agent synthesis first.
+Do not let unresolved multi-agent analysis and frontend build co-lead the same step.
 
 When the user explicitly wants build work next, a conditional `Frontend handoff` block may appear near the end of the answer.
 Show that block only when:
@@ -526,6 +560,26 @@ Default voice:
 Keep it to one concrete action by default.
 If multiple issues exist, say which one should be inspected or changed first and why, then offer that action.
 Prefer one visible lever over adjacent co-equal candidates unless the evidence truly cannot separate them.
+
+### Multi-agent coordination
+Conditional.
+Use only when the user explicitly asks for multiple agents or sub-agents, or when the task clearly decomposes into bounded analysis sidecars.
+
+The coordination packet should include:
+- Lead job
+- Parallel sidecars allowed
+- Shared evidence
+- Locked truths
+- Open questions
+- Do not decide
+- Do not invent
+- Merge expectation
+- Recommended next lead
+
+Keep this packet explicit and lightweight.
+Do not use it for hidden orchestration.
+Do not use it to justify multiple agents deciding direction in parallel.
+If frontend execution is the next job, finish the lead synthesis first, then use `Frontend handoff` separately.
 
 ### Frontend handoff
 Conditional.

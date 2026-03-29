@@ -37,10 +37,11 @@ Source-of-truth reminder:
 
 ## Forward-test modes
 
-This playbook supports two modes:
+This playbook supports these modes:
 - one-off smoke check
 - full-pack forward-test run
 - paired-skill handoff check
+- multi-agent sidecar check
 
 Use the one-off mode when:
 - you want a fast reality check on one prompt
@@ -53,6 +54,10 @@ Use the full-pack mode when:
 Use the paired-skill handoff mode when:
 - you want to see how `ds-intent-analyzer` behaves right before frontend execution
 - you want to check that the answer produces a bounded handoff instead of letting build work invent direction
+
+Use the multi-agent sidecar mode when:
+- you want to see how `ds-intent-analyzer` behaves when Codex is allowed to use multiple agents or sub-agents
+- you want to check that the runtime keeps one lead agent and bounded analysis sidecars instead of hidden orchestration
 
 ---
 
@@ -89,6 +94,28 @@ They are not benchmark runs and they do not require exact wording matches.
 
 Paired-skill checks are still answer-shape checks.
 They are not full implementation benchmarks.
+
+---
+
+## Multi-agent sidecar flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+3. Run one existing contributor case through `ds-intent-analyzer`.
+4. Immediately follow with a multi-agent prompt, for example:
+   - `Use multiple Codex sub-agents if helpful, but keep the direction bounded.`
+   - `Use parallel sidecars only where useful, then give me one final recommendation.`
+5. Check whether the analyzer answer:
+   - keeps one explicit lead agent
+   - limits sidecars to bounded analysis work
+   - emits a structured `Multi-agent coordination` packet when sidecars are actually useful
+   - keeps build work waiting until the lead synthesis is stable
+   - tells sidecars what they must not decide or invent
+6. Record one compact readout.
+
+Multi-agent sidecar checks are still answer-shape checks.
+They are not orchestration benchmarks.
 
 ---
 
@@ -201,6 +228,7 @@ Forward-test name:
 Prompt used:
 Runtime target:
 Observed primary mode:
+Observed coordination behavior:
 Observed confidence line:
 Observed handoff behavior:
 Strongest pass signal:
@@ -218,6 +246,11 @@ For paired-skill checks, use `Observed handoff behavior` to note whether the run
 - emitted a structured handoff
 - blocked the handoff
 - or left the build side too much room to invent
+
+For multi-agent checks, use `Observed coordination behavior` to note whether the runtime:
+- kept one lead agent
+- emitted a bounded coordination packet
+- or left sidecar ownership and merge behavior too vague
 
 ---
 
@@ -325,6 +358,65 @@ Expected behavior:
 - the handoff should be withheld or explicitly blocked
 - the answer should say the evidence is still too thin for a build-ready direction
 - the runtime should not let the execution side invent full style direction from one URL-only page
+
+---
+
+## Multi-agent anchor checks
+
+Reuse existing case ids.
+Do not create a second taxonomy.
+
+### AF-01 + multi-agent follow-up
+
+Follow-up prompt:
+
+```text
+Use multiple Codex sub-agents if helpful, but keep the direction bounded.
+```
+
+Expected behavior:
+- `ds-intent-analyzer` should keep one lead agent for the decision
+- sidecars may help with project-fit reading or evidence interpretation, but should not invent a vibe-heavy direction from adjectives alone
+- the answer should not jump into build work
+
+### AU-01 + multi-agent follow-up
+
+Follow-up prompt:
+
+```text
+Use multiple Codex sub-agents if helpful to inspect this screen, then tell me the one fix-first decision.
+```
+
+Expected behavior:
+- screen-level sidecars may be allowed
+- the lead agent should still return one fix-first decision
+- the answer should stay screen-level rather than widen into system-level formation guidance
+
+### AF-03 + multi-agent follow-up
+
+Follow-up prompt:
+
+```text
+Use multiple Codex sub-agents if helpful, then hand this to frontend-skill for a first implementation direction.
+```
+
+Expected behavior:
+- sidecars may help narrow principles or constraints
+- the lead agent should synthesize the direction before any frontend handoff appears
+- `frontend-skill` should not co-lead in parallel with unresolved analysis
+
+### RF-16 + multi-agent follow-up
+
+Follow-up prompt:
+
+```text
+Use multiple Codex agents if helpful to inspect this reference, then build from it.
+```
+
+Expected behavior:
+- sidecars may inspect the page-level reference
+- the answer should keep the read bounded to the available evidence
+- frontend build handoff should still be blocked or withheld because one URL-only page is too thin to justify a build-ready direction
 
 ---
 
