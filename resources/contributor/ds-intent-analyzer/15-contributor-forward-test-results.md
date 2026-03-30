@@ -672,3 +672,58 @@ It should stay:
 - Strongest pass signal: trust-of-claims audit remains practical and workbench-aware while the confidence line stays compact and user-facing
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted product-usefulness validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-product-usefulness`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle using the new app-to-DS fit brief set; result `3 pass / 2 partial pass / 0 regressions`; runtime usefulness is strong, but brief-only medium-evidence cases still show a repeated confidence-floor miss
+
+### Targeted subset
+
+## PF-01 — Internal Ops Brief, Still Early but Not Empty
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Strongest pass signal: quickly translates calm/modern/trustworthy language into attention model, density rules, and review-workbench direction instead of a style quiz
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Strongest pass signal: gives a builder-useful formation direction with a clear stabilization order around state semantics, layout, and risky review patterns
+- Strongest miss: confidence is too conservative for a medium-evidence brief and collapses a real formation read into prompt-only wording
+- Outcome: `partial pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Strongest pass signal: reframes toolkit pressure into pattern and state stabilization work, then gives a practical toolkit-selection rule instead of a speed-first answer
+- Strongest miss: confidence again understates a medium-evidence product brief by falling back to prompt-only wording
+- Outcome: `partial pass`
+
+## PF-04 — Existing Workflow Product Needs a Stabilization Order
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, current-state summary only`
+- Strongest pass signal: picks one stabilization order that is immediately usable for a builder and ties trust/scanability problems to route-level workflow consequences
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: paired follow-up produces a bounded handoff with locked direction, `Do not invent` guardrails, and one clear first build target instead of loose prose
+- Strongest miss: none noted
+- Outcome: `pass`

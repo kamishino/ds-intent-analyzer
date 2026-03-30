@@ -228,8 +228,9 @@ Use a high-leverage batch first.
 
 ### Current contributor read after the small runtime wave
 - the current high-leverage Batch A runtime distillation wave is effectively complete after `Carbon`, `PatternFly`, `Ant Design`, `Porsche Design System`, `Clarity Design System`, `Elastic UI Framework`, `Gestalt`, `Backpack`, and `Visa Product Design System`
+- the platform-boundary question is now clarified enough contributor-side to avoid an immediate shipped taxonomy split
 - the next useful work is not more shipped lookup growth by default
-- the next useful work is contributor-side clarification of whether `Developer Toolkit / Platform` should remain one parent bucket or split into narrower sub-buckets
+- the next useful work is a contributor-side product-usefulness pass that tests whether the current runtime actually helps builders move from app brief to DS direction
 
 ---
 
@@ -283,8 +284,8 @@ Possible future split candidates:
 - framework-first implementation systems
 
 Current priority:
-- highest active next-cycle question
-- should be studied contributor-side before any shipped runtime taxonomy change
+- clarified enough contributor-side for now
+- do not ship a taxonomy split unless a later validation slice exposes a repeated failure pattern that the current parent bucket cannot handle
 
 ### B. Does Commerce Enablement need sub-types?
 Possible split later:
@@ -317,6 +318,10 @@ One concise reference page per archetype:
 ### Output 4 — App-to-DS fit test set
 Use 3–5 real product briefs to test whether the framework helps formation decisions.
 
+Current priority:
+- highest active next-cycle validation surface
+- should be used before any more shipped runtime growth by default
+
 ---
 
 ## 11. What Not to Do Yet
@@ -348,7 +353,7 @@ Optional keepers only if space allows:
 ## 13. Practical Next Move
 
 The most useful next action is:
-- run a contributor-side boundary study for `Developer Toolkit / Platform`
-- stress it with targeted reference probes and installed-runtime checks
-- decide whether the parent bucket still holds well enough without a shipped split
-- return to a master sheet or broader re-scoring only after that boundary is clearer
+- run a contributor-side app-to-DS fit brief set
+- stress the installed runtime with realistic builder-facing product briefs and one paired frontend follow-up
+- decide whether the current runtime is product-useful enough as-is or whether a repeated failure pattern justifies a focused hardening slice
+- keep runtime expansion off by default unless that usefulness pass exposes a clear repeated miss
