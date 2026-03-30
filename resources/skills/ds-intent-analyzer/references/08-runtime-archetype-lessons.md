@@ -116,6 +116,7 @@ Use this archetype when:
 ## Decision shorthand against platform-first references
 - Workflow-first with bounded platform support means repeated jobs, state visibility, and dense task clarity lead the decision.
 - Borrow platform discipline second when implementation support is useful, but do not let platform breadth outrank workflow fit by default.
+- Some enterprise systems will also project trust-heavy polish, accessibility rigor, or broader code support. Visa is a useful caution here: those supporting strengths can still sit under workflow gravity when application layouts, dense task flows, and repeated operational patterns are the real center of the product.
 
 ---
 

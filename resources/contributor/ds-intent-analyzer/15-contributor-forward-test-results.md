@@ -531,3 +531,42 @@ It should stay:
 - Strongest pass signal: still avoids overclaiming full-system maturity from bounded reference evidence
 - Strongest miss: confidence wording drifts into a slightly longer split note when the source page is partially opaque, instead of the preferred short inline confidence format
 - Outcome: `pass`
+
+---
+
+## Targeted Visa lookup validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-visa-lookup`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after adding `Visa Product Design System` to the runtime lookup pack; result `3 pass / 0 partial pass / 0 regressions`
+
+### Targeted subset
+
+## RF-17 — Visa for a Trust-Sensitive Operational Product
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: treats Visa as a bounded workflow-and-trust reference, not a prestige default, and separates real workflow safety from finance polish
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Medium.`
+- Strongest pass signal: keeps Ant as a borrow-carefully support layer and reframes standardization around stabilizing product patterns first
+- Strongest miss: confidence wording drops the preferred short inline `Confidence:` format even though it stays readable
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: keeps the Carbon vs PatternFly answer tied to repeated jobs and names one fast tie-break surface instead of ranking prestige
+- Strongest miss: none noted
+- Outcome: `pass`

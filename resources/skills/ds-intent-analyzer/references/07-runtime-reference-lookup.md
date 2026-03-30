@@ -93,6 +93,15 @@ Do not start with this pack if screenshots, codebase clues, docs, or product con
 - **Borrow carefully:** layout logic, dense pattern support, operational clarity
 - **Do not copy blindly:** admin-heavy structure where discovery or emotion should lead
 
+### Visa Product Design System
+- **Best used for:** trust-sensitive operational products that need workflow clarity, accessibility discipline, and polished implementation support without defaulting to pure platform logic
+- **Likely posture:** Workflow-first with trust-heavy polish
+- **Likely archetype:** hybrid-sensitive; strongest lean is Enterprise Workflow with bounded Developer Toolkit / Platform support traits
+- **Strongest reusable lesson:** operational workflow patterns can feel trustworthy and well-governed when accessibility, content discipline, theming, and implementation support stay paired with repeated-job clarity
+- **Borrow carefully:** application layouts, dense task patterns, accessibility and content discipline, trust-bearing hierarchy, and the practical pairing of design guidance with code support
+- **Do not copy blindly:** finance-brand polish, mature-enterprise tone, multi-framework breadth, or polished trust cues as proof that the product itself should now behave like a broader platform
+- **Developer guidance cue:** if Visa feels trusted and mature, separate what you actually need from it: stronger workflow clarity, stronger trust framing, or simply more polished enterprise tone
+
 ### Airbnb Design Language System
 - **Best used for:** brand-led systems with controlled expression and product polish
 - **Likely posture:** Brand-first

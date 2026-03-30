@@ -618,3 +618,42 @@ What should we borrow carefully from Backpack, and what should we not carry over
 - reducing the answer to “Backpack is friendly, so use it”
 - ignoring accessibility and localisation as the deeper reusable lessons
 - transplanting travel-specific patterns into an unrelated product
+
+---
+
+## RF-17 — Visa for a Trust-Sensitive Operational Product
+
+### Prompt bundle
+
+```text
+We are shaping a trust-sensitive operational product with review queues, dense forms, guided tasks, and a lot of user hesitation around making the wrong move.
+The team wants to borrow from Visa Product Design System because it feels credible and mature.
+Should Visa actually lead for us, and what should we borrow carefully versus avoid copying as generic enterprise polish?
+```
+
+### Input type and evidence strength
+- Input type: product brief + one hybrid-sensitive named-system ask
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to the bounded borrowing decision
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats Visa as a bounded reference rather than a prestige default
+- separates trust-bearing workflow clarity from polished enterprise tone
+- explains what to borrow carefully in terms of workflow discipline, accessibility, or governance support
+- keeps confidence bounded and avoids claiming Visa is a clean archetype anchor
+- keeps the recommendation tied to repeated operational jobs instead of finance-brand maturity
+
+### Must-not-do failures
+- recommending Visa mainly because it looks credible or mature
+- flattening the answer into generic enterprise polish
+- ignoring the product's repeated operational jobs and trust-sensitive decision cost
+- acting as if Visa proves the team should become more platform-heavy by default
