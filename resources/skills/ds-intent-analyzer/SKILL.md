@@ -1,6 +1,6 @@
 ---
-name: ds-intent-analyzer
-description: Use this Codex/GPT-first skill to make better design-system and UI decisions: analyze intent, inspect existing UI or design-system foundations, infer root constraints and repeated pattern priorities, recommend what to stabilize first, compare references carefully, and end with practical next moves. Do not use this skill for blind visual cloning, generic component generation from thin prompts, pure frontend implementation without design reasoning, or research-heavy work unless evidence is weak, conflicting, or deeper validation is explicitly needed.
+name: "ds-intent-analyzer"
+description: "Use this Codex/GPT-first skill to make better design-system and UI decisions: analyze intent, inspect existing UI or design-system foundations, infer root constraints and repeated pattern priorities, recommend what to stabilize first, compare references carefully, and end with practical next moves. Do not use this skill for blind visual cloning, generic component generation from thin prompts, pure frontend implementation without design reasoning, or research-heavy work unless evidence is weak, conflicting, or deeper validation is explicitly needed."
 ---
 
 # Design System Intent Analyzer

@@ -46,6 +46,50 @@ async function exists(targetPath) {
   }
 }
 
+function parseSimpleFrontmatter(content, label) {
+  const frontmatterMatch = content.match(/^(?:\uFEFF)?---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!frontmatterMatch) {
+    throw new Error(`${label} must start with valid --- frontmatter delimiters`);
+  }
+
+  const data = {};
+  const lines = frontmatterMatch[1].split(/\r?\n/);
+
+  for (const [index, line] of lines.entries()) {
+    if (line.trim() === "" || line.trimStart().startsWith("#")) {
+      continue;
+    }
+
+    const match = line.match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
+    if (!match) {
+      throw new Error(`${label} has invalid frontmatter syntax on line ${index + 2}`);
+    }
+
+    const [, key, rawValue] = match;
+    if (rawValue.length === 0) {
+      throw new Error(`${label} frontmatter key "${key}" must not be empty`);
+    }
+
+    const isDoubleQuoted = rawValue.startsWith("\"") && rawValue.endsWith("\"");
+    const isSingleQuoted = rawValue.startsWith("'") && rawValue.endsWith("'");
+
+    if (isDoubleQuoted || isSingleQuoted) {
+      data[key] = rawValue.slice(1, -1);
+      continue;
+    }
+
+    if (/: /.test(rawValue)) {
+      throw new Error(
+        `${label} frontmatter key "${key}" contains an unquoted colon-space value; quote descriptive strings`
+      );
+    }
+
+    data[key] = rawValue;
+  }
+
+  return data;
+}
+
 async function main(args) {
   const rootDir = parseRootArg(args);
   const failures = [];
@@ -144,6 +188,7 @@ async function main(args) {
 
   const agentsPath = path.join(rootDir, "AGENTS.md");
   const readmePath = path.join(rootDir, "README.md");
+  const skillPath = path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "SKILL.md");
 
   try {
     const agentsContent = await readFile(agentsPath, "utf8");
@@ -228,6 +273,25 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to read README.md: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  try {
+    const skillContent = await readFile(skillPath, "utf8");
+    const frontmatter = parseSimpleFrontmatter(skillContent, "SKILL.md");
+
+    if (frontmatter.name !== "ds-intent-analyzer") {
+      failures.push(`Expected SKILL.md frontmatter name "ds-intent-analyzer" but found "${frontmatter.name ?? ""}"`);
+    } else {
+      checks.push("OK   SKILL frontmatter name");
+    }
+
+    if (!frontmatter.description || frontmatter.description.trim().length === 0) {
+      failures.push("SKILL.md frontmatter description must be present and non-empty");
+    } else {
+      checks.push("OK   SKILL frontmatter description");
+    }
+  } catch (error) {
+    failures.push(`Unable to validate SKILL.md frontmatter: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   if (failures.length > 0) {
