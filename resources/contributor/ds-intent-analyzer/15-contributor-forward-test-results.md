@@ -349,6 +349,140 @@ Do not add full rubric scoring.
 
 ---
 
+## Targeted lean validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-lean-skill`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime validation after the lean `SKILL.md` rewrite; result `7 pass / 0 partial pass / 0 regressions`
+
+### Smoke subset
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: keeps the answer discovery-first and translates adjectives into project-fit questions instead of a style quiz
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AF-03 — Merchant Operations Formation Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: still gives a foundation-first principle stack and an explicit project-memory capture offer
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E1 - low, one screen only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: keeps the read screen-level and fix-first instead of drifting into broad formation work
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: keeps the comparison bounded and explicitly hybrid-sensitive instead of forcing a clean winner
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### Paired-skill checks
+
+## AF-03 + frontend follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed coordination behavior: explicit single-lead sequencing; analyzer first, `frontend-skill` second
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: structured frontend handoff is usable and bounded, with locked direction plus `Do not invent` guidance
+- Strongest pass signal: the slim SKILL still yields an explicit build package instead of loose prose for frontend execution
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 + frontend follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed coordination behavior: analyzer remains lead because the evidence is still too thin for build work
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: handoff is withheld or explicitly blocked rather than inventing a build-ready style direction
+- Strongest pass signal: thin-evidence page audit does not collapse into hallucinated frontend guidance
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### Multi-agent check
+
+## AU-01 + multi-agent follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed coordination behavior: one lead agent plus bounded analysis sidecars only; synthesis, confidence, and recommendation stay with the lead
+- Observed confidence line: `Confidence: E1 - low, one screen only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: the slim SKILL still supports explicit sidecar limits without drifting into hidden orchestration
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Targeted shipped-tree cleanup validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-runtime-only-tree`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: smoke validation after removing the shipped skill README and enforcing runtime-only top-level docs; result `3 pass / 0 partial pass / 0 regressions`
+
+### Smoke subset
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: discovery-first routing remains intact after the shipped-tree cleanup
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E1 - low, one screen only`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: one-screen audit still stays bounded and fix-first
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed coordination behavior: none needed
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Observed handoff behavior: not applicable
+- Strongest pass signal: hybrid-sensitive comparison behavior remains unchanged by the structural cleanup
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
 ## Final rule
 
 This file exists to make full-pack forward-testing repeatable and comparable.

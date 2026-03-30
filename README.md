@@ -95,7 +95,7 @@ No automatic postinstall or hidden bootstrap is performed.
 ## Repo Layout
 
 - `resources/skills/ds-intent-analyzer/`
-  - canonical skill source
+  - canonical shipped skill source
 - `bin/`
   - thin CLI entrypoint
 - `scripts/`
@@ -106,6 +106,13 @@ No automatic postinstall or hidden bootstrap is performed.
   - durable project memory
 - `.local/plans/`
   - task execution state
+
+Shipped runtime guidance lives in:
+- `resources/skills/ds-intent-analyzer/SKILL.md`
+- `resources/skills/ds-intent-analyzer/references/`
+
+Maintainer-only organization and evaluation docs live under:
+- `resources/contributor/ds-intent-analyzer/`
 
 ## Maintainer Commands
 

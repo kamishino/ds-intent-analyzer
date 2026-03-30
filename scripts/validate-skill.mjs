@@ -1,4 +1,4 @@
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import { constants } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -64,7 +64,6 @@ async function main(args) {
     ["plans directory", path.join(rootDir, ".local", "plans")],
     ["done plans directory", path.join(rootDir, ".local", "plans", "done")],
     ["canonical SKILL", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "SKILL.md")],
-    ["canonical skill README", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "README.md")],
     ["canonical skill agent metadata", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "agents", "openai.yaml")],
     ["runtime framework reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "01-runtime-framework.md")],
     ["runtime skill contract reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "02-runtime-skill-contract.md")],
@@ -176,6 +175,7 @@ async function main(args) {
   }
 
   const runtimeRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references");
+  const shippedSkillRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer");
   const oldShippedPaths = [
     path.join(runtimeRoot, "01-ds-analyzer-scope-v2.md"),
     path.join(runtimeRoot, "02-ds-agent-skill-spec-v2.md"),
@@ -192,6 +192,23 @@ async function main(args) {
 
   if (failures.length === 0) {
     checks.push("OK   production-only runtime reference tree");
+  }
+
+  try {
+    const shippedEntries = await readdir(shippedSkillRoot, { withFileTypes: true });
+    const extraTopLevelMarkdown = shippedEntries
+      .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".md") && entry.name !== "SKILL.md")
+      .map((entry) => path.join(shippedSkillRoot, entry.name));
+
+    if (extraTopLevelMarkdown.length > 0) {
+      failures.push(
+        `Shipped skill tree must not contain auxiliary top-level Markdown docs besides SKILL.md: ${extraTopLevelMarkdown.join(", ")}`
+      );
+    } else {
+      checks.push("OK   shipped skill top-level markdown boundary");
+    }
+  } catch (error) {
+    failures.push(`Unable to inspect shipped skill tree: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   try {
