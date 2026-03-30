@@ -727,3 +727,50 @@ It should stay:
 - Strongest pass signal: paired follow-up produces a bounded handoff with locked direction, `Do not invent` guardrails, and one clear first build target instead of loose prose
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted brief-only confidence-floor validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-brief-only-confidence-floor`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after separating `brief only` from `prompt only`; result `4 pass / 0 partial pass / 0 regressions`; structured product briefs now keep bounded brief-level confidence while early intent briefs and URL-only discipline remain intact
+
+### Targeted subset
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: the answer now keeps a builder-useful formation read and the confidence floor matches the medium-evidence brief instead of collapsing to `prompt only`
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: the answer now keeps toolkit pressure subordinate to product-pattern stabilization while using the correct brief-bounded confidence floor
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-01 — Internal Ops Brief, Still Early but Not Empty
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: the answer now keeps the early brief bounded while still translating adjectives into workflow posture, hierarchy, and next design-system questions
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: URL-only evidence remains page-bound and does not get accidentally loosened by the brief-floor patch
+- Strongest miss: mode leans comparative/page-read language more explicitly than earlier audit-shaped runs, but confidence and boundedness stay healthy
+- Outcome: `pass`

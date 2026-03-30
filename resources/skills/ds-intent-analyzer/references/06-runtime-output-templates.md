@@ -44,7 +44,9 @@ Keep the confidence display as one short inline line; do not let comparison, URL
 
 Use one preferred user-facing confidence shape across all modes:
 - `Confidence: E0 - very low, prompt only`
+- `Confidence: E1 - low, brief only`
 - `Confidence: E1 - low, one page only`
+- `Confidence: E2 - medium, brief only`
 - `Confidence: E2 - medium, still hybrid-sensitive`
 - `Confidence: E3 - high`
 
@@ -55,16 +57,20 @@ Rules:
 - keep qualifiers tiny and inline
 - end the confidence line there; do not append a second confidence sentence on the same line or in the same paragraph
 - move supporting evidence notes to the lines below, not into a second confidence sentence
+- `brief only` is not the same as `prompt only`; if the brief already contains concrete product structure, use the bounded brief qualifier instead of collapsing it into a thin-prompt label
+- for early intent briefs that still ask what direction to figure out first, default to `E1 - low, brief only` unless the prompt carries enough aligned structure to justify formation- or comparison-level confidence
+- do not use `E2` for an early intent brief if the answer is still mainly translating the brief into constraints, posture, and next clarification
 
 Band guardrails:
-- `E0` for prompt-only, adjective-only, or extremely thin evidence
-- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, or thin-summary reads
-- `E2` for medium evidence with real product signals but still-bounded inference
+- `E0` for prompt-only, adjective-only, or extremely thin evidence with little product structure
+- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, thin-summary reads, or brief-only prompts with concrete but still limited product structure, including early intent briefs
+- `E2` for medium evidence with real aligned product signals and bounded inference, including structured brief-only formation or comparison prompts and stronger current-state summaries
 - `E3` only when several aligned artifacts or materially stronger evidence remove most practical ambiguity
 - do not use `E3` for brief-only comparisons, URL-only reads, one-screen audits, or hybrid-sensitive comparisons
 
 Anti-drift notes:
 - do not output bare forms such as `medium` or `Medium.`
+- for structured product briefs, do not use `prompt only` when repeated jobs, risk, density, or workflow structure are already stated
 - for URL-only or one-page cases, keep the evidence boundary inline, for example `Confidence: E1 - low, one page only`
 - for hybrid-sensitive or comparison cases, keep the unresolved note inline, for example `Confidence: E2 - medium, still hybrid-sensitive`
 - if more nuance is useful, explain it after the confidence line instead of replacing the confidence line with a split summary
@@ -180,11 +186,14 @@ Anti-drift notes:
 - What should wait:
 
 ## Confidence note
-- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, brief only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, brief only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - What is directly observed:
 - What is inferred:
 - What is still missing:
 - keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- if the prompt is a structured product brief, use `brief only` rather than `prompt only`
+- if the primary mode is still early `Intent Analysis`, prefer `E1 - low, brief only` unless stronger current-state structure meaningfully reduces ambiguity
+- do not use `E2` here if the answer is still choosing what to figure out first rather than giving a bounded formation/comparison recommendation
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Memory capture
@@ -397,11 +406,12 @@ Anti-drift notes:
 ### Priority 3
 
 ## Confidence note
-- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, brief only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, brief only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - strongest evidence:
 - weakest evidence:
 - what would raise confidence:
 - keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- if the prompt is a structured product brief, use `brief only` rather than `prompt only`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 - if the comparison is still bounded, say exactly which single tie-break artifact would raise confidence fastest after the confidence line, not as a second confidence sentence
 
@@ -540,10 +550,11 @@ What this recommendation is trying to support.
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
 ## Confidence note
-- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, brief only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, brief only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - key unknowns:
 - what to test next:
 - keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- if the prompt is a structured product brief, use `brief only` rather than `prompt only`
 - if the recommendation is reference-led and still hybrid-sensitive, say what remains provisional and what evidence would resolve it
 
 ## Memory capture

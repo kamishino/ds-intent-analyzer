@@ -83,6 +83,10 @@ Use when the request is still early, vague, adjective-heavy, or mostly strategy 
 Goal:
 turn messy intent into grounded structure.
 
+Confidence note:
+- brief-only Intent Analysis asks should cap at `E1`
+- do not use `E2` while the job is still translating an early brief into clearer product constraints, unless stronger current-state evidence materially changes the task out of normal Intent Analysis
+
 ### 2. UI / DS Audit
 Use when the request includes screenshots, existing UI, current DS docs, or “improve this” language.
 
@@ -151,6 +155,15 @@ Low-evidence fallback behavior:
 - keep confidence low
 - translate descriptors into possible product implications
 - recommend the smallest useful clarification
+
+### Structured brief-only product prompts
+- if the prompt already names repeated jobs, risk, density, state pressure, user roles, workflow stages, or comparable product structure, do not treat it as `prompt only`
+- use `brief only` when the answer is grounded in a real product brief even without screenshots or current UI artifacts
+- `E1` is the default for bounded early product-direction reads, especially when the brief is still intent-seeking, adjective-led, or asking what to figure out first
+- `E2` is valid when the brief contains several aligned product signals strong enough to support bounded formation or comparison guidance, or a stronger current-state summary
+- keep the answer explicitly brief-bounded; do not pretend artifact-level certainty or visual maturity you have not seen
+- if the primary mode is still `Intent Analysis`, cap at `E1` unless the prompt includes materially stronger current-state structure than a normal early brief
+- do not let a rich early brief silently upgrade itself into formation-level confidence if the main job is still choosing what to figure out first
 
 ### One-screen or partial screenshot asks
 - avoid system-level certainty
@@ -383,16 +396,22 @@ The first confidence line must:
 
 Preferred forms:
 - `Confidence: E0 - very low, prompt only`
+- `Confidence: E1 - low, brief only`
 - `Confidence: E1 - low, one page only`
+- `Confidence: E2 - medium, brief only`
 - `Confidence: E2 - medium, still hybrid-sensitive`
 - `Confidence: E3 - high`
 
 Band guardrails:
-- `E0` for prompt-only, adjective-only, or very weak evidence
-- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, or thin summary reads
-- `E2` for medium evidence where the product signals are real but the answer is still bounded, comparative, or partly inferred
+- `E0` for prompt-only, adjective-only, or very weak evidence with little real product structure
+- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, thin-summary reads, or brief-only prompts with concrete but still limited product structure, including early intent briefs
+- `E2` for medium evidence where the product signals are real and aligned enough to support a bounded recommendation, including structured brief-only formation or comparison prompts and stronger current-state summaries
 - `E3` only when multiple aligned artifacts or materially stronger evidence remove most practical ambiguity
 - do not use `E3` for prompt-only, brief-only, URL-only, one-page, one-screen, or hybrid-sensitive comparison cases
+
+Qualifier rule:
+- do not label a structured product brief as `prompt only`
+- reserve `prompt only` for genuinely thin prompts that lack meaningful product structure
 
 Supporting evidence notes may follow after the confidence line.
 They should clarify:

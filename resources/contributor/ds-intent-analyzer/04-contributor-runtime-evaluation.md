@@ -160,6 +160,7 @@ Pass signals:
 - uses confidence wording that an end-user can understand at a glance without a legend
 - uses one short inline `Confidence:` line with plain-language strength and only a tiny qualifier when useful
 - keeps `E3 / high` rare and reserved for materially strong multi-artifact evidence rather than medium brief-only or one-page cases
+- distinguishes `prompt only` from `brief only`, and does not label a structured product brief as if it were a thin prompt
 
 Regression signals:
 - sounds certain when the evidence is partial
@@ -169,6 +170,7 @@ Regression signals:
 
 Format-discipline note:
 - if the confidence level is evidence-matched but the wording drifts into a readable non-standard form such as `medium` or `Medium.`, score this category as a partial pass rather than a regression
+- if the answer reads the product brief correctly but still calls it `prompt only`, score this category as a partial pass unless the under-confidence materially distorts the recommendation
 - reserve regressions for confidence that is materially overstated, misleading, or not user-readable
 
 ### 6. Practical Smart Suggestions
