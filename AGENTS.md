@@ -61,7 +61,8 @@ Keep helper entrypoints thin. Prefer the repo-local scripts in `scripts/` over a
   - Codex/GPT preferential
   - transparent behavior
 - Keep `resources/skills/ds-intent-analyzer/` as the authoritative skill source. Do not edit installed runtime copies in `.agents/` as if they were canonical.
-- Keep the shipped skill tree runtime-only. Do not add auxiliary top-level Markdown docs under `resources/skills/ds-intent-analyzer/` beyond `SKILL.md`.
+- Keep the shipped skill tree runtime-only. The default shipped shape is `SKILL.md`, `agents/`, and `references/`; add `assets/` or `scripts/` only when they carry real runtime resources.
+- Do not add auxiliary top-level Markdown docs under `resources/skills/ds-intent-analyzer/` beyond `SKILL.md`, and do not keep placeholder-only shipped resource directories.
 - Preserve meaningful user-authored files whenever possible. Fill gaps conservatively instead of replacing healthy structure.
 - Keep `.local/project.md` as durable project memory, not task history or a generated log.
 - Keep `.local/plans/*.md` as execution state for non-trivial slices. Prefer one active plan at a time.

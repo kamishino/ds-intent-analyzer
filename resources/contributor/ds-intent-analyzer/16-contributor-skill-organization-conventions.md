@@ -48,12 +48,18 @@ If a rule already has a detailed owner, `SKILL.md` should point to it instead of
 
 ### 3. Shipped skill tree is runtime-only
 
-Allowed shipped top-level artifacts:
+Default shipped top-level artifacts:
 - `SKILL.md`
 - `agents/`
 - `references/`
-- `assets/`
+
+Optional shipped top-level artifacts:
+- `assets/` only when the skill ships real output resources
 - `scripts/` only if the shipped skill truly needs runtime scripts
+
+Use `references/`, never `reference/`.
+`references/` is the canonical bundled-resource surface for runtime reasoning in this skill.
+If `assets/` contains only `.gitkeep` or other placeholders, remove it until real shipped assets exist.
 
 Disallowed shipped top-level auxiliary docs:
 - `README.md`
@@ -95,6 +101,8 @@ Behavior change means any change to:
 The validator should enforce only the highest-value structural rules:
 - shipped skill tree must contain required runtime artifacts
 - shipped skill tree must not contain auxiliary top-level Markdown docs besides `SKILL.md`
+- shipped skill tree must use `references/`, not `reference/`
+- shipped `assets/` is optional and must not remain as a placeholder-only directory
 - deprecated or contributor-only runtime files must not remain in the shipped reference tree
 
 Do not broaden the validator into a full doctrine checker.

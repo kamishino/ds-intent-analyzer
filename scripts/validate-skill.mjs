@@ -221,6 +221,8 @@ async function main(args) {
 
   const runtimeRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references");
   const shippedSkillRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer");
+  const singularReferenceRoot = path.join(shippedSkillRoot, "reference");
+  const assetsRoot = path.join(shippedSkillRoot, "assets");
   const oldShippedPaths = [
     path.join(runtimeRoot, "01-ds-analyzer-scope-v2.md"),
     path.join(runtimeRoot, "02-ds-agent-skill-spec-v2.md"),
@@ -254,6 +256,29 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to inspect shipped skill tree: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  if (await exists(singularReferenceRoot)) {
+    failures.push("Shipped skill tree must use `references/`, not a singular `reference/` directory");
+  } else {
+    checks.push("OK   canonical shipped references path");
+  }
+
+  if (await exists(assetsRoot)) {
+    try {
+      const assetEntries = await readdir(assetsRoot, { withFileTypes: true });
+      const realAssetEntries = assetEntries.filter((entry) => entry.name !== ".gitkeep");
+
+      if (realAssetEntries.length === 0) {
+        failures.push("Shipped assets/ is optional; remove placeholder-only assets/ directories until real runtime assets exist");
+      } else {
+        checks.push("OK   optional shipped assets boundary");
+      }
+    } catch (error) {
+      failures.push(`Unable to inspect shipped assets/: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  } else {
+    checks.push("OK   optional shipped assets boundary");
   }
 
   try {

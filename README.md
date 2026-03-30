@@ -111,6 +111,8 @@ Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
 - `resources/skills/ds-intent-analyzer/references/`
 
+Optional shipped runtime resources such as `assets/` or `scripts/` should appear only when the skill carries real output files or runtime-local helpers. They are not part of the default shipped shape.
+
 Maintainer-only organization and evaluation docs live under:
 - `resources/contributor/ds-intent-analyzer/`
 
