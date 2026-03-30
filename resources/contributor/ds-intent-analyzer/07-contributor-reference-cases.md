@@ -657,3 +657,115 @@ Should Visa actually lead for us, and what should we borrow carefully versus avo
 - flattening the answer into generic enterprise polish
 - ignoring the product's repeated operational jobs and trust-sensitive decision cost
 - acting as if Visa proves the team should become more platform-heavy by default
+
+---
+
+## RF-18 — Product Platform Label, but Workflow Gravity Still Dominates
+
+### Prompt bundle
+
+```text
+We are building an internal product with docs, admin controls, analytics, shared navigation, and some cross-team UI pressure.
+Leadership keeps calling it a platform, but the dominant repeated work is still reviewing, configuring, and resolving operational issues.
+Should we treat the design-system direction as a product-platform system first, or as a workflow-heavy internal product that only borrows platform discipline?
+```
+
+### Input type and evidence strength
+- Input type: product brief + taxonomy-boundary question
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to the structural-force read
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- identifies the strongest structural force rather than echoing the word `platform`
+- keeps repeated operational jobs ahead of label prestige or team ambition
+- explains when platform discipline is secondary support rather than the leading direction
+- names one tie-break artifact or dominant repeated-job surface if confidence stays bounded
+
+### Must-not-do failures
+- treating `platform` language as enough proof by itself
+- flattening docs, admin, and analytics into a generic platform answer
+- skipping the repeated-job test
+
+---
+
+## RF-19 — Toolkit Speed Temptation vs Product-System Need
+
+### Prompt bundle
+
+```text
+The team wants to standardize on shadcn/ui or Chakra UI because they feel fast, composable, and easy to ship with.
+Our real product is a support operations tool with queues, risky states, and repeated review work.
+Should a toolkit or library actually lead this decision, or is that the wrong layer to stabilize first?
+```
+
+### Input type and evidence strength
+- Input type: implementation-shaped prompt + toolkit temptation
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation guidance only if it stays subordinate to the layer-choice decision
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats toolkits and libraries as implementation accelerants, not automatic product-system direction
+- distinguishes toolkit speed from product-fit, pattern stability, and workflow support
+- says what should stabilize before standardizing a toolkit too broadly
+- keeps the answer practical rather than anti-library by reflex
+
+### Must-not-do failures
+- picking the toolkit mainly because it feels fast or composable
+- treating the library choice as the whole decision
+- ignoring the product's risky operational review reality
+
+---
+
+## RF-20 — Implementation Breadth Is Real, but Does It Lead?
+
+### Prompt bundle
+
+```text
+We have real multi-team React delivery pressure, theming needs, and a desire for strong implementation support.
+But the current product still lives or dies on dense investigation, admin review, and repeated operator decisions.
+The team keeps comparing Elastic UI Framework and GitHub Primer because they look like strong platform references.
+Should a product-platform reference actually lead here, or should workflow gravity still outrank that implementation breadth?
+```
+
+### Input type and evidence strength
+- Input type: product brief + named platform-reference comparison
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- formation hints only if they stay subordinate to the platform-boundary decision
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- distinguishes implementation breadth from dominant repeated-job gravity
+- explains when a platform reference should stay secondary even if reuse pressure is real
+- keeps the answer tied to operator workflow fit rather than library maturity
+- avoids turning the comparison into a docs-polish or framework-familiarity ranking
+
+### Must-not-do failures
+- recommending a product-platform reference mainly because multi-team delivery pressure exists
+- ignoring the product's dense review and investigation reality
+- acting as if stronger implementation assets automatically outrank workflow support

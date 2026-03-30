@@ -570,3 +570,58 @@ It should stay:
 - Strongest pass signal: keeps the Carbon vs PatternFly answer tied to repeated jobs and names one fast tie-break surface instead of ranking prestige
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted platform-boundary validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-platform-boundary`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after adding contributor-side platform-boundary probes; result `5 pass / 0 partial pass / 0 regressions`; current runtime already keeps product-fit ahead of platform prestige well enough that no runtime patch is justified from this cycle
+
+### Targeted subset
+
+## RF-18 — Product Platform Label, but Workflow Gravity Still Dominates
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still boundary-sensitive`
+- Strongest pass signal: identifies workflow-heavy internal product gravity and demotes the `platform` label to a governance or adoption lens instead of echoing it as the primary archetype
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-19 — Toolkit Speed Temptation vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `medium`
+- Strongest pass signal: treats toolkit choice as an implementation-layer decision and correctly prioritizes risky operational review patterns before library standardization
+- Strongest miss: confidence wording is readable but drops the preferred short inline `Confidence:` format
+- Outcome: `pass`
+
+## RF-20 — Implementation Breadth Is Real, but Does It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: keeps workflow gravity ahead of product-platform breadth and uses EUI and Primer as bounded secondary references instead of posture-setting defaults
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: still resolves Carbon vs PatternFly through structural force rather than platform prestige or documentation maturity
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `medium`
+- Strongest pass signal: continues to frame Ant as a bounded borrowing source and not a product-shaping default
+- Strongest miss: confidence wording again drifts from the preferred short inline `Confidence:` format
+- Outcome: `pass`
