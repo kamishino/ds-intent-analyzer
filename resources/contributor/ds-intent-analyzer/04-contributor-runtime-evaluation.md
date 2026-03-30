@@ -109,9 +109,13 @@ Pass signals:
 - chooses the right mode implicitly
 - does not drift into the wrong job shape
 
+Partial-pass signal:
+- preserves boundedness and usefulness but leans into the wrong primary mode for a canonical case
+
 Regression signals:
 - treats an audit like a formation task
 - treats a reference comparison like blind style recommendation
+- contradicts an explicit canonical primary mode and still behaves as if that mismatch is unimportant
 
 ### 2. Constraints-first behavior
 The answer surfaces user, repeated job, risk, density, scale, or governance before style conclusions.
@@ -241,6 +245,7 @@ Regression signals:
 
 Critical override:
 - if routing correctness is `0`, mark the case as a regression
+- if a canonical expected primary mode is explicit and the observed answer picks a different primary mode, do not record the case as `pass`
 - if confidence honesty is `0` on a weak-evidence case, mark the case as a regression
 
 ---

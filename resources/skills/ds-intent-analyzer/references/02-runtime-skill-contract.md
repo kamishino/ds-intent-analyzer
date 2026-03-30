@@ -113,6 +113,7 @@ Route by the dominant evidence and the user’s actual job:
 
 - intent-heavy wording, early brief fragments, strategy notes, or adjective-heavy asks -> Intent Analysis
 - screenshots, current UI, current DS docs, “improve this”, or “enhance this” -> UI / DS Audit
+- URL-only or single-page asks such as “check this page”, “what looks healthy”, “what feels weak”, or “what should change first” -> UI / DS Audit, even if the page is itself a design-system reference surface
 - direct asks for principles, foundations, token direction, or what to stabilize first -> Formation Recommendation
 - named systems, “X or Y”, “what should we borrow”, or careful comparison asks -> Comparative Reference Read
 
@@ -123,6 +124,7 @@ For mixed prompts:
 
 Default rule:
 - vague improve/enhance requests default to UI / DS Audit
+- a single reference page is still an audit-shaped artifact when the user wants a page-level health check rather than borrowing or tie-break guidance
 
 ---
 

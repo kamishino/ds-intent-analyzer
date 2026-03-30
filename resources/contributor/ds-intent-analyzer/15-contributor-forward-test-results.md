@@ -773,4 +773,43 @@ It should stay:
 - Observed confidence line: `Confidence: E1 - low, one page only`
 - Strongest pass signal: URL-only evidence remains page-bound and does not get accidentally loosened by the brief-floor patch
 - Strongest miss: mode leans comparative/page-read language more explicitly than earlier audit-shaped runs, but confidence and boundedness stay healthy
+- Outcome: `partial pass`
+
+---
+
+## Targeted RF-16 oracle and metadata-validation rerun
+
+### Run header
+
+- Run label: `FT-2026-03-30-rf16-oracle-and-openai-yaml`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after restoring audit-first routing for URL-only single reference-page checks and tightening the contributor oracle; result `3 pass / 0 partial pass / 0 regressions`
+
+### Targeted subset
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: the answer stays page-level and audit-shaped even while surfacing bounded borrowing hints from the reference surface
+- Strongest miss: the source page body remains partially opaque, so the read still depends on indexed public context plus the page title rather than a full direct page body
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: the answer keeps Carbon as the leading lean and PatternFly as a bounded secondary donor without flattening the product into generic enterprise admin logic
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: the answer remains fix-first and screen-level, choosing layout and typography weight before cosmetic polish
+- Strongest miss: none noted
 - Outcome: `pass`

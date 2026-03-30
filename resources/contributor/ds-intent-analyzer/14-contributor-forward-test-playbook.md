@@ -266,6 +266,11 @@ A rerun still counts as a pass if it:
 - still feels decision-first rather than audit-first
 - still feels evidence-first rather than questionnaire-first
 
+Do not mark a rerun as `pass` when:
+- the case has an explicit canonical expected primary mode
+- the observed answer picks a different primary mode
+- even if confidence, boundedness, or usefulness remain otherwise healthy
+
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.
 

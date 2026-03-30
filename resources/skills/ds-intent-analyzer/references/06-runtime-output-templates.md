@@ -38,6 +38,7 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
 If the user explicitly asks for multiple agents or sub-agents, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
+If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
 Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
 
 ## Confidence line discipline
@@ -207,6 +208,9 @@ Anti-drift notes:
 
 # B. DS / UI Audit Template
 
+Use this template for URL-only single-page checks when the user is evaluating page health, visible strengths, weaknesses, or fix-first priorities.
+If the page is a design-system reference surface, keep any borrowing logic subordinate to the page-level audit rather than letting comparison become the primary job.
+
 ## TL;DR
 - strongest positives
 - biggest weaknesses
@@ -244,6 +248,7 @@ Anti-drift notes:
 - which design systems are useful references
 - what to borrow
 - what not to copy blindly
+- for URL-only single-page audits, keep this section optional and explicitly subordinate to the page-level audit
 - if the comparison is still hybrid-sensitive, say the fit is provisional and name what evidence would break the tie
 - choose one strongest lean before describing the bounded secondary force
 - if the prompt is implementation-framed, name one first inspection target before library or token expansion

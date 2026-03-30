@@ -90,6 +90,63 @@ function parseSimpleFrontmatter(content, label) {
   return data;
 }
 
+function parseSimpleNestedYaml(content, label) {
+  const result = {};
+  let activeSection = null;
+
+  const lines = content.split(/\r?\n/);
+  for (const [index, line] of lines.entries()) {
+    if (line.trim() === "" || line.trimStart().startsWith("#")) {
+      continue;
+    }
+
+    const topLevelMatch = line.match(/^([A-Za-z0-9_-]+):\s*$/);
+    if (topLevelMatch) {
+      const [, key] = topLevelMatch;
+      if (Object.hasOwn(result, key)) {
+        throw new Error(`${label} repeats top-level key "${key}" on line ${index + 1}`);
+      }
+
+      result[key] = {};
+      activeSection = key;
+      continue;
+    }
+
+    const nestedMatch = line.match(/^  ([A-Za-z0-9_-]+):\s*(.+)$/);
+    if (nestedMatch) {
+      if (!activeSection) {
+        throw new Error(`${label} has nested content before any top-level section on line ${index + 1}`);
+      }
+
+      const [, key, rawValue] = nestedMatch;
+      if (Object.hasOwn(result[activeSection], key)) {
+        throw new Error(`${label} repeats key "${activeSection}.${key}" on line ${index + 1}`);
+      }
+
+      let value;
+      if (
+        (rawValue.startsWith("\"") && rawValue.endsWith("\"")) ||
+        (rawValue.startsWith("'") && rawValue.endsWith("'"))
+      ) {
+        value = rawValue.slice(1, -1);
+      } else if (rawValue === "true") {
+        value = true;
+      } else if (rawValue === "false") {
+        value = false;
+      } else {
+        value = rawValue;
+      }
+
+      result[activeSection][key] = value;
+      continue;
+    }
+
+    throw new Error(`${label} has unsupported YAML shape on line ${index + 1}`);
+  }
+
+  return result;
+}
+
 async function main(args) {
   const rootDir = parseRootArg(args);
   const failures = [];
@@ -138,6 +195,26 @@ async function main(args) {
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
 
   const packageJsonPath = path.join(rootDir, "package.json");
+  const openAiMetadataPath = path.join(
+    rootDir,
+    "resources",
+    "skills",
+    "ds-intent-analyzer",
+    "agents",
+    "openai.yaml"
+  );
+  const expectedOpenAiMetadata = {
+    interface: {
+      display_name: "Design System Intent Analyzer",
+      short_description: "Decision-first UI and design-system analysis, guidance, and careful comparison",
+      brand_color: "#2563EB",
+      default_prompt:
+        "Use the ds-intent-analyzer skill to analyze this UI or design-system problem, recommend what to stabilize first, or compare references carefully."
+    },
+    policy: {
+      allow_implicit_invocation: true
+    }
+  };
   try {
     const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
 
@@ -317,6 +394,57 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to validate SKILL.md frontmatter: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  try {
+    const openAiMetadataContent = await readFile(openAiMetadataPath, "utf8");
+    const openAiMetadata = parseSimpleNestedYaml(openAiMetadataContent, "agents/openai.yaml");
+
+    for (const topLevelKey of ["interface", "policy"]) {
+      if (!Object.hasOwn(openAiMetadata, topLevelKey)) {
+        failures.push(`agents/openai.yaml must contain top-level section "${topLevelKey}"`);
+      }
+    }
+
+    const actualInterfaceKeys = Object.keys(openAiMetadata.interface ?? {}).sort();
+    const expectedInterfaceKeys = Object.keys(expectedOpenAiMetadata.interface).sort();
+    if (actualInterfaceKeys.join("|") !== expectedInterfaceKeys.join("|")) {
+      failures.push(
+        `agents/openai.yaml interface keys must match the repo contract exactly: expected ${expectedInterfaceKeys.join(", ")}; found ${actualInterfaceKeys.join(", ")}`
+      );
+    }
+
+    const actualPolicyKeys = Object.keys(openAiMetadata.policy ?? {}).sort();
+    const expectedPolicyKeys = Object.keys(expectedOpenAiMetadata.policy).sort();
+    if (actualPolicyKeys.join("|") !== expectedPolicyKeys.join("|")) {
+      failures.push(
+        `agents/openai.yaml policy keys must match the repo contract exactly: expected ${expectedPolicyKeys.join(", ")}; found ${actualPolicyKeys.join(", ")}`
+      );
+    }
+
+    for (const [key, expectedValue] of Object.entries(expectedOpenAiMetadata.interface)) {
+      const actualValue = openAiMetadata.interface?.[key];
+      if (actualValue !== expectedValue) {
+        failures.push(
+          `agents/openai.yaml interface.${key} must equal ${JSON.stringify(expectedValue)} but found ${JSON.stringify(actualValue)}`
+        );
+      }
+    }
+
+    for (const [key, expectedValue] of Object.entries(expectedOpenAiMetadata.policy)) {
+      const actualValue = openAiMetadata.policy?.[key];
+      if (actualValue !== expectedValue) {
+        failures.push(
+          `agents/openai.yaml policy.${key} must equal ${JSON.stringify(expectedValue)} but found ${JSON.stringify(actualValue)}`
+        );
+      }
+    }
+
+    if (failures.length === 0 || !failures.some((entry) => entry.includes("agents/openai.yaml"))) {
+      checks.push("OK   openai.yaml metadata contract");
+    }
+  } catch (error) {
+    failures.push(`Unable to validate agents/openai.yaml: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   if (failures.length > 0) {
