@@ -371,9 +371,39 @@ Required for audits and recommended for formation work:
 - do not overbuild yet
 - borrow carefully
 
-### Confidence note
-Use E0 / E1 / E2 / E3.
-Separate observation from inference and missing evidence.
+### Confidence line and evidence note
+The confidence display is a user-facing contract, not loose prose.
+
+The first confidence line must:
+- be a single compact line
+- begin with `Confidence:`
+- include both the `E0 / E1 / E2 / E3` band and plain-language strength in the same line
+- include only a tiny qualifier when it materially sharpens the evidence boundary
+- end on that line rather than flowing into a second confidence sentence
+
+Preferred forms:
+- `Confidence: E0 - very low, prompt only`
+- `Confidence: E1 - low, one page only`
+- `Confidence: E2 - medium, still hybrid-sensitive`
+- `Confidence: E3 - high`
+
+Band guardrails:
+- `E0` for prompt-only, adjective-only, or very weak evidence
+- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, or thin summary reads
+- `E2` for medium evidence where the product signals are real but the answer is still bounded, comparative, or partly inferred
+- `E3` only when multiple aligned artifacts or materially stronger evidence remove most practical ambiguity
+- do not use `E3` for prompt-only, brief-only, URL-only, one-page, one-screen, or hybrid-sensitive comparison cases
+
+Supporting evidence notes may follow after the confidence line.
+They should clarify:
+- what is directly observed
+- what is inferred
+- what is still missing
+
+Do not:
+- output bare forms such as `medium` or `Medium.`
+- split confidence into multiple sentences when one compact inline line is possible
+- let supporting evidence notes replace the single `Confidence:` line
 
 ### Next move
 State the smallest useful next step.

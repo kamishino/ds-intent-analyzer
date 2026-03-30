@@ -625,3 +625,50 @@ It should stay:
 - Strongest pass signal: continues to frame Ant as a bounded borrowing source and not a product-shaping default
 - Strongest miss: confidence wording again drifts from the preferred short inline `Confidence:` format
 - Outcome: `pass`
+
+---
+
+## Targeted confidence-line validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-confidence-line-discipline`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after tightening confidence-line contract and template discipline; result `4 pass / 0 partial pass / 0 regressions`; preferred short inline `Confidence:` shape is now stable across the rerun subset
+
+### Targeted subset
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E0 - very low, brief only`
+- Strongest pass signal: restores the preferred short inline confidence shape while keeping Ant as a bounded borrowing source instead of a default lead
+- Strongest miss: confidence is slightly conservative relative to the medium-evidence brief shape
+- Outcome: `pass`
+
+## RF-19 — Toolkit Speed Temptation vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: confidence stays compact and standardized while the answer still keeps toolkit choice subordinate to product-pattern stabilization
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: URL-only reference read now keeps the preferred inline confidence format without losing bounded overclaim discipline
+- Strongest miss: the source page remains JS-heavy, so the audit still leans on indexed public context rather than a full direct page body
+- Outcome: `pass`
+
+## AU-17 — Specialized Workbench with Analytic Claims
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, artifact summary only`
+- Strongest pass signal: trust-of-claims audit remains practical and workbench-aware while the confidence line stays compact and user-facing
+- Strongest miss: none noted
+- Outcome: `pass`

@@ -38,6 +38,36 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
 If the user explicitly asks for multiple agents or sub-agents, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
+Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
+
+## Confidence line discipline
+
+Use one preferred user-facing confidence shape across all modes:
+- `Confidence: E0 - very low, prompt only`
+- `Confidence: E1 - low, one page only`
+- `Confidence: E2 - medium, still hybrid-sensitive`
+- `Confidence: E3 - high`
+
+Rules:
+- the confidence line itself stays to one line
+- it must begin with `Confidence:`
+- it must include both the `E0-E3` band and the plain-language strength
+- keep qualifiers tiny and inline
+- end the confidence line there; do not append a second confidence sentence on the same line or in the same paragraph
+- move supporting evidence notes to the lines below, not into a second confidence sentence
+
+Band guardrails:
+- `E0` for prompt-only, adjective-only, or extremely thin evidence
+- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, or thin-summary reads
+- `E2` for medium evidence with real product signals but still-bounded inference
+- `E3` only when several aligned artifacts or materially stronger evidence remove most practical ambiguity
+- do not use `E3` for brief-only comparisons, URL-only reads, one-screen audits, or hybrid-sensitive comparisons
+
+Anti-drift notes:
+- do not output bare forms such as `medium` or `Medium.`
+- for URL-only or one-page cases, keep the evidence boundary inline, for example `Confidence: E1 - low, one page only`
+- for hybrid-sensitive or comparison cases, keep the unresolved note inline, for example `Confidence: E2 - medium, still hybrid-sensitive`
+- if more nuance is useful, explain it after the confidence line instead of replacing the confidence line with a split summary
 
 ---
 
@@ -150,11 +180,11 @@ If frontend execution is clearly next, use the `Frontend handoff` add-on instead
 - What should wait:
 
 ## Confidence note
-- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - What is directly observed:
 - What is inferred:
 - What is still missing:
-- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
 
 ## Memory capture
@@ -367,13 +397,13 @@ If frontend execution is clearly next, use the `Frontend handoff` add-on instead
 ### Priority 3
 
 ## Confidence note
-- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - strongest evidence:
 - weakest evidence:
 - what would raise confidence:
-- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
-- if the comparison is still bounded, say exactly which single tie-break artifact would raise confidence fastest
+- if the comparison is still bounded, say exactly which single tie-break artifact would raise confidence fastest after the confidence line, not as a second confidence sentence
 
 ## Final recommendation
 - what to stabilize first
@@ -510,10 +540,10 @@ What this recommendation is trying to support.
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
 ## Confidence note
-- Confidence: `E0 - very low` / `E1 - low` / `E2 - medium` / `E3 - high`
+- Confidence line: `Confidence: E0 - very low, prompt only` / `Confidence: E1 - low, one page only` / `Confidence: E2 - medium, still hybrid-sensitive` / `Confidence: E3 - high`
 - key unknowns:
 - what to test next:
-- if useful, add one tiny qualifier such as `one page only`, `partial screen`, or `still hybrid-sensitive`
+- keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the recommendation is reference-led and still hybrid-sensitive, say what remains provisional and what evidence would resolve it
 
 ## Memory capture

@@ -152,18 +152,24 @@ Regression signals:
 - treats evaluative claims or confidence labels on a product surface as self-proving instead of checking whether their provenance is visible enough
 
 ### 5. Confidence honesty
-The confidence level matches the evidence quality.
+The confidence level and confidence-line format match the evidence quality.
 
 Pass signals:
 - lowers certainty in low-evidence or hybrid-sensitive cases
 - names what is missing
 - uses confidence wording that an end-user can understand at a glance without a legend
+- uses one short inline `Confidence:` line with plain-language strength and only a tiny qualifier when useful
+- keeps `E3 / high` rare and reserved for materially strong multi-artifact evidence rather than medium brief-only or one-page cases
 
 Regression signals:
 - sounds certain when the evidence is partial
 - pretends an unknown reference is well understood
 - uses raw `E0-E3` shorthand with no plain-language meaning in user-facing output
 - mirrors the product's own confidence or authority tone without separating visible computation from heuristic or unsupported claims
+
+Format-discipline note:
+- if the confidence level is evidence-matched but the wording drifts into a readable non-standard form such as `medium` or `Medium.`, score this category as a partial pass rather than a regression
+- reserve regressions for confidence that is materially overstated, misleading, or not user-readable
 
 ### 6. Practical Smart Suggestions
 The answer gives useful next moves, not vague commentary.
