@@ -173,6 +173,30 @@ Implications:
 - layout rhythm strongly affects usability
 - brand expression may matter more
 
+### H. Workbench / specialist-tool systems
+Signals:
+- workspace
+- tuner
+- preview
+- analytics
+- architect
+- studio
+- library
+- export
+- refine
+- inspect
+
+Implications:
+- workflow stage clarity matters
+- the active object should persist clearly across surfaces
+- primary actions should stay local to the current object or next step
+- navigation layers should not multiply without strong task value
+- evaluate / refine loops should feel credible, not theatrical
+
+Trust-of-claims rule:
+- if the UI presents analytics, confidence, critique, recommendation labels, or accessibility judgments, inspect whether method or provenance is visible enough for that authority tone
+- if not, treat the gap as a trust issue before treating it as a styling problem
+
 ---
 
 ## Pattern detection by product type
@@ -210,6 +234,14 @@ Likely gravity:
 - state consistency
 - theming logic
 - pattern composability
+
+### Specialist workbench / expert tool
+Likely gravity:
+- persistent active object
+- inspect / refine / compare loops
+- action locality
+- stage transitions
+- trust-bearing evaluation output
 
 ### Brand / consumer product
 Likely gravity:
@@ -269,6 +301,14 @@ Prioritize:
 - restrained motion
 - semantic color discipline
 - predictable interaction logic
+
+### If workbench credibility dominates
+Prioritize:
+- workflow stage clarity
+- active-object persistence
+- action locality
+- trust framing for evaluative claims
+- reduction of navigation-layer burden
 
 ### If brand expression dominates
 Prioritize:

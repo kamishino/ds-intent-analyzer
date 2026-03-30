@@ -158,6 +158,13 @@ Low-evidence fallback behavior:
 - keep the answer explicitly screen-level unless additional context is provided
 - do not widen a partial audit into broad formation guidance unless it is clearly marked tentative
 
+### Tool or workbench surfaces with analytic claims
+- audit workflow clarity and visual quality separately from claim credibility
+- distinguish what the UI clearly computes or displays from what the product appears to infer heuristically
+- treat scores, confidence labels, accessibility labels, best-fit judgments, and critique text as trust-bearing product claims, not only decorative copy
+- if methodological provenance is not visible enough for the authority tone, call that out as a trust or credibility issue
+- treat visible breakage such as missing assets, broken icons, or obvious runtime errors as trust leaks rather than only polish defects
+
 ### Unknown or niche references
 - say the precedent is unresolved or weakly grounded
 - explain what the user appears attracted to instead of pretending confident knowledge

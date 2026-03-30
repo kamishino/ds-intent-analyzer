@@ -149,6 +149,7 @@ Regression signals:
 - ignores contradictions in the prompt bundle
 - starts with a style quiz or library ranking before reading available evidence
 - uses sidecars as an excuse to hide evidence ownership or merge behavior
+- treats evaluative claims or confidence labels on a product surface as self-proving instead of checking whether their provenance is visible enough
 
 ### 5. Confidence honesty
 The confidence level matches the evidence quality.
@@ -162,6 +163,7 @@ Regression signals:
 - sounds certain when the evidence is partial
 - pretends an unknown reference is well understood
 - uses raw `E0-E3` shorthand with no plain-language meaning in user-facing output
+- mirrors the product's own confidence or authority tone without separating visible computation from heuristic or unsupported claims
 
 ### 6. Practical Smart Suggestions
 The answer gives useful next moves, not vague commentary.
@@ -205,6 +207,7 @@ Regression signals:
 - buries the recommendation under directory-by-directory commentary
 - in paired-skill workflows, leaves frontend execution to infer direction from loose prose instead of a bounded handoff or explicit blocker
 - in multi-agent workflows, lets several agents co-lead, silently merge, or drift into parallel build work before direction is locked
+- misses visible trust leaks or authority-framing issues when those are the sharper product risk than additional visual commentary
 
 ### 8. Compactness / non-bloat
 The answer stays concise enough for Codex runtime use.

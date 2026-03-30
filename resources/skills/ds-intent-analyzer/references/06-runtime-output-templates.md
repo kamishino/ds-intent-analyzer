@@ -226,6 +226,20 @@ If frontend execution is clearly next, use the `Frontend handoff` add-on instead
 - scope of review:
 - source quality:
 
+## Tool / product framing
+- if this is a workbench or specialist tool, say what makes it read like a real tool rather than a styled demo
+- name whether the active object, workflow staging, and action locality are helping or hurting the product read
+
+## Claim framing
+- if the surface presents scores, confidence, accessibility labels, recommendations, or critique text, separate clearly:
+  - what appears directly computed or displayed
+  - what appears heuristic or inferred
+  - what still lacks visible provenance for the authority tone
+
+## Trust leaks
+- call out visible broken assets, runtime errors, or authority-sounding product claims with weak visible backing
+- allow the fix-first decision to prioritize trust/provenance clarity before more visual or structural tuning when that is the sharper product risk
+
 ## Evidence layers
 ### Declared
 - what the system says it values

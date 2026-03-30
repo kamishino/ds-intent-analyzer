@@ -679,3 +679,48 @@ What should we change first before we touch tokens or layout templates?
 - recommending token cleanup first
 - jumping to layout-template redesign first
 - treating grouping and layout as equal first moves
+
+---
+
+## AU-17 — Specialized Workbench with Analytic Claims
+
+### Prompt bundle
+
+```text
+Artifact summary:
+- color-tool workbench with a persistent active color, staged navigation, and multiple specialist surfaces like tuner, analytics, preview, and scale tools
+- the product reads as a real workflow tool rather than a landing page
+- an analytics surface presents labels like accessibility, best use, confidence, and critique text about the selected color
+- the UI feels coherent and dense-but-readable, but one visible broken asset and the strong authority tone of the analytics output raise trust questions
+
+User ask:
+This tool feels impressively productized, but I am not sure I trust every judgment it is making. What does the UI clearly get right, and what should we fix first?
+```
+
+### Input type and evidence strength
+- Input type: bounded multi-surface artifact summary + trust-sensitive audit ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light formation reasoning only if it sharpens the trust or workflow recommendation
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- recognizes the product as a specialized tool or workbench rather than a generic dashboard
+- credits workflow staging, active-object persistence, and action locality where the surface supports them
+- separates visual/product quality from claim credibility on the analytics layer
+- flags broken assets or authority-sounding judgments with weak visible provenance as trust leaks
+- keeps the read bounded and does not pretend full methodological rigor or full-system maturity
+- names one fix-first decision that can prioritize trust/provenance clarity over additional polish
+
+### Must-not-do failures
+- treating the product as only a pretty dashboard or style exercise
+- accepting analytics labels, confidence, or critique text as self-validating
+- overclaiming the methodology behind the product's judgments from bounded surfaces
+- turning the answer into a giant component inventory or theory dump

@@ -492,3 +492,42 @@ It should stay:
 - installed-runtime-first
 - answer-shape-oriented
 - clearly separate from rubric-heavy evaluation cycles
+
+---
+
+## Targeted tool/workbench credibility validation
+
+### Run header
+
+- Run label: `FT-2026-03-30-tool-workbench-claims`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: targeted installed-runtime mini-cycle after adding workbench/tool and trust-of-claims heuristics; result `3 pass / 0 partial pass / 0 regressions`
+
+### Targeted subset
+
+## AU-17 — Specialized Workbench with Analytic Claims
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `E2 - medium, artifact summary only`
+- Strongest pass signal: reads the product as a real workbench and separates workflow/tool quality from claim credibility on the analytics surface
+- Strongest miss: methodology critique stays necessarily bounded because the audit only sees product surfaces, not underlying logic
+- Outcome: `pass`
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `E1 - low, screen-level summary only`
+- Strongest pass signal: screen-level audit discipline remains intact after the workbench/tool hardening
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `low-medium overall; medium on structural signals, low on visual or maturity claims`
+- Strongest pass signal: still avoids overclaiming full-system maturity from bounded reference evidence
+- Strongest miss: confidence wording drifts into a slightly longer split note when the source page is partially opaque, instead of the preferred short inline confidence format
+- Outcome: `pass`

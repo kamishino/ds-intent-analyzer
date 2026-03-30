@@ -161,6 +161,40 @@ Foundation tendencies:
 Main caution:
 A dashboard alone does not prove workflow-first.
 
+### Workbench-tool surfaces
+Common signals:
+- workspace
+- tuner
+- analytics
+- preview
+- library
+- export
+- refine
+- studio
+- architect
+- inspector
+- workbench
+
+Likely read:
+- workflow-first tool with a persistent active object
+- staged progression across multiple surfaces
+- evaluate / refine loops that try to feel product-grade rather than purely decorative
+
+Likely pattern needs:
+- active-object persistence across views
+- clear stage progression
+- local action grouping near the current work object
+- credible evaluation surfaces
+- low-friction movement between tune, inspect, and apply steps
+
+Foundation tendencies:
+- dense but readable workspace structure
+- strong hierarchy around the current object and next action
+- restrained visual personality in service of tool clarity
+
+Main caution:
+Polished tool framing does not prove methodological rigor, trustworthy analytics, or real product maturity by itself.
+
 ### Accessibility-first
 Common signals:
 - inclusive
