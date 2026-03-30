@@ -3,6 +3,7 @@
 ## Purpose
 
 This template provides reusable output formats for the **Design System Intent Analyzer**.
+`SKILL.md` should point here for concrete answer structure and phrasing instead of duplicating it.
 
 Decision support comes first.
 Audit detail is supporting evidence, not the product identity.

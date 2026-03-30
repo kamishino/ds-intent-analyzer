@@ -99,6 +99,16 @@ Why:
 - lightweight should win unless transparency requires one more explicit artifact
 - Codex/GPT preference should guide presentation and defaults, but not justify hidden or bloated behavior
 
+### Packaging exception
+
+Strict `skill-creator` guidance prefers a shipped skill tree without extra docs such as `README.md`.
+This repo keeps `resources/skills/ds-intent-analyzer/README.md` intentionally because the skill is also packaged for client-repo install flows.
+
+Operationally:
+- treat the shipped README as distribution metadata, not runtime guidance
+- keep runtime behavior in `SKILL.md` plus `references/`
+- do not use the README as a second instruction surface for agent behavior
+
 ---
 
 ## Principle 1 — UI-language input first

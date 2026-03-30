@@ -1,6 +1,9 @@
 # ds-intent-analyzer
 
-This package is a Codex-ready skill scaffold for intent-first design-system analysis and UI audit work.
+This package is a Codex-ready skill scaffold for intent-first design-system analysis, recommendation, and UI audit work.
+
+This README is package-facing distribution metadata for install and packaging clarity.
+It is not the runtime instruction source for the skill itself; `SKILL.md` and `references/` own that behavior.
 
 ## Canonical naming
 - Machine name: `ds-intent-analyzer`

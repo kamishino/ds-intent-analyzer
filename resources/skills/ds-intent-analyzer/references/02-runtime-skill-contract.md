@@ -4,6 +4,7 @@
 
 This document is the canonical runtime support contract for the **Design System Intent Analyzer** as used by Codex/GPT first.
 Other agents are secondary compatibility targets.
+`SKILL.md` should stay high-level; detailed runtime sequencing and precedence rules belong here.
 
 It exists to clarify:
 - how the skill should route requests
