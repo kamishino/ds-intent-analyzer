@@ -322,6 +322,7 @@ Use 3–5 real product briefs to test whether the framework helps formation deci
 Current priority:
 - already established as a useful validation surface
 - should now feed the standing maintainer gate instead of remaining a one-off pass
+- should be complemented by a contributor-side client-repo dogfood pass so usefulness is proven outside the source repo too
 
 ---
 
@@ -354,7 +355,8 @@ Optional keepers only if space allows:
 ## 13. Practical Next Move
 
 The most useful next action is:
-- rerun the standing maintainer gate on the installed runtime
-- keep builder-facing usefulness, thin-evidence discipline, and bounded frontend handoff quality in the default regression surface
-- only open another focused runtime patch when that gate exposes a repeated miss
-- keep runtime expansion off by default unless the standing maintainer gate exposes a clear repeated miss
+- run the contributor-side client-repo dogfood pass in clean temp repos
+- use one workflow-heavy internal product brief and one healthcare-booking mixed audit with a named donor reference
+- keep the standing maintainer gate as the default recurring internal regression surface
+- only open another focused runtime patch if the external dogfood pass exposes a repeated miss that the standing gate does not catch
+- keep runtime expansion off by default unless external client-repo proof shows a clear repeated failure pattern

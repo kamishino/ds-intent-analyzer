@@ -1025,3 +1025,49 @@ It should stay:
 - Strongest pass signal: thin-evidence guard stays page-level and bounded even after adding the mixed audit/reference donor case
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted client-repo dogfood validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-client-repo-dogfood`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` inside clean temp client repos
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Install sanity:
+  - `npm install --save-dev <local ds-intent-analyzer repo path>` succeeded in both clean temp repos
+  - `npx ds-intent-analyzer install` succeeded in both clean temp repos
+  - `.agents/skills/` contained only `ds-intent-analyzer` in both temp repos
+  - JSON traces showed Codex reading temp-repo `.agents/skills/ds-intent-analyzer/SKILL.md`, so the installed runtime was the one actually used
+- Notes: external-proof pass in clean temp repos after the standing maintainer gate stabilized; result `3 pass / 0 partial pass / 0 regressions`; no source-repo-local citations or maintainer-context leakage appeared in the user-facing answers
+
+### Targeted subset
+
+## CD-01 — Workflow-Heavy Internal Product Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted
+- Strongest pass signal: gives real builder-facing stabilization order around state semantics, workspace layout grammar, dense reading rules, and one canonical high-risk review flow rather than drifting into enterprise kit shopping
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 — Healthcare Booking Mixed Audit With Reference Donor
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted in the base case
+- Strongest pass signal: audits the current Bootstrap-like healthcare booking mismatch first, then uses Sprout Seeds as a bounded donor for hierarchy, spacing, forms, and semantic green roles instead of clone advice
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 + repo-audit follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: inherited bounded audit read from the base case
+- Observed handoff behavior: emits a bounded `Audit handoff` with an explicit audit lead, workflow-shell-first audit goal, one first inspection slice, and a stop condition that asks for the real frontend path before token or component changes
+- Strongest pass signal: the follow-up stays agent-ready and structural, telling the next agent to audit the search-results to provider-card to slot-selection to summary to confirmation path before repainting the system
+- Strongest miss: none noted
+- Outcome: `pass`
