@@ -17,6 +17,12 @@ This is not:
 - a runtime database
 - automatic background learning
 - a replacement for fresh evidence
+- a current-state audit evidence packet
+- a next-step repo-audit handoff artifact
+
+Use `docs/design-system/audit-evidence.md` for concrete current-state evidence that should help the next audit.
+Use `docs/design-system/audit-packet.md` for bounded follow-through instructions to another agent after a decision is made.
+Use `project-memory.md` for durable truths and decisions worth reusing across sessions.
 
 ---
 
@@ -69,11 +75,13 @@ If something is useful but still provisional:
 
 If a project memory pack exists:
 1. read current artifact or codebase evidence first
-2. read the project memory pack next
-3. fall back to generic references after that
+2. read `docs/design-system/audit-evidence.md` next when present
+3. read the project memory pack after that
+4. fall back to generic references after that
 
 Why:
 - current evidence should stay strongest
+- current-state evidence packets should stay closer to the present UI than durable memory
 - project memory should help preserve continuity
 - generic references should not outrank product-specific truths
 

@@ -131,6 +131,7 @@ Only add deeper sections when they materially sharpen the decision.
 - if another agent should inspect a repo or application next, append `Audit handoff`
 - if frontend build is clearly next, use `Frontend handoff` instead
 - do not append both add-ons unless the answer explicitly separates audit-first from later build work
+- if the user clearly wants a reusable repo artifact, offer to create or update `docs/design-system/audit-packet.md`
 
 ---
 
@@ -259,6 +260,7 @@ Only add deeper sections when they materially sharpen the decision.
 - preferred voice: `I can capture this into the project memory pack so we do not re-argue these decisions next time.`
 - preferred downstream path: `docs/design-system/project-memory.md`
 - if the result is still too thin or unresolved, do not offer capture
+- if the current-state evidence is spread across several summaries, URLs, or screenshots and the next audit step would benefit from a reusable evidence packet, offer `docs/design-system/audit-evidence.md` instead of stuffing that material into project memory
 
 ---
 
@@ -699,6 +701,7 @@ Do not use this block when:
 
 This add-on is for audit follow-through.
 It should not become a disguised build brief.
+If the user wants this handoff persisted for later repo work, offer to create or update `docs/design-system/audit-packet.md` after the answer. Do not write it silently.
 
 ## Audit handoff
 ### Lead next agent
@@ -718,6 +721,9 @@ It should not become a disguised build brief.
 
 ### Recommended first audit slice
 - one first repo surface or one first foundation layer to inspect
+
+### Stop condition
+- the concrete point where the audit agent should stop and hand back findings instead of expanding scope or drifting into build work
 
 ### Inputs still needed
 - only the missing repo or product details that would materially sharpen the audit

@@ -88,6 +88,7 @@ They are not benchmark runs and they do not require exact wording matches.
 Mixed audit/reference note:
 - when a prompt includes both current UI evidence and a named reference donor, the current UI still leads the mode unless the user is explicitly asking only for comparison
 - in those mixed cases, the reference should stay secondary to the audit rather than replacing it
+- if `docs/design-system/audit-evidence.md` is part of the prompt bundle, treat it as current-state project context that outranks `docs/design-system/project-memory.md` but not fresher direct artifacts
 
 ---
 
@@ -122,7 +123,8 @@ They are not full implementation benchmarks.
    - stays `Comparative Reference Read` as the primary mode
    - leads with recommendation before deeper theory or taxonomy
    - stays compact when a shorter decision shell is sufficient
-   - emits a bounded `Audit handoff`
+   - emits a bounded literal `Audit handoff`
+   - offers `docs/design-system/audit-packet.md` only when reusable repo follow-through is clearly wanted
    - keeps `Frontend handoff` separate instead of blending repo inspection with build work
 5. Record one compact readout.
 

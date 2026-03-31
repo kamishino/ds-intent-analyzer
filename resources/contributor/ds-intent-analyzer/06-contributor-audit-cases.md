@@ -799,3 +799,126 @@ Expected behavior:
 - emits a bounded `Audit handoff`
 - keeps `Frontend handoff` out of scope
 - names one first repo inspection slice instead of a broad component sweep
+
+---
+
+## AU-19 — Healthcare Booking Audit Backed by `audit-evidence.md`
+
+### Prompt bundle
+
+```text
+Current-state audit evidence (`docs/design-system/audit-evidence.md`):
+
+# Audit Evidence
+
+## Product note
+- healthcare booking app for finding providers, choosing time slots, and confirming appointments
+- mobile-first acquisition traffic, but desktop is still used for comparison and rescheduling
+
+## Artifact inventory
+- search-results screen summary
+- provider-card summary
+- booking-stepper summary
+- confirmation summary
+
+## Surface summaries
+- search results mix dense filters, uneven card padding, and weak provider credibility cues
+- provider cards compress specialty, ratings, insurance, and next availability without a clear hierarchy
+- booking stepper uses Bootstrap-like tabs and generic alerts instead of calm progress framing
+- confirmation relies on generic success states and does not reinforce trust or next-step clarity
+
+## Known workflow pressures
+- users compare providers quickly and can abandon if confidence drops
+- booking flow must reduce hesitation around insurance, availability, and final confirmation
+
+## Known trust/risk pressures
+- healthcare booking needs calm credibility and visible reassurance at selection and confirmation moments
+- schedule mistakes or missing context erode trust quickly
+
+## Known drift and hotspots
+- green is used inconsistently across CTA, success, and informational states
+- spacing rhythm changes across results, provider cards, and booking panels
+- trust cues appear late instead of leading the booking path
+
+## Open questions
+- whether provider cards or booking stepper should stabilize first
+
+## Source pointers
+- search-results route summary
+- provider-card notes
+- booking-stepper notes
+
+User ask:
+Audit this current direction and tell me what to stabilize first.
+```
+
+### Input type and evidence strength
+- Input type: `audit-evidence.md` current-state packet + audit ask
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light formation guidance tied directly to the evidence packet
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats `audit-evidence.md` as stronger than a thin brief and weaker than fresher direct artifacts
+- audits current healthcare booking friction first instead of drifting into donor-library shopping
+- uses the evidence packet to give a concrete stabilization order
+- can rise above `prompt only` or generic thin-summary behavior
+- keeps confidence bounded and explicit
+
+### Must-not-do failures
+- ignoring the evidence packet and acting as if the prompt were still a thin brief
+- treating the packet as durable truth stronger than fresh artifacts that may arrive later
+- overclaiming full-system certainty from the packet alone
+
+---
+
+## AU-20 — Fresh Audit Evidence Conflicts With Project Memory
+
+### Prompt bundle
+
+```text
+Stored project memory (`docs/design-system/project-memory.md`):
+- current canon says the booking stepper is already the strongest and most trustworthy surface
+- active decision says provider cards are stable enough for now
+
+Fresh current-state audit evidence:
+- provider cards now carry the heaviest trust load but still compress ratings, insurance, and next availability into a flat Bootstrap-like block
+- booking stepper was recently improved and now reads clearly enough for the current release
+- spacing and state cues drift most visibly on provider selection
+
+User ask:
+Use this latest evidence to tell me what to stabilize first and whether our stored memory still holds up.
+```
+
+### Input type and evidence strength
+- Input type: conflicting project memory + fresh audit evidence
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- memory-drift clarification tied directly to the audit recommendation
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- prefers the fresh audit evidence over stored project memory
+- calls out the drift explicitly instead of silently forcing the old memory
+- shifts the stabilization order toward provider-card trust and comparison clarity
+- keeps project memory as continuity help, not stronger truth than current evidence
+
+### Must-not-do failures
+- treating stored memory as if it overrides fresher evidence
+- ignoring the conflict and pretending both packets still align
+- turning the answer into memory-management theory instead of fix-first audit guidance

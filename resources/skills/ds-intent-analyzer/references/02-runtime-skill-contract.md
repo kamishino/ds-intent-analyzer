@@ -136,8 +136,18 @@ Use this precedence order:
 3. user wording
 4. style adjectives or taste language
 
-Project memory packs belong inside imported project context.
-If a `docs/design-system/project-memory.md` file is present, use it after current artifact/context read and before falling back to generic references.
+Imported project context may include:
+- `docs/design-system/audit-evidence.md`
+- `docs/design-system/project-memory.md`
+
+`audit-evidence.md` is current-state evidence, not durable memory.
+If a `docs/design-system/audit-evidence.md` file is present:
+- use it after fresh screenshots, URLs, repo surfaces, or current prompt artifacts
+- prefer it over older memory notes when it contains concrete current-state summaries
+- treat it as a bounded audit packet, not durable truth
+
+Project memory packs belong after fresh evidence and current-state audit evidence.
+If a `docs/design-system/project-memory.md` file is present, use it after current artifact/context read and `audit-evidence.md`, then before falling back to generic references.
 If fresh artifacts conflict with stored memory:
 - prefer fresh evidence
 - call out the drift or staleness explicitly
@@ -147,6 +157,7 @@ If fresh artifacts conflict with stored memory:
 User-facing reasoning may be informed by:
 - prompt evidence and uploaded artifacts
 - current product or code context in the target repo
+- accepted current-state audit artifacts such as `docs/design-system/audit-evidence.md`
 - accepted project-memory artifacts such as `docs/design-system/project-memory.md`
 - shipped runtime references
 - public sources when stronger external confirmation is justified
@@ -530,7 +541,18 @@ The handoff should state:
 - `Borrowing targets to inspect`
 - `Do not copy blindly`
 - `Recommended first audit slice`
+- `Stop condition`
 - `Inputs still needed`
+
+Treat the inline block as user-facing follow-through guidance.
+Treat the persisted repo artifact as an `Audit packet` at:
+- `docs/design-system/audit-packet.md`
+
+If the user clearly wants a reusable repo artifact:
+- offer to create or update `docs/design-system/audit-packet.md`
+- keep the same locked field order as the inline `Audit handoff`
+- do not write it silently
+- create or update it only after explicit user approval or explicit workflow acceptance
 
 ### Frontend handoff
 Conditional.
@@ -609,15 +631,29 @@ Retrieve selectively by tier:
 - `09-runtime-system-architecture.md`
 - `10-runtime-project-memory-pack.md`
 - `11-runtime-multi-agent-coordination.md`
+- `12-runtime-audit-artifacts.md`
 
 Contributor docs are not part of normal runtime retrieval.
 Shipped runtime references may guide reasoning, but in normal product guidance they should not appear as repo-local file-path citations or maintainer-style proof language.
 
+### Audit evidence artifact
+If the target repo already has `docs/design-system/audit-evidence.md` or an obvious equivalent:
+- retrieve it after fresh current evidence and before `project-memory.md`
+- use it to lift audits out of `brief only` when it contains concrete current-state evidence
+- do not let it override fresher screenshots, URLs, repo surfaces, or current prompt artifacts
+- if it conflicts with fresher evidence, call out the drift and prefer the fresher evidence
+
 ### Project memory artifact
 If the target repo already has `docs/design-system/project-memory.md` or an obvious equivalent:
-- retrieve it after current evidence and before generic reference lookup
+- retrieve it after current evidence and `audit-evidence.md`, then before generic reference lookup
 - prefer active truths and decisions over stale summaries
 - if the artifact conflicts with current evidence, treat that as drift to be resolved, not as a reason to force the old answer
+
+### Audit packet artifact
+If the target repo already has `docs/design-system/audit-packet.md`:
+- do not treat it as default retrieval material for a fresh audit
+- retrieve it only when the user explicitly asks to resume, review, or continue the packet
+- use it as a prior handoff artifact, not as stronger truth than fresh evidence or current-state audit evidence
 
 ---
 
@@ -657,6 +693,24 @@ When a capture is justified:
 - store unresolved items as open questions or provisional notes, not settled truth
 - offer the capture as an explicit action for the user, not as silent mutation
 - create or update the pack only after user approval or explicit workflow acceptance
+
+## Audit evidence write gate
+
+Only offer `audit-evidence.md` when all of these are true:
+- the workflow has several current-state observations, summaries, or URLs worth preserving for the next audit step
+- the evidence is still about present UI or repo reality rather than durable canon
+- capturing it would materially reduce recap work in the next audit session
+
+Do not offer or write `audit-evidence.md` when:
+- the evidence is still too thin or one-page only
+- the user only needs a one-off answer with no repo follow-through
+- the content is really stable project doctrine that belongs in `project-memory.md`
+
+When an evidence packet is justified:
+- prefer `docs/design-system/audit-evidence.md`
+- keep it factual, current-state, and source-pointed
+- offer the packet as an explicit action for the user, not as silent mutation
+- create or update it only after user approval or explicit workflow acceptance
 
 ---
 

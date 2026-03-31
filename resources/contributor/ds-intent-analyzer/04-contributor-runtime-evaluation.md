@@ -146,6 +146,7 @@ Pass signals:
 - references the strongest evidence first
 - separates observation from inference
 - avoids asking questions that the visible evidence or product context already answers
+- treats `docs/design-system/audit-evidence.md` as current-state context that should outrank `docs/design-system/project-memory.md`
 - if sidecars are used, keeps them bounded to evidence read, current UI/codebase scan, or reference lookup
 - uses maintainer-only repo context, if any, only as hidden orientation rather than user-facing proof
 
@@ -194,6 +195,7 @@ Pass signals:
 - avoids offering project-memory capture when the evidence is too thin or the result is still unresolved
 - when multiple agents are explicitly requested, emits a bounded coordination packet that says who leads, what sidecars may do, and what they must not decide or invent
 - when a reference-led prompt clearly asks how to apply the direction to a real repo or app, emits a bounded `Audit handoff` instead of leaving the inspection step implied
+- if a reusable repo artifact is clearly wanted, offers to create or update `docs/design-system/audit-packet.md` or `docs/design-system/audit-evidence.md` explicitly instead of writing silently
 
 Regression signals:
 - offers generic advice
@@ -211,6 +213,7 @@ For direction-seeking prompts, practical guidance may also mean:
 - avoiding single-winner prestige answers
 - when frontend execution is clearly next, emitting a structured handoff that is explicit about what is locked, what is blocked, and what must not be invented
 - when repo or app inspection is clearly next, emitting a structured `Audit handoff` that names one first inspection slice and what not to copy blindly
+- if the handoff is structurally correct but omits the literal `Audit handoff` heading, score it as a partial-pass style miss rather than silent success
 - when multiple agents are explicitly requested, keeping sidecars analysis-only and build work waiting until synthesis is stable
 
 ### 7. Decision clarity over audit verbosity

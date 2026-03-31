@@ -158,6 +158,7 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - Rank references by product fit, not prestige or popularity.
 - If the workflow produces stable reusable decisions, memory capture should be explicit and opt-in, not hidden.
 - If frontend execution is the next real job, hand off explicitly instead of letting build work infer direction from loose prose.
+- If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff` and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
 - If multiple agents or sub-agents are explicitly requested, use one lead agent and bounded analysis sidecars only.
 
 ## Runtime ownership
@@ -176,8 +177,13 @@ Detailed runtime behavior lives in the shipped references:
   - concrete section order
   - confidence wording
   - memory-capture phrasing
+  - `Audit handoff`
   - `Frontend handoff`
   - `Multi-agent coordination`
+- `references/12-runtime-audit-artifacts.md`
+  - `audit-packet.md`
+  - `audit-evidence.md`
+  - retrieval and write gates for audit artifacts
 - `references/07-runtime-reference-lookup.md`
   - named-system borrowing guidance
 - `references/08-runtime-archetype-lessons.md`
@@ -223,6 +229,7 @@ Retrieve selectively by layer:
   - `references/09-runtime-system-architecture.md`
   - `references/10-runtime-project-memory-pack.md`
   - `references/11-runtime-multi-agent-coordination.md`
+  - `references/12-runtime-audit-artifacts.md`
 
 Use heavier retrieval only when:
 - evidence is weak or contradictory

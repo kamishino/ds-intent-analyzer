@@ -23,7 +23,9 @@ Use these three channels unless a slice clearly needs a different distribution s
 1. Local path install
    - `npm install --save-dev <path-to-ds-intent-analyzer-repo>`
 2. Local git-source install
-   - `npm install --save-dev git+file:///absolute/path/to/temp-git-snapshot`
+   - create a committed temp git snapshot
+   - create or move a semver tag such as `v0.1.0`
+   - `npm install --save-dev git+file:///absolute/path/to/temp-git-snapshot#v0.1.0`
 3. Packed tarball install
    - `npm pack --pack-destination <temp-pack-dir>`
    - `npm install --save-dev <temp-pack-dir>/ds-intent-analyzer-<version>.tgz`
@@ -99,6 +101,7 @@ Install sanity should state:
 - installed runtime path existed
 - no unexpected extra installed skills appeared
 - JSON traces or equivalent logs showed the installed runtime path being read
+- for the git-source channel, the tagged snapshot ref used in the install
 
 ---
 

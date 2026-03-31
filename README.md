@@ -18,7 +18,7 @@ npm run validate
 
 Recommended downstream flow from inside a client repo:
 
-1. Add the package from a local path or git source.
+1. Add the package from a local path or a tag-pinned git ref.
 
 Local path example:
 
@@ -26,10 +26,14 @@ Local path example:
 npm install --save-dev ../ds-intent-analyzer
 ```
 
-Git source example:
+Recommended team-sharing git examples:
 
 ```bash
-npm install --save-dev git+ssh://git@github.com/your-org/ds-intent-analyzer.git
+npm install --save-dev git+ssh://git@github.com/your-org/ds-intent-analyzer.git#v0.1.0
+```
+
+```bash
+npm install --save-dev git+https://github.com/your-org/ds-intent-analyzer.git#v0.1.0
 ```
 
 2. From the client repo, install the skill into the current repo:
@@ -62,6 +66,12 @@ only when they are missing.
 npx ds-intent-analyzer sync
 ```
 
+To move a client repo to a newer shared snapshot:
+
+1. update the dependency to a newer git tag such as `#v0.2.0`
+2. run `npm install`
+3. rerun `npx ds-intent-analyzer install` or `npx ds-intent-analyzer sync`
+
 The distributed package is intentionally lean.
 It ships only the runtime/install surface needed downstream:
 - `bin/`
@@ -70,6 +80,14 @@ It ships only the runtime/install surface needed downstream:
 - root package docs and license
 
 It does **not** ship maintainer-only contributor docs, `.local/`, or `AGENTS.md`.
+
+Optional downstream runtime artifacts:
+- `docs/design-system/audit-packet.md`
+  - reusable repo-audit handoff for another agent
+- `docs/design-system/audit-evidence.md`
+  - current-state evidence packet for real audits
+- `docs/design-system/project-memory.md`
+  - durable truths and decisions, not current-state evidence
 
 ## Maintainer / Cross-Repo Install
 
@@ -126,8 +144,10 @@ Repo-only maintainer context:
 Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
 - `resources/skills/ds-intent-analyzer/references/`
+- `resources/skills/ds-intent-analyzer/assets/`
+  - real runtime templates for `audit-packet.md` and `audit-evidence.md`
 
-Optional shipped runtime resources such as `assets/` or `scripts/` should appear only when the skill carries real output files or runtime-local helpers. They are not part of the default shipped shape.
+Optional shipped runtime resources such as `assets/` or `scripts/` should appear only when the skill carries real output files or runtime-local helpers. In this repo, `assets/` is justified because the package now ships reusable audit artifact templates.
 
 Maintainer-only organization and evaluation docs live under:
 - `resources/contributor/ds-intent-analyzer/`

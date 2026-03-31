@@ -1122,3 +1122,234 @@ It should stay:
 - Strongest pass signal: proves the lean packed artifact preserves both bounded donor behavior and agent-ready repo-audit follow-through outside the source repo
 - Strongest miss: the follow-up packet stayed structurally correct but did not literally print an `Audit handoff` heading in the final prose
 - Outcome: `pass`
+
+---
+
+## Targeted audit-packet artifact validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-audit-packet-artifact`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: targeted installed-runtime review after promoting `Audit handoff` into a stable reusable `audit-packet.md` contract; result `5 pass / 0 partial pass / 0 regressions`; the add-on now locks the literal heading, field order, and `Stop condition` while keeping thin-evidence and frontend guards intact
+
+### Targeted subset
+
+## RF-21 — Carbon Reference to Repo Borrowing Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Observed handoff behavior: emits the literal `Audit handoff` heading, includes the fixed field order through `Stop condition`, and offers `docs/design-system/audit-packet.md` only if a reusable repo artifact is explicitly wanted
+- Strongest pass signal: reference-to-repo follow-through is now a stable artifact contract rather than an implicit prose packet
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-18 + repo-audit follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: inherited bounded audit read from the base case
+- Observed handoff behavior: emits the literal `Audit handoff` heading, stays audit-first, and adds a bounded `Stop condition` instead of drifting into build work
+- Strongest pass signal: the follow-up remains anchored on one repo inspection slice and does not dilute the current-UI-first audit
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 + repo-audit follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp client repo
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: inherited bounded audit read from the base case
+- Observed handoff behavior: emits the literal `Audit handoff` heading with one first inspection slice, explicit borrowing targets, and a stop condition that blocks token or component drift before the structural audit returns
+- Strongest pass signal: downstream follow-through now reads like a reusable repo-audit packet, not just a smart paragraph
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: no `Audit handoff` or packet offer emitted from the thin-evidence page read
+- Strongest pass signal: thin-evidence guard stays page-level and packet-free
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: stays on `Frontend handoff`; audit packet behavior does not replace build handoff
+- Strongest pass signal: repo-audit follow-through and frontend follow-through remain clearly separate
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Targeted audit-evidence ingestion validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-audit-evidence-ingestion`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: targeted installed-runtime review after adding `audit-evidence.md` as a shipped current-state artifact contract; result `3 pass / 0 partial pass / 0 regressions`; fresh evidence now outranks project memory explicitly while thin-evidence guards stay intact
+
+### Targeted subset
+
+## AU-19 — Healthcare Booking Audit Backed by `audit-evidence.md`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: no `Audit handoff` emitted in the base audit; packet capture can be offered explicitly if the user wants to preserve the evidence for the next audit step
+- Strongest pass signal: the evidence packet lifts the answer out of thin-brief behavior and supports a concrete stabilization order around provider trust cues, spacing rhythm, and booking-step clarity
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-20 — Fresh Audit Evidence Conflicts With Project Memory
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: no handoff emitted; the answer stays on the drift resolution and fix-first audit decision
+- Strongest pass signal: fresh provider-card evidence overtakes stale project memory explicitly instead of being silently forced back under the old canon
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: no `Audit handoff`, no `audit-evidence.md` offer, and no project-memory capture from the thin-evidence guard case
+- Strongest pass signal: adding `audit-evidence.md` does not loosen page-level discipline for one-URL reads
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Targeted tagged-git team-sharing validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-tagged-git-team-sharing`
+- Runtime target: lean installed `.agents/skills/ds-intent-analyzer/` from local-path, tag-pinned git-source, and packed-tarball installs
+- Validation command used: `npm run validate`
+- Package surface sanity: `npm pack --json --dry-run` returned only `22` runtime/install files: root docs/license, `bin/`, install/sync scripts, shipped runtime refs through `12-runtime-audit-artifacts.md`, and the two runtime template assets
+- Run date: `2026-03-31`
+- Install sanity:
+  - local path install succeeded in a clean temp client repo
+  - tag-pinned git-source install succeeded from `git+file:///...#v0.1.0`
+  - packed tarball install succeeded from `ds-intent-analyzer-0.1.0.tgz`
+  - `npx ds-intent-analyzer install` succeeded in all three temp repos
+  - `.agents/skills/` contained only `ds-intent-analyzer` in all three temp repos
+  - installed runtime copies in all three repos contained `assets/audit-packet-template.md` and `assets/audit-evidence-template.md`
+- Notes: downstream package/install proof after promoting tag-pinned git sharing to the primary team workflow; result `3 pass / 0 partial pass / 0 regressions`; the package stayed lean while the new runtime assets arrived correctly downstream
+
+### Targeted subset
+
+## Local path install + CD-01
+- Install channel: local path
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: downstream `node_modules/ds-intent-analyzer/` contained only root docs/license, `bin/`, install/sync scripts, and `resources/skills/ds-intent-analyzer/`
+- Install sanity: `npm install --save-dev <local repo path>` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; the installed copy included the two runtime template assets
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted
+- Strongest pass signal: local-path downstream flow still yields practical builder guidance while shipping the new artifact templates cleanly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Tag-pinned git-source install + CD-02
+- Install channel: tag-pinned local git-source URL
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: downstream `node_modules/ds-intent-analyzer/` stayed lean and excluded contributor docs, `.local`, `AGENTS.md`, and validator-only files
+- Install sanity: `npm install --save-dev git+file:///...#v0.1.0` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; the installed copy included the two runtime template assets
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` emitted in the base case
+- Strongest pass signal: proves the intended team-sharing channel preserves mixed audit behavior and ships the new artifact surface without widening the package
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Packed tarball install + CD-02 + repo-audit follow-up
+- Install channel: packed tarball from `npm pack`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: tarball install reproduced the same lean downstream package surface and included the new runtime template assets
+- Install sanity: `npm install --save-dev <packed tarball path>` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: base case stayed audit-first without drift, and the follow-up emitted the literal `Audit handoff` heading with the locked packet shape
+- Strongest pass signal: proves the packaged artifact preserves both bounded donor behavior and the new audit-packet contract downstream
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Standing maintainer gate post-roadmap baseline
+
+### Run header
+
+- Run label: `FT-2026-03-31-standing-maintainer-gate-post-roadmap`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: compact standing-gate confirmation after the audit-packet, tag-pinned git-sharing, and audit-evidence slices; result `7 pass / 0 partial pass / 0 regressions`; core builder usefulness and bounded audit/comparison behavior remain healthy after the new artifact surfaces landed
+
+### Gate subset
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: still translates aesthetic language into workflow, density, and hierarchy constraints quickly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: keeps the same builder-facing foundation-first direction with bounded confidence
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: keeps toolkit choice subordinate to product-pattern stabilization and still gives a usable early decision rule if a library choice is forced
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-04 — Existing Workflow Product Needs a Stabilization Order
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: still picks one highest-leverage operational contract to normalize first rather than spreading the answer across co-equal cleanup tracks
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: comparison stays bounded, recommendation-first, and free of repo-local citation leakage
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: thin-evidence page audit stays page-level, packet-free, and explicit about what it will not overclaim
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: frontend follow-through remains a bounded `Frontend handoff` path and is not replaced by audit-packet behavior
+- Strongest miss: none noted
+- Outcome: `pass`
