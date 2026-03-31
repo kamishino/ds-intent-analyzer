@@ -42,7 +42,8 @@ If evidence is already present, read it first.
 If evidence is thin, ask only 1-3 focused project-fit questions.
 If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
-If the user explicitly asks for multiple agents or sub-agents, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
+If the user explicitly asks for multiple agents or the task needs multiple bounded reads that materially sharpen the answer, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
+If a strong proactive sidecar cue is present and no no-spawn guard applies, the add-on is required rather than optional.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
 If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
 If the user explicitly wants recurring or scheduled DS review, use the compact recurring-review shell from section G instead of expanding into a one-off audit memo.
@@ -181,7 +182,7 @@ Only add deeper sections when they materially sharpen the decision.
 - preferred voice: `I can ... next if you want`
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
+- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## Top 3 matching reference directions
@@ -330,7 +331,7 @@ If the page is a design-system reference surface, keep any borrowing logic subor
 - tie the action to the fix-first decision when possible
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 - for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
+- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## What is being audited
@@ -620,7 +621,7 @@ What this recommendation is trying to support.
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
+- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
@@ -746,26 +747,35 @@ If the user wants this handoff persisted for later repo work, offer to create or
 
 Use this block only when:
 - the user explicitly asks for multiple agents or sub-agents, or
-- the task clearly decomposes into bounded analysis sidecars
+- the lead read needs multiple bounded reads that materially sharpen the answer, such as evidence conflict, drift comparison, design-context plus repo mapping, repo-audit follow-through, or current-product-plus-reference comparison
 
 Do not use this block when:
 - one lead answer is enough
 - evidence is too thin for meaningful task splitting
 - the workflow is already moving directly into frontend build
 - the proposed split would create multiple direction-setting agents or multiple builders
+- the split would only repeat the same sidecar role or force sidecars to invent missing facts
 
 This add-on is explicit shared state, not hidden orchestration.
 Keep it Codex-first, lightweight, and analysis-only.
+When this split is justified, emit the block instead of hiding the sidecars behind a normal answer shell.
 
 ## Multi-agent coordination
 ### Lead job
 - the one agent that owns routing, synthesis, confidence, and the final recommendation
 
+### Why sidecars now
+- the concrete reason the step is split, using the actual evidence conflict, drift comparison, repo follow-through, or reference-comparison pressure in this case
+
 ### Parallel sidecars allowed
-- only bounded analysis sidecars such as:
-  - evidence or artifact read
-  - current UI or codebase scan
-  - reference lookup
+- only the actual bounded sidecar roles needed for this step, such as:
+  - `Evidence reader`
+  - `Repo/codebase scanner`
+  - `Reference-fit checker`
+  - `Drift/comparison checker`
+  - `Design-context mapper`
+- name only the roles actually used
+- cap proactive coordination at `3` sidecars unless the user explicitly asks for a broader split
 
 ### Shared evidence
 - the exact artifacts, context, or reference set every sidecar is allowed to use
@@ -792,6 +802,7 @@ Keep it Codex-first, lightweight, and analysis-only.
 - sidecars return bounded observations
 - the lead agent synthesizes the final decision
 - if sidecars conflict materially, lower confidence or ask for one tie-break artifact
+- if the lead agent can resolve the step cleanly after the first bounded read, collapse back to single-agent synthesis instead of keeping sidecars alive for ceremony
 
 ### Recommended next lead
 - name the next lead agent explicitly

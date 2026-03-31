@@ -2161,3 +2161,61 @@ The current live full-pack surface is:
   - contributor playbook now points to the live `55`-surface inventory
   - standing gate source packs are explicit
   - older `36`-case language is now clearly marked as historical rather than current truth
+
+---
+
+## Proactive sub-agent spawning validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-proactive-subagent-spawning`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded in a fresh temp repo; the installed `SKILL.md` included the new proactive trigger wording, and the installed `11-runtime-multi-agent-coordination.md` included the `Why sidecars now` packet field
+- Run date: `2026-03-31`
+- Notes: structural plus fresh-thread raw-prompt subagent validation after the proactive sub-agent slice; independent checks used only the installed skill path plus raw prompt bundles or the new contributor prompt suffixes; result `3 pass / 3 partial pass / 0 regressions`
+
+### Targeted slice checks
+
+## AU-24 — Multi-surface design-context packet
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed coordination behavior: repeated fresh-thread raw-prompt reruns chose the provider-card trust pattern as the correct stabilization anchor and kept bounded `Confidence: E2 - medium, design context only`, but did not surface a visible `Multi-agent coordination` packet
+- Strongest pass signal: mixed design-context evidence now sharpens the fix-first decision without inflating certainty
+- Strongest miss: proactive packet emission still underfires on a case that should qualify for bounded sidecars
+- Outcome: `partial pass`
+
+## AU-25 — Fresh evidence conflict with stale design-context
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed coordination behavior: fresh screenshot evidence correctly overrode the stale packet and the drift was called out explicitly, but the answer still stayed single-lead with no visible coordination packet
+- Strongest pass signal: evidence precedence is correct and the stale packet no longer silently wins
+- Strongest miss: evidence-conflict prompts still do not reliably emit proactive `Multi-agent coordination`
+- Outcome: `partial pass`
+
+## RF-21 — Carbon repo follow-through
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed coordination behavior: the answer stayed recommendation-first, treated Carbon as a bounded donor, and emitted a useful `Audit handoff`, but it did not expose proactive sidecars before the handoff
+- Strongest pass signal: repo-first follow-through remains strong and bounded
+- Strongest miss: repo-audit follow-through still prefers single-lead synthesis over visible proactive coordination
+- Outcome: `partial pass`
+
+## AU-21 — Healthy recurring review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed coordination behavior: fresh-thread rerun stayed compact, audit-first, and single-lead without inventing extra orchestration
+- Strongest pass signal: recurring review still reads like a usable monthly health check instead of a long memo
+- Strongest miss: confidence qualifier can stay more compact than `brief only` in this shape
+- Outcome: `pass`
+
+## RF-16 — Forced single-agent guard
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed coordination behavior: fresh-thread rerun stayed a bounded one-page audit with `Confidence: E1 - low, one page only` and no coordination packet
+- Strongest pass signal: thin-evidence page reads still stay single-agent instead of using sidecars as fake rigor
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Temp-repo installed runtime sanity
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed structural signal: downstream install shipped the new proactive trigger wording and coordination-packet field without changing package or CLI shape
+- Strongest pass signal: the proactive sub-agent guidance survives downstream install instead of existing only in the source repo
+- Strongest miss: none noted
+- Outcome: `pass`

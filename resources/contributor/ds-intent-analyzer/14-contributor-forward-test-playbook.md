@@ -88,6 +88,7 @@ Use the paired-skill handoff mode when:
 Use the multi-agent sidecar mode when:
 - you want to see how `ds-intent-analyzer` behaves when Codex is allowed to use multiple agents or sub-agents
 - you want to check that the runtime keeps one lead agent and bounded analysis sidecars instead of hidden orchestration
+- you want to validate both proactive sidecar spawning and no-spawn guard behavior
 
 ---
 
@@ -181,20 +182,39 @@ They are not scheduling or automation benchmarks.
 1. Sync the installed skill copy.
    - command: `npm run sync:local`
 2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
-3. Run one existing contributor case through `ds-intent-analyzer`.
-4. Immediately follow with a multi-agent prompt, for example:
-   - `Use multiple Codex sub-agents if helpful, but keep the direction bounded.`
-   - `Use parallel sidecars only where useful, then give me one final recommendation.`
+3. Choose one of these validation paths:
+   - explicit-request path using `27-contributor-subagent-prompt-quick-reference.md`
+   - proactive path using the raw case prompt bundle only
+   - forced single-agent guard using `27-contributor-subagent-prompt-quick-reference.md`
+4. Run one existing contributor case through `ds-intent-analyzer`.
 5. Check whether the analyzer answer:
    - keeps one explicit lead agent
    - limits sidecars to bounded analysis work
-   - emits a structured `Multi-agent coordination` packet when sidecars are actually useful
+   - emits a structured `Multi-agent coordination` packet only when sidecars are actually useful
+   - names the concrete split reason in `Why sidecars now`
+   - names the actual chosen sidecar roles instead of generic possibilities
+   - caps proactive coordination at `3` sidecars
    - keeps build work waiting until the lead synthesis is stable
    - tells sidecars what they must not decide or invent
+   - suppresses the packet entirely on no-spawn guard cases
 6. Record one compact readout.
 
 Multi-agent sidecar checks are still answer-shape checks.
 They are not orchestration benchmarks.
+
+Recommended case mix:
+- positive proactive cases:
+  - `AU-24`
+  - `AU-25`
+  - `RF-21`
+  - `AU-21` or `AU-22`
+- explicit-request cases:
+  - `AF-01 + multi-agent follow-up`
+  - `AU-01 + multi-agent follow-up`
+  - `PF-02 + frontend-skill`
+- no-spawn guards:
+  - `RF-16`
+  - `AF-01`
 
 ---
 
@@ -561,6 +581,45 @@ Expected behavior:
 - sidecars may inspect the page-level reference
 - the answer should keep the read bounded to the available evidence
 - frontend build handoff should still be blocked or withheld because one URL-only page is too thin to justify a build-ready direction
+
+### AU-24 proactive sidecar check
+
+Prompt shape:
+
+```text
+Use the original `AU-24` prompt bundle only.
+```
+
+Expected behavior:
+- the runtime may proactively use sidecars because multi-surface design-context and audit evidence create multiple bounded reads
+- the coordination packet should explain `Why sidecars now`
+- sidecar roles should stay concrete, such as evidence read, design-context mapping, or repo/code mapping
+
+### AU-25 proactive sidecar check
+
+Prompt shape:
+
+```text
+Use the original `AU-25` prompt bundle only.
+```
+
+Expected behavior:
+- the runtime may proactively use sidecars because fresher evidence conflicts with stored design-context
+- the lead agent should still explicitly prefer the fresher evidence
+- the packet should not let stale stored context silently overrule the current artifact
+
+### RF-16 forced single-agent guard
+
+Follow-up prompt:
+
+```text
+Keep this single-agent unless the task is truly blocked without sidecars.
+```
+
+Expected behavior:
+- no `Multi-agent coordination` packet should appear
+- the answer should stay a bounded one-page audit
+- the runtime should not treat thin evidence as a reason to split the task
 
 ---
 

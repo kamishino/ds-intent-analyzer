@@ -1,4 +1,4 @@
-# Multi-Agent Coordination v1
+# Multi-Agent Coordination v2
 
 ## Purpose
 
@@ -38,27 +38,64 @@ Do not let multiple agents co-lead direction-setting.
 
 ## When bounded multi-agent coordination is allowed
 
-Use it only when:
-- the user explicitly asks for multiple agents or sub-agents, or
-- the task clearly decomposes into bounded analysis sidecars
+Default to one lead agent per step.
+Do not split work just because parallelism is available.
 
-Good v1 uses:
+Use bounded multi-agent coordination only when:
+- the user explicitly asks for multiple agents or sub-agents
+- the task clearly decomposes into bounded analysis sidecars
+- multiple bounded reads would materially sharpen the answer even without an explicit user request
+
+Good uses:
 - one sidecar reads evidence or artifacts
-- one sidecar scans the current UI or codebase
+- one sidecar scans the repo or codebase
 - one sidecar checks reference fit
+- one sidecar compares current review state against prior audit or review context
 
 The lead agent then merges those observations into one decision.
 
+## Proactive trigger ladder
+
+Allow proactive sidecars only when at least one of these is true:
+- mixed evidence spans current artifacts, repo surfaces, and bounded references
+- fresh evidence conflicts with stored audit, review, or project-memory context
+- recurring review needs current-vs-prior drift comparison
+- design-context needs repo or code-mapping help
+- repo-audit follow-through needs evidence read plus codebase scan
+- a comparison ask needs bounded reads of current product evidence and multiple candidate references
+
+If none of those are true, keep the step single-agent.
+
+## No-spawn guards
+
+Do not spawn sidecars when:
+- the prompt is a thin brief or a one-screen or one-page read
+- the task is still early `Intent Analysis` or `Formation Recommendation` without real artifacts
+- one lead answer is already enough
+- the current step is already moving into frontend build
+- the proposed split would force sidecars to invent missing facts, product constraints, or direction
+
 ---
 
-## Allowed sidecars in v1
+## Allowed sidecars in v2
 
 Parallel sidecars may do bounded analysis such as:
 - evidence or artifact read
-- current UI or codebase scan
-- reference lookup
+- repo or codebase scan
+- reference-fit check
+- drift or comparison check
+- design-context mapping
+
+Recommended role names:
+- `Evidence reader`
+- `Repo/codebase scanner`
+- `Reference-fit checker`
+- `Drift/comparison checker`
+- `Design-context mapper`
 
 Sidecars should return observations, not final direction.
+Do not duplicate the same role unless the user explicitly asks for a broader split.
+Cap proactive coordination at `3` sidecars per step.
 
 ---
 
@@ -78,6 +115,7 @@ If the task is already moving into frontend implementation, finish lead-agent sy
 
 When multi-agent coordination is justified, keep the shared state visible through a compact packet with:
 - `Lead job`
+- `Why sidecars now`
 - `Parallel sidecars allowed`
 - `Shared evidence`
 - `Locked truths`
@@ -89,6 +127,7 @@ When multi-agent coordination is justified, keep the shared state visible throug
 
 This packet exists so humans and agents can see:
 - who owns the decision
+- why the step is split at all
 - what parallel work is actually allowed
 - what must not be invented
 - how the merge will happen
@@ -120,11 +159,12 @@ If sidecars conflict materially:
 - ask for one tie-break artifact or one repeated-job clue
 
 Do not force a fake clean merge.
+If the lead agent can resolve the task cleanly after the first bounded read, collapse back to single-agent synthesis instead of keeping sidecars alive for ceremony.
 
 Use this precedence order:
-1. current evidence
-2. locked analyzer decisions from the current accepted answer
-3. accepted project memory
+1. fresh current evidence
+2. accepted current-step analyzer decisions and current-state audit artifacts
+3. accepted project memory and recurring context
 4. bounded reference guidance
 
 Do not let later layers override earlier ones silently.

@@ -343,12 +343,38 @@ If a missing decision would materially change the build:
 
 ## Bounded multi-agent coordination
 
+Default to one lead agent per step.
+Do not spawn sidecars just because parallel work is available.
+
 Use bounded multi-agent coordination only when:
 - the user explicitly asks for multiple agents or sub-agents, or
-- the task clearly decomposes into bounded analysis sidecars
+- the task clearly decomposes into bounded analysis sidecars, or
+- multiple bounded reads would materially sharpen the answer even without an explicit user request
+
+If a proactive trigger is present and no no-spawn guard applies:
+- use bounded sidecars explicitly
+- emit the `Multi-agent coordination` add-on
+- do not hide the split behind a single-pass answer
 
 This is a Codex-first coordination contract, not a general orchestration framework.
 Keep it transparent and lightweight.
+
+### Proactive trigger ladder
+Proactive sidecars are justified only when at least one of these is true:
+- mixed evidence spans current artifacts, repo surfaces, and bounded references
+- fresh evidence conflicts with stored audit, review, or project-memory context
+- recurring review needs current-vs-prior drift comparison
+- design-context needs repo or code-mapping help
+- repo-audit follow-through needs evidence read plus codebase scan
+- a comparison ask needs bounded reads of current product evidence and multiple candidate references
+
+### No-spawn guards
+Do not spawn sidecars when:
+- the prompt is a thin brief or a one-screen or one-page read
+- the task is still early `Intent Analysis` or `Formation Recommendation` without real artifacts
+- one lead answer is already enough
+- the current step is already moving into frontend build
+- the proposed split would force sidecars to invent missing facts, product constraints, or direction
 
 ### Lead agent rule
 Use one lead agent per step.
@@ -366,10 +392,21 @@ Do not let multiple agents co-lead direction-setting.
 ### Allowed sidecars in v1
 Parallel sidecars may do bounded analysis such as:
 - evidence or artifact read
-- current UI or codebase scan
-- reference lookup
+- repo or codebase scan
+- reference-fit check
+- drift or comparison check
+- design-context mapping
+
+Use actual job names for sidecars, such as:
+- `Evidence reader`
+- `Repo/codebase scanner`
+- `Reference-fit checker`
+- `Drift/comparison checker`
+- `Design-context mapper`
 
 Sidecars should return observations, not direction-setting conclusions.
+Do not duplicate the same sidecar role unless the user explicitly asks for a broader split.
+Cap proactive coordination at `3` sidecars per step.
 
 ### Disallowed parallelism in v1
 Do not allow:
@@ -398,12 +435,13 @@ If sidecars conflict materially:
 - ask for one tie-break artifact or one repeated-job clue
 
 Do not force a fake clean merge.
+If the lead agent can resolve the task cleanly after the first bounded read, collapse back to single-agent synthesis instead of keeping sidecars alive for ceremony.
 
 ### Precedence for multi-agent coordination
 When multiple agents are involved, use this order:
-1. current evidence
-2. locked analyzer decisions from the current accepted answer
-3. accepted project memory
+1. fresh current evidence
+2. accepted current-step analyzer decisions and current-state audit artifacts
+3. accepted project memory and recurring context
 4. bounded reference guidance
 
 Do not let later layers override earlier ones without saying so explicitly.
@@ -641,10 +679,12 @@ If evidence is too thin, the correct output is to withhold or block the handoff,
 
 ### Multi-agent coordination
 Conditional.
-Use only when the user explicitly asks for multiple agents or sub-agents, or when the task clearly decomposes into bounded analysis sidecars.
+Use only when the user explicitly asks for multiple agents or sub-agents, or when multiple bounded reads would materially sharpen the answer for the current step.
+If a strong proactive trigger is present and no no-spawn guard applies, this block is required rather than optional.
 
 The coordination packet should state:
 - lead job
+- why sidecars now
 - parallel sidecars allowed
 - shared evidence
 - locked truths
@@ -669,15 +709,17 @@ Keep one shared output shape, but change emphasis by primary mode:
   - emphasize strongest positives, biggest weaknesses, fix-first area, and Smart Suggestions
   - if the evidence is only one screen or a partial artifact, stay explicitly screen-level
   - if recurring review is explicit, use the compact recurring-review shell and drift-aware continuity rules from `13-runtime-review-workflows.md`
+  - if fresh evidence conflicts with stored audit or review context, or design-context needs repo or code mapping, prefer bounded proactive sidecars over a hidden single-pass merge
 - Formation Recommendation
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
   - default to `TL;DR`, `Recommendation`, `Borrow carefully`, `Do not copy`, `Confidence`, and `Next move`
-  - keep the recommendation first instead of leading with framework explanation
+- keep the recommendation first instead of leading with framework explanation
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
   - if the user clearly wants repo or application follow-through, append a bounded `Audit handoff`
   - if frontend execution is clearly next, either emit a bounded `Frontend handoff` block or say exactly why the handoff is not ready yet
-  - if multiple agents are explicitly requested, keep sidecars bounded to evidence read, codebase scan, or reference lookup while the lead agent owns the final comparison
+  - if multiple bounded reads are justified, keep sidecars bounded to actual jobs such as evidence read, codebase scan, drift comparison, design-context mapping, or reference fit while the lead agent owns the final comparison
+  - if current-product evidence and multiple candidate references both need bounded reads, prefer explicit `Multi-agent coordination` over a hidden comparison merge
 
 ---
 

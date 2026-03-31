@@ -161,7 +161,9 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - If frontend execution is the next real job, hand off explicitly instead of letting build work infer direction from loose prose.
 - If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff` and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
 - If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit` and switch to the compact recurring-review shell instead of inventing a fifth mode.
-- If multiple agents or sub-agents are explicitly requested, use one lead agent and bounded analysis sidecars only.
+- Default to one lead agent.
+- If the user explicitly asks for multiple agents or the task has multiple bounded reads that would materially sharpen the answer, use bounded analysis sidecars only and show the split through `Multi-agent coordination`.
+- Strong proactive sidecar cues such as evidence conflict, recurring drift comparison, design-context plus repo mapping, repo-audit follow-through, or current-product-plus-reference comparison should trigger `Multi-agent coordination`, not a hidden single-pass merge.
 
 ## Runtime ownership
 
@@ -217,6 +219,7 @@ Default answer bias:
 Keep the confidence line brief and user-facing.
 Keep the next move action-oriented, ideally in the voice `I can ... next if you want`.
 Use the exact phrasing and conditional add-ons from `references/06-runtime-output-templates.md`.
+When strong proactive sidecar cues are present and no no-spawn guard applies, `Multi-agent coordination` is required rather than optional.
 
 ## Retrieval and escalation
 
@@ -237,11 +240,11 @@ Retrieve selectively by layer:
   - `references/05-runtime-foundation-directories.md`
   - `references/06-runtime-output-templates.md`
   - `references/07-runtime-reference-lookup.md`
+  - `references/11-runtime-multi-agent-coordination.md`
 - deeper escalation only
   - `references/08-runtime-archetype-lessons.md`
   - `references/09-runtime-system-architecture.md`
   - `references/10-runtime-project-memory-pack.md`
-  - `references/11-runtime-multi-agent-coordination.md`
   - `references/12-runtime-audit-artifacts.md`
   - `references/13-runtime-review-workflows.md`
   - `references/14-runtime-index.json`
@@ -252,6 +255,10 @@ Use heavier retrieval only when:
 - uploaded files are partial or large
 - the user explicitly wants stronger confidence
 - project memory or multi-agent coordination is materially in play
+- current evidence conflicts with stored audit or review context
+- recurring review needs current-vs-prior drift comparison
+- repo follow-through needs both evidence read and codebase scan
+- design-context needs repo or code mapping to settle the next move
 
 Contributor docs live outside the shipped skill tree in `resources/contributor/ds-intent-analyzer/`.
 Do not treat them as normal runtime retrieval material.
