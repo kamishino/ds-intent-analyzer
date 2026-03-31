@@ -59,6 +59,19 @@ Use the full-pack mode when:
 - you want one installed-runtime pass across all current contributor scenarios
 - you want a broad answer-shape read without running full evaluation scoring
 
+Current live contributor scenario surface:
+- `AF-01` to `AF-04` from `05-contributor-app-fit-cases.md`
+- `PF-01` to `PF-04` plus `PF-02 + frontend-skill` from `18-contributor-app-to-ds-fit-brief-set.md`
+- `AU-01` to `AU-25` from `06-contributor-audit-cases.md`
+- `RF-01` to `RF-21` from `07-contributor-reference-cases.md`
+- total live scenario surfaces: `55`
+
+Keep specialty workflow probes separate from that baseline full-pack count:
+- multi-agent sidecar checks
+- client-repo dogfood checks
+- distribution-proof checks
+- structural validation slices that do not rerun prompt transcripts
+
 Use the reference-to-repo handoff mode when:
 - you want to see how a reference-led answer behaves when the user clearly wants to apply it to a real repo or application
 - you want to check that the answer stays compact, recommendation-first, and emits a bounded `Audit handoff`
@@ -189,6 +202,13 @@ They are not orchestration benchmarks.
 
 Use this as the default recurring regression gate unless a slice specifically touches a narrower specialty surface.
 
+### Gate source packs
+
+- `AF-*` cases come from `05-contributor-app-fit-cases.md`
+- `PF-*` cases come from `18-contributor-app-to-ds-fit-brief-set.md`
+- `AU-*` cases come from `06-contributor-audit-cases.md`
+- `RF-*` cases come from `07-contributor-reference-cases.md`
+
 ### Gate cases
 
 - `AF-01` for vague-intent constraint reading
@@ -232,8 +252,10 @@ Keep these as targeted reruns only when a slice touches them:
 2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
 3. Run every current contributor case:
    - `AF-01` to `AF-04`
-   - `AU-01` to `AU-16`
-   - `RF-01` to `RF-16`
+   - `PF-01` to `PF-04`
+   - `PF-02 + frontend-skill`
+   - `AU-01` to `AU-25`
+   - `RF-01` to `RF-21`
 4. For each case:
    - paste the existing `Prompt bundle` into Codex
    - let `$ds-intent-analyzer` lead
@@ -403,7 +425,7 @@ Use the broader evaluation pack when you need:
 - contributor-side cycle summaries in `08-contributor-runtime-evaluation-results.md`
 
 Use `15-contributor-forward-test-results.md` when you need:
-- one installed-runtime pass across the full 36-case pack
+- one installed-runtime pass across the full 55-surface live pack
 - answer-shape coverage without rubric duplication
 - compact rerun comparison by case family
 

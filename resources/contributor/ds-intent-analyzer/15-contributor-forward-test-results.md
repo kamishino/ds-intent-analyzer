@@ -21,12 +21,12 @@ That remains `08-contributor-runtime-evaluation-results.md`.
 - Sync command used: `npm run sync:local`
 - Case pack size: `36`
 - Run date: `2026-03-29`
-- Notes: manual installed-runtime forward-test; compare answer shape, not exact prose; result `34 pass / 2 partial pass / 0 regressions`
+- Notes: historical installed-runtime baseline from the earlier `AF/AU/RF` pack before the contributor surface expanded to the current live `55`-scenario inventory; compare answer shape, not exact prose; result `34 pass / 2 partial pass / 0 regressions`
 
 Default values:
 - Runtime target: installed `.agents/skills/ds-intent-analyzer/`
 - Sync command used: `npm run sync:local`
-- Case pack size: `36`
+- Current live scenario surface: `55`
 
 ---
 
@@ -492,6 +492,14 @@ It should stay:
 - installed-runtime-first
 - answer-shape-oriented
 - clearly separate from rubric-heavy evaluation cycles
+
+The current live full-pack surface is:
+- `AF-01` to `AF-04`
+- `PF-01` to `PF-04`
+- `PF-02 + frontend-skill`
+- `AU-01` to `AU-25`
+- `RF-01` to `RF-21`
+- total live scenario surfaces: `55`
 
 ---
 
@@ -1678,3 +1686,478 @@ It should stay:
 - Strongest pass signal: the design-context ingestion slice survives downstream installation instead of only existing in the source repo
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Full-surface QA validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-full-surface-qa`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; installed runtime included `SKILL.md`, `agents/openai.yaml`, and shipped references
+- Case pack size: `55`
+- Run date: `2026-03-31`
+- Notes: contributor-side full-surface QA pass after the `skill-creator` review; stale contributor QA metadata was corrected in the same slice; independent raw-prompt subagent cross-checks were run for `PF-02`, `PF-03`, `RF-07`, `RF-16`, `AU-18`, `RF-21`, `AU-20`, `AU-25`, `AU-21`, `AU-22`, `AU-23`, `AU-24`, and `PF-02 + frontend-skill`; result `54 pass / 1 partial pass / 0 regressions`
+
+### App-Fit and brief-set surfaces
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Strongest pass signal: turns adjectives into project-fit constraints instead of style prescriptions
+- Strongest miss: direction stays provisional until stronger evidence exists
+- Outcome: `pass`
+
+## AF-02 — Dense Trust-Sensitive Workflow
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: surfaces trust, error cost, and density before tone treatment
+- Strongest miss: tone-boundary handling stays secondary and lightly resolved
+- Outcome: `pass`
+
+## AF-03 — Merchant Operations Formation Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: gives a foundation-first principle stack and an explicit memory-capture offer
+- Strongest miss: token direction can sound slightly more settled than the brief alone proves
+- Outcome: `pass`
+
+## AF-04 — Developer Platform With Shared Scale Pressure
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: balances shared scale pressure against anti-overbuild discipline
+- Strongest miss: platform-maturity language can still sound slightly heavier than the current stage
+- Outcome: `pass`
+
+## PF-01 — Internal Ops Brief, Still Early but Not Empty
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E0 - very low, prompt only`
+- Strongest pass signal: quickly translates calm/modern/trustworthy language into attention model, density rules, and review-workbench direction instead of a style quiz
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: independent raw-prompt rerun confirms a builder-useful formation direction with a clear stabilization order around state semantics, hierarchy, and risky review patterns
+- Strongest miss: stale contributor readouts in older QA history had undercalled confidence, but the current runtime no longer shows that miss
+- Outcome: `pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: independent raw-prompt rerun keeps toolkit choice subordinate to workflow-pattern stabilization and gives a practical library-selection rule
+- Strongest miss: older contributor QA history understated confidence here, but the current runtime read is healthy
+- Outcome: `pass`
+
+## PF-04 — Existing Workflow Product Needs a Stabilization Order
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: still picks one operational contract to normalize first instead of scattering the answer
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: independent raw-prompt rerun stays on a bounded `Frontend handoff` with one first build target and explicit `Do not invent` guidance
+- Strongest pass signal: repo-audit follow-through and frontend follow-through remain clearly separate
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### Audit surfaces
+
+## AU-01 — Vague Improve Request With One-Screen Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one screen only`
+- Strongest pass signal: stays screen-level and leads with hierarchy, grouping, and density fixes
+- Strongest miss: specific visual advice remains limited by summary-only evidence
+- Outcome: `pass`
+
+## AU-02 — Brief / Artifact Contradiction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, conflicting brief vs artifact`
+- Strongest pass signal: lets visible operating reality outrank calm-brief language
+- Strongest miss: could state the contradiction even more sharply
+- Outcome: `pass`
+
+## AU-03 — Existing Foundation Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, foundation summary`
+- Strongest pass signal: finds semantic-token and stabilization-order weaknesses clearly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-04 — Partial Mobile Checkout View
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, partial screen`
+- Strongest pass signal: keeps the read checkout-screen-level and fix-first
+- Strongest miss: needs a real artifact for more precise visual diagnosis
+- Outcome: `pass`
+
+## AU-05 — Bare UI-Language Improve Ask
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E0 - very low, no artifact yet`
+- Strongest pass signal: asks for the smallest useful artifact instead of lecturing
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-06 — Styles Feel Off, Make It Cleaner
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, thin evidence`
+- Strongest pass signal: translates cleaner into scanability and grouping rather than minimalism
+- Strongest miss: could ask one tighter project-fit question if the user wants more than the first audit pass
+- Outcome: `pass`
+
+## AU-07 — Storybook Feels Inconsistent
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, Storybook surface only`
+- Strongest pass signal: treats Storybook inconsistency as practical audit evidence
+- Strongest miss: can still benefit from one concrete story example before stronger canon advice
+- Outcome: `pass`
+
+## AU-08 — This UI Feels Too Generic
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, discomfort signal only`
+- Strongest pass signal: explains genericness through flat emphasis and sameness, not novelty chasing
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-09 — Style Dictionary Works, But the Styles Feel Off
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, system symptom summary`
+- Strongest pass signal: separates existing token work from pattern and emphasis weakness
+- Strongest miss: could point to one sharper visible lever sooner
+- Outcome: `pass`
+
+## AU-10 — Softer Shape Cue in a High-Control Workflow
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: reads softness as a cue to verify against control needs
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-11 — Cleaner Must Mean Better Scanability, Not Just Less Stuff
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: connects cleaner to scan speed and grouping, not reduction alone
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-12 — Generic Because Emphasis Is Too Flat
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: commits to emphasis flatness as the visible lever
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-13 — Visual Calm Conflicts With Trust or Risk Needs
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: explains calm-vs-trust tension through consequences, not taste
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-14 — Many Possible Fixes, But One Lever Should Lead
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: chooses one leading lever instead of spraying fixes
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-15 — Generic Because Primary Actions Do Not Lead
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: primary-action emphasis leads clearly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-16 — Crowded but Consistent, Grouping Should Lead
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: grouping is prioritized before token or layout churn
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-17 — Specialized Workbench with Analytic Claims
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, artifact summary only`
+- Strongest pass signal: trust-of-claims audit remains practical and workbench-aware while the confidence line stays compact and user-facing
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-18 — Healthcare Booking UI Wants Sprout-Like Cohesion
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: independent raw-prompt rerun confirms the current healthcare booking UI is audited first and Sprout stays a bounded donor
+- Strongest miss: could still lean comparison-first for a moment before landing on the current-product audit
+- Outcome: `pass`
+
+## AU-19 — Healthcare Booking Audit Backed by `audit-evidence.md`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: treats audit-evidence as current-state context and produces a concrete stabilization order
+- Strongest miss: still limited to packet-level evidence rather than live artifacts
+- Outcome: `pass`
+
+## AU-20 — Fresh Audit Evidence Conflicts With Project Memory
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: independent raw-prompt rerun confirms fresh evidence overtakes stale project memory explicitly and moves priority to provider-card trust
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-21 — Healthy Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: independent raw-prompt rerun stays compact, recurring-review shaped, and audit-first
+- Strongest miss: could be slightly more explicit about the next review action
+- Outcome: `pass`
+
+## AU-22 — Drift-Detection Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: independent raw-prompt rerun compares against the prior log and changes priority based on drift
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-23 — One-Frame-Only Figma-Aware Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one frame only`
+- Strongest pass signal: independent raw-prompt rerun keeps the read frame-level and bounded instead of pretending full-flow certainty
+- Strongest miss: cannot generalize beyond the single frame
+- Outcome: `pass`
+
+## AU-24 — Multi-Surface Design-Context Packet in `audit-evidence.md`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, design context only`
+- Strongest pass signal: independent raw-prompt rerun uses the design-context packet to sharpen stabilization order beyond a thin brief
+- Strongest miss: certainty stays bounded because the packet is not live UI evidence
+- Outcome: `pass`
+
+## AU-25 — Stale Design-Context Conflicts With Fresher Screenshot Evidence
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: independent raw-prompt rerun prefers fresher screenshot evidence over stale design-context and calls out the drift explicitly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### Reference surfaces
+
+## RF-01 — Merchant Operations Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: keeps merchant workflow reality ahead of aesthetics
+- Strongest miss: does not yet expose a sharper tie-break artifact
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: hybrid-sensitive reading stays bounded and useful
+- Strongest miss: tie-break evidence request is still a bit broad
+- Outcome: `pass`
+
+## RF-03 — Unknown Niche Reference
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, unresolved reference`
+- Strongest pass signal: does not pretend to know the niche reference
+- Strongest miss: still needs the smallest useful extra clarification
+- Outcome: `pass`
+
+## RF-04 — Borrow Carefully From a Famous System
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: separates reusable borrowing from prestige mimicry
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-05 — UI Library Ask for a Workflow-Heavy Product
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: refuses a single best library and reframes the decision around product fit
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-06 — Carbon Feels Mature, But Is It Right?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: separates Carbon maturity from actual product readiness
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: independent raw-prompt rerun still recognizes that more tokens or more components will not solve the real issue
+- Strongest miss: still hedges between hierarchy, state contrast, and repeated-flow structure instead of choosing one first inspection target clearly enough
+- Outcome: `partial pass`
+
+## RF-08 — Token Work Should Wait While Hierarchy Clarity Comes First
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: keeps hierarchy clarity ahead of token work
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-09 — Tokens Exist, but State Contrast Should Lead First
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: state contrast is chosen as the first lever, not generic hierarchy talk
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-10 — Carbon vs PatternFly When the Product Is Still Mixed
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: mixed-product comparison stays provisional without becoming vague
+- Strongest miss: could still tighten the single best tie-break artifact
+- Outcome: `pass`
+
+## RF-11 — Ant Design Is Broad, but Should It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: raw-prompt rerun confirms Ant stays a bounded donor and does not lead ahead of workflow-pattern stabilization
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-12 — Porsche Feels Premium, but What Should We Borrow?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: Porsche is used for tone discipline, not visual transplantation
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-13 — Clarity or EUI for a Dense Internal Product
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: the tie-break stays sharper and asks for one dominant repeated-job surface instead of a broad compare-more follow-up
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-14 — Gestalt for a Brand-Led Product, but What Actually Transfers?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: Gestalt is read as brand-led restraint with bounded transfer
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-15 — Backpack Feels Friendly, but Is That the Right Borrow?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: Backpack friendliness is evaluated through product fit and cautions
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: independent raw-prompt rerun confirms the URL-only read stays page-level with bounded confidence
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-17 — Visa for a Trust-Sensitive Operational Product
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: treats Visa as a bounded workflow-and-trust reference, not a prestige default
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-18 — Product Platform Label, but Workflow Gravity Still Dominates
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still boundary-sensitive`
+- Strongest pass signal: identifies workflow-heavy internal product gravity and demotes the platform label to a secondary lens
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-19 — Toolkit Speed Temptation vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: treats toolkit choice as an implementation-layer decision and correctly prioritizes risky operational review patterns first
+- Strongest miss: confidence wording can drift slightly from the preferred short inline format while staying readable
+- Outcome: `pass`
+
+## RF-20 — Implementation Breadth Is Real, but Does It Lead?
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: keeps workflow gravity ahead of product-platform breadth and uses EUI and Primer as bounded secondary references
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-21 — Carbon Reference to Repo Borrowing Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: independent raw-prompt rerun keeps Carbon bounded and still points the next agent to the repo’s highest-friction repeated jobs before tokens or components
+- Strongest pass signal: reference-to-repo follow-through stays recommendation-first and actionable without collapsing into cloning
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### QA outcome summary
+
+- Confirmed runtime blockers: `0`
+- Confirmed runtime majors: `0`
+- Confirmed runtime minors: `1`
+- Confirmed runtime watch case:
+  - `RF-07` still needs a sharper first inspection target in implementation-framed comparison reads
+- Confirmed QA-surface fixes in this slice:
+  - contributor playbook now points to the live `55`-surface inventory
+  - standing gate source packs are explicit
+  - older `36`-case language is now clearly marked as historical rather than current truth
