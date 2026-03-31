@@ -85,6 +85,10 @@ Use the multi-agent sidecar mode when:
 Forward-tests are manual smoke checks.
 They are not benchmark runs and they do not require exact wording matches.
 
+Mixed audit/reference note:
+- when a prompt includes both current UI evidence and a named reference donor, the current UI still leads the mode unless the user is explicitly asking only for comparison
+- in those mixed cases, the reference should stay secondary to the audit rather than replacing it
+
 ---
 
 ## Paired-skill handoff flow
@@ -335,6 +339,7 @@ A rerun still counts as a pass if it:
 - still feels decision-first rather than audit-first
 - still feels evidence-first rather than questionnaire-first
 - uses a short recommendation-first shell when a long memo is unnecessary
+- keeps a named reference donor secondary when current UI evidence is supposed to lead the audit
 
 Do not mark a rerun as `pass` when:
 - the case has an explicit canonical expected primary mode
@@ -344,6 +349,7 @@ Do not mark a rerun as `pass` when:
 - if that leakage is the only miss and the decision logic remains healthy, record the case as `partial pass` rather than `regression`
 - a reference-led answer that should be compact instead sprawls into a long memo and buries the recommendation or next action
 - a reference-to-repo answer leaves the next inspection step implied instead of emitting a bounded `Audit handoff`
+- a mixed audit/reference prompt drifts into pure comparison mode and stops auditing the current UI first
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

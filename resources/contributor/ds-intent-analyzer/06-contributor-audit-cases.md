@@ -724,3 +724,78 @@ This tool feels impressively productized, but I am not sure I trust every judgme
 - accepting analytics labels, confidence, or critique text as self-validating
 - overclaiming the methodology behind the product's judgments from bounded surfaces
 - turning the answer into a giant component inventory or theory dump
+
+---
+
+## AU-18 — Healthcare Booking UI Wants Sprout-Like Cohesion
+
+### Prompt bundle
+
+```text
+Product note:
+- healthcare booking app for finding providers, choosing time slots, and confirming appointments
+- brand color is green
+
+Artifact summary:
+- the current product still looks mostly like Bootstrap v4
+- cards, forms, buttons, and step sections feel flat and generic
+- booking steps and trust cues do not lead clearly
+- spacing rhythm feels inconsistent between search, provider cards, and booking details
+- green is present, but mostly as a flat accent rather than a meaningful semantic or tonal system
+- the overall UI feels mismatched to healthcare booking: too generic, not calm or credible enough
+
+Reference:
+- the team keeps pointing at Seeds by Sprout Social: https://seeds.sproutsocial.com/
+
+User ask:
+Please audit our current direction.
+Tell me:
+- what feels off in the current UI
+- what from Sprout is actually transferable
+- what we should not copy
+- what we should stabilize first
+```
+
+### Input type and evidence strength
+- Input type: current-state artifact summary + named reference donor
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- bounded reference borrowing only after the current UI and product reality are read
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- audits the current healthcare booking UI before talking about Sprout
+- explains why Bootstrap-like flatness, weak hierarchy, and generic structure feel mismatched for trust-sensitive booking work
+- translates the attraction to Sprout into transferable traits such as calmer hierarchy, stronger spacing discipline, clearer tone control, and more intentional semantic structure
+- keeps green as a semantic and product-fit question rather than `make it Sprout green`
+- says what from Sprout should not be transplanted directly
+- gives one real stabilization order instead of clone advice
+- does not emit `Audit handoff` in the base case
+
+### Must-not-do failures
+- drifting into pure `Comparative Reference Read`
+- telling the team to make the app look like Sprout
+- turning healthcare trust into generic healthcare branding talk
+- skipping the current UI mismatch and talking only about the reference
+- emitting `Audit handoff` or `Frontend handoff` in the base case
+
+### Paired repo-audit follow-up
+
+Follow-up prompt:
+
+```text
+Now tell another agent what to audit first in the repo before we change tokens or components.
+```
+
+Expected behavior:
+- the read stays audit-first
+- emits a bounded `Audit handoff`
+- keeps `Frontend handoff` out of scope
+- names one first repo inspection slice instead of a broad component sweep

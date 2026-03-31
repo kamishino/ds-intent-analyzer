@@ -974,3 +974,54 @@ It should stay:
 - Strongest pass signal: repo-audit follow-through stays separate from frontend execution, so the new add-on does not hijack the build path
 - Strongest miss: the follow-up output moves straight into implementation direction rather than restating a visible `Frontend handoff` label
 - Outcome: `pass`
+
+---
+
+## Targeted mixed audit + reference-donor validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-sprout-mixed-audit`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: targeted installed-runtime rerun after adding a mixed audit + named reference donor case around SproutSocial Seeds; result `4 pass / 0 partial pass / 0 regressions`; current UI evidence stayed primary and the named donor stayed bounded
+
+### Targeted subset
+
+## AU-18 — Healthcare Booking UI Wants Sprout-Like Cohesion
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted in the base case
+- Strongest pass signal: audits the current Bootstrap-like healthcare booking direction first, then translates Sprout into bounded donor traits instead of clone advice
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-18 + repo-audit follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: inherited bounded audit read from the base case
+- Observed handoff behavior: emits a bounded `Audit handoff` with one first repo inspection slice and keeps `Frontend handoff` out of scope
+- Strongest pass signal: the follow-up names layout ownership and Bootstrap carryover as the first audit target instead of opening a broad component sweep
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-21 — Carbon Reference to Repo Borrowing Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Observed handoff behavior: emits the existing bounded `Audit handoff` as expected for a true reference-to-repo case
+- Strongest pass signal: guard case stays comparison-led and does not collapse back into audit-first behavior
+- Strongest miss: confidence remains slightly conservative for a medium-evidence brief, but the comparison logic stays healthy
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted from the thin-evidence page read
+- Strongest pass signal: thin-evidence guard stays page-level and bounded even after adding the mixed audit/reference donor case
+- Strongest miss: none noted
+- Outcome: `pass`
