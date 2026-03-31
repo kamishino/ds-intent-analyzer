@@ -47,6 +47,7 @@ If frontend execution is clearly next, use the `Frontend handoff` add-on instead
 If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
 If the user explicitly wants recurring or scheduled DS review, use the compact recurring-review shell from section G instead of expanding into a one-off audit memo.
 If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
+If the prompt includes structured design-context such as frame links, Dev Mode or MCP summaries, variable notes, annotations, or component-mapping cues, use those as current evidence and restate the grounded UI conclusions rather than narrating connector mechanics.
 Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
 For reference-led asks, default to this order:
 - `TL;DR`
@@ -76,8 +77,10 @@ They should not appear as user-facing proof in a normal DS recommendation.
 Use one preferred user-facing confidence shape across all modes:
 - `Confidence: E0 - very low, prompt only`
 - `Confidence: E1 - low, brief only`
+- `Confidence: E1 - low, one frame only`
 - `Confidence: E1 - low, one page only`
 - `Confidence: E2 - medium, brief only`
+- `Confidence: E2 - medium, design context only`
 - `Confidence: E2 - medium, still hybrid-sensitive`
 - `Confidence: E3 - high`
 
@@ -103,8 +106,11 @@ Anti-drift notes:
 - do not output bare forms such as `medium` or `Medium.`
 - for structured product briefs, do not use `prompt only` when repeated jobs, risk, density, or workflow structure are already stated
 - for URL-only or one-page cases, keep the evidence boundary inline, for example `Confidence: E1 - low, one page only`
+- for one-frame design-context cases, keep the evidence boundary inline, for example `Confidence: E1 - low, one frame only`
+- for multi-surface design-context packets with no fresher live UI or repo evidence, keep the boundary inline, for example `Confidence: E2 - medium, design context only`
 - for hybrid-sensitive or comparison cases, keep the unresolved note inline, for example `Confidence: E2 - medium, still hybrid-sensitive`
 - if more nuance is useful, explain it after the confidence line instead of replacing the confidence line with a split summary
+- do not let design-context by itself justify `E3`
 
 ## Comparative Reference Read default shell
 
@@ -255,6 +261,8 @@ Only add deeper sections when they materially sharpen the decision.
 - if the primary mode is still early `Intent Analysis`, prefer `E1 - low, brief only` unless stronger current-state structure meaningfully reduces ambiguity
 - do not use `E2` here if the answer is still choosing what to figure out first rather than giving a bounded formation/comparison recommendation
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
+- if the evidence is only one frame or one node, say the answer is frame-level rather than system-level
+- if the current-state packet includes structured design-context, use it to strengthen the decision and stabilization order rather than describing Dev Mode or MCP mechanics unless the user explicitly asks about them
 
 ## Memory capture
 - optional
@@ -478,6 +486,8 @@ If the page is a design-system reference surface, keep any borrowing logic subor
 - keep any qualifier tiny and inline on the confidence line, such as `one page only`, `partial screen`, or `still hybrid-sensitive`
 - if the prompt is a structured product brief, use `brief only` rather than `prompt only`
 - if the evidence is only one screen or partial artifacts, say the answer is screen-level rather than system-level
+- if the evidence is only one frame or one node, say the answer is frame-level rather than system-level
+- if the audit is grounded mainly in structured design-context across several surfaces, use `design context only` rather than pretending live artifact-complete certainty
 - if the comparison is still bounded, say exactly which single tie-break artifact would raise confidence fastest after the confidence line, not as a second confidence sentence
 
 ## Final recommendation

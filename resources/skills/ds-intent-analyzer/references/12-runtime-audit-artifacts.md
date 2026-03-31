@@ -9,6 +9,7 @@ These artifacts exist to keep audit workflows explicit and reusable without turn
 Use this file when the workflow needs:
 - a reusable repo-audit handoff
 - a reusable current-state evidence packet
+- a place to preserve structured design-context without promoting it into durable memory
 - a clear distinction between fresh evidence, current-state evidence packets, and durable project memory
 
 This file does not replace:
@@ -70,12 +71,32 @@ This is not:
 Preferred section shape:
 - `Product note`
 - `Artifact inventory`
+- `Design-context summaries`
 - `Surface summaries`
 - `Known workflow pressures`
 - `Known trust/risk pressures`
 - `Known drift and hotspots`
 - `Open questions`
 - `Source pointers`
+
+`Artifact inventory` may include:
+- screenshots
+- URLs
+- repo surface summaries
+- frame or node links
+- Dev Mode or MCP-generated summaries
+- variable or token summaries
+- annotation or callout summaries
+- component or code-mapping notes
+
+`Design-context summaries` should stay connector-agnostic even when Figma or MCP is the source example.
+Use it to capture:
+- relevant frames or nodes
+- component and variant cues
+- variable or token cues
+- layout or spacing constraints
+- annotations or handoff notes
+- code-mapping clues when available
 
 ---
 
@@ -84,7 +105,7 @@ Preferred section shape:
 Use the three downstream artifacts for different jobs:
 
 - `audit-evidence.md`
-  - current-state observations and evidence packet
+  - current-state observations, design-context summaries, and evidence packet
 - `project-memory.md`
   - durable truths, principles, canon, and stable decisions
 - `audit-packet.md`
@@ -102,14 +123,14 @@ If a current workflow produces both reusable current-state evidence and durable 
 ## Retrieval order
 
 Use this order:
-1. fresh screenshots, URLs, repo surfaces, or current prompt artifacts
+1. fresh screenshots, URLs, repo surfaces, prompt-level design-context artifacts, or current prompt artifacts
 2. `docs/design-system/audit-evidence.md`
 3. `docs/design-system/project-memory.md`
 4. generic shipped references
 
 Why:
 - fresh evidence should stay strongest
-- `audit-evidence.md` is still current-state context, not durable truth
+- `audit-evidence.md` is still current-state context, not durable truth, even when it includes design-context summaries
 - `project-memory.md` should preserve continuity without overriding newer evidence
 
 Do not retrieve `audit-packet.md` by default.
@@ -136,6 +157,7 @@ Do not write it silently.
 
 Offer create/update only when all of these are true:
 - the workflow has concrete current-state evidence worth preserving
+- the workflow would benefit from preserving structured design-context such as frame, node, variable, annotation, or component-mapping summaries
 - the evidence is likely to be reused in the next audit step
 - the result is not merely a thin page-level read
 - the user explicitly approves creating or updating the file

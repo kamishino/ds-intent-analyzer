@@ -139,6 +139,20 @@ Use this precedence order:
 3. user wording
 4. style adjectives or taste language
 
+Top-tier current evidence may include:
+- fresh screenshots
+- URLs
+- repo surfaces
+- frame or node links
+- Dev Mode or MCP-generated summaries
+- variable or token summaries
+- annotation or callout notes
+- component or code-mapping notes
+
+Treat prompt-level design-context artifacts as current evidence, not as taste language or background context.
+Use them to sharpen `UI / DS Audit` first.
+`Formation Recommendation` and `Comparative Reference Read` may borrow that stronger evidence only when it materially sharpens the decision.
+
 Imported project context may include:
 - `docs/design-system/review-brief.md`
 - `docs/design-system/audit-evidence.md`
@@ -147,15 +161,16 @@ Imported project context may include:
 
 `review-brief.md` is a recurring-review scope contract, not fresh evidence.
 If a `docs/design-system/review-brief.md` file is present and recurring review is explicit:
-- use it after fresh screenshots, URLs, repo surfaces, or current prompt artifacts
+- use it after fresh screenshots, URLs, repo surfaces, prompt-level design-context artifacts, or current prompt artifacts
 - use it to scope the recurring audit and checkpoint order
 - do not let it override fresher current evidence
 
 `audit-evidence.md` is current-state evidence, not durable memory.
 If a `docs/design-system/audit-evidence.md` file is present:
-- use it after fresh screenshots, URLs, repo surfaces, or current prompt artifacts
-- prefer it over older memory notes when it contains concrete current-state summaries
+- use it after fresh screenshots, URLs, repo surfaces, prompt-level design-context artifacts, or current prompt artifacts
+- prefer it over older memory notes when it contains concrete current-state summaries, including structured design-context summaries
 - treat it as a bounded audit packet, not durable truth
+- if its design-context summaries conflict with fresher current evidence, call out the drift and prefer the fresher evidence
 
 Project memory packs belong after fresh evidence and current-state audit evidence.
 If a `docs/design-system/project-memory.md` file is present, use it after current artifact/context read and `audit-evidence.md`, then before falling back to generic references.
@@ -189,6 +204,10 @@ Do not cite them as proof in normal user-facing DS guidance:
 If dogfood context from the source repo helped orient the answer:
 - suppress that provenance in the final user-facing prose
 - restate the reasoning directly instead of citing local repo files
+
+If a design-context tool such as Figma Dev Mode or MCP contributed evidence:
+- use the design conclusions and UI consequences in the user-facing answer
+- do not narrate the connector or tool mechanics unless the user explicitly asks about them
 
 Only surface contributor docs, private memory, or source-repo-local file paths when the user is explicitly asking about:
 - the skill repo itself
@@ -238,6 +257,14 @@ Low-evidence fallback behavior:
 - keep the answer explicitly brief-bounded; do not pretend artifact-level certainty or visual maturity you have not seen
 - if the primary mode is still `Intent Analysis`, cap at `E1` unless the prompt includes materially stronger current-state structure than a normal early brief
 - do not let a rich early brief silently upgrade itself into formation-level confidence if the main job is still choosing what to figure out first
+
+### Design-context artifacts
+- one frame or one node only should stay bounded and frame-level
+- use `E1` with a tiny qualifier such as `one frame only`
+- multi-surface design-context without fresher live UI or repo evidence may rise to `E2` with a tiny qualifier such as `design context only`
+- design-context by itself must not justify `E3`
+- if design-context conflicts with fresher screenshots, URLs, or repo surfaces, prefer the fresher evidence and call out the drift explicitly
+- do not treat tool-exported summaries as if they remove all practical ambiguity
 
 ### One-screen or partial screenshot asks
 - avoid system-level certainty
@@ -522,17 +549,19 @@ The first confidence line must:
 Preferred forms:
 - `Confidence: E0 - very low, prompt only`
 - `Confidence: E1 - low, brief only`
+- `Confidence: E1 - low, one frame only`
 - `Confidence: E1 - low, one page only`
 - `Confidence: E2 - medium, brief only`
+- `Confidence: E2 - medium, design context only`
 - `Confidence: E2 - medium, still hybrid-sensitive`
 - `Confidence: E3 - high`
 
 Band guardrails:
 - `E0` for prompt-only, adjective-only, or very weak evidence with little real product structure
-- `E1` for one-page, one-screen, partial-artifact, unresolved-reference, thin-summary reads, or brief-only prompts with concrete but still limited product structure, including early intent briefs
-- `E2` for medium evidence where the product signals are real and aligned enough to support a bounded recommendation, including structured brief-only formation or comparison prompts and stronger current-state summaries
+- `E1` for one-page, one-screen, one-frame, partial-artifact, unresolved-reference, thin-summary reads, or brief-only prompts with concrete but still limited product structure, including early intent briefs
+- `E2` for medium evidence where the product signals are real and aligned enough to support a bounded recommendation, including structured brief-only formation or comparison prompts, stronger current-state summaries, and multi-surface design-context packets that still lack fresher live UI or repo evidence
 - `E3` only when multiple aligned artifacts or materially stronger evidence remove most practical ambiguity
-- do not use `E3` for prompt-only, brief-only, URL-only, one-page, one-screen, or hybrid-sensitive comparison cases
+- do not use `E3` for prompt-only, brief-only, URL-only, one-page, one-screen, one-frame, design-context-only, or hybrid-sensitive comparison cases
 
 Qualifier rule:
 - do not label a structured product brief as `prompt only`
@@ -687,7 +716,7 @@ Shipped runtime references may guide reasoning, but in normal product guidance t
 ### Audit evidence artifact
 If the target repo already has `docs/design-system/audit-evidence.md` or an obvious equivalent:
 - retrieve it after fresh current evidence and before `project-memory.md`
-- use it to lift audits out of `brief only` when it contains concrete current-state evidence
+- use it to lift audits out of `brief only` when it contains concrete current-state evidence, including structured design-context summaries
 - do not let it override fresher screenshots, URLs, repo surfaces, or current prompt artifacts
 - if it conflicts with fresher evidence, call out the drift and prefer the fresher evidence
 
@@ -768,7 +797,7 @@ Do not offer or write `audit-evidence.md` when:
 
 When an evidence packet is justified:
 - prefer `docs/design-system/audit-evidence.md`
-- keep it factual, current-state, and source-pointed
+- keep it factual, current-state, source-pointed, and able to preserve structured design-context without turning it into durable memory
 - offer the packet as an explicit action for the user, not as silent mutation
 - create or update it only after user approval or explicit workflow acceptance
 

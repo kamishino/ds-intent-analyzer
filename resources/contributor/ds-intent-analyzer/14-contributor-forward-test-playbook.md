@@ -94,6 +94,7 @@ They are not benchmark runs and they do not require exact wording matches.
 Mixed audit/reference note:
 - when a prompt includes both current UI evidence and a named reference donor, the current UI still leads the mode unless the user is explicitly asking only for comparison
 - in those mixed cases, the reference should stay secondary to the audit rather than replacing it
+- prompt-level design-context such as frame links, Dev Mode or MCP summaries, variable notes, annotations, or component-mapping cues should be treated as fresh current evidence rather than as a thin brief
 - if `docs/design-system/audit-evidence.md` is part of the prompt bundle, treat it as current-state project context that outranks `docs/design-system/project-memory.md` but not fresher direct artifacts
 - if recurring review is explicit and `docs/design-system/review-brief.md` is part of the prompt bundle, treat it as scope context that sits after fresh evidence and before `audit-evidence.md`
 - if `docs/design-system/review-log.md` is part of the prompt bundle, treat it as continuity context for drift comparison rather than stronger truth than the current evidence
@@ -372,6 +373,7 @@ A rerun still counts as a pass if it:
 - still feels evidence-first rather than questionnaire-first
 - uses a short recommendation-first shell when a long memo is unnecessary
 - keeps a named reference donor secondary when current UI evidence is supposed to lead the audit
+- treats structured design-context as stronger than a thin brief and weaker than fresher conflicting artifacts
 
 Do not mark a rerun as `pass` when:
 - the case has an explicit canonical expected primary mode
@@ -383,6 +385,8 @@ Do not mark a rerun as `pass` when:
 - a reference-to-repo answer leaves the next inspection step implied instead of emitting a bounded `Audit handoff`
 - a mixed audit/reference prompt drifts into pure comparison mode and stops auditing the current UI first
 - a recurring-review prompt ignores the repeated-review context and rewrites a long one-off audit instead of a compact drift-aware shell
+- a design-context prompt behaves like a thin brief even though the frame, node, variable, annotation, or code-mapping evidence is strong enough to sharpen the audit
+- a stale design-context packet overrides fresher screenshot or repo evidence instead of being called out as drift
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

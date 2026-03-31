@@ -146,6 +146,7 @@ Pass signals:
 - references the strongest evidence first
 - separates observation from inference
 - avoids asking questions that the visible evidence or product context already answers
+- treats structured design-context such as frame links, Dev Mode or MCP summaries, variable notes, annotations, or component-mapping cues as stronger current evidence than a thin brief
 - treats `docs/design-system/audit-evidence.md` as current-state context that should outrank `docs/design-system/project-memory.md`
 - if recurring review is explicit, treats `docs/design-system/review-brief.md` as scope context and `docs/design-system/review-log.md` as continuity context rather than stronger truth than fresh evidence
 - if the shipped runtime index is in play, uses it only as hidden orientation and still lets the shipped markdown sources and current evidence own the reasoning
@@ -156,6 +157,7 @@ Regression signals:
 - lets adjectives outrank visible or provided evidence
 - ignores contradictions in the prompt bundle
 - starts with a style quiz or library ranking before reading available evidence
+- treats stale design-context or stored audit-evidence summaries as stronger truth than fresher screenshots, URLs, or repo surfaces
 - treats `runtime-index.json`, `review-brief.md`, or `review-log.md` as stronger truth than fresher evidence
 - uses sidecars as an excuse to hide evidence ownership or merge behavior
 - treats evaluative claims or confidence labels on a product surface as self-proving instead of checking whether their provenance is visible enough
@@ -175,16 +177,19 @@ Pass signals:
 - uses one short inline `Confidence:` line with plain-language strength and only a tiny qualifier when useful
 - keeps `E3 / high` rare and reserved for materially strong multi-artifact evidence rather than medium brief-only or one-page cases
 - distinguishes `prompt only` from `brief only`, and does not label a structured product brief as if it were a thin prompt
+- keeps one-frame design-context reads at `E1` and multi-surface design-context packets at bounded `E2` when no fresher live UI or repo evidence exists
 
 Regression signals:
 - sounds certain when the evidence is partial
 - pretends an unknown reference is well understood
 - uses raw `E0-E3` shorthand with no plain-language meaning in user-facing output
 - mirrors the product's own confidence or authority tone without separating visible computation from heuristic or unsupported claims
+- lets design-context by itself justify `E3` or system-complete certainty
 
 Format-discipline note:
 - if the confidence level is evidence-matched but the wording drifts into a readable non-standard form such as `medium` or `Medium.`, score this category as a partial pass rather than a regression
 - if the answer reads the product brief correctly but still calls it `prompt only`, score this category as a partial pass unless the under-confidence materially distorts the recommendation
+- if a one-frame or multi-surface design-context read stays bounded but uses a near-equivalent qualifier instead of the preferred `one frame only` or `design context only` wording, score it as a partial pass rather than a regression
 - reserve regressions for confidence that is materially overstated, misleading, or not user-readable
 
 ### 6. Practical Smart Suggestions

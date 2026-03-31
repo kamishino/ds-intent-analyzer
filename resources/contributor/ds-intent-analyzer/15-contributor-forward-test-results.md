@@ -1620,3 +1620,61 @@ It should stay:
 - Strongest pass signal: tie-break subsections such as `Clarity vs Elastic UI Framework tie-break` are no longer emitted as pseudo-reference cards
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Design-context ingestion validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-design-context-ingestion`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded in a fresh temp repo; `.agents/skills/` contained only `ds-intent-analyzer`; the installed `audit-evidence-template.md` included `## Design-context summaries`, and the installed runtime contract included the new `one frame only` / `design context only` confidence qualifiers
+- Run date: `2026-03-31`
+- Notes: executable validation for the design-context-ingestion slice; the repo still does not ship an automated installed-runtime prompt harness, so this block records structural and downstream-surface validation aligned to `AU-23`, `AU-24`, `AU-25`, `AU-21`, and `RF-16` rather than transcript-grade scenario reruns
+
+### Structural subset
+
+## AU-23 — One-frame design-context cap
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: runtime contract and output templates cap one-frame or one-node design-context reads at `Confidence: E1 - low, one frame only` and keep them frame-level
+- Strongest pass signal: one-frame Figma-aware audit behavior is now explicitly stronger than a thin brief without pretending full flow certainty
+- Strongest miss: no prompt harness yet for transcript-grade installed-runtime replay
+- Outcome: `pass`
+
+## AU-24 — Multi-surface design-context packet lift
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: `audit-evidence.md` and the shipped template now require `Design-context summaries`, and the runtime contract allows multi-surface design-context packets to rise to bounded `Confidence: E2 - medium, design context only`
+- Strongest pass signal: the product now has an explicit current-state artifact shape for richer design-context without adding a new file path or connector lock-in
+- Strongest miss: no prompt harness yet for transcript-grade installed-runtime replay
+- Outcome: `pass`
+
+## AU-25 — Fresh evidence wins over stale design-context
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: runtime retrieval guidance now says fresher screenshots, URLs, repo surfaces, or prompt-level design-context outrank stored `audit-evidence.md` summaries, and drift must be called out explicitly when they conflict
+- Strongest pass signal: stale design-context is now locked to continuity context rather than stronger truth than fresher live evidence
+- Strongest miss: no prompt harness yet for transcript-grade installed-runtime replay
+- Outcome: `pass`
+
+## AU-21 guard — Recurring review stays compact and audit-first
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: recurring-review scope still lives in `review-brief.md`, while structured design-context remains current-state evidence inside `audit-evidence.md`
+- Strongest pass signal: the new design-context path does not blur recurring-review scope with stronger truth than fresher evidence
+- Strongest miss: no prompt harness yet for transcript-grade installed-runtime replay
+- Outcome: `pass`
+
+## RF-16 guard — Thin-evidence page reads stay bounded
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: the confidence contract still reserves `E1 - low, one page only` for thin single-page reads and does not let design-context language inflate unrelated low-evidence cases
+- Strongest pass signal: richer design-context support landed without loosening the standing thin-evidence audit guard
+- Strongest miss: no prompt harness yet for transcript-grade installed-runtime replay
+- Outcome: `pass`
+
+## Temp-repo installed runtime sanity
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed structural signal: downstream installed runtime shipped the updated `audit-evidence-template.md` and the updated runtime contract text, while keeping the install surface unchanged
+- Strongest pass signal: the design-context ingestion slice survives downstream installation instead of only existing in the source repo
+- Strongest miss: none noted
+- Outcome: `pass`

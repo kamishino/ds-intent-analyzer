@@ -1057,3 +1057,167 @@ Tell me:
 - ignoring the prior review log and rewriting the same audit from scratch
 - letting the old review log override fresher evidence
 - turning the answer into a long general audit instead of a drift-aware recurring review
+
+---
+
+## AU-23 — One-Frame-Only Figma-Aware Audit
+
+### Prompt bundle
+
+```text
+Design-context summary:
+- one Figma frame link only for the provider-results screen
+- Dev Mode notes say provider cards, insurance chips, next-available times, and booking CTAs all use very similar visual weight
+- annotations say `make this feel calmer and more credible without adding more chrome`
+- no other screens, repo surfaces, or current screenshots are included
+
+User ask:
+Audit this frame and tell me what we should fix first.
+```
+
+### Input type and evidence strength
+- Input type: one-frame design-context summary + short audit ask
+- Evidence strength: low to medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light formation hints only if they stay subordinate to the frame-level audit
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E1
+
+### Must-have answer traits
+- treats the one-frame design-context as stronger than a thin brief
+- stays frame-level rather than pretending full booking-flow certainty
+- identifies one fix-first hierarchy or trust lever from the frame evidence
+- uses a bounded confidence line such as `Confidence: E1 - low, one frame only`
+
+### Must-not-do failures
+- collapsing the frame read back into `prompt only`
+- acting as if one frame proves system-wide maturity
+- narrating Dev Mode or MCP mechanics instead of grounded UI conclusions
+
+---
+
+## AU-24 — Multi-Surface Design-Context Packet in `audit-evidence.md`
+
+### Prompt bundle
+
+```text
+Current-state audit evidence (`docs/design-system/audit-evidence.md`):
+
+# Audit Evidence
+
+## Product note
+- healthcare booking app for finding providers, choosing time slots, and confirming appointments
+
+## Artifact inventory
+- provider-results Figma frame link
+- provider-card Figma component notes
+- booking-stepper Dev Mode summary
+- confirmation annotations
+
+## Design-context summaries
+- provider-results frame shows search filters, provider cards, and booking CTA in one dense hierarchy
+- provider-card notes say ratings, insurance, and next availability still compete visually
+- booking-stepper summary says progress treatment is calmer than before but secondary guidance is still weak
+- confirmation annotations say reassurance and next-step clarity still trail behind generic success styling
+
+## Surface summaries
+- provider trust cues and booking progression are the main decision points
+- confirmation still feels generic after booking
+
+## Known workflow pressures
+- users compare providers quickly and can abandon if confidence drops
+
+## Known trust/risk pressures
+- healthcare booking needs calm credibility at provider selection and confirmation
+
+## Known drift and hotspots
+- spacing rhythm and trust emphasis drift across provider cards, stepper, and confirmation
+
+## Open questions
+- whether provider cards or confirmation should stabilize first
+
+## Source pointers
+- provider-results frame
+- provider-card component notes
+- booking-stepper summary
+- confirmation annotations
+
+User ask:
+Use this packet to audit the current direction and tell me what to stabilize first.
+```
+
+### Input type and evidence strength
+- Input type: multi-surface `audit-evidence.md` packet with structured design-context
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- light formation guidance tied directly to the evidence packet
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- treats the multi-surface packet as stronger than a thin brief
+- uses the design-context summaries to produce a stronger stabilization order than a prompt-only read
+- can rise to `Confidence: E2 - medium, design context only`
+- keeps the evidence bounded and does not pretend full live-product certainty
+
+### Must-not-do failures
+- ignoring the `Design-context summaries` section and answering as if the packet were only a brief
+- letting design-context alone justify `E3`
+- narrating connector mechanics instead of grounded UI or workflow consequences
+
+---
+
+## AU-25 — Stale Design-Context Conflicts With Fresher Screenshot Evidence
+
+### Prompt bundle
+
+```text
+Stored current-state audit evidence (`docs/design-system/audit-evidence.md`):
+- Design-context summaries from last week say provider cards already lead trust cues clearly and no longer need immediate stabilization
+- confirmation was considered the weakest surface at that time
+
+Fresh screenshot summary:
+- provider cards still compress ratings, insurance, and next availability into a flat block
+- trust cues remain visually weak on the live screen
+- confirmation is still generic, but provider selection now looks like the sharper risk point
+
+User ask:
+Use the latest evidence to tell me what to stabilize first and whether the older design-context packet still holds up.
+```
+
+### Input type and evidence strength
+- Input type: stale design-context packet + fresher screenshot summary
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- drift clarification tied directly to the fix-first audit recommendation
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- prefers the fresher screenshot evidence over the older design-context packet
+- calls out the drift explicitly instead of silently forcing the older packet
+- shifts the stabilization order toward the live provider-card trust problem if the fresh evidence supports that move
+- keeps the older design-context packet as continuity context, not stronger truth than the newer artifact
+
+### Must-not-do failures
+- treating stored design-context summaries as if they override fresher live evidence
+- ignoring the conflict and pretending both evidence sources still align
+- turning the answer into design-tool process commentary instead of fix-first audit guidance

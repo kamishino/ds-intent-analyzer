@@ -6,6 +6,9 @@
 ## Artifact inventory
 - 
 
+## Design-context summaries
+- 
+
 ## Surface summaries
 - 
 

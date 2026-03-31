@@ -18,9 +18,10 @@ This is not:
 - automatic background learning
 - a replacement for fresh evidence
 - a current-state audit evidence packet
+- a design-context packet
 - a next-step repo-audit handoff artifact
 
-Use `docs/design-system/audit-evidence.md` for concrete current-state evidence that should help the next audit.
+Use `docs/design-system/audit-evidence.md` for concrete current-state evidence that should help the next audit, including structured design-context such as frame or node links, Dev Mode or MCP summaries, variable notes, annotations, and component/code-mapping cues.
 Use `docs/design-system/audit-packet.md` for bounded follow-through instructions to another agent after a decision is made.
 Use `docs/design-system/review-brief.md` and `docs/design-system/review-log.md` for recurring review scope and dated review continuity.
 Use `project-memory.md` for durable truths and decisions worth reusing across sessions.
@@ -69,6 +70,16 @@ If something is useful but still provisional:
 - store it as an open question
 - or store it as a provisional note
 - do not store it as settled truth
+
+Do not store current design-context packet detail as durable memory by default.
+If the material is mainly:
+- frame or node summaries
+- Dev Mode or MCP-generated summaries
+- variable or token snapshots
+- annotation or callout packets
+- component or code-mapping clues
+
+it belongs in `audit-evidence.md` unless it has already become durable canon or a stable decision.
 
 ---
 
