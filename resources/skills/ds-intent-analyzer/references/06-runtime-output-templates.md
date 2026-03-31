@@ -45,6 +45,7 @@ For implementation-framed comparison prompts, answer "what should we inspect fir
 If the user explicitly asks for multiple agents or sub-agents, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
 If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
+If the user explicitly wants recurring or scheduled DS review, use the compact recurring-review shell from section G instead of expanding into a one-off audit memo.
 If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
 Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
 For reference-led asks, default to this order:
@@ -59,6 +60,7 @@ For reference-led asks, default to this order:
 
 For normal product guidance:
 - do not cite `resources/contributor/...`, `.local/...`, forward-test logs, or source-repo-local file paths
+- do not cite `assets/runtime-index.json` or describe it as user-facing proof
 - do not say things like `this matches our boundary study`, `the runtime lookup says`, or similar maintainer-facing provenance lines
 - if internal repo context helped orient the answer during dogfood, restate the reasoning directly instead of exposing that provenance
 
@@ -784,6 +786,47 @@ Keep it Codex-first, lightweight, and analysis-only.
 ### Recommended next lead
 - name the next lead agent explicitly
 - if frontend build is next, this should point to `frontend-skill` only after the synthesis is stable enough for `Frontend handoff`
+
+---
+
+# G. Recurring Review Shell
+
+Use this shell only when:
+- the user explicitly asks for recurring or scheduled DS review
+- the repo points to `review-brief.md` or `review-log.md`
+- the value comes from drift detection and continuity, not from a one-off audit memo
+
+Keep primary mode `UI / DS Audit`.
+Do not turn recurring review into a fifth primary mode.
+
+## TL;DR
+- 3 to 5 compact bullets
+
+## Current health
+- what currently reads healthier or more stable
+
+## Biggest drift
+- the most important regression, unresolved hotspot, or scope change since the last review context
+
+## Keep
+- what should remain stable from the current cycle
+
+## Fix next
+- the one highest-leverage next fix for the next review interval
+
+## Confidence
+- keep the standard one-line `Confidence:` format
+
+## Next review action
+- one explicit next step
+- if a reusable recurring review contract is missing, offer `docs/design-system/review-brief.md`
+- if the recurring review outcome should be preserved, offer `docs/design-system/review-log.md`
+- do not write either file silently
+
+Recurring-review notes:
+- if `review-log.md` exists, compare current drift against the latest relevant entry
+- if the workflow is still a one-off audit, use the normal audit shell instead
+- do not emit `Audit handoff` or `Frontend handoff` unless the user explicitly pivots into one of those next jobs
 
 ---
 

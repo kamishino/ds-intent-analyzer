@@ -88,6 +88,31 @@ Optional downstream runtime artifacts:
   - current-state evidence packet for real audits
 - `docs/design-system/project-memory.md`
   - durable truths and decisions, not current-state evidence
+- `docs/design-system/review-brief.md`
+  - reusable recurring-review scope contract
+- `docs/design-system/review-log.md`
+  - compact dated recurring-review outcomes
+
+Recurring-review prompt shape for manual or automation-ready use:
+
+```text
+Use ds-intent-analyzer to run our recurring design-system review.
+
+Use these repo artifacts if present:
+- docs/design-system/review-brief.md
+- docs/design-system/audit-evidence.md
+- docs/design-system/project-memory.md
+- docs/design-system/review-log.md
+
+Keep the answer compact:
+- TL;DR
+- Current health
+- Biggest drift
+- Keep
+- Fix next
+- Confidence
+- Next review action
+```
 
 ## Maintainer / Cross-Repo Install
 
@@ -145,7 +170,7 @@ Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
 - `resources/skills/ds-intent-analyzer/references/`
 - `resources/skills/ds-intent-analyzer/assets/`
-  - real runtime templates for `audit-packet.md` and `audit-evidence.md`
+  - real runtime templates for `audit-packet.md`, `audit-evidence.md`, `review-brief.md`, `review-log.md`, and the generated `runtime-index.json`
 
 Optional shipped runtime resources such as `assets/` or `scripts/` should appear only when the skill carries real output files or runtime-local helpers. In this repo, `assets/` is justified because the package now ships reusable audit artifact templates.
 
@@ -160,6 +185,7 @@ npm run validate:structure
 npm run install:local -- --project ../target-project
 npm run install:local -- --with-local-scaffold
 npm run sync:local
+npm run build:index
 npm pack --dry-run
 ```
 

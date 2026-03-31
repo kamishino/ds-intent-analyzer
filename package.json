@@ -18,6 +18,7 @@
   "scripts": {
     "install:local": "node ./bin/ds-intent-analyzer.mjs install",
     "sync:local": "node ./bin/ds-intent-analyzer.mjs sync",
+    "build:index": "node ./scripts/build-runtime-index.mjs",
     "validate": "node ./scripts/validate-skill.mjs",
     "validate:structure": "node ./scripts/validate-skill.mjs"
   },

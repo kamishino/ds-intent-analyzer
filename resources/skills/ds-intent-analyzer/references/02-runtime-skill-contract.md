@@ -13,6 +13,7 @@ It exists to clarify:
 - when to stay lightweight
 - when to escalate carefully
 - when to offer project-memory capture
+- when recurring review should stay audit-first
 - when bounded multi-agent coordination is justified
 
 This file complements `01-runtime-framework.md`.
@@ -28,6 +29,7 @@ Use this file to guide:
 - request routing
 - mode selection
 - evidence precedence
+- recurring-review workflow selection
 - project-memory precedence
 - inference order
 - output structure
@@ -113,6 +115,7 @@ Route by the dominant evidence and the user’s actual job:
 
 - intent-heavy wording, early brief fragments, strategy notes, or adjective-heavy asks -> Intent Analysis
 - screenshots, current UI, current DS docs, “improve this”, or “enhance this” -> UI / DS Audit
+- recurring or scheduled DS review asks, repeated health checks, or prompts that explicitly point to `review-brief.md` or `review-log.md` -> UI / DS Audit using the recurring-review shell
 - URL-only or single-page asks such as “check this page”, “what looks healthy”, “what feels weak”, or “what should change first” -> UI / DS Audit, even if the page is itself a design-system reference surface
 - direct asks for principles, foundations, token direction, or what to stabilize first -> Formation Recommendation
 - named systems, “X or Y”, “what should we borrow”, or careful comparison asks -> Comparative Reference Read
@@ -137,8 +140,16 @@ Use this precedence order:
 4. style adjectives or taste language
 
 Imported project context may include:
+- `docs/design-system/review-brief.md`
 - `docs/design-system/audit-evidence.md`
 - `docs/design-system/project-memory.md`
+- `docs/design-system/review-log.md`
+
+`review-brief.md` is a recurring-review scope contract, not fresh evidence.
+If a `docs/design-system/review-brief.md` file is present and recurring review is explicit:
+- use it after fresh screenshots, URLs, repo surfaces, or current prompt artifacts
+- use it to scope the recurring audit and checkpoint order
+- do not let it override fresher current evidence
 
 `audit-evidence.md` is current-state evidence, not durable memory.
 If a `docs/design-system/audit-evidence.md` file is present:
@@ -152,6 +163,12 @@ If fresh artifacts conflict with stored memory:
 - prefer fresh evidence
 - call out the drift or staleness explicitly
 - do not let old memory override current evidence
+
+`review-log.md` is recurring continuity context, not stronger truth than current evidence.
+If a `docs/design-system/review-log.md` file is present:
+- retrieve it only when recurring review is explicit or the user wants comparison against a prior review cycle
+- use it after fresh evidence, `review-brief.md`, `audit-evidence.md`, and `project-memory.md`
+- treat it as previous-cycle context for drift detection, not as stronger truth than current evidence
 
 ### User-facing source boundary
 User-facing reasoning may be informed by:
@@ -178,6 +195,25 @@ Only surface contributor docs, private memory, or source-repo-local file paths w
 - validation history
 - maintainer workflow
 - repo-internal implementation details
+
+## Runtime index helper
+
+Use `assets/runtime-index.json` as a fast orientation helper only.
+
+Use it to:
+- pick likely primary mode entrypoints faster
+- identify which shipped markdown source is most likely worth loading next
+- orient named-reference or artifact-path lookup without loading every reference first
+
+Do not use it to:
+- replace fresh evidence
+- replace `audit-evidence.md`, `project-memory.md`, or `review-brief.md`
+- cite internal asset paths in user-facing reasoning
+- invent a hidden memory or search subsystem
+
+If the derived index and the source markdown disagree:
+- the markdown sources win
+- the index should be regenerated
 
 Interpret words as signals, not verdicts.
 
@@ -395,6 +431,11 @@ For reference-led asks, default to this order:
 - `Confidence`
 - `Next move`
 
+If recurring review is explicit:
+- keep primary mode `UI / DS Audit`
+- use the compact recurring-review shell instead of a one-off audit memo
+- keep `Audit handoff` and `Frontend handoff` out unless the user explicitly pivots into one of those next jobs
+
 If a deeper section such as `Context summary`, `Signal map`, or `Pattern priorities` does not materially sharpen the decision, omit it.
 
 ### TL;DR
@@ -598,6 +639,7 @@ Keep one shared output shape, but change emphasis by primary mode:
 - UI / DS Audit
   - emphasize strongest positives, biggest weaknesses, fix-first area, and Smart Suggestions
   - if the evidence is only one screen or a partial artifact, stay explicitly screen-level
+  - if recurring review is explicit, use the compact recurring-review shell and drift-aware continuity rules from `13-runtime-review-workflows.md`
 - Formation Recommendation
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
@@ -615,6 +657,10 @@ Keep one shared output shape, but change emphasis by primary mode:
 Do not read every runtime document automatically.
 Retrieve selectively by tier:
 
+### Fast orientation helper
+- `assets/runtime-index.json`
+  - generated, orientation-only, and subordinate to the markdown sources
+  - use it to choose the next likely runtime doc, not as stronger truth
 ### Always-near-core
 - `01-runtime-framework.md`
 - `02-runtime-skill-contract.md`
@@ -632,6 +678,7 @@ Retrieve selectively by tier:
 - `10-runtime-project-memory-pack.md`
 - `11-runtime-multi-agent-coordination.md`
 - `12-runtime-audit-artifacts.md`
+- `13-runtime-review-workflows.md`
 
 Contributor docs are not part of normal runtime retrieval.
 Shipped runtime references may guide reasoning, but in normal product guidance they should not appear as repo-local file-path citations or maintainer-style proof language.
@@ -654,6 +701,18 @@ If the target repo already has `docs/design-system/audit-packet.md`:
 - do not treat it as default retrieval material for a fresh audit
 - retrieve it only when the user explicitly asks to resume, review, or continue the packet
 - use it as a prior handoff artifact, not as stronger truth than fresh evidence or current-state audit evidence
+
+### Review brief artifact
+If the target repo already has `docs/design-system/review-brief.md`:
+- retrieve it only when recurring review is explicit
+- use it after fresh evidence and before `audit-evidence.md`
+- treat it as scope and checkpoint guidance, not current-state truth
+
+### Review log artifact
+If the target repo already has `docs/design-system/review-log.md`:
+- retrieve it only when recurring review is explicit or when the user asks to compare against a prior review cycle
+- use it after fresh evidence, `review-brief.md`, `audit-evidence.md`, and `project-memory.md`
+- treat it as continuity context for drift comparison, not stronger truth than current evidence
 
 ---
 
@@ -711,6 +770,39 @@ When an evidence packet is justified:
 - keep it factual, current-state, and source-pointed
 - offer the packet as an explicit action for the user, not as silent mutation
 - create or update it only after user approval or explicit workflow acceptance
+
+## Review brief write gate
+
+Only offer `review-brief.md` when all of these are true:
+- recurring review is explicit
+- the repo or product needs a reusable recurring-review scope contract
+- the review checkpoints and stop conditions are stable enough to preserve
+
+Do not offer or write `review-brief.md` when:
+- the request is still a one-off audit
+- the review scope is still too unstable or exploratory
+- the user has not approved creating or updating the file
+
+When a recurring-review brief is justified:
+- prefer `docs/design-system/review-brief.md`
+- keep it scoped, reusable, and explicit
+- create or update it only after user approval or explicit workflow acceptance
+
+## Review log write gate
+
+Only offer `review-log.md` when all of these are true:
+- recurring review is explicit
+- the current cycle produced a compact recurring-review outcome worth preserving
+- the user has approved creating or updating the file
+
+Do not offer or write `review-log.md` when:
+- the request is still a one-off audit
+- the answer is too thin or unresolved to be a useful recurring review entry
+
+When a recurring review log is justified:
+- prefer `docs/design-system/review-log.md`
+- keep it compact, dated, and drift-aware
+- append or update it only after user approval or explicit workflow acceptance
 
 ---
 

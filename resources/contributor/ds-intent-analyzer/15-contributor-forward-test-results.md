@@ -1353,3 +1353,232 @@ It should stay:
 - Strongest pass signal: frontend follow-through remains a bounded `Frontend handoff` path and is not replaced by audit-packet behavior
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted runtime-index feasibility
+
+### Run header
+
+- Run label: `FT-2026-03-31-runtime-index-feasibility`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: manual contributor-side feasibility pass before treating the derived runtime index as a shipped helper; result `6 pass / 0 partial pass / 0 regressions`; repeated user-facing value `yes`; proceed to shipped index `yes`
+
+### Targeted subset
+
+## RF-07 — Tokens Exist, But the UI Still Feels Wrong
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: the answer now feels easier to enter through one first inspection target instead of drifting across several equally weighted suspects
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-13 — Clarity or EUI for a Dense Internal Product
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: the tie-break stays sharper and asks for one dominant repeated-job surface instead of a broad compare-more follow-up
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: thin-evidence page-level discipline stays intact even with the index helper present
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-19 — Healthcare Booking Audit Backed by `audit-evidence.md`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: current-state audit evidence still leads the read instead of being displaced by generic lookup orientation
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-20 — Fresh Audit Evidence Conflicts With Project Memory
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Strongest pass signal: fresh evidence still overtakes stale project memory explicitly, which shows the index helper does not blur precedence
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 — Healthcare Booking Mixed Audit With Reference Donor
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: mixed audit plus bounded donor behavior stays client-repo-safe instead of collapsing into reference-first lookup behavior
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Targeted recurring-review proof
+
+### Run header
+
+- Run label: `FT-2026-03-31-recurring-review-proof`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: manual contributor-side recurring-review proof before shipping a recurring-review workflow surface; result `2 pass / 0 partial pass / 0 regressions`; recurring review showed real user-facing value beyond maintainer convenience
+
+### Targeted subset
+
+## AU-21 — Healthy Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff`; explicit `review-log.md` offer remains optional
+- Strongest pass signal: the answer stays compact and recurring-review shaped instead of rewriting a broad one-off audit
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-22 — Drift-Detection Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: no repo or frontend handoff drift; prior review context stays continuity-only
+- Strongest pass signal: the answer explicitly names what improved, what regressed, and why the next priority changed
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Targeted monitor-feature shipped validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-monitor-features-shipped`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Package surface sanity: `npm pack --json --dry-run` returned `26` packed files including the new `runtime-index.json`, `review-brief-template.md`, `review-log-template.md`, and `13-runtime-review-workflows.md`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; installed runtime included the new review assets and runtime index
+- Run date: `2026-03-31`
+- Notes: targeted shipped-surface validation after adding the thin derived runtime index and recurring-review workflow; result `5 pass / 0 partial pass / 0 regressions`
+
+### Targeted subset
+
+## AU-21 — Healthy Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: recurring review stays compact and artifact-explicit; no silent writes
+- Strongest pass signal: healthy repeated-review behavior now feels like a distinct practical workflow instead of a contributor-only convention
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-22 — Drift-Detection Recurring Review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: prior review context stays continuity-only and does not override fresher evidence
+- Strongest pass signal: drift comparison stays compact and decision-first
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-19 — Healthcare Booking Audit Backed by `audit-evidence.md`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: no recurring-review artifacts are offered when the workflow is a normal audit
+- Strongest pass signal: audit-evidence precedence remains healthy after the new recurring-review artifact surface landed
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: no `Audit handoff`, no `Frontend handoff`, and no recurring-review artifact drift
+- Strongest pass signal: low-evidence page reads stay compact and packet-free even after the new workflow surfaces shipped
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: stays on `Frontend handoff`; recurring review and audit artifacts do not interfere with build sequencing
+- Strongest pass signal: the new recurring-review workflow remains clearly separate from frontend execution
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Standing maintainer gate post-monitor-features baseline
+
+### Run header
+
+- Run label: `FT-2026-03-31-standing-maintainer-gate-post-monitor-features`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: compact standing-gate confirmation after the runtime-index and recurring-review slices; result `7 pass / 0 partial pass / 0 regressions`; core builder usefulness and bounded audit/comparison behavior remain healthy
+
+### Gate subset
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: still translates aesthetic discomfort into concrete workflow and density constraints quickly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: still gives a bounded foundation-first direction without inflating confidence
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: still keeps product-pattern stabilization ahead of toolkit speed
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-04 — Existing Workflow Product Needs a Stabilization Order
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: still picks one operational contract to normalize first instead of scattering the answer
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: comparison stays bounded, recommendation-first, and free of internal-source leakage
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: thin-evidence page audit stays page-level and explicit about what it will not overclaim
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: frontend follow-through remains a bounded build handoff rather than being replaced by audit or recurring-review behavior
+- Strongest miss: none noted
+- Outcome: `pass`

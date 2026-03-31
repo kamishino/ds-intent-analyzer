@@ -14,6 +14,7 @@ Other agents are secondary compatibility targets.
 Use this skill when Codex needs to:
 - turn vague UI or DS intent into grounded structure
 - audit an interface or design-system surface without jumping to implementation
+- run a recurring DS review when the review scope and current evidence are explicit
 - recommend foundation direction from product reality and repeated jobs
 - compare references carefully without falling into blind copying
 
@@ -159,6 +160,7 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - If the workflow produces stable reusable decisions, memory capture should be explicit and opt-in, not hidden.
 - If frontend execution is the next real job, hand off explicitly instead of letting build work infer direction from loose prose.
 - If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff` and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
+- If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit` and switch to the compact recurring-review shell instead of inventing a fifth mode.
 - If multiple agents or sub-agents are explicitly requested, use one lead agent and bounded analysis sidecars only.
 
 ## Runtime ownership
@@ -184,6 +186,12 @@ Detailed runtime behavior lives in the shipped references:
   - `audit-packet.md`
   - `audit-evidence.md`
   - retrieval and write gates for audit artifacts
+- `references/13-runtime-review-workflows.md`
+  - `review-brief.md`
+  - `review-log.md`
+  - recurring-review shell and write gates
+- `assets/runtime-index.json`
+  - fast derived orientation helper for routing and lookup
 - `references/07-runtime-reference-lookup.md`
   - named-system borrowing guidance
 - `references/08-runtime-archetype-lessons.md`
@@ -215,6 +223,11 @@ Use the exact phrasing and conditional add-ons from `references/06-runtime-outpu
 Do not read every reference file automatically.
 Retrieve selectively by layer:
 
+- fast orientation helper
+  - `assets/runtime-index.json`
+    - use it only to pick likely entrypoints and candidate shipped sources faster
+    - do not treat it as stronger than fresh evidence or the shipped markdown references
+
 - always-near-core
   - `references/01-runtime-framework.md`
   - `references/02-runtime-skill-contract.md`
@@ -230,6 +243,7 @@ Retrieve selectively by layer:
   - `references/10-runtime-project-memory-pack.md`
   - `references/11-runtime-multi-agent-coordination.md`
   - `references/12-runtime-audit-artifacts.md`
+  - `references/13-runtime-review-workflows.md`
 
 Use heavier retrieval only when:
 - evidence is weak or contradictory

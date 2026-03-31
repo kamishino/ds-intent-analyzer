@@ -42,6 +42,7 @@ This playbook supports these modes:
 - standing maintainer gate
 - full-pack forward-test run
 - reference-to-repo handoff check
+- recurring-review check
 - paired-skill handoff check
 - multi-agent sidecar check
 
@@ -61,6 +62,11 @@ Use the full-pack mode when:
 Use the reference-to-repo handoff mode when:
 - you want to see how a reference-led answer behaves when the user clearly wants to apply it to a real repo or application
 - you want to check that the answer stays compact, recommendation-first, and emits a bounded `Audit handoff`
+
+Use the recurring-review check mode when:
+- you want to see how `ds-intent-analyzer` behaves on a repeated DS health check
+- you want to confirm that recurring review stays audit-first, compact, and drift-aware
+- you want to check that `review-brief.md` and `review-log.md` stay explicit and opt-in rather than hidden memory
 
 Use the paired-skill handoff mode when:
 - you want to see how `ds-intent-analyzer` behaves right before frontend execution
@@ -89,6 +95,8 @@ Mixed audit/reference note:
 - when a prompt includes both current UI evidence and a named reference donor, the current UI still leads the mode unless the user is explicitly asking only for comparison
 - in those mixed cases, the reference should stay secondary to the audit rather than replacing it
 - if `docs/design-system/audit-evidence.md` is part of the prompt bundle, treat it as current-state project context that outranks `docs/design-system/project-memory.md` but not fresher direct artifacts
+- if recurring review is explicit and `docs/design-system/review-brief.md` is part of the prompt bundle, treat it as scope context that sits after fresh evidence and before `audit-evidence.md`
+- if `docs/design-system/review-log.md` is part of the prompt bundle, treat it as continuity context for drift comparison rather than stronger truth than the current evidence
 
 ---
 
@@ -130,6 +138,27 @@ They are not full implementation benchmarks.
 
 Reference-to-repo checks are still answer-shape checks.
 They are not implementation benchmarks.
+
+---
+
+## Recurring-review flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Validate the packaged runtime shape.
+   - command: `npm run validate`
+3. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+4. Run one recurring-review contributor case such as `AU-21` or `AU-22`.
+5. Check whether the analyzer answer:
+   - stays `UI / DS Audit` as the primary mode
+   - uses a compact recurring-review shell rather than a long one-off audit memo
+   - compares against prior drift when `review-log.md` is part of the prompt bundle
+   - offers `review-brief.md` or `review-log.md` only explicitly and never silently
+   - keeps `Audit handoff` and `Frontend handoff` separate unless the user explicitly pivots into one of those next jobs
+6. Record one compact readout.
+
+Recurring-review checks are still answer-shape checks.
+They are not scheduling or automation benchmarks.
 
 ---
 
@@ -190,6 +219,7 @@ Keep these as targeted reruns only when a slice touches them:
 - trust-of-claims audit cases such as `AU-17`
 - multi-agent sidecar checks
 - extra platform-boundary probes
+- recurring-review cases
 - broader full-pack answer-shape sweeps
 
 ---
@@ -352,6 +382,7 @@ Do not mark a rerun as `pass` when:
 - a reference-led answer that should be compact instead sprawls into a long memo and buries the recommendation or next action
 - a reference-to-repo answer leaves the next inspection step implied instead of emitting a bounded `Audit handoff`
 - a mixed audit/reference prompt drifts into pure comparison mode and stops auditing the current UI first
+- a recurring-review prompt ignores the repeated-review context and rewrites a long one-off audit instead of a compact drift-aware shell
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

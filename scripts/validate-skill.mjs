@@ -4,6 +4,7 @@ import { execFile } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
+import { buildRuntimeIndex } from "./build-runtime-index.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, "..");
@@ -201,6 +202,7 @@ async function main(args) {
     ["CLI entrypoint", path.join(rootDir, "bin", "ds-intent-analyzer.mjs")],
     ["install script", path.join(rootDir, "scripts", "install-skill.mjs")],
     ["sync script", path.join(rootDir, "scripts", "sync-skill.mjs")],
+    ["runtime-index generator script", path.join(rootDir, "scripts", "build-runtime-index.mjs")],
     ["validator script", path.join(rootDir, "scripts", "validate-skill.mjs")],
     ["project brief", path.join(rootDir, ".local", "project.md")],
     ["plans directory", path.join(rootDir, ".local", "plans")],
@@ -219,8 +221,12 @@ async function main(args) {
     ["runtime project memory pack reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "10-runtime-project-memory-pack.md")],
     ["runtime multi-agent coordination reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "11-runtime-multi-agent-coordination.md")],
     ["runtime audit artifacts reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "12-runtime-audit-artifacts.md")],
+    ["runtime recurring review reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "13-runtime-review-workflows.md")],
     ["runtime audit packet template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "audit-packet-template.md")],
     ["runtime audit evidence template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "audit-evidence-template.md")],
+    ["runtime review brief template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "review-brief-template.md")],
+    ["runtime review log template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "review-log-template.md")],
+    ["runtime index asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "runtime-index.json")],
     ["contributor dataset roadmap", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "01-contributor-dataset-roadmap.md")],
     ["contributor memory architecture", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "02-contributor-memory-architecture.md")],
     ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")],
@@ -241,6 +247,9 @@ async function main(args) {
     ["contributor app-to-ds brief set", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "18-contributor-app-to-ds-fit-brief-set.md")],
     ["contributor client-repo dogfood pass", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "19-contributor-client-repo-dogfood-pass.md")],
     ["contributor distribution proof pass", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "20-contributor-distribution-proof-pass.md")]
+    ,
+    ["contributor runtime-index feasibility", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "21-contributor-runtime-index-feasibility.md")],
+    ["contributor recurring-review pass", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "22-contributor-recurring-review-pass.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
@@ -325,9 +334,10 @@ async function main(args) {
       !scripts.validate ||
       !scripts["validate:structure"] ||
       !scripts["install:local"] ||
-      !scripts["sync:local"]
+      !scripts["sync:local"] ||
+      !scripts["build:index"]
     ) {
-      failures.push("Expected package.json scripts to include validate, validate:structure, install:local, and sync:local");
+      failures.push("Expected package.json scripts to include validate, validate:structure, install:local, sync:local, and build:index");
     } else {
       checks.push("OK   maintainer scripts");
     }
@@ -517,6 +527,27 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to validate agents/openai.yaml: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  try {
+    const runtimeIndexPath = path.join(
+      rootDir,
+      "resources",
+      "skills",
+      "ds-intent-analyzer",
+      "assets",
+      "runtime-index.json"
+    );
+    const actualRuntimeIndex = JSON.parse(await readFile(runtimeIndexPath, "utf8"));
+    const expectedRuntimeIndex = await buildRuntimeIndex(rootDir);
+
+    if (JSON.stringify(actualRuntimeIndex) !== JSON.stringify(expectedRuntimeIndex)) {
+      failures.push("resources/skills/ds-intent-analyzer/assets/runtime-index.json is stale; regenerate it with npm run build:index");
+    } else {
+      checks.push("OK   runtime index freshness");
+    }
+  } catch (error) {
+    failures.push(`Unable to validate runtime-index.json: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   try {

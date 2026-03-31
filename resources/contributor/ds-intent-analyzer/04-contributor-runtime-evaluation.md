@@ -147,6 +147,8 @@ Pass signals:
 - separates observation from inference
 - avoids asking questions that the visible evidence or product context already answers
 - treats `docs/design-system/audit-evidence.md` as current-state context that should outrank `docs/design-system/project-memory.md`
+- if recurring review is explicit, treats `docs/design-system/review-brief.md` as scope context and `docs/design-system/review-log.md` as continuity context rather than stronger truth than fresh evidence
+- if the shipped runtime index is in play, uses it only as hidden orientation and still lets the shipped markdown sources and current evidence own the reasoning
 - if sidecars are used, keeps them bounded to evidence read, current UI/codebase scan, or reference lookup
 - uses maintainer-only repo context, if any, only as hidden orientation rather than user-facing proof
 
@@ -154,6 +156,7 @@ Regression signals:
 - lets adjectives outrank visible or provided evidence
 - ignores contradictions in the prompt bundle
 - starts with a style quiz or library ranking before reading available evidence
+- treats `runtime-index.json`, `review-brief.md`, or `review-log.md` as stronger truth than fresher evidence
 - uses sidecars as an excuse to hide evidence ownership or merge behavior
 - treats evaluative claims or confidence labels on a product surface as self-proving instead of checking whether their provenance is visible enough
 - cites contributor docs, `.local` memory, forward-test logs, or source-repo-local file paths in normal user-facing DS guidance
@@ -193,6 +196,7 @@ Pass signals:
 - phrases the next move as something the agent can do next for the user when that would help
 - offers project-memory capture only when the workflow has produced stable, reusable decisions
 - avoids offering project-memory capture when the evidence is too thin or the result is still unresolved
+- if recurring review is explicit, offers `review-brief.md` or `review-log.md` only as explicit opt-in artifacts rather than as silent writes
 - when multiple agents are explicitly requested, emits a bounded coordination packet that says who leads, what sidecars may do, and what they must not decide or invent
 - when a reference-led prompt clearly asks how to apply the direction to a real repo or app, emits a bounded `Audit handoff` instead of leaving the inspection step implied
 - if a reusable repo artifact is clearly wanted, offers to create or update `docs/design-system/audit-packet.md` or `docs/design-system/audit-evidence.md` explicitly instead of writing silently
@@ -203,6 +207,7 @@ Regression signals:
 - leaves the next move as a passive inspection note when a concrete action offer would be more useful
 - offers hidden or automatic memory behavior instead of an explicit capture offer
 - offers project-memory capture for screen-level, low-evidence, or hybrid-unresolved results
+- offers recurring-review artifacts on a one-off audit with no explicit repeated-review intent
 - invites several agents to work in parallel without making ownership or merge behavior explicit
 - leaves repo/application follow-through vague when the prompt clearly asks what another agent should inspect first
 - emits a build-style handoff when the real next step should be a repo or app audit
@@ -224,6 +229,7 @@ Pass signals:
 - uses audit detail only to support the recommendation
 - avoids theory unless it sharpens the decision
 - uses the smallest section set that still makes the answer clear
+- if recurring review is explicit, switches to a compact drift-aware review shell instead of repeating a long one-off audit memo
 - in paired-skill workflows, makes the lead/follow relationship explicit instead of letting analyzer and frontend execution co-lead ambiguously
 - in multi-agent workflows, keeps one lead agent responsible for synthesis instead of letting sidecars compete on direction
 
@@ -243,6 +249,7 @@ Pass signals:
 - structured, readable, and decision-oriented
 - does not spill into theory for its own sake
 - keeps reference-led answers compact instead of turning them into long memos
+- keeps recurring-review answers compact instead of rewriting a full audit from scratch
 
 Regression signals:
 - long generic taxonomy
@@ -323,6 +330,7 @@ This subset covers:
 - starting with style-direction questions when evidence is already available
 - turning a UI-library ask into a prestige ranking instead of top-fit references with cautions
 - treating provisional outputs as if they are ready for durable project memory
+- using recurring-review context as stronger truth than fresh evidence
 
 ---
 

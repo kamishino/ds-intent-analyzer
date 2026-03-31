@@ -22,6 +22,7 @@ This is not:
 
 Use `docs/design-system/audit-evidence.md` for concrete current-state evidence that should help the next audit.
 Use `docs/design-system/audit-packet.md` for bounded follow-through instructions to another agent after a decision is made.
+Use `docs/design-system/review-brief.md` and `docs/design-system/review-log.md` for recurring review scope and dated review continuity.
 Use `project-memory.md` for durable truths and decisions worth reusing across sessions.
 
 ---
@@ -75,14 +76,18 @@ If something is useful but still provisional:
 
 If a project memory pack exists:
 1. read current artifact or codebase evidence first
-2. read `docs/design-system/audit-evidence.md` next when present
-3. read the project memory pack after that
-4. fall back to generic references after that
+2. if recurring review is explicit and `docs/design-system/review-brief.md` exists, read it next
+3. read `docs/design-system/audit-evidence.md` next when present
+4. read the project memory pack after that
+5. if recurring review is explicit and `docs/design-system/review-log.md` exists, read the latest relevant entry after that
+6. fall back to generic references after that
 
 Why:
 - current evidence should stay strongest
+- recurring-review scope should stay explicit without outranking fresh evidence
 - current-state evidence packets should stay closer to the present UI than durable memory
 - project memory should help preserve continuity
+- review logs should help compare cycles without overriding fresher evidence
 - generic references should not outrank product-specific truths
 
 If current evidence conflicts with stored memory:

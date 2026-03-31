@@ -359,5 +359,7 @@ The most useful next action is:
 - keep the standing maintainer gate as the default recurring internal regression surface
 - keep the client-repo dogfood pass as the default external usefulness proof
 - keep contributor-side distribution proof across local-path, git-source, and tarball installs as the default downstream packaging proof surface
+- keep the shipped runtime index thin, derived, and orientation-only rather than growing it into a hidden retrieval layer
+- keep recurring review as an audit-first workflow surface with explicit `review-brief.md` and `review-log.md` artifacts rather than a new runtime mode or scheduler
 - keep the packed package surface lean so contributor docs and maintainer files do not ship downstream
 - only open another focused runtime patch if the standing gate, client-repo dogfood pass, or distribution proof surface exposes a repeated miss

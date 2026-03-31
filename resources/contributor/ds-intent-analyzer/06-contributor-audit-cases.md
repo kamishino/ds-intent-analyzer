@@ -922,3 +922,138 @@ Use this latest evidence to tell me what to stabilize first and whether our stor
 - treating stored memory as if it overrides fresher evidence
 - ignoring the conflict and pretending both packets still align
 - turning the answer into memory-management theory instead of fix-first audit guidance
+
+---
+
+## AU-21 — Healthy Recurring Review
+
+### Prompt bundle
+
+```text
+Recurring review scope (`docs/design-system/review-brief.md`):
+
+# Review Brief
+
+## Product note
+- healthcare booking app for finding providers, choosing time slots, and confirming appointments
+
+## Surfaces in scope
+- search results
+- provider cards
+- booking stepper
+- confirmation
+
+## Recurring checkpoints
+- trust cues lead before visual polish
+- spacing rhythm stays consistent across booking stages
+- semantic green roles stay bounded to success, reassurance, and key CTAs
+
+## Evidence sources
+- current route summaries
+- latest audit-evidence packet
+
+## Stop conditions
+- choose one next fix, not a full redesign program
+
+## Escalation triggers
+- if trust cues regress
+- if the booking path drifts back toward generic Bootstrap-like structure
+
+Current cycle evidence:
+- provider cards now separate specialty, insurance, and next availability more clearly
+- booking stepper is calmer and easier to scan than the last cycle
+- confirmation still feels generic and does not reinforce next-step trust strongly enough
+
+User ask:
+Run our monthly design-system review.
+Keep it compact and tell me:
+- current health
+- biggest drift
+- what to keep
+- what to fix next
+- confidence
+- next review action
+```
+
+### Input type and evidence strength
+- Input type: recurring-review scope contract + current-cycle audit evidence
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- compact recurring-review shell only
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- stays audit-first and uses a compact recurring-review shell
+- uses `review-brief.md` to scope the recurring checkpoints
+- names what is healthier and what still drifts
+- gives one next fix rather than a long audit memo
+- does not emit `Audit handoff` or `Frontend handoff`
+- may offer to update `review-log.md` explicitly if the user wants to preserve the cycle
+
+### Must-not-do failures
+- treating the recurring review like a brand-new one-off audit
+- silently writing `review-brief.md` or `review-log.md`
+- collapsing into repo handoff or frontend execution
+
+---
+
+## AU-22 — Drift-Detection Recurring Review
+
+### Prompt bundle
+
+```text
+Recurring review scope (`docs/design-system/review-brief.md`):
+- same healthcare booking review scope as last month
+
+Prior review log (`docs/design-system/review-log.md`):
+- biggest drift last cycle: provider-card trust cues were too flat
+- fix next: strengthen provider-card trust hierarchy before touching broader token work
+
+Fresh current evidence:
+- provider cards now lead trust cues more clearly and no longer look like the weakest surface
+- confirmation step regressed and now feels generic again, with weak reassurance after booking
+- green state usage is calmer than before, but the final confirmation still does not feel trustworthy enough
+
+User ask:
+Run the next recurring review.
+Tell me:
+- what got healthier
+- what regressed
+- what to keep
+- what to fix next
+- confidence
+- whether the old priority should change
+```
+
+### Input type and evidence strength
+- Input type: recurring-review scope contract + prior review log + fresh current evidence
+- Evidence strength: medium
+
+### Expected primary mode
+- UI / DS Audit
+
+### Allowed secondary behavior
+- compact recurring-review shell with drift comparison
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- compares the current cycle against the prior review log explicitly
+- says what improved, what regressed, and whether the previous priority should change
+- keeps the answer compact and recurring-review shaped
+- treats the prior log as continuity context, not stronger truth than fresh evidence
+- may offer to update `review-log.md` explicitly if the user wants to preserve the cycle
+
+### Must-not-do failures
+- ignoring the prior review log and rewriting the same audit from scratch
+- letting the old review log override fresher evidence
+- turning the answer into a long general audit instead of a drift-aware recurring review

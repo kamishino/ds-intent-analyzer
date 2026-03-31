@@ -1,0 +1,300 @@
+{
+  "version": 1,
+  "intent": "Orientation-only derived helper for staged retrieval. This asset never outranks fresh evidence or the shipped markdown sources.",
+  "generated_from": [
+    "resources/skills/ds-intent-analyzer/references/02-runtime-skill-contract.md",
+    "resources/skills/ds-intent-analyzer/references/07-runtime-reference-lookup.md",
+    "resources/skills/ds-intent-analyzer/references/12-runtime-audit-artifacts.md",
+    "resources/skills/ds-intent-analyzer/references/13-runtime-review-workflows.md"
+  ],
+  "supported_modes": [
+    {
+      "mode": "Intent Analysis",
+      "use_when": "the request is still early, vague, adjective-heavy, or mostly strategy language",
+      "goal": "turn messy intent into grounded structure."
+    },
+    {
+      "mode": "UI / DS Audit",
+      "use_when": "the request includes screenshots, existing UI, current DS docs, or “improve this” language",
+      "goal": "identify strengths, weaknesses, missing foundations, and fix-first priorities."
+    },
+    {
+      "mode": "Formation Recommendation",
+      "use_when": "the available context is strong enough to recommend principles, foundation priorities, and token direction",
+      "goal": "recommend foundation-first direction without pretending the whole system is already defined."
+    },
+    {
+      "mode": "Comparative Reference Read",
+      "use_when": "the request asks what something is close to, what to borrow carefully, or which reference logic fits best",
+      "goal": "turn comparison into explanation and safe borrowing guidance."
+    }
+  ],
+  "routing_rules": [
+    {
+      "prompt_shape": "intent-heavy wording, early brief fragments, strategy notes, or adjective-heavy asks",
+      "primary_mode": "Intent Analysis"
+    },
+    {
+      "prompt_shape": "screenshots, current UI, current DS docs, “improve this”, or “enhance this”",
+      "primary_mode": "UI / DS Audit"
+    },
+    {
+      "prompt_shape": "recurring or scheduled DS review asks, repeated health checks, or prompts that explicitly point to `review-brief.md` or `review-log.md`",
+      "primary_mode": "UI / DS Audit using the recurring-review shell"
+    },
+    {
+      "prompt_shape": "URL-only or single-page asks such as “check this page”, “what looks healthy”, “what feels weak”, or “what should change first”",
+      "primary_mode": "UI / DS Audit, even if the page is itself a design-system reference surface"
+    },
+    {
+      "prompt_shape": "direct asks for principles, foundations, token direction, or what to stabilize first",
+      "primary_mode": "Formation Recommendation"
+    },
+    {
+      "prompt_shape": "named systems, “X or Y”, “what should we borrow”, or careful comparison asks",
+      "primary_mode": "Comparative Reference Read"
+    }
+  ],
+  "evidence_precedence": [
+    "uploaded or referenced artifacts",
+    "imported project context",
+    "user wording",
+    "style adjectives or taste language"
+  ],
+  "artifact_paths": {
+    "audit_packet": "docs/design-system/audit-packet.md",
+    "audit_evidence": "docs/design-system/audit-evidence.md",
+    "project_memory": "docs/design-system/project-memory.md",
+    "review_brief": "docs/design-system/review-brief.md",
+    "review_log": "docs/design-system/review-log.md"
+  },
+  "recurring_review": {
+    "trigger_cues": [
+      "recurring review",
+      "scheduled review",
+      "weekly design-system review",
+      "monthly design-system review",
+      "review-brief.md",
+      "review-log.md"
+    ],
+    "shell_sections": [
+      "TL;DR",
+      "Current health",
+      "Biggest drift",
+      "Keep",
+      "Fix next",
+      "Confidence",
+      "Next review action",
+      "compare the current evidence against the latest logged drift",
+      "say what got healthier, what regressed, and what changed in priority",
+      "fresh evidence stays strongest",
+      "review-brief.md defines the recurring review scope",
+      "audit-evidence.md is closer to current-state reality than durable memory",
+      "project-memory.md preserves continuity without overriding current evidence",
+      "review-log.md is continuity context, not stronger truth than fresher evidence",
+      "the user explicitly wants a reusable recurring-review contract",
+      "the repo or product has a stable enough scope for repeated review",
+      "the user explicitly approves creating or updating the file",
+      "recurring review is explicit",
+      "the current review produced a compact reusable outcome",
+      "the user explicitly approves creating or updating the file"
+    ]
+  },
+  "reference_cards": [
+    {
+      "name": "GOV.UK",
+      "best_used_for": "public-service clarity and trust-heavy guidance",
+      "likely_posture": "Trust-first",
+      "likely_archetype": "Public Trust Service",
+      "strongest_reusable_lesson": "plain-language hierarchy and safe comprehension",
+      "borrow_carefully": "content-first structure, clear form guidance, restrained interaction",
+      "do_not_copy_blindly": "extreme restraint for products that need stronger identity or denser workflows"
+    },
+    {
+      "name": "USWDS",
+      "best_used_for": "accessible public-sector patterns and stable service UI",
+      "likely_posture": "Trust-first / Accessibility-first",
+      "likely_archetype": "Public Trust Service",
+      "strongest_reusable_lesson": "accessible defaults and predictable system behavior",
+      "borrow_carefully": "semantics, contrast discipline, service clarity",
+      "do_not_copy_blindly": "government tone in commercial or expressive contexts"
+    },
+    {
+      "name": "Shopify Polaris",
+      "best_used_for": "merchant operations and revenue-adjacent workflows",
+      "likely_posture": "Commerce-first",
+      "likely_archetype": "Commerce Enablement",
+      "strongest_reusable_lesson": "operational clarity for products, orders, settings, and decisions",
+      "borrow_carefully": "state clarity, risk/value cues, management patterns",
+      "do_not_copy_blindly": "merchant logic for generic dashboards or consumer-first journeys"
+    },
+    {
+      "name": "GitHub Primer",
+      "best_used_for": "scalable system structure and design-to-code alignment",
+      "likely_posture": "Platform-first",
+      "likely_archetype": "Developer Toolkit / Platform",
+      "strongest_reusable_lesson": "reusable primitives, documentation discipline, semantic consistency",
+      "borrow_carefully": "token discipline, naming, adoption patterns",
+      "do_not_copy_blindly": "platform-scale abstraction before product patterns are stable"
+    },
+    {
+      "name": "Atlassian Design System",
+      "best_used_for": "product-scale consistency across teams and complex software surfaces",
+      "likely_posture": "Platform-first with workflow gravity",
+      "likely_archetype": "Developer Toolkit / Platform",
+      "strongest_reusable_lesson": "strong implementation support with mature documentation",
+      "borrow_carefully": "contribution thinking, composability, foundation consistency",
+      "do_not_copy_blindly": "governance overhead that a smaller team cannot sustain"
+    },
+    {
+      "name": "Salesforce Lightning",
+      "best_used_for": "dense operational software and enterprise workflow support",
+      "likely_posture": "Workflow-first",
+      "likely_archetype": "Enterprise Workflow",
+      "strongest_reusable_lesson": "structured patterns for heavy, repeated work",
+      "borrow_carefully": "workflow clarity, data-heavy hierarchy, state handling",
+      "do_not_copy_blindly": "enterprise density for lightweight or brand-led products"
+    },
+    {
+      "name": "Uber Base",
+      "best_used_for": "internal/product workflow systems with practical operational gravity",
+      "likely_posture": "Workflow-first",
+      "likely_archetype": "Enterprise Workflow",
+      "strongest_reusable_lesson": "pragmatic structure for task-heavy product surfaces",
+      "borrow_carefully": "layout logic, dense pattern support, operational clarity",
+      "do_not_copy_blindly": "admin-heavy structure where discovery or emotion should lead"
+    },
+    {
+      "name": "Visa Product Design System",
+      "best_used_for": "trust-sensitive operational products that need workflow clarity, accessibility discipline, and polished implementation support without defaulting to pure platform logic",
+      "likely_posture": "Workflow-first with trust-heavy polish",
+      "likely_archetype": "hybrid-sensitive; strongest lean is Enterprise Workflow with bounded Developer Toolkit / Platform support traits",
+      "strongest_reusable_lesson": "operational workflow patterns can feel trustworthy and well-governed when accessibility, content discipline, theming, and implementation support stay paired with repeated-job clarity",
+      "borrow_carefully": "application layouts, dense task patterns, accessibility and content discipline, trust-bearing hierarchy, and the practical pairing of design guidance with code support",
+      "do_not_copy_blindly": "finance-brand polish, mature-enterprise tone, multi-framework breadth, or polished trust cues as proof that the product itself should now behave like a broader platform",
+      "developer_guidance_cue": "if Visa feels trusted and mature, separate what you actually need from it: stronger workflow clarity, stronger trust framing, or simply more polished enterprise tone"
+    },
+    {
+      "name": "Airbnb Design Language System",
+      "best_used_for": "brand-led systems with controlled expression and product polish",
+      "likely_posture": "Brand-first",
+      "likely_archetype": "Brand / Consumer / Industry-Specific",
+      "strongest_reusable_lesson": "expression with strong system discipline",
+      "borrow_carefully": "tone, shape language, cohesive perception",
+      "do_not_copy_blindly": "brand-led motion or softness where trust/workflow clarity should dominate"
+    },
+    {
+      "name": "Ant Design",
+      "best_used_for": "workflow-heavy business UI when teams need broad enterprise pattern coverage and tokenized theming flexibility",
+      "likely_posture": "Workflow-first with implementation breadth",
+      "likely_archetype": "hybrid-sensitive; strongest lean is Enterprise Workflow with bounded Developer Toolkit / Platform traits",
+      "strongest_reusable_lesson": "dense business-software coverage plus theme architecture can accelerate operational UI without forcing a single visual formula",
+      "borrow_carefully": "enterprise pattern coverage, data-heavy structure, state handling, and tokenized theming discipline",
+      "do_not_copy_blindly": "broad component coverage as proof of product fit, or default business UI tone for every workflow product",
+      "developer_guidance_cue": "if the team wants Ant because it feels complete, check whether they actually need workflow coverage first or are just reaching for maturity by default"
+    },
+    {
+      "name": "Carbon",
+      "best_used_for": "platform-scale system rigor when the product also carries real enterprise and operational gravity",
+      "likely_posture": "Platform-first with enterprise-workflow gravity",
+      "likely_archetype": "hybrid-sensitive; strongest lean is Developer Toolkit / Platform with real Enterprise Workflow gravity",
+      "strongest_reusable_lesson": "ecosystem-level system building through disciplined foundations, accessibility rigor, and cross-product consistency",
+      "borrow_carefully": "foundation discipline, accessibility verification, documentation structure, and multi-surface consistency thinking",
+      "do_not_copy_blindly": "IBM-scale formality, heavy governance, or platform-weight visual language before your own patterns and adoption scale justify it",
+      "developer_guidance_cue": "if Carbon feels “mature,” separate what you need from it: platform rigor, enterprise clarity, or simply better workflow patterns"
+    },
+    {
+      "name": "PatternFly",
+      "best_used_for": "operations-heavy enterprise products where task states, management flows, and dense admin structure matter more than platform prestige",
+      "likely_posture": "Workflow-first with bounded platform support",
+      "likely_archetype": "hybrid-sensitive; strongest lean is Enterprise Workflow with Developer Toolkit / Platform support traits",
+      "strongest_reusable_lesson": "practical support for task-heavy management patterns, state visibility, and dense operational structure",
+      "borrow_carefully": "management states, action hierarchy, dense information structure, and practical consistency across admin surfaces",
+      "do_not_copy_blindly": "infrastructure-heavy operational models for products that need stronger commerce logic, lighter foundations, or clearer brand tone",
+      "developer_guidance_cue": "if the team is split between Carbon and PatternFly, start from repeated operational jobs before comparing docs polish or ecosystem maturity"
+    },
+    {
+      "name": "Clarity Design System",
+      "best_used_for": "enterprise application work where inclusive defaults, implementation assets, and practical workflow clarity matter more than distinctive brand expression",
+      "likely_posture": "Workflow-first with accessibility discipline",
+      "likely_archetype": "Enterprise Workflow with bounded Developer Toolkit / Platform traits",
+      "strongest_reusable_lesson": "enterprise-first systems can keep inclusion and accessibility as a real foundation instead of a late compliance layer",
+      "borrow_carefully": "inclusive defaults, accessibility-backed workflow patterns, public roadmap signals, and practical implementation support for enterprise teams",
+      "do_not_copy_blindly": "framework-shaped opinionation, enterprise tone, or heavier implementation assumptions when the product needs lighter foundations or more consumer-facing posture",
+      "developer_guidance_cue": "if Clarity feels “solid and accessible,” let it lead when day-to-day success still depends more on workflow clarity, review work, and inclusive defaults than on platform breadth"
+    },
+    {
+      "name": "Elastic UI Framework",
+      "best_used_for": "dense internal product surfaces that need composable implementation assets, theming support, and reusable patterns for data-rich workflows",
+      "likely_posture": "Platform-first with workflow gravity",
+      "likely_archetype": "hybrid-sensitive; strongest lean is Developer Toolkit / Platform with real Enterprise Workflow gravity",
+      "strongest_reusable_lesson": "a reusable implementation layer can stay paired with dense workflow patterns and theme discipline without pretending brand expression is the main job",
+      "borrow_carefully": "composable patterns, theme-token setup, accessibility baselines, and documentation-backed support for dense internal product work",
+      "do_not_copy_blindly": "Elastic-shaped data-product assumptions, platform breadth, or observability-style density where the product reality is lighter or more narrowly task-shaped",
+      "developer_guidance_cue": "if EUI feels like the strongest library option, let it lead only when composable implementation breadth, theming, and cross-surface reuse now matter more than day-to-day workflow fit"
+    },
+    {
+      "name": "Clarity vs Elastic UI Framework tie-break",
+      "let_clarity_lead_when": "repeated operational jobs, admin review work, and workflow clarity are the primary shaping forces",
+      "let_eui_lead_when": "reusable implementation breadth, theming, and platform-style distribution pressure are the stronger immediate need",
+      "fastest_tie_break_artifact": "inspect the product's dominant repeated-job surface first; if it wins on workflow clarity needs, start from Clarity, and if it wins on reusable platform breadth needs, start from EUI"
+    },
+    {
+      "name": "Porsche Design System",
+      "best_used_for": "brand-led system building where premium expression must stay controlled, portable, and implementation-aware",
+      "likely_posture": "Brand-first with system discipline",
+      "likely_archetype": "Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits",
+      "strongest_reusable_lesson": "controlled premium expression can be systematized without giving up accessibility or implementation rigor",
+      "borrow_carefully": "tone restraint, shape language, premium perception, theming discipline, and accessibility-backed implementation quality",
+      "do_not_copy_blindly": "luxury-brand cues, polished surface language, or premium symbolism in unrelated product contexts",
+      "developer_guidance_cue": "if the team says “make it feel more premium,” borrow Porsche for restraint and system discipline, not for direct visual transplantation"
+    },
+    {
+      "name": "Gestalt",
+      "best_used_for": "consumer-product systems that need coherent brand tone, reusable code, and accessible product guidance across many contributors",
+      "likely_posture": "Brand-first with bounded platform support",
+      "likely_archetype": "Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits",
+      "strongest_reusable_lesson": "distinctive consumer-product tone can stay coherent at scale without giving up a usable implementation layer",
+      "borrow_carefully": "cohesive tone, accessible product guidance, cross-team shared language, and restrained expression that supports product clarity",
+      "do_not_copy_blindly": "Pinterest-specific discovery cues, soft consumer mannerisms, or visible surface polish without matching product logic",
+      "developer_guidance_cue": "if Gestalt feels polished, borrow coherence and restraint before copying the visible consumer surface"
+    },
+    {
+      "name": "Backpack",
+      "best_used_for": "consumer-product systems where accessibility, localisation, and cross-disciplinary consistency matter across repeated high-volume journeys",
+      "likely_posture": "Brand-first with accessibility discipline",
+      "likely_archetype": "Brand / Consumer / Industry-Specific with bounded Developer Toolkit / Platform traits",
+      "strongest_reusable_lesson": "accessibility, localisation, and content guidance can be first-class system inputs rather than add-ons behind a branded surface",
+      "borrow_carefully": "localisation-aware content patterns, accessible journey support, collaborative product language, and friendly clarity across repeated user flows",
+      "do_not_copy_blindly": "travel-specific search or booking assumptions, friendly consumer tone, or Skyscanner-shaped journey logic in unrelated products",
+      "developer_guidance_cue": "if Backpack feels “usable and friendly,” isolate whether that comes from localisation and accessibility discipline or from travel-product flow assumptions"
+    },
+    {
+      "name": "Chakra UI",
+      "best_used_for": "lightweight platform-style reuse and pragmatic implementation",
+      "likely_posture": "Platform-first",
+      "likely_archetype": "Developer Toolkit / Platform",
+      "strongest_reusable_lesson": "approachable composability and reusable primitives",
+      "borrow_carefully": "flexible primitives, scalable naming, implementation simplicity",
+      "do_not_copy_blindly": "assuming primitive flexibility solves unclear product patterns"
+    },
+    {
+      "name": "shadcn/ui",
+      "best_used_for": "fast product building with composable UI starting points",
+      "likely_posture": "Platform-first",
+      "likely_archetype": "Developer Toolkit / Platform",
+      "strongest_reusable_lesson": "practical composability and implementation speed",
+      "borrow_carefully": "building-block mindset, local ownership, flexible assembly",
+      "do_not_copy_blindly": "raw assembly speed without foundation/token discipline"
+    },
+    {
+      "name": "Headless UI",
+      "best_used_for": "interaction primitives and accessibility-aware composition",
+      "likely_posture": "Platform-first",
+      "likely_archetype": "Developer Toolkit / Platform",
+      "strongest_reusable_lesson": "behavior-first primitives without heavy styling assumptions",
+      "borrow_carefully": "interaction logic and accessibility-aware composition",
+      "do_not_copy_blindly": "expecting headless primitives to replace product-level system decisions"
+    }
+  ]
+}

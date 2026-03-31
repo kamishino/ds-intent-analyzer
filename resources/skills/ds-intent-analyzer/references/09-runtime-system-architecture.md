@@ -25,6 +25,11 @@ This is **not** a full automation spec.
 It is background operating design for a reusable analyzer / audit system.
 It should not be treated as the default user-facing mental model for the skill.
 
+Current shipped-runtime note:
+- the shipped product currently uses a derived `assets/runtime-index.json` helper for fast orientation
+- SQLite, FTS, embeddings, and vector databases are not part of the shipped runtime contract
+- where this document is more ambitious than the product, `02-runtime-skill-contract.md` and the shipped assets win
+
 ---
 
 ## 1. Core system principle
@@ -90,9 +95,11 @@ This layer helps translate:
 Retrieved when the user references a popular design system or wants a fast orientation.
 
 Recommended source:
+- `assets/runtime-index.json`
 - Quick Lookup Pack
 
 This layer supports:
+- fast orientation into the next likely shipped source
 - fast precedent lookup
 - careful borrowing
 - “what is this useful as a reference for?”
