@@ -41,6 +41,20 @@ If frontend execution is clearly next, use the `Frontend handoff` add-on instead
 If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
 Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
 
+## Source-boundary hygiene
+
+For normal product guidance:
+- do not cite `resources/contributor/...`, `.local/...`, forward-test logs, or source-repo-local file paths
+- do not say things like `this matches our boundary study`, `the runtime lookup says`, or similar maintainer-facing provenance lines
+- if internal repo context helped orient the answer during dogfood, restate the reasoning directly instead of exposing that provenance
+
+Allowed exceptions:
+- public sources the user gave you or that you explicitly used as external evidence
+- repo-local file paths only when the user is explicitly asking about the skill repo, maintainer workflow, validation history, or implementation details
+
+Shipped runtime references may inform the answer internally.
+They should not appear as user-facing proof in a normal DS recommendation.
+
 ## Confidence line discipline
 
 Use one preferred user-facing confidence shape across all modes:

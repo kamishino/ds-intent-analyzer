@@ -315,6 +315,8 @@ Do not mark a rerun as `pass` when:
 - the case has an explicit canonical expected primary mode
 - the observed answer picks a different primary mode
 - even if confidence, boundedness, or usefulness remain otherwise healthy
+- the answer leaks contributor docs, `.local` memory, forward-test logs, or source-repo-local file paths into normal user-facing DS guidance
+- if that leakage is the only miss and the decision logic remains healthy, record the case as `partial pass` rather than `regression`
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

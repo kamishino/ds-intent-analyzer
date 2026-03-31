@@ -143,6 +143,31 @@ If fresh artifacts conflict with stored memory:
 - call out the drift or staleness explicitly
 - do not let old memory override current evidence
 
+### User-facing source boundary
+User-facing reasoning may be informed by:
+- prompt evidence and uploaded artifacts
+- current product or code context in the target repo
+- accepted project-memory artifacts such as `docs/design-system/project-memory.md`
+- shipped runtime references
+- public sources when stronger external confirmation is justified
+
+Contributor-only materials are maintainer aids, not normal runtime evidence.
+Do not cite them as proof in normal user-facing DS guidance:
+- `resources/contributor/...`
+- `.local/...`
+- forward-test logs
+- repo-maintainer memory or plan files
+
+If dogfood context from the source repo helped orient the answer:
+- suppress that provenance in the final user-facing prose
+- restate the reasoning directly instead of citing local repo files
+
+Only surface contributor docs, private memory, or source-repo-local file paths when the user is explicitly asking about:
+- the skill repo itself
+- validation history
+- maintainer workflow
+- repo-internal implementation details
+
 Interpret words as signals, not verdicts.
 
 If artifacts contradict the brief:
@@ -510,6 +535,7 @@ Retrieve selectively by tier:
 - `11-runtime-multi-agent-coordination.md`
 
 Contributor docs are not part of normal runtime retrieval.
+Shipped runtime references may guide reasoning, but in normal product guidance they should not appear as repo-local file-path citations or maintainer-style proof language.
 
 ### Project memory artifact
 If the target repo already has `docs/design-system/project-memory.md` or an obvious equivalent:
@@ -570,6 +596,7 @@ When a capture is justified:
 - Do not overbuild theming, governance, or abstraction too early.
 - Do not turn one-screen audits into system-wide formation claims.
 - Do not present hybrid-sensitive comparisons as settled when the fit is still provisional.
+- Do not cite contributor docs, `.local` memory, forward-test logs, or source-repo-local file paths in normal user-facing DS guidance.
 
 When confidence is low, the correct response is the smallest useful next move, not a louder answer.
 

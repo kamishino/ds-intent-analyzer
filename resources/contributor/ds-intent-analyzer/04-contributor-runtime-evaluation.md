@@ -147,6 +147,7 @@ Pass signals:
 - separates observation from inference
 - avoids asking questions that the visible evidence or product context already answers
 - if sidecars are used, keeps them bounded to evidence read, current UI/codebase scan, or reference lookup
+- uses maintainer-only repo context, if any, only as hidden orientation rather than user-facing proof
 
 Regression signals:
 - lets adjectives outrank visible or provided evidence
@@ -154,6 +155,11 @@ Regression signals:
 - starts with a style quiz or library ranking before reading available evidence
 - uses sidecars as an excuse to hide evidence ownership or merge behavior
 - treats evaluative claims or confidence labels on a product surface as self-proving instead of checking whether their provenance is visible enough
+- cites contributor docs, `.local` memory, forward-test logs, or source-repo-local file paths in normal user-facing DS guidance
+
+Source-boundary note:
+- if the decision logic stays strong but the answer leaks repo-local maintainer sources into otherwise healthy user-facing prose, score this category as a partial pass rather than a regression
+- reserve regressions for cases where the leakage also distorts evidence ownership, recommendation quality, or user trust
 
 ### 5. Confidence honesty
 The confidence level and confidence-line format match the evidence quality.

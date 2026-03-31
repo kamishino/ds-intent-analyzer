@@ -884,3 +884,42 @@ It should stay:
 - Strongest pass signal: emits a bounded `Frontend handoff` with locked direction, clear first-build scope, and explicit `Do not invent` guardrails
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted source-boundary and citation-hygiene validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-source-boundary-citation-hygiene`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: targeted installed-runtime mini-cycle after adding source-boundary and citation-hygiene guards; result `3 pass / 0 partial pass / 0 regressions`; the prior `RF-02` repo-local citation leak disappeared without changing the product-fit decision
+
+### Targeted subset
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: keeps the same product-fit logic while removing the earlier repo-local reference-doc citation from user-facing prose
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: stays page-level and bounded while grounding the answer in public page/context evidence rather than maintainer-side repo provenance
+- Strongest miss: the target page itself remains only thinly machine-readable, so the read still depends partly on public directory/context sources
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: keeps the builder-useful formation direction intact while remaining fully product-facing instead of exposing internal repo context
+- Strongest miss: none noted
+- Outcome: `pass`
