@@ -9,6 +9,24 @@ import { buildRuntimeIndex } from "./build-runtime-index.mjs";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, "..");
 const execFileAsync = promisify(execFile);
+const expectedRecurringReviewShell = [
+  "TL;DR",
+  "Current health",
+  "Biggest drift",
+  "Keep",
+  "Fix next",
+  "Confidence",
+  "Next review action"
+];
+const requiredReferenceCardKeys = [
+  "name",
+  "best_used_for",
+  "likely_posture",
+  "likely_archetype",
+  "strongest_reusable_lesson",
+  "borrow_carefully",
+  "do_not_copy_blindly"
+];
 
 function parseRootArg(args) {
   let rootDir = defaultRoot;
@@ -222,11 +240,11 @@ async function main(args) {
     ["runtime multi-agent coordination reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "11-runtime-multi-agent-coordination.md")],
     ["runtime audit artifacts reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "12-runtime-audit-artifacts.md")],
     ["runtime recurring review reference", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "13-runtime-review-workflows.md")],
+    ["runtime index reference helper", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "references", "14-runtime-index.json")],
     ["runtime audit packet template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "audit-packet-template.md")],
     ["runtime audit evidence template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "audit-evidence-template.md")],
     ["runtime review brief template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "review-brief-template.md")],
     ["runtime review log template asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "review-log-template.md")],
-    ["runtime index asset", path.join(rootDir, "resources", "skills", "ds-intent-analyzer", "assets", "runtime-index.json")],
     ["contributor dataset roadmap", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "01-contributor-dataset-roadmap.md")],
     ["contributor memory architecture", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "02-contributor-memory-architecture.md")],
     ["contributor naming conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "03-contributor-naming-conventions.md")],
@@ -387,7 +405,8 @@ async function main(args) {
     path.join(runtimeRoot, "02-ds-agent-skill-spec-v2.md"),
     path.join(runtimeRoot, "09-ds-memory-architecture-spec-v1.md"),
     path.join(runtimeRoot, "10-ds-skill-naming-convention-spec-v1.md"),
-    path.join(runtimeRoot, "design-system-dataset-roadmap-v2.md")
+    path.join(runtimeRoot, "design-system-dataset-roadmap-v2.md"),
+    path.join(shippedSkillRoot, "assets", "runtime-index.json")
   ];
 
   for (const oldPath of oldShippedPaths) {
@@ -535,19 +554,55 @@ async function main(args) {
       "resources",
       "skills",
       "ds-intent-analyzer",
-      "assets",
-      "runtime-index.json"
+      "references",
+      "14-runtime-index.json"
     );
     const actualRuntimeIndex = JSON.parse(await readFile(runtimeIndexPath, "utf8"));
     const expectedRuntimeIndex = await buildRuntimeIndex(rootDir);
 
     if (JSON.stringify(actualRuntimeIndex) !== JSON.stringify(expectedRuntimeIndex)) {
-      failures.push("resources/skills/ds-intent-analyzer/assets/runtime-index.json is stale; regenerate it with npm run build:index");
+      failures.push("resources/skills/ds-intent-analyzer/references/14-runtime-index.json is stale; regenerate it with npm run build:index");
     } else {
       checks.push("OK   runtime index freshness");
     }
+
+    const actualShell = actualRuntimeIndex.recurring_review?.shell_sections;
+    if (
+      !Array.isArray(actualShell) ||
+      actualShell.length !== expectedRecurringReviewShell.length ||
+      actualShell.some((entry, index) => entry !== expectedRecurringReviewShell[index])
+    ) {
+      failures.push(
+        `runtime index recurring_review.shell_sections must equal ${expectedRecurringReviewShell.join(", ")}`
+      );
+    } else {
+      checks.push("OK   runtime index recurring-review shell shape");
+    }
+
+    const referenceCards = actualRuntimeIndex.reference_cards;
+    if (!Array.isArray(referenceCards) || referenceCards.length === 0) {
+      failures.push("runtime index must contain a non-empty reference_cards array");
+    } else {
+      const malformedCards = referenceCards.filter((card) => {
+        if (!card || typeof card !== "object") {
+          return true;
+        }
+
+        if (typeof card.name !== "string" || card.name.toLowerCase().endsWith("tie-break")) {
+          return true;
+        }
+
+        return requiredReferenceCardKeys.some((key) => typeof card[key] !== "string" || card[key].trim().length === 0);
+      });
+
+      if (malformedCards.length > 0) {
+        failures.push("runtime index reference_cards must contain only real lookup cards with the standard lookup fields");
+      } else {
+        checks.push("OK   runtime index lookup-card shape");
+      }
+    }
   } catch (error) {
-    failures.push(`Unable to validate runtime-index.json: ${error instanceof Error ? error.message : String(error)}`);
+    failures.push(`Unable to validate 14-runtime-index.json: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   try {

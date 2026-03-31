@@ -57,28 +57,42 @@ function parseEvidencePrecedence(contractContent) {
 function parseLookupCards(lookupContent) {
   const section = extractSection(lookupContent, "## Lookup cards", "## Lookup usage cautions");
   const rawCards = section.split(/^### /m).slice(1);
+  const requiredKeys = [
+    "best_used_for",
+    "likely_posture",
+    "likely_archetype",
+    "strongest_reusable_lesson",
+    "borrow_carefully",
+    "do_not_copy_blindly"
+  ];
 
-  return rawCards.map((rawCard) => {
-    const lines = rawCard.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
-    const name = lines[0];
-    const card = { name };
+  return rawCards
+    .map((rawCard) => {
+      const lines = rawCard.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const name = lines[0];
+      const card = { name };
 
-    for (const line of lines.slice(1)) {
-      const match = line.match(/^- \*\*(.+?):\*\*\s*(.+)$/);
-      if (!match) {
-        continue;
+      for (const line of lines.slice(1)) {
+        const match = line.match(/^- \*\*(.+?):\*\*\s*(.+)$/);
+        if (!match) {
+          continue;
+        }
+
+        const [, rawKey, rawValue] = match;
+        const key = rawKey
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_+|_+$/g, "");
+        card[key] = rawValue.trim();
       }
 
-      const [, rawKey, rawValue] = match;
-      const key = rawKey
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "_")
-        .replace(/^_+|_+$/g, "");
-      card[key] = rawValue.trim();
-    }
-
-    return card;
-  });
+      return card;
+    })
+    .filter(
+      (card) =>
+        !card.name.toLowerCase().endsWith("tie-break") &&
+        requiredKeys.every((key) => typeof card[key] === "string" && card[key].length > 0)
+    );
 }
 
 function parsePreferredPaths(content) {
@@ -87,8 +101,24 @@ function parsePreferredPaths(content) {
 }
 
 function parseRecurringReviewShell(reviewContent) {
-  const section = extractSection(reviewContent, "## Recurring review shell", "Recurring-review notes:");
-  return extractBullets(section).map((line) => line.replace(/`/g, ""));
+  const section = extractSection(reviewContent, "## Recurring review shell", "## Retrieval order");
+  const shellLines = [];
+  let collecting = false;
+
+  for (const rawLine of section.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (line.startsWith("- ")) {
+      shellLines.push(line.slice(2).trim().replace(/`/g, ""));
+      collecting = true;
+      continue;
+    }
+
+    if (collecting && line !== "") {
+      break;
+    }
+  }
+
+  return shellLines;
 }
 
 function parseRecurringReviewTriggers(reviewContent) {
@@ -115,7 +145,7 @@ export async function buildRuntimeIndex(rootDir = defaultRoot) {
 
   return {
     version: 1,
-    intent: "Orientation-only derived helper for staged retrieval. This asset never outranks fresh evidence or the shipped markdown sources.",
+    intent: "Orientation-only derived helper for staged retrieval. This helper never outranks fresh evidence or the shipped markdown sources.",
     generated_from: [
       "resources/skills/ds-intent-analyzer/references/02-runtime-skill-contract.md",
       "resources/skills/ds-intent-analyzer/references/07-runtime-reference-lookup.md",
@@ -149,8 +179,8 @@ async function main(args) {
     "resources",
     "skills",
     "ds-intent-analyzer",
-    "assets",
-    "runtime-index.json"
+    "references",
+    "14-runtime-index.json"
   );
 
   if (args.includes("--stdout")) {

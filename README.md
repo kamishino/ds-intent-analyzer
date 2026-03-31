@@ -169,8 +169,10 @@ Repo-only maintainer context:
 Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
 - `resources/skills/ds-intent-analyzer/references/`
+- `resources/skills/ds-intent-analyzer/references/14-runtime-index.json`
+  - generated fast-orientation helper for routing and lookup
 - `resources/skills/ds-intent-analyzer/assets/`
-  - real runtime templates for `audit-packet.md`, `audit-evidence.md`, `review-brief.md`, `review-log.md`, and the generated `runtime-index.json`
+  - real runtime templates for `audit-packet.md`, `audit-evidence.md`, `review-brief.md`, and `review-log.md`
 
 Optional shipped runtime resources such as `assets/` or `scripts/` should appear only when the skill carries real output files or runtime-local helpers. In this repo, `assets/` is justified because the package now ships reusable audit artifact templates.
 

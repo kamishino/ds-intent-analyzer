@@ -198,7 +198,7 @@ Only surface contributor docs, private memory, or source-repo-local file paths w
 
 ## Runtime index helper
 
-Use `assets/runtime-index.json` as a fast orientation helper only.
+Use `references/14-runtime-index.json` as a fast orientation helper only.
 
 Use it to:
 - pick likely primary mode entrypoints faster
@@ -208,7 +208,7 @@ Use it to:
 Do not use it to:
 - replace fresh evidence
 - replace `audit-evidence.md`, `project-memory.md`, or `review-brief.md`
-- cite internal asset paths in user-facing reasoning
+- cite internal helper paths in user-facing reasoning
 - invent a hidden memory or search subsystem
 
 If the derived index and the source markdown disagree:
@@ -658,7 +658,7 @@ Do not read every runtime document automatically.
 Retrieve selectively by tier:
 
 ### Fast orientation helper
-- `assets/runtime-index.json`
+- `14-runtime-index.json`
   - generated, orientation-only, and subordinate to the markdown sources
   - use it to choose the next likely runtime doc, not as stronger truth
 ### Always-near-core
@@ -679,6 +679,7 @@ Retrieve selectively by tier:
 - `11-runtime-multi-agent-coordination.md`
 - `12-runtime-audit-artifacts.md`
 - `13-runtime-review-workflows.md`
+- `14-runtime-index.json`
 
 Contributor docs are not part of normal runtime retrieval.
 Shipped runtime references may guide reasoning, but in normal product guidance they should not appear as repo-local file-path citations or maintainer-style proof language.

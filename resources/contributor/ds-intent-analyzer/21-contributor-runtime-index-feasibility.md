@@ -34,7 +34,7 @@ If the index only changes internal cleanliness without improving answer behavior
 ## Candidate implementation shape
 
 Use one shipped derived helper only:
-- `resources/skills/ds-intent-analyzer/assets/runtime-index.json`
+- `resources/skills/ds-intent-analyzer/references/14-runtime-index.json`
 
 Use one deterministic contributor-side generator only:
 - `scripts/build-runtime-index.mjs`

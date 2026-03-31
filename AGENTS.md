@@ -44,7 +44,7 @@ This repo uses disciplined internal versioning while remaining a private package
 - Sync the installed skill copy from canonical source with `node ./bin/ds-intent-analyzer.mjs sync --project <path>`
 - Run the default local install target with `npm run install:local`
 - Run the default local sync target with `npm run sync:local`
-- Regenerate the derived runtime index asset with `npm run build:index`
+- Regenerate the derived runtime index reference helper with `npm run build:index`
 - Validate the standalone package structure with `npm run validate`
 - Run the structure validator directly with `node ./scripts/validate-skill.mjs`
 - Inspect finish guidance with `node .agents/skills/kamiflow-core/scripts/finish-status.mjs --project .`
@@ -68,7 +68,7 @@ Keep helper entrypoints thin. Prefer the repo-local scripts in `scripts/` over a
 - Keep `.local/project.md` as durable project memory, not task history or a generated log.
 - Keep `.local/plans/*.md` as execution state for non-trivial slices. Prefer one active plan at a time.
 - Keep helper scripts small, deterministic, and source-repo-local. Avoid adding frameworks, dashboards, browser surfaces, or runtime layers in this slice.
-- Keep derived runtime helpers explicit and lightweight. `resources/skills/ds-intent-analyzer/assets/runtime-index.json` is generated from shipped source docs and must not be hand-edited.
+- Keep derived runtime helpers explicit and lightweight. `resources/skills/ds-intent-analyzer/references/14-runtime-index.json` is generated from shipped source docs and must not be hand-edited.
 - Preserve the skill's core behavior:
   - constraints first
   - context before style
@@ -101,7 +101,7 @@ For non-trivial work:
 
 Do not silently overwrite curated `.local/project.md` content during setup or install flows.
 Use `sync` only for the derived installed skill copy under `.agents/skills/ds-intent-analyzer/`; it is the explicit exact-mirror path and may replace stale files there.
-Use `build:index` only to refresh the derived shipped runtime index asset from the canonical shipped source docs.
+Use `build:index` only to refresh the derived shipped runtime index reference helper from the canonical shipped source docs.
 Default install into a client repo should be skill-only; `.local` bootstrap must stay explicit through `--with-local-scaffold`.
 
 ## Out Of Scope

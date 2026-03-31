@@ -60,7 +60,7 @@ For reference-led asks, default to this order:
 
 For normal product guidance:
 - do not cite `resources/contributor/...`, `.local/...`, forward-test logs, or source-repo-local file paths
-- do not cite `assets/runtime-index.json` or describe it as user-facing proof
+- do not cite `references/14-runtime-index.json` or describe it as user-facing proof
 - do not say things like `this matches our boundary study`, `the runtime lookup says`, or similar maintainer-facing provenance lines
 - if internal repo context helped orient the answer during dogfood, restate the reasoning directly instead of exposing that provenance
 

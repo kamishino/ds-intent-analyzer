@@ -57,6 +57,9 @@ Optional shipped top-level artifacts:
 - `assets/` only when the skill ships real output resources
 - `scripts/` only if the shipped skill truly needs runtime scripts
 
+Generated orientation helpers that are intended to be loaded for runtime reasoning belong under `references/`, not `assets/`.
+Keep `assets/` reserved for templates and other output-side resources.
+
 Use `references/`, never `reference/`.
 `references/` is the canonical bundled-resource surface for runtime reasoning in this skill.
 If `assets/` contains only `.gitkeep` or other placeholders, remove it until real shipped assets exist.
@@ -103,6 +106,7 @@ The validator should enforce only the highest-value structural rules:
 - shipped skill tree must not contain auxiliary top-level Markdown docs besides `SKILL.md`
 - shipped skill tree must use `references/`, not `reference/`
 - shipped `assets/` is optional and must not remain as a placeholder-only directory
+- generated reference helpers loaded for reasoning must not live under `assets/`
 - deprecated or contributor-only runtime files must not remain in the shipped reference tree
 
 Do not broaden the validator into a full doctrine checker.

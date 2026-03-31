@@ -1460,7 +1460,7 @@ It should stay:
 - Runtime target: installed `.agents/skills/ds-intent-analyzer/`
 - Sync command used: `npm run sync:local`
 - Validation command used: `npm run validate`
-- Package surface sanity: `npm pack --json --dry-run` returned `26` packed files including the new `runtime-index.json`, `review-brief-template.md`, `review-log-template.md`, and `13-runtime-review-workflows.md`
+- Package surface sanity: `npm pack --json --dry-run` returned `26` packed files including the new `14-runtime-index.json`, `review-brief-template.md`, `review-log-template.md`, and `13-runtime-review-workflows.md`
 - Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; installed runtime included the new review assets and runtime index
 - Run date: `2026-03-31`
 - Notes: targeted shipped-surface validation after adding the thin derived runtime index and recurring-review workflow; result `5 pass / 0 partial pass / 0 regressions`
@@ -1580,5 +1580,43 @@ It should stay:
 - Observed primary mode: `Formation Recommendation`
 - Observed confidence line: `Confidence: E2 - medium, brief only`
 - Strongest pass signal: frontend follow-through remains a bounded build handoff rather than being replaced by audit or recurring-review behavior
+- Strongest miss: none noted
+- Outcome: `pass`
+
+---
+
+## Runtime-index correction validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-runtime-index-correction`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Package surface sanity: `npm pack --json --dry-run` returned `26` packed files and kept `14-runtime-index.json` under `references/` while leaving `assets/` template-only
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; the installed runtime included `references/14-runtime-index.json` and excluded `assets/runtime-index.json`
+- Run date: `2026-03-31`
+- Notes: structural correction slice for the shipped runtime index helper; this block logs executable structural validation only because the repo does not currently ship an automated scenario harness for `RF-13`, `RF-16`, `AU-21`, or `AU-22`
+
+### Structural subset
+
+## Runtime index helper placement
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: the generated helper now lives at `references/14-runtime-index.json`, not under `assets/`
+- Strongest pass signal: shipped `assets/` stays reserved for output templates while the orientation helper is classified as a normal reference surface
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Recurring-review shell shape
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: `recurring_review.shell_sections` contains exactly `TL;DR`, `Current health`, `Biggest drift`, `Keep`, `Fix next`, `Confidence`, and `Next review action`
+- Strongest pass signal: retrieval-order and write-gate bullets are no longer leaking into the recurring-review shell
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Reference-card shape
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed structural signal: `reference_cards` now contains only real lookup cards with the standard lookup-card fields
+- Strongest pass signal: tie-break subsections such as `Clarity vs Elastic UI Framework tie-break` are no longer emitted as pseudo-reference cards
 - Strongest miss: none noted
 - Outcome: `pass`

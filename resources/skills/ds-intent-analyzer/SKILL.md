@@ -190,7 +190,7 @@ Detailed runtime behavior lives in the shipped references:
   - `review-brief.md`
   - `review-log.md`
   - recurring-review shell and write gates
-- `assets/runtime-index.json`
+- `references/14-runtime-index.json`
   - fast derived orientation helper for routing and lookup
 - `references/07-runtime-reference-lookup.md`
   - named-system borrowing guidance
@@ -224,7 +224,7 @@ Do not read every reference file automatically.
 Retrieve selectively by layer:
 
 - fast orientation helper
-  - `assets/runtime-index.json`
+  - `references/14-runtime-index.json`
     - use it only to pick likely entrypoints and candidate shipped sources faster
     - do not treat it as stronger than fresh evidence or the shipped markdown references
 
@@ -244,6 +244,7 @@ Retrieve selectively by layer:
   - `references/11-runtime-multi-agent-coordination.md`
   - `references/12-runtime-audit-artifacts.md`
   - `references/13-runtime-review-workflows.md`
+  - `references/14-runtime-index.json`
 
 Use heavier retrieval only when:
 - evidence is weak or contradictory
