@@ -813,3 +813,74 @@ It should stay:
 - Strongest pass signal: the answer remains fix-first and screen-level, choosing layout and typography weight before cosmetic polish
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Standing maintainer gate baseline
+
+### Run header
+
+- Run label: `FT-2026-03-30-standing-maintainer-gate`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-30`
+- Notes: first clean baseline after promoting product-usefulness into the standing maintainer gate; result `7 pass / 0 partial pass / 0 regressions`; use this block as the default comparison point for routine contributor reruns
+
+### Gate subset
+
+## AF-01 — Adjective-Heavy Internal Tool Brief
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Intent Analysis`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Strongest pass signal: translates aesthetic adjectives into workflow, density, and hierarchy constraints quickly instead of turning the answer into a style quiz
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 — Trust-Sensitive Workflow Formation Direction
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: gives a clear foundation-first formation direction with state semantics and the case-review shell leading the stabilization order
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-03 — Toolkit Pressure vs Product-System Need
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: keeps toolkit choice subordinate to product-pattern stabilization and still gives a usable early decision rule if a library choice is forced
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-04 — Existing Workflow Product Needs a Stabilization Order
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: chooses one highest-leverage operational contract to normalize first rather than spreading the answer across co-equal cleanup tracks
+- Strongest miss: confidence qualifier is slightly more generic than the earlier `current-state summary only` wording, but boundedness remains healthy
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Strongest pass signal: keeps Carbon leading and PatternFly secondary by product-fit logic instead of platform prestige or component breadth
+- Strongest miss: the answer briefly cites repo-local reference docs in user-facing prose, which is unnecessary even though the comparison logic stays strong
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Strongest pass signal: stays page-level, separates visible signals from broader inference, and keeps borrowing logic subordinate to the thin-evidence audit
+- Strongest miss: the direct page body remains sparse, so the read still leans partly on catalog/index context
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Strongest pass signal: emits a bounded `Frontend handoff` with locked direction, clear first-build scope, and explicit `Do not invent` guardrails
+- Strongest miss: none noted
+- Outcome: `pass`

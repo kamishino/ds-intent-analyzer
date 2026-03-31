@@ -230,7 +230,8 @@ Use a high-leverage batch first.
 - the current high-leverage Batch A runtime distillation wave is effectively complete after `Carbon`, `PatternFly`, `Ant Design`, `Porsche Design System`, `Clarity Design System`, `Elastic UI Framework`, `Gestalt`, `Backpack`, and `Visa Product Design System`
 - the platform-boundary question is now clarified enough contributor-side to avoid an immediate shipped taxonomy split
 - the next useful work is not more shipped lookup growth by default
-- the next useful work is a contributor-side product-usefulness pass that tests whether the current runtime actually helps builders move from app brief to DS direction
+- the contributor-side product-usefulness pass is now sufficiently answered for the current runtime
+- the next useful work is to keep a compact standing maintainer gate healthy and only open another runtime patch when that gate exposes a repeated miss
 
 ---
 
@@ -319,8 +320,8 @@ One concise reference page per archetype:
 Use 3–5 real product briefs to test whether the framework helps formation decisions.
 
 Current priority:
-- highest active next-cycle validation surface
-- should be used before any more shipped runtime growth by default
+- already established as a useful validation surface
+- should now feed the standing maintainer gate instead of remaining a one-off pass
 
 ---
 
@@ -353,7 +354,7 @@ Optional keepers only if space allows:
 ## 13. Practical Next Move
 
 The most useful next action is:
-- run a contributor-side app-to-DS fit brief set
-- stress the installed runtime with realistic builder-facing product briefs and one paired frontend follow-up
-- decide whether the current runtime is product-useful enough as-is or whether a repeated failure pattern justifies a focused hardening slice
-- keep runtime expansion off by default unless that usefulness pass exposes a clear repeated miss
+- rerun the standing maintainer gate on the installed runtime
+- keep builder-facing usefulness, thin-evidence discipline, and bounded frontend handoff quality in the default regression surface
+- only open another focused runtime patch when that gate exposes a repeated miss
+- keep runtime expansion off by default unless the standing maintainer gate exposes a clear repeated miss

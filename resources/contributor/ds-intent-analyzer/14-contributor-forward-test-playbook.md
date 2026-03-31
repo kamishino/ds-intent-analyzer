@@ -39,6 +39,7 @@ Source-of-truth reminder:
 
 This playbook supports these modes:
 - one-off smoke check
+- standing maintainer gate
 - full-pack forward-test run
 - paired-skill handoff check
 - multi-agent sidecar check
@@ -46,6 +47,11 @@ This playbook supports these modes:
 Use the one-off mode when:
 - you want a fast reality check on one prompt
 - you are validating one recent runtime change
+
+Use the standing maintainer gate when:
+- you want the default recurring regression check for the installed runtime
+- you want one compact builder-usefulness surface instead of a full-pack rerun
+- you want to know whether a new slice justifies another runtime patch or not
 
 Use the full-pack mode when:
 - you want one installed-runtime pass across all current contributor scenarios
@@ -116,6 +122,45 @@ They are not full implementation benchmarks.
 
 Multi-agent sidecar checks are still answer-shape checks.
 They are not orchestration benchmarks.
+
+---
+
+## Standing maintainer gate
+
+Use this as the default recurring regression gate unless a slice specifically touches a narrower specialty surface.
+
+### Gate cases
+
+- `AF-01` for vague-intent constraint reading
+- `PF-02` for formation usefulness
+- `PF-03` for toolkit-pressure reframing
+- `PF-04` for audit-shaped builder usefulness
+- `RF-02` for hybrid-sensitive comparison discipline
+- `RF-16` for thin-evidence page-level discipline
+- `PF-02 + frontend-skill` for bounded build handoff quality
+
+### Gate flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Validate the packaged runtime shape.
+   - command: `npm run validate`
+3. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+4. Run the gate cases in the order listed above.
+5. Record one compact readout for each case in `15-contributor-forward-test-results.md`.
+6. Treat the gate as healthy only if:
+   - the answers still feel like practical decision help
+   - `PF-02` and `PF-03` keep bounded `brief only` confidence
+   - `RF-16` stays `UI / DS Audit` with `Confidence: E1 - low, one page only`
+   - the paired `frontend-skill` follow-up stays explicit, bounded, and anti-invention
+
+### What stays out of the default gate
+
+Keep these as targeted reruns only when a slice touches them:
+- trust-of-claims audit cases such as `AU-17`
+- multi-agent sidecar checks
+- extra platform-boundary probes
+- broader full-pack answer-shape sweeps
 
 ---
 
@@ -278,7 +323,7 @@ It should still make the next move read like something the agent can do next for
 
 ## Relationship to the evaluation pack
 
-Use this playbook for one-off or occasional smoke checks.
+Use this playbook for one-off checks and the standing maintainer gate.
 
 Use the broader evaluation pack when you need:
 - recurring acceptance-set checks
