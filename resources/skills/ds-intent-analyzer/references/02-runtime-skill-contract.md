@@ -346,15 +346,23 @@ If a missing decision would materially change the build:
 Default to one lead agent per step.
 Do not spawn sidecars just because parallel work is available.
 
+Terminology in this runtime:
+- `Lead agent` = the agent that owns routing, synthesis, confidence, and next move
+- `Sub-agents` = bounded analysis sidecars
+- `Multi-agent coordination` = the visible contract that governs the lead agent plus any bounded sidecars
+
+`Sub-agents` are not a separate product feature in this skill.
+They are the bounded worker pattern inside `Multi-agent coordination`.
+
 Use bounded multi-agent coordination only when:
 - the user explicitly asks for multiple agents or sub-agents, or
 - the task clearly decomposes into bounded analysis sidecars, or
 - multiple bounded reads would materially sharpen the answer even without an explicit user request
 
 If a proactive trigger is present and no no-spawn guard applies:
-- use bounded sidecars explicitly
-- emit the `Multi-agent coordination` add-on
-- do not hide the split behind a single-pass answer
+- prefer bounded sidecars explicitly
+- prefer the `Multi-agent coordination` add-on over a hidden merge
+- treat this as supported target behavior, not as a guaranteed outcome on every qualifying transcript
 
 This is a Codex-first coordination contract, not a general orchestration framework.
 Keep it transparent and lightweight.
@@ -680,7 +688,7 @@ If evidence is too thin, the correct output is to withhold or block the handoff,
 ### Multi-agent coordination
 Conditional.
 Use only when the user explicitly asks for multiple agents or sub-agents, or when multiple bounded reads would materially sharpen the answer for the current step.
-If a strong proactive trigger is present and no no-spawn guard applies, this block is required rather than optional.
+If a strong proactive trigger is present and no no-spawn guard applies, this block is the preferred target behavior rather than a guaranteed transcript requirement.
 
 The coordination packet should state:
 - lead job

@@ -17,6 +17,11 @@ Do not pass:
 This file is contributor-facing only.
 It is not part of the shipped runtime bundle.
 
+Terminology used here:
+- `Multi-agent coordination` = the feature under test
+- `sub-agents` = bounded sidecars inside that feature
+- `lead agent` = the agent that owns the final recommendation
+
 ---
 
 ## Default rule
@@ -64,9 +69,10 @@ Recommended checks:
 - `AU-21` or `AU-22`
 
 Expected read:
-- sidecars appear only when the task has multiple bounded reads that materially sharpen the answer
-- the packet names the actual reason in `Why sidecars now`
-- the packet names the actual sidecar roles used
+- proactive visible coordination is the target behavior when the task has multiple bounded reads that materially sharpen the answer
+- if the packet appears, it should name the actual reason in `Why sidecars now`
+- if the packet appears, it should name the actual sidecar roles used
+- correct single-lead synthesis without hidden contradictions is still a valid partial result while this behavior remains under validation
 
 ---
 

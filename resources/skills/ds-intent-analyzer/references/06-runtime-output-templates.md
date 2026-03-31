@@ -43,7 +43,7 @@ If evidence is thin, ask only 1-3 focused project-fit questions.
 If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
 If the user explicitly asks for multiple agents or the task needs multiple bounded reads that materially sharpen the answer, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
-If a strong proactive sidecar cue is present and no no-spawn guard applies, the add-on is required rather than optional.
+If a strong proactive sidecar cue is present and no no-spawn guard applies, prefer the add-on over a hidden merge when bounded sidecars would materially help.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
 If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
 If the user explicitly wants recurring or scheduled DS review, use the compact recurring-review shell from section G instead of expanding into a one-off audit memo.
@@ -758,7 +758,8 @@ Do not use this block when:
 
 This add-on is explicit shared state, not hidden orchestration.
 Keep it Codex-first, lightweight, and analysis-only.
-When this split is justified, emit the block instead of hiding the sidecars behind a normal answer shell.
+In this skill, `sub-agents` are bounded sidecars inside `Multi-agent coordination`, not a separate feature.
+When this split is justified, visible coordination is the target behavior, but proactive emission can still be a validation surface on mixed-evidence prompts.
 
 ## Multi-agent coordination
 ### Lead job

@@ -34,6 +34,16 @@ The lead agent owns:
 
 Do not let multiple agents co-lead direction-setting.
 
+## Terminology
+
+Use these terms consistently:
+- `Lead agent` = the agent that owns routing, synthesis, confidence, and next move
+- `Sub-agents` = bounded analysis sidecars
+- `Multi-agent coordination` = the visible contract that governs the lead agent plus any bounded sidecars
+
+`Sub-agents` are not a separate product feature in this skill.
+They are the bounded worker pattern inside `Multi-agent coordination`.
+
 ---
 
 ## When bounded multi-agent coordination is allowed
@@ -65,6 +75,7 @@ Allow proactive sidecars only when at least one of these is true:
 - a comparison ask needs bounded reads of current product evidence and multiple candidate references
 
 If none of those are true, keep the step single-agent.
+Treat proactive visible coordination as supported target behavior, not as a guaranteed transcript outcome on every qualifying prompt.
 
 ## No-spawn guards
 

@@ -161,9 +161,11 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - If frontend execution is the next real job, hand off explicitly instead of letting build work infer direction from loose prose.
 - If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff` and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
 - If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit` and switch to the compact recurring-review shell instead of inventing a fifth mode.
+- In this skill, `Multi-agent coordination` is the visible workflow contract.
+- `Sub-agents` are only the bounded sidecars inside that contract, not a separate feature.
 - Default to one lead agent.
 - If the user explicitly asks for multiple agents or the task has multiple bounded reads that would materially sharpen the answer, use bounded analysis sidecars only and show the split through `Multi-agent coordination`.
-- Strong proactive sidecar cues such as evidence conflict, recurring drift comparison, design-context plus repo mapping, repo-audit follow-through, or current-product-plus-reference comparison should trigger `Multi-agent coordination`, not a hidden single-pass merge.
+- Strong proactive sidecar cues such as evidence conflict, recurring drift comparison, design-context plus repo mapping, repo-audit follow-through, or current-product-plus-reference comparison are valid reasons to prefer `Multi-agent coordination` over a hidden merge, but that remains supported target behavior rather than a guaranteed transcript outcome.
 
 ## Runtime ownership
 
@@ -219,7 +221,7 @@ Default answer bias:
 Keep the confidence line brief and user-facing.
 Keep the next move action-oriented, ideally in the voice `I can ... next if you want`.
 Use the exact phrasing and conditional add-ons from `references/06-runtime-output-templates.md`.
-When strong proactive sidecar cues are present and no no-spawn guard applies, `Multi-agent coordination` is required rather than optional.
+When strong proactive sidecar cues are present and no no-spawn guard applies, prefer `Multi-agent coordination` over a hidden merge when bounded sidecars would materially help.
 
 ## Retrieval and escalation
 

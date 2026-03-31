@@ -90,6 +90,11 @@ Use the multi-agent sidecar mode when:
 - you want to check that the runtime keeps one lead agent and bounded analysis sidecars instead of hidden orchestration
 - you want to validate both proactive sidecar spawning and no-spawn guard behavior
 
+Terminology in this playbook:
+- `Multi-agent coordination` is the feature under test
+- `sub-agents` are bounded sidecars inside that feature
+- `lead agent` owns the final recommendation
+
 ---
 
 ## One-off forward-test flow
@@ -191,8 +196,9 @@ They are not scheduling or automation benchmarks.
    - keeps one explicit lead agent
    - limits sidecars to bounded analysis work
    - emits a structured `Multi-agent coordination` packet only when sidecars are actually useful
-   - names the concrete split reason in `Why sidecars now`
-   - names the actual chosen sidecar roles instead of generic possibilities
+   - on proactive cases, treats visible packet emission as the target behavior under validation rather than as a guaranteed oracle
+   - if the packet appears, names the concrete split reason in `Why sidecars now`
+   - if the packet appears, names the actual chosen sidecar roles instead of generic possibilities
    - caps proactive coordination at `3` sidecars
    - keeps build work waiting until the lead synthesis is stable
    - tells sidecars what they must not decide or invent

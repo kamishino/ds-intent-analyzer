@@ -2174,7 +2174,7 @@ The current live full-pack surface is:
 - Validation command used: `npm run validate`
 - Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded in a fresh temp repo; the installed `SKILL.md` included the new proactive trigger wording, and the installed `11-runtime-multi-agent-coordination.md` included the `Why sidecars now` packet field
 - Run date: `2026-03-31`
-- Notes: structural plus fresh-thread raw-prompt subagent validation after the proactive sub-agent slice; independent checks used only the installed skill path plus raw prompt bundles or the new contributor prompt suffixes; result `3 pass / 3 partial pass / 0 regressions`
+- Notes: structural plus fresh-thread raw-prompt subagent validation after the proactive sub-agent slice; independent checks used only the installed skill path plus raw prompt bundles or the new contributor prompt suffixes; proactive packet emission is still treated as target-state validation rather than a guaranteed oracle on mixed-evidence prompts; result `3 pass / 3 partial pass / 0 regressions`
 
 ### Targeted slice checks
 
