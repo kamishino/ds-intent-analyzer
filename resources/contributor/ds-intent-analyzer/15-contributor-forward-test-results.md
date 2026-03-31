@@ -923,3 +923,54 @@ It should stay:
 - Strongest pass signal: keeps the builder-useful formation direction intact while remaining fully product-facing instead of exposing internal repo context
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted answer-hierarchy and audit-handoff validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-answer-hierarchy-and-audit-handoff`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Run date: `2026-03-31`
+- Notes: targeted installed-runtime mini-cycle after tightening user-facing answer compression and adding conditional `Audit handoff`; result `4 pass / 0 partial pass / 0 regressions`; Carbon-style repo-follow-through now yields a bounded audit packet without pulling thin-evidence or frontend cases into the same shape
+
+### Targeted subset
+
+## RF-21 — Carbon Reference to Repo Borrowing Audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E1 - low, brief only`
+- Observed handoff behavior: emits a bounded `Audit handoff` with a codebase-audit lead, explicit borrowing targets, and one first inspection slice
+- Strongest pass signal: recommendation-first shell stays compact and turns Carbon into a bounded donor instead of a clone target
+- Strongest miss: confidence is slightly conservative for a medium-evidence brief, but the answer stays practical and readable
+- Outcome: `pass`
+
+## RF-02 — Hybrid-Sensitive Platform Comparison
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, still hybrid-sensitive`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted
+- Strongest pass signal: comparison stays recommendation-first and compact without falling back into a memo-like theory read
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 — URL-Only Design-System Reference Page
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted from the thin-evidence page read
+- Strongest pass signal: answer stays compact, page-level, and explicit about what it will not overclaim from one URL
+- Strongest miss: the next move drops out in this rerun, but the bounded audit shape stays healthy
+- Outcome: `pass`
+
+## PF-02 + `frontend-skill` follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: frontend follow-through stays build-oriented and does not get replaced by `Audit handoff`; the resulting implementation direction remains bounded to the case-review workspace
+- Strongest pass signal: repo-audit follow-through stays separate from frontend execution, so the new add-on does not hijack the build path
+- Strongest miss: the follow-up output moves straight into implementation direction rather than restating a visible `Frontend handoff` label
+- Outcome: `pass`

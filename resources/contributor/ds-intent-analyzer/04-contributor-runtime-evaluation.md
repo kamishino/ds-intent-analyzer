@@ -193,6 +193,7 @@ Pass signals:
 - offers project-memory capture only when the workflow has produced stable, reusable decisions
 - avoids offering project-memory capture when the evidence is too thin or the result is still unresolved
 - when multiple agents are explicitly requested, emits a bounded coordination packet that says who leads, what sidecars may do, and what they must not decide or invent
+- when a reference-led prompt clearly asks how to apply the direction to a real repo or app, emits a bounded `Audit handoff` instead of leaving the inspection step implied
 
 Regression signals:
 - offers generic advice
@@ -201,12 +202,15 @@ Regression signals:
 - offers hidden or automatic memory behavior instead of an explicit capture offer
 - offers project-memory capture for screen-level, low-evidence, or hybrid-unresolved results
 - invites several agents to work in parallel without making ownership or merge behavior explicit
+- leaves repo/application follow-through vague when the prompt clearly asks what another agent should inspect first
+- emits a build-style handoff when the real next step should be a repo or app audit
 
 For direction-seeking prompts, practical guidance may also mean:
 - asking only 1-3 project-fit questions when the decision is still blocked
 - offering 2-3 matching references with fit and cautions when the evidence is strong enough
 - avoiding single-winner prestige answers
 - when frontend execution is clearly next, emitting a structured handoff that is explicit about what is locked, what is blocked, and what must not be invented
+- when repo or app inspection is clearly next, emitting a structured `Audit handoff` that names one first inspection slice and what not to copy blindly
 - when multiple agents are explicitly requested, keeping sidecars analysis-only and build work waiting until synthesis is stable
 
 ### 7. Decision clarity over audit verbosity
@@ -216,6 +220,7 @@ Pass signals:
 - leads with what matters, what to fix first, and what can happen next
 - uses audit detail only to support the recommendation
 - avoids theory unless it sharpens the decision
+- uses the smallest section set that still makes the answer clear
 - in paired-skill workflows, makes the lead/follow relationship explicit instead of letting analyzer and frontend execution co-lead ambiguously
 - in multi-agent workflows, keeps one lead agent responsible for synthesis instead of letting sidecars compete on direction
 
@@ -223,6 +228,7 @@ Regression signals:
 - reads like an audit artifact rather than decision help
 - overexplains fundamentals that do not change the recommendation
 - buries the recommendation under directory-by-directory commentary
+- uses unnecessary section sprawl when a shorter decision shell would do
 - in paired-skill workflows, leaves frontend execution to infer direction from loose prose instead of a bounded handoff or explicit blocker
 - in multi-agent workflows, lets several agents co-lead, silently merge, or drift into parallel build work before direction is locked
 - misses visible trust leaks or authority-framing issues when those are the sharper product risk than additional visual commentary
@@ -233,10 +239,12 @@ The answer stays concise enough for Codex runtime use.
 Pass signals:
 - structured, readable, and decision-oriented
 - does not spill into theory for its own sake
+- keeps reference-led answers compact instead of turning them into long memos
 
 Regression signals:
 - long generic taxonomy
 - giant component inventories
+- wall-of-text sectioning when the evidence supports a shorter recommendation-first shell
 
 ---
 

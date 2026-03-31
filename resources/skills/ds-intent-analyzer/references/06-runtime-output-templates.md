@@ -29,6 +29,12 @@ Lead with:
 - `Smart Suggestions`
 - `Next move`
 
+Default to 4 to 6 sections max unless the evidence genuinely needs more.
+Choose the smallest mode-appropriate shell that still makes the decision clear.
+Do not emit every valid section just because the template pack contains it.
+Keep the presentation no-emoji by default.
+Prefer short headings, tight bullets, and short paragraphs over memo-like blocks.
+
 Use deeper audit detail only as needed to justify the recommendation.
 Do not sprawl into fundamentals or theory unless they materially change the decision.
 Do not turn vague style asks into long questionnaires.
@@ -38,8 +44,16 @@ If references are justified, prefer 2-3 matching directions with fit and caution
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
 If the user explicitly asks for multiple agents or sub-agents, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
 If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
+If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
 If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
 Keep the confidence display as one short inline line; do not let comparison, URL-only, or hybrid-sensitive nuance spill into a split confidence summary when a tiny qualifier will do.
+For reference-led asks, default to this order:
+- `TL;DR`
+- `Recommendation`
+- `Borrow carefully`
+- `Do not copy`
+- `Confidence`
+- `Next move`
 
 ## Source-boundary hygiene
 
@@ -90,6 +104,34 @@ Anti-drift notes:
 - for hybrid-sensitive or comparison cases, keep the unresolved note inline, for example `Confidence: E2 - medium, still hybrid-sensitive`
 - if more nuance is useful, explain it after the confidence line instead of replacing the confidence line with a split summary
 
+## Comparative Reference Read default shell
+
+Use this shell first for reference-led asks.
+Only add deeper sections when they materially sharpen the decision.
+
+## TL;DR
+- 3 to 5 decision-oriented bullets
+
+## Recommendation
+- should the reference lead, stay secondary, or remain only a bounded donor
+- why that direction wins for this product or repo reality
+
+## Borrow carefully
+- the most reusable lessons, foundations, or workflow patterns
+- keep this tied to product reality rather than reference completeness
+
+## Do not copy
+- brand tone, governance weight, platform assumptions, or component parity that should not be transplanted blindly
+
+## Confidence
+- keep the standard one-line `Confidence:` format
+
+## Next move
+- one real next action
+- if another agent should inspect a repo or application next, append `Audit handoff`
+- if frontend build is clearly next, use `Frontend handoff` instead
+- do not append both add-ons unless the answer explicitly separates audit-first from later build work
+
 ---
 
 # A. Short Analyzer Template
@@ -130,7 +172,7 @@ Anti-drift notes:
 - preferred voice: `I can ... next if you want`
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section E when bounded sidecars are actually useful
+- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## Top 3 matching reference directions
@@ -276,7 +318,7 @@ If the page is a design-system reference surface, keep any borrowing logic subor
 - tie the action to the fix-first decision when possible
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 - for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section E when bounded sidecars are actually useful
+- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## What is being audited
@@ -564,7 +606,7 @@ What this recommendation is trying to support.
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
-- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section E when bounded sidecars are actually useful
+- if multiple agents or sub-agents are explicitly requested, attach the conditional `Multi-agent coordination` add-on from section F when bounded sidecars are actually useful
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
@@ -642,7 +684,47 @@ It is meant for `frontend-skill` as the canonical companion example, but the sam
 
 ---
 
-# E. Multi-Agent Coordination Add-On
+# E. Audit Handoff Add-On
+
+Use this block only when:
+- the user clearly wants to apply a reference or recommendation to a real repo, codebase, or application next
+- the answer can name one bounded inspection slice for another agent
+- the next step is repo or app audit, not immediate frontend build
+
+Do not use this block when:
+- there is no real target repo or application yet
+- the user only asked for reference interpretation
+- the evidence is too thin to name a bounded inspection slice
+- the next step should clearly be `Frontend handoff` instead
+
+This add-on is for audit follow-through.
+It should not become a disguised build brief.
+
+## Audit handoff
+### Lead next agent
+- name the agent or role that should inspect first
+
+### Audit goal
+- what the inspection is trying to verify or stabilize
+
+### Grounded product/repo truths
+- only the already-grounded product or repo realities
+
+### Borrowing targets to inspect
+- the exact color, spacing, layout, state, or workflow areas worth checking against the chosen reference
+
+### Do not copy blindly
+- what must stay bounded or local instead of being transplanted directly
+
+### Recommended first audit slice
+- one first repo surface or one first foundation layer to inspect
+
+### Inputs still needed
+- only the missing repo or product details that would materially sharpen the audit
+
+---
+
+# F. Multi-Agent Coordination Add-On
 
 Use this block only when:
 - the user explicitly asks for multiple agents or sub-agents, or

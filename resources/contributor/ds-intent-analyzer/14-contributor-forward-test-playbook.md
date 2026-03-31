@@ -41,6 +41,7 @@ This playbook supports these modes:
 - one-off smoke check
 - standing maintainer gate
 - full-pack forward-test run
+- reference-to-repo handoff check
 - paired-skill handoff check
 - multi-agent sidecar check
 
@@ -56,6 +57,10 @@ Use the standing maintainer gate when:
 Use the full-pack mode when:
 - you want one installed-runtime pass across all current contributor scenarios
 - you want a broad answer-shape read without running full evaluation scoring
+
+Use the reference-to-repo handoff mode when:
+- you want to see how a reference-led answer behaves when the user clearly wants to apply it to a real repo or application
+- you want to check that the answer stays compact, recommendation-first, and emits a bounded `Audit handoff`
 
 Use the paired-skill handoff mode when:
 - you want to see how `ds-intent-analyzer` behaves right before frontend execution
@@ -100,6 +105,25 @@ They are not benchmark runs and they do not require exact wording matches.
 
 Paired-skill checks are still answer-shape checks.
 They are not full implementation benchmarks.
+
+---
+
+## Reference-to-repo handoff flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+3. Run one existing or new reference-led contributor case that clearly asks how to apply the reference to a real repo or app.
+4. Check whether the analyzer answer:
+   - stays `Comparative Reference Read` as the primary mode
+   - leads with recommendation before deeper theory or taxonomy
+   - stays compact when a shorter decision shell is sufficient
+   - emits a bounded `Audit handoff`
+   - keeps `Frontend handoff` separate instead of blending repo inspection with build work
+5. Record one compact readout.
+
+Reference-to-repo checks are still answer-shape checks.
+They are not implementation benchmarks.
 
 ---
 
@@ -310,6 +334,7 @@ A rerun still counts as a pass if it:
 - stays practical and compact
 - still feels decision-first rather than audit-first
 - still feels evidence-first rather than questionnaire-first
+- uses a short recommendation-first shell when a long memo is unnecessary
 
 Do not mark a rerun as `pass` when:
 - the case has an explicit canonical expected primary mode
@@ -317,6 +342,8 @@ Do not mark a rerun as `pass` when:
 - even if confidence, boundedness, or usefulness remain otherwise healthy
 - the answer leaks contributor docs, `.local` memory, forward-test logs, or source-repo-local file paths into normal user-facing DS guidance
 - if that leakage is the only miss and the decision logic remains healthy, record the case as `partial pass` rather than `regression`
+- a reference-led answer that should be compact instead sprawls into a long memo and buries the recommendation or next action
+- a reference-to-repo answer leaves the next inspection step implied instead of emitting a bounded `Audit handoff`
 
 It does not need to repeat the same sentences.
 It should still make the next move read like something the agent can do next for the user.

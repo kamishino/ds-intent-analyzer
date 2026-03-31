@@ -769,3 +769,46 @@ Should a product-platform reference actually lead here, or should workflow gravi
 - recommending a product-platform reference mainly because multi-team delivery pressure exists
 - ignoring the product's dense review and investigation reality
 - acting as if stronger implementation assets automatically outrank workflow support
+
+---
+
+## RF-21 — Carbon Reference to Repo Borrowing Audit
+
+### Prompt bundle
+
+```text
+We have an existing React operations repo and the team wants to reuse Carbon as a reference for our color, spacing, and layout.
+Help me decide:
+- whether Carbon should actually lead for us
+- what to borrow carefully
+- what not to copy blindly
+- what another agent should audit first in the repo before we change tokens or components
+```
+
+### Input type and evidence strength
+- Input type: reference-led repo follow-through ask
+- Evidence strength: medium
+
+### Expected primary mode
+- Comparative Reference Read
+
+### Allowed secondary behavior
+- bounded repo-audit follow-through through `Audit handoff`
+
+### Expected confidence floor/ceiling
+- Floor: E1
+- Ceiling: E2
+
+### Must-have answer traits
+- leads with a clear recommendation rather than theory or taxonomy
+- treats Carbon as a bounded donor, not an automatic default
+- explains what to borrow carefully in color, spacing, or layout terms
+- says what not to copy blindly from Carbon's weight, tone, or governance assumptions
+- emits a bounded `Audit handoff` with one first repo inspection slice
+- keeps the answer compact enough to scan quickly
+
+### Must-not-do failures
+- turning the answer into a Carbon cloning plan
+- burying the recommendation under a long memo
+- emitting `Frontend handoff` when the prompt is asking for repo audit follow-through first
+- leaving the next agent's inspection target vague

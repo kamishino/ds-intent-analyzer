@@ -364,8 +364,38 @@ Do not jump directly from style wording to token conclusions.
 
 ## Core output contract
 
+### Section budget and hierarchy
+Default to 4 to 6 sections max unless the evidence genuinely requires more.
+
+Choose sections by primary mode.
+Do not emit every useful section just because it exists in the template pack.
+
+User-facing outputs should:
+- lead with the recommendation, fix-first read, or most useful next decision
+- use headings only when they improve scanability
+- stay no-emoji by default
+- read like practical decision help, not a maintainer memo or theory dump
+
+For reference-led asks, default to this order:
+- `TL;DR`
+- `Recommendation`
+- `Borrow carefully`
+- `Do not copy`
+- `Confidence`
+- `Next move`
+
+If a deeper section such as `Context summary`, `Signal map`, or `Pattern priorities` does not materially sharpen the decision, omit it.
+
 ### TL;DR
 3 to 5 decision-oriented bullets.
+
+### Recommendation
+Use this when the answer needs one leading direction or one fix-first read.
+
+For reference-led asks:
+- state whether the reference should lead, stay secondary, or stay only as a bounded donor
+- say why that direction wins before giving the borrowing detail
+- do not bury the recommendation under framework explanation or taxonomy
 
 ### Intent read
 What the user most likely wants.
@@ -411,6 +441,22 @@ Required for audits and recommended for formation work:
 - do not overbuild yet
 - borrow carefully
 
+### Borrow carefully
+Use this when a reference or donor system is in play.
+
+Keep it bounded:
+- name what is reusable
+- keep the borrowing tied to product reality
+- prefer foundation, pattern, or workflow lessons before component parity
+
+### Do not copy
+Use this when a reference could be overfit or transplanted too literally.
+
+Call out:
+- brand-specific cues
+- governance or platform weight that does not transfer
+- implementation or maturity traits that should not drive the recommendation by themselves
+
 ### Confidence line and evidence note
 The confidence display is a user-facing contract, not loose prose.
 
@@ -454,10 +500,37 @@ Do not:
 ### Next move
 State the smallest useful next step.
 
+For reference-led asks:
+- give one real next action
+- prefer a concrete inspection or stabilization move over generic exploration
+- if another agent should inspect a repo or app next, attach `Audit handoff` instead of leaving the work implied
+
 ### Memory capture
 Optional.
 Offer it only when the result contains stable, reusable project decisions.
 Use explicit user-facing wording rather than hidden memory behavior.
+
+### Audit handoff
+Conditional.
+Use only when the user clearly wants to apply a reference or recommendation to a real repo, codebase, or application next.
+
+This add-on is for repo or app inspection follow-through, not frontend build execution.
+Keep it separate from `Frontend handoff`.
+
+Do not use this block when:
+- there is no real repo, codebase, or application target yet
+- the user is only asking for a comparison or borrowing read
+- the next step is clearly frontend implementation rather than repo audit
+- the evidence is too thin to name a bounded first inspection slice
+
+The handoff should state:
+- `Lead next agent`
+- `Audit goal`
+- `Grounded product/repo truths`
+- `Borrowing targets to inspect`
+- `Do not copy blindly`
+- `Recommended first audit slice`
+- `Inputs still needed`
 
 ### Frontend handoff
 Conditional.
@@ -506,7 +579,10 @@ Keep one shared output shape, but change emphasis by primary mode:
 - Formation Recommendation
   - emphasize principle stack, foundation priorities, token direction, and anti-overbuild warnings
 - Comparative Reference Read
+  - default to `TL;DR`, `Recommendation`, `Borrow carefully`, `Do not copy`, `Confidence`, and `Next move`
+  - keep the recommendation first instead of leading with framework explanation
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
+  - if the user clearly wants repo or application follow-through, append a bounded `Audit handoff`
   - if frontend execution is clearly next, either emit a bounded `Frontend handoff` block or say exactly why the handoff is not ready yet
   - if multiple agents are explicitly requested, keep sidecars bounded to evidence read, codebase scan, or reference lookup while the lead agent owns the final comparison
 
