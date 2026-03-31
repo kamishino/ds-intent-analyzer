@@ -232,6 +232,7 @@ Use a high-leverage batch first.
 - the next useful work is not more shipped lookup growth by default
 - the contributor-side product-usefulness pass is now sufficiently answered for the current runtime
 - the next useful work is to keep a compact standing maintainer gate healthy and only open another runtime patch when that gate exposes a repeated miss
+- external proof is now established across clean client repos and lean distributable install channels, so downstream readiness no longer depends on source-repo-only dogfood
 
 ---
 
@@ -322,7 +323,7 @@ Use 3–5 real product briefs to test whether the framework helps formation deci
 Current priority:
 - already established as a useful validation surface
 - should now feed the standing maintainer gate instead of remaining a one-off pass
-- should be complemented by a contributor-side client-repo dogfood pass so usefulness is proven outside the source repo too
+- is now complemented by contributor-side distribution proof so the lean installable package is validated across local-path, git-source, and tarball channels
 
 ---
 
@@ -355,8 +356,8 @@ Optional keepers only if space allows:
 ## 13. Practical Next Move
 
 The most useful next action is:
-- run the contributor-side client-repo dogfood pass in clean temp repos
-- use one workflow-heavy internal product brief and one healthcare-booking mixed audit with a named donor reference
 - keep the standing maintainer gate as the default recurring internal regression surface
-- only open another focused runtime patch if the external dogfood pass exposes a repeated miss that the standing gate does not catch
-- keep runtime expansion off by default unless external client-repo proof shows a clear repeated failure pattern
+- keep the client-repo dogfood pass as the default external usefulness proof
+- keep contributor-side distribution proof across local-path, git-source, and tarball installs as the default downstream packaging proof surface
+- keep the packed package surface lean so contributor docs and maintainer files do not ship downstream
+- only open another focused runtime patch if the standing gate, client-repo dogfood pass, or distribution proof surface exposes a repeated miss

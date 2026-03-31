@@ -1,10 +1,13 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { constants } from "node:fs";
+import { execFile } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, "..");
+const execFileAsync = promisify(execFile);
 
 function parseRootArg(args) {
   let rootDir = defaultRoot;
@@ -147,6 +150,44 @@ function parseSimpleNestedYaml(content, label) {
   return result;
 }
 
+async function collectRelativeFilePaths(rootDir, currentDir = rootDir) {
+  const entries = await readdir(currentDir, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(currentDir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await collectRelativeFilePaths(rootDir, fullPath)));
+      continue;
+    }
+
+    if (entry.isFile()) {
+      files.push(path.relative(rootDir, fullPath).split(path.sep).join("/"));
+    }
+  }
+
+  return files.sort();
+}
+
+async function getPackedFileList(rootDir) {
+  const command =
+    process.platform === "win32"
+      ? ["cmd.exe", ["/d", "/s", "/c", "npm pack --json --dry-run"]]
+      : ["npm", ["pack", "--json", "--dry-run"]];
+  const [executable, args] = command;
+  const { stdout } = await execFileAsync(executable, args, { cwd: rootDir });
+  const payload = JSON.parse(stdout.trim());
+  const packEntry = Array.isArray(payload) ? payload[0] : payload;
+
+  if (!packEntry || !Array.isArray(packEntry.files)) {
+    throw new Error("npm pack --json --dry-run did not return a files array");
+  }
+
+  return packEntry.files
+    .map((entry) => entry.path)
+    .sort();
+}
+
 async function main(args) {
   const rootDir = parseRootArg(args);
   const failures = [];
@@ -189,7 +230,14 @@ async function main(args) {
     ["contributor workbook distillation bridge", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "10-contributor-workbook-distillation-bridge.md")],
     ["contributor UI effect lens", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "11-contributor-ui-effect-lens.md")],
     ["contributor registry schema", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "12-contributor-registry-schema.md")],
-    ["contributor evidence packet schema", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "13-contributor-evidence-packet-schema.md")]
+    ["contributor evidence packet schema", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "13-contributor-evidence-packet-schema.md")],
+    ["contributor forward-test playbook", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "14-contributor-forward-test-playbook.md")],
+    ["contributor forward-test results", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "15-contributor-forward-test-results.md")],
+    ["contributor skill-organization conventions", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "16-contributor-skill-organization-conventions.md")],
+    ["contributor platform-boundary study", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "17-contributor-platform-boundary-study.md")],
+    ["contributor app-to-ds brief set", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "18-contributor-app-to-ds-fit-brief-set.md")],
+    ["contributor client-repo dogfood pass", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "19-contributor-client-repo-dogfood-pass.md")],
+    ["contributor distribution proof pass", path.join(rootDir, "resources", "contributor", "ds-intent-analyzer", "20-contributor-distribution-proof-pass.md")]
   ];
 
   await Promise.all(requiredPaths.map(([label, targetPath]) => assertExists(targetPath, label, failures, checks)));
@@ -203,6 +251,14 @@ async function main(args) {
     "agents",
     "openai.yaml"
   );
+  const expectedPackageFilesAllowlist = [
+    "README.md",
+    "LICENSE",
+    "bin/",
+    "scripts/install-skill.mjs",
+    "scripts/sync-skill.mjs",
+    "resources/skills/ds-intent-analyzer/"
+  ];
   const expectedOpenAiMetadata = {
     interface: {
       display_name: "Design System Intent Analyzer",
@@ -246,6 +302,19 @@ async function main(args) {
       failures.push('Expected package.json bin.ds-intent-analyzer to equal "./bin/ds-intent-analyzer.mjs"');
     } else {
       checks.push("OK   CLI bin mapping");
+    }
+
+    const packageFiles = packageJson.files ?? [];
+    if (
+      !Array.isArray(packageFiles) ||
+      packageFiles.length !== expectedPackageFilesAllowlist.length ||
+      packageFiles.some((entry, index) => entry !== expectedPackageFilesAllowlist[index])
+    ) {
+      failures.push(
+        `Expected package.json files allowlist to equal ${expectedPackageFilesAllowlist.join(", ")}`
+      );
+    } else {
+      checks.push("OK   distributable files allowlist");
     }
 
     const scripts = packageJson.scripts ?? {};
@@ -445,6 +514,66 @@ async function main(args) {
     }
   } catch (error) {
     failures.push(`Unable to validate agents/openai.yaml: ${error instanceof Error ? error.message : String(error)}`);
+  }
+
+  try {
+    const packedPaths = await getPackedFileList(rootDir);
+    const packedPathSet = new Set(packedPaths);
+    const runtimeRoot = path.join(rootDir, "resources", "skills", "ds-intent-analyzer");
+    const runtimeRelativeFiles = await collectRelativeFilePaths(runtimeRoot);
+    const requiredPackedPaths = [
+      "README.md",
+      "LICENSE",
+      "package.json",
+      "bin/ds-intent-analyzer.mjs",
+      "scripts/install-skill.mjs",
+      "scripts/sync-skill.mjs",
+      ...runtimeRelativeFiles.map((relativePath) => `resources/skills/ds-intent-analyzer/${relativePath}`)
+    ];
+
+    const missingPackedPaths = requiredPackedPaths.filter((requiredPath) => !packedPathSet.has(requiredPath));
+    if (missingPackedPaths.length > 0) {
+      failures.push(`Packed package is missing required downstream files: ${missingPackedPaths.join(", ")}`);
+    }
+
+    const forbiddenPrefixes = ["resources/contributor/", ".local/"];
+    const forbiddenExactPaths = new Set(["AGENTS.md", "scripts/validate-skill.mjs"]);
+    const unexpectedPackedPaths = packedPaths.filter((packedPath) => {
+      if (forbiddenExactPaths.has(packedPath)) {
+        return true;
+      }
+
+      if (forbiddenPrefixes.some((prefix) => packedPath.startsWith(prefix))) {
+        return true;
+      }
+
+      if (packedPath === "README.md" || packedPath === "LICENSE" || packedPath === "package.json") {
+        return false;
+      }
+
+      if (packedPath === "bin/ds-intent-analyzer.mjs") {
+        return false;
+      }
+
+      if (packedPath === "scripts/install-skill.mjs" || packedPath === "scripts/sync-skill.mjs") {
+        return false;
+      }
+
+      return !packedPath.startsWith("resources/skills/ds-intent-analyzer/");
+    });
+
+    if (unexpectedPackedPaths.length > 0) {
+      failures.push(`Packed package must stay lean; found unexpected packaged paths: ${unexpectedPackedPaths.join(", ")}`);
+    }
+
+    if (
+      (missingPackedPaths.length === 0 && unexpectedPackedPaths.length === 0) ||
+      !failures.some((entry) => entry.includes("Packed package"))
+    ) {
+      checks.push("OK   packed package surface");
+    }
+  } catch (error) {
+    failures.push(`Unable to validate packed package surface: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   if (failures.length > 0) {

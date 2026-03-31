@@ -1071,3 +1071,54 @@ It should stay:
 - Strongest pass signal: the follow-up stays agent-ready and structural, telling the next agent to audit the search-results to provider-card to slot-selection to summary to confirmation path before repainting the system
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Targeted distribution-proof validation
+
+### Run header
+
+- Run label: `FT-2026-03-31-distribution-proof`
+- Runtime target: lean installed `.agents/skills/ds-intent-analyzer/` from local-path, git-source, and packed-tarball installs
+- Validation command used: `npm run validate`
+- Package surface sanity: `npm pack --json --dry-run` returned only `19` runtime/install files: root docs/license, `bin/`, install/sync scripts, and `resources/skills/ds-intent-analyzer/`
+- Run date: `2026-03-31`
+- Notes: contributor-side distribution proof after client-repo dogfood stabilized; result `3 pass / 0 partial pass / 0 regressions`; lean package shape held across all install channels and installed-runtime behavior remained client-repo-safe
+
+### Targeted subset
+
+## Local path install + CD-01
+- Install channel: local path
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: downstream `node_modules/ds-intent-analyzer/` contained only root docs/license, `bin/`, install/sync scripts, and `resources/skills/ds-intent-analyzer/`
+- Install sanity: `npm install --save-dev <local repo path>` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; JSON trace showed Codex reading temp-repo `.agents/skills/ds-intent-analyzer/SKILL.md`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted
+- Strongest pass signal: proves the local-path downstream flow still yields real builder guidance rather than source-repo dogfood prose while using the installed runtime
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Git-source install + CD-02
+- Install channel: local git-source URL
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: downstream `node_modules/ds-intent-analyzer/` stayed lean and excluded contributor docs, `.local`, `AGENTS.md`, and validator-only files
+- Install sanity: `npm install --save-dev git+file:///...` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; JSON trace showed Codex reading temp-repo `.agents/skills/ds-intent-analyzer/SKILL.md`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff` emitted in the base case
+- Strongest pass signal: audits the current healthcare-booking mismatch first and uses Sprout Seeds only as a bounded donor, proving the git-source install channel preserves mixed audit behavior cleanly
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## Packed tarball install + CD-02 + repo-audit follow-up
+- Install channel: packed tarball from `npm pack`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/` in clean temp repo
+- Package surface sanity: tarball install reproduced the same lean downstream package surface and excluded contributor-side material
+- Install sanity: `npm install --save-dev <packed tarball path>` and `npx ds-intent-analyzer install` both succeeded; `.agents/skills/` contained only `ds-intent-analyzer`; JSON trace showed Codex reading temp-repo `.agents/skills/ds-intent-analyzer/SKILL.md`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: base case stayed audit-first without handoff drift, and the follow-up emitted a bounded `Audit handoff` that told the next agent to inspect the booking-flow shell before tokens or components
+- Strongest pass signal: proves the lean packed artifact preserves both bounded donor behavior and agent-ready repo-audit follow-through outside the source repo
+- Strongest miss: the follow-up packet stayed structurally correct but did not literally print an `Audit handoff` heading in the final prose
+- Outcome: `pass`

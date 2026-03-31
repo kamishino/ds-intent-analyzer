@@ -62,6 +62,15 @@ only when they are missing.
 npx ds-intent-analyzer sync
 ```
 
+The distributed package is intentionally lean.
+It ships only the runtime/install surface needed downstream:
+- `bin/`
+- install/sync scripts
+- `resources/skills/ds-intent-analyzer/`
+- root package docs and license
+
+It does **not** ship maintainer-only contributor docs, `.local/`, or `AGENTS.md`.
+
 ## Maintainer / Cross-Repo Install
 
 Maintainers can still install into another repo from this package repo:
@@ -94,18 +103,25 @@ No automatic postinstall or hidden bootstrap is performed.
 
 ## Repo Layout
 
+Downstream package surface:
 - `resources/skills/ds-intent-analyzer/`
   - canonical shipped skill source
 - `bin/`
   - thin CLI entrypoint
-- `scripts/`
-  - installer and validator helpers
+- `scripts/install-skill.mjs`
+  - installer helper
+- `scripts/sync-skill.mjs`
+  - sync helper
+
+Repo-only maintainer context:
 - `AGENTS.md`
   - repo operation rules
 - `.local/project.md`
   - durable project memory
 - `.local/plans/`
   - task execution state
+- `resources/contributor/ds-intent-analyzer/`
+  - contributor-side doctrine, validation, and research docs
 
 Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
@@ -124,6 +140,7 @@ npm run validate:structure
 npm run install:local -- --project ../target-project
 npm run install:local -- --with-local-scaffold
 npm run sync:local
+npm pack --dry-run
 ```
 
 ## Notes
