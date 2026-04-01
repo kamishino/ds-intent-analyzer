@@ -28,6 +28,7 @@ Preferred downstream path:
 
 Purpose:
 - persist a bounded repo-audit handoff that another agent or human can inspect next
+- keep the reusable repo-follow-through packet aligned with the inline `Audit handoff` using the same locked field order
 
 This is:
 - task-local
@@ -45,6 +46,7 @@ Preferred section shape:
 - `Grounded product/repo truths`
 - `Borrowing targets to inspect`
 - `Do not copy blindly`
+- `Do not expand yet`
 - `Recommended first audit slice`
 - `Stop condition`
 - `Inputs still needed`
@@ -148,6 +150,7 @@ Use it only when:
 Offer create/update only when all of these are true:
 - the user clearly wants repo or app follow-through next
 - the answer can name one bounded first audit slice
+- the answer can name a real stop condition and a do-not-expand boundary
 - another agent or person actually needs the packet
 - the user explicitly approves creating or updating the file
 

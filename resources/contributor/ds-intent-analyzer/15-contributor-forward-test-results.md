@@ -2311,3 +2311,74 @@ The current live full-pack surface is:
 - The live surface is still healthy overall at `54 pass / 1 partial pass / 0 regressions`
 - Active watch case remains:
   - `RF-07` still needs a sharper single first inspection target in implementation-framed comparison reads
+
+---
+
+## Execution-ready handoff tightening validation
+
+### Run header
+
+- Run label: `FT-2026-04-01-execution-ready-handoffs`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded in a fresh temp repo on `2026-04-01`
+- Run date: `2026-04-01`
+- Notes: structural and downstream validation after tightening `Audit handoff`, `Frontend handoff`, and `audit-packet.md`; the repo still does not ship an automated prompt harness, so this block records installed-runtime contract, template, and downstream-shape verification aligned to the targeted case set rather than fresh transcript-grade reruns
+- Result: `6 pass / 0 partial pass / 0 regressions`
+
+### Targeted slice checks
+
+## RF-21 — Carbon reference to repo borrowing audit
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Comparative Reference Read`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: installed runtime now locks `Audit handoff` to one first repo inspection slice, one real stop condition, and one `Do not expand yet` boundary, with the inline and packet shapes aligned
+- Strongest pass signal: reference-to-repo follow-through now has a sharper reusable inspection packet instead of a loosely bounded next step
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-18 + repo-audit follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: the repo-audit follow-up stays audit-first, keeps `Frontend handoff` out of scope, and now requires a bounded first inspection slice plus explicit stop condition and `Do not expand yet` boundary
+- Strongest pass signal: the healthcare-booking repo follow-through can now hand another agent a constrained audit step without widening into redesign or component churn
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## PF-02 + frontend-skill
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: installed runtime now requires `Frontend handoff` to name one first build target, keep grounded product truths explicit, and preserve a strong `Do not invent` boundary
+- Strongest pass signal: builder-facing formation output now has a tighter execution bridge instead of a looser implementation suggestion
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## RF-16 + frontend follow-up
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E1 - low, one page only`
+- Observed handoff behavior: thin-evidence reference reads remain blocked or provisional for frontend execution instead of emitting a fake build-ready handoff
+- Strongest pass signal: the stronger frontend handoff contract still preserves low-evidence anti-invention discipline
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-21 — Healthy recurring review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: recurring `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: recurring review remains compact and audit-first; `Audit handoff` and `Frontend handoff` stay out unless the user explicitly pivots
+- Strongest pass signal: the tighter handoff contract does not leak into recurring-review output
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## AU-22 — Drift-detection recurring review
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Observed primary mode: recurring `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium`
+- Observed handoff behavior: drift-aware recurring review still compares against prior continuity context without collapsing into repo or frontend handoff
+- Strongest pass signal: recurring review remains a separate compact workflow even after the execution-handoff tightening
+- Strongest miss: none noted
+- Outcome: `pass`

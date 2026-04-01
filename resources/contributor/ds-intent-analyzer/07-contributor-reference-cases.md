@@ -805,6 +805,8 @@ Help me decide:
 - explains what to borrow carefully in color, spacing, or layout terms
 - says what not to copy blindly from Carbon's weight, tone, or governance assumptions
 - emits a bounded `Audit handoff` with one first repo inspection slice
+- includes a real stop condition for that first repo audit step
+- includes a concrete `Do not expand yet` boundary so the next agent does not widen into a broad component sweep
 - keeps the answer compact enough to scan quickly
 
 ### Must-not-do failures
@@ -812,3 +814,4 @@ Help me decide:
 - burying the recommendation under a long memo
 - emitting `Frontend handoff` when the prompt is asking for repo audit follow-through first
 - leaving the next agent's inspection target vague
+- emitting `Audit handoff` without a stop condition or `Do not expand yet` boundary

@@ -799,6 +799,8 @@ Expected behavior:
 - emits a bounded `Audit handoff`
 - keeps `Frontend handoff` out of scope
 - names one first repo inspection slice instead of a broad component sweep
+- includes a real stop condition for the next audit pass
+- includes a clear `Do not expand yet` boundary so the next agent does not widen into redesign or component churn
 
 ---
 
@@ -1001,6 +1003,7 @@ Keep it compact and tell me:
 - treating the recurring review like a brand-new one-off audit
 - silently writing `review-brief.md` or `review-log.md`
 - collapsing into repo handoff or frontend execution
+- emitting `Audit handoff` or `Frontend handoff` without an explicit user pivot into repo inspection or build work
 
 ---
 
@@ -1057,6 +1060,7 @@ Tell me:
 - ignoring the prior review log and rewriting the same audit from scratch
 - letting the old review log override fresher evidence
 - turning the answer into a long general audit instead of a drift-aware recurring review
+- emitting `Audit handoff` or `Frontend handoff` without an explicit user pivot into repo inspection or build work
 
 ---
 

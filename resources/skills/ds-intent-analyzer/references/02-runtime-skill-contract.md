@@ -315,6 +315,7 @@ In this path:
 
 Do not let both skills co-lead the same step.
 Pick one lead job first, then hand off explicitly.
+If build blockers remain, keep the handoff visibly blocked or provisional instead of pretending execution is already cleanly ready.
 
 ### Precedence for frontend handoff
 When frontend execution is being handed off, use this order:
@@ -643,12 +644,13 @@ Use only when the user clearly wants to apply a reference or recommendation to a
 
 This add-on is for repo or app inspection follow-through, not frontend build execution.
 Keep it separate from `Frontend handoff`.
+Keep it recommendation-first and compact.
 
 Do not use this block when:
 - there is no real repo, codebase, or application target yet
 - the user is only asking for a comparison or borrowing read
 - the next step is clearly frontend implementation rather than repo audit
-- the evidence is too thin to name a bounded first inspection slice
+- the evidence is too thin to name a bounded first inspection slice, a real stop condition, and a do-not-expand boundary
 
 The handoff should state:
 - `Lead next agent`
@@ -656,6 +658,7 @@ The handoff should state:
 - `Grounded product/repo truths`
 - `Borrowing targets to inspect`
 - `Do not copy blindly`
+- `Do not expand yet`
 - `Recommended first audit slice`
 - `Stop condition`
 - `Inputs still needed`
@@ -663,6 +666,8 @@ The handoff should state:
 Treat the inline block as user-facing follow-through guidance.
 Treat the persisted repo artifact as an `Audit packet` at:
 - `docs/design-system/audit-packet.md`
+
+The inline `Audit handoff` and the persisted `Audit packet` must use the same locked field order so another agent can continue from the packet without translation.
 
 If the user clearly wants a reusable repo artifact:
 - offer to create or update `docs/design-system/audit-packet.md`
@@ -683,7 +688,8 @@ The handoff should state:
 - open questions blocking build
 - recommended first build target
 
-If evidence is too thin, the correct output is to withhold or block the handoff, not to improvise a build-ready direction.
+The handoff stays execution-ready only when it can name one bounded first build target and the blocking section is empty.
+If evidence is too thin or the analysis is still unresolved, the correct output is to withhold or block the handoff, not to improvise a build-ready direction.
 
 ### Multi-agent coordination
 Conditional.
@@ -781,6 +787,7 @@ If the target repo already has `docs/design-system/audit-packet.md`:
 - do not treat it as default retrieval material for a fresh audit
 - retrieve it only when the user explicitly asks to resume, review, or continue the packet
 - use it as a prior handoff artifact, not as stronger truth than fresh evidence or current-state audit evidence
+- keep it aligned with the inline `Audit handoff` field order so another agent can resume the packet without reformatting it
 
 ### Review brief artifact
 If the target repo already has `docs/design-system/review-brief.md`:

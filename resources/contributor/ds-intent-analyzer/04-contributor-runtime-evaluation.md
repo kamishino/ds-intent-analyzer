@@ -204,7 +204,9 @@ Pass signals:
 - if recurring review is explicit, offers `review-brief.md` or `review-log.md` only as explicit opt-in artifacts rather than as silent writes
 - when multiple agents are explicitly requested, emits a bounded coordination packet that says who leads, what sidecars may do, and what they must not decide or invent
 - when a reference-led prompt clearly asks how to apply the direction to a real repo or app, emits a bounded `Audit handoff` instead of leaving the inspection step implied
+- qualifying `Audit handoff` output names one bounded first inspection slice, one real stop condition, and one clear `Do not expand yet` boundary
 - if a reusable repo artifact is clearly wanted, offers to create or update `docs/design-system/audit-packet.md` or `docs/design-system/audit-evidence.md` explicitly instead of writing silently
+- if `docs/design-system/audit-packet.md` is offered or emitted, it stays aligned to the inline `Audit handoff` field order instead of forcing another agent to translate it
 
 Regression signals:
 - offers generic advice
@@ -215,13 +217,16 @@ Regression signals:
 - offers recurring-review artifacts on a one-off audit with no explicit repeated-review intent
 - invites several agents to work in parallel without making ownership or merge behavior explicit
 - leaves repo/application follow-through vague when the prompt clearly asks what another agent should inspect first
+- emits `Audit handoff` without a bounded first slice, a real stop condition, or a concrete `Do not expand yet` boundary
 - emits a build-style handoff when the real next step should be a repo or app audit
+- lets recurring review leak into `Audit handoff` or `Frontend handoff` without an explicit user pivot
 
 For direction-seeking prompts, practical guidance may also mean:
 - asking only 1-3 project-fit questions when the decision is still blocked
 - offering 2-3 matching references with fit and cautions when the evidence is strong enough
 - avoiding single-winner prestige answers
 - when frontend execution is clearly next, emitting a structured handoff that is explicit about what is locked, what is blocked, and what must not be invented
+- qualifying `Frontend handoff` names one first build target and stays blocked or provisional when evidence is still too thin or analysis blockers remain
 - when repo or app inspection is clearly next, emitting a structured `Audit handoff` that names one first inspection slice and what not to copy blindly
 - if the handoff is structurally correct but omits the literal `Audit handoff` heading, score it as a partial-pass style miss rather than silent success
 - when multiple agents are explicitly requested, keeping sidecars analysis-only and build work waiting until synthesis is stable

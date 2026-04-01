@@ -158,9 +158,9 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - Do not give a single "best design system" or "best UI kit" by default.
 - Rank references by product fit, not prestige or popularity.
 - If the workflow produces stable reusable decisions, memory capture should be explicit and opt-in, not hidden.
-- If frontend execution is the next real job, hand off explicitly instead of letting build work infer direction from loose prose.
-- If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff` and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
-- If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit` and switch to the compact recurring-review shell instead of inventing a fifth mode.
+- If frontend execution is the next real job, hand off explicitly with one first build target and a strong `Do not invent` boundary instead of letting build work infer direction from loose prose.
+- If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff`, name one first inspection slice plus a real stop condition, and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
+- If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit`, switch to the compact recurring-review shell, and keep `Audit handoff` plus `Frontend handoff` out unless the user explicitly pivots.
 - In this skill, `Multi-agent coordination` is the visible workflow contract.
 - `Sub-agents` are only the bounded sidecars inside that contract, not a separate feature.
 - Default to one lead agent.

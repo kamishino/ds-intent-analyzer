@@ -183,6 +183,7 @@ Only add deeper sections when they materially sharpen the decision.
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
 - if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
+- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## Top 3 matching reference directions
@@ -332,6 +333,7 @@ If the page is a design-system reference surface, keep any borrowing logic subor
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 - for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
 - if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
+- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 
 ## What is being audited
@@ -622,6 +624,7 @@ What this recommendation is trying to support.
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
 - if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
+- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
 - if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
@@ -659,6 +662,7 @@ Do not use this block when:
 
 This add-on is anti-hallucination-first.
 It is meant for `frontend-skill` as the canonical companion example, but the same contract can guide another execution or visual skill.
+If `Open questions blocking build` is non-empty, the handoff is blocked or provisional rather than fully build-ready.
 
 ## Frontend handoff
 ### Build goal
@@ -685,6 +689,7 @@ It is meant for `frontend-skill` as the canonical companion example, but the sam
 - no new product constraints
 - no new screen structure or UI specifics that were never decided
 - no extra reference borrowing beyond what this answer already grounded
+- no widening beyond the named first build target when blockers are still open
 
 ### Open questions blocking build
 - only include if missing decisions materially affect the build
@@ -693,6 +698,7 @@ It is meant for `frontend-skill` as the canonical companion example, but the sam
 ### Recommended first build target
 - one first surface or one first section to implement
 - keep it bounded to the current evidence level
+- do not name multiple equal-priority build targets in the same handoff
 
 ### Re-entry rule
 - if the build drifts from the locked direction or needs a missing decision, return to `ds-intent-analyzer` instead of freestyling
@@ -710,11 +716,14 @@ Do not use this block when:
 - there is no real target repo or application yet
 - the user only asked for reference interpretation
 - the evidence is too thin to name a bounded inspection slice
+- the evidence is too thin to name a real stop condition or a do-not-expand boundary
 - the next step should clearly be `Frontend handoff` instead
 
 This add-on is for audit follow-through.
 It should not become a disguised build brief.
+Keep it compact and recommendation-first.
 If the user wants this handoff persisted for later repo work, offer to create or update `docs/design-system/audit-packet.md` after the answer. Do not write it silently.
+The inline `Audit handoff` and the persisted `Audit packet` must use the same locked field order.
 
 ## Audit handoff
 ### Lead next agent
@@ -731,6 +740,9 @@ If the user wants this handoff persisted for later repo work, offer to create or
 
 ### Do not copy blindly
 - what must stay bounded or local instead of being transplanted directly
+
+### Do not expand yet
+- the concrete scope boundary that keeps the next audit step from widening into a redesign, component sweep, or build brief
 
 ### Recommended first audit slice
 - one first repo surface or one first foundation layer to inspect

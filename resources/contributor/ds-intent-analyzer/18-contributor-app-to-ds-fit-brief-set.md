@@ -188,8 +188,10 @@ This checks whether a useful formation answer can become a bounded implementatio
 - produces a usable `Frontend handoff` with grounded product truths and one recommended first build target
 - tells the execution side what not to invent
 - stays bounded to the brief instead of pretending the full product is already designed
+- if analysis blockers remain, keeps the handoff visibly blocked or provisional instead of pretending execution is already cleanly ready
 
 ### Must-not-do failures
 - loose prose that forces the build side to infer too much direction
 - invented vibe, product constraints, or screen structure
 - simultaneous co-leading between analyzer and frontend execution
+- pretending the handoff is fully build-ready when blockers or evidence gaps are still explicit

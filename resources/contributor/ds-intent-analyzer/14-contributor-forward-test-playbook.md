@@ -183,8 +183,10 @@ The full-pack ledger exists to answer a different one:
    - `Now use frontend-skill to turn this into a first UI direction.`
 5. Check whether the analyzer answer:
    - makes lead/follow sequencing explicit
-   - emits a structured `Frontend handoff` when build is ready
-   - withholds or blocks the handoff when evidence is too thin
+   - emits a structured `Frontend handoff` only when build is truly next
+   - names one first build target instead of several equal targets
+   - grounds the handoff in locked product truths rather than invented screen detail
+   - withholds or blocks the handoff when evidence is too thin or analysis blockers remain
    - tells the execution side what not to invent
 6. Record one compact readout.
 
@@ -204,7 +206,11 @@ They are not full implementation benchmarks.
    - leads with recommendation before deeper theory or taxonomy
    - stays compact when a shorter decision shell is sufficient
    - emits a bounded literal `Audit handoff`
+   - names one first repo inspection slice
+   - includes one real stop condition
+   - includes one clear `Do not expand yet` boundary
    - offers `docs/design-system/audit-packet.md` only when reusable repo follow-through is clearly wanted
+   - keeps the inline handoff and any packet offer aligned instead of implying a second shape
    - keeps `Frontend handoff` separate instead of blending repo inspection with build work
 5. Record one compact readout.
 
@@ -452,6 +458,7 @@ For paired-skill checks, use `Observed handoff behavior` to note whether the run
 - emitted a structured handoff
 - blocked the handoff
 - or left the build side too much room to invent
+- and whether one first build target plus `Do not invent` stayed explicit
 
 For multi-agent checks, use `Observed coordination behavior` to note whether the runtime:
 - kept one lead agent
@@ -483,8 +490,10 @@ Do not mark a rerun as `pass` when:
 - if that leakage is the only miss and the decision logic remains healthy, record the case as `partial pass` rather than `regression`
 - a reference-led answer that should be compact instead sprawls into a long memo and buries the recommendation or next action
 - a reference-to-repo answer leaves the next inspection step implied instead of emitting a bounded `Audit handoff`
+- a reference-to-repo answer emits `Audit handoff` without a real stop condition or `Do not expand yet` boundary
 - a mixed audit/reference prompt drifts into pure comparison mode and stops auditing the current UI first
 - a recurring-review prompt ignores the repeated-review context and rewrites a long one-off audit instead of a compact drift-aware shell
+- a recurring-review prompt leaks into `Audit handoff` or `Frontend handoff` without an explicit user pivot
 - a design-context prompt behaves like a thin brief even though the frame, node, variable, annotation, or code-mapping evidence is strong enough to sharpen the audit
 - a stale design-context packet overrides fresher screenshot or repo evidence instead of being called out as drift
 
@@ -540,6 +549,7 @@ Now use frontend-skill to build the direction.
 Expected behavior:
 - `ds-intent-analyzer` should still lead the decision step first
 - if it emits `Frontend handoff`, that handoff should stay provisional and blocker-aware
+- it should not invent a clean first build target unless the evidence really supports one
 - it should not let the execution side invent a vibe-heavy direction from adjectives alone
 
 ### AF-03 + frontend build follow-up
@@ -553,6 +563,7 @@ Now use frontend-skill to turn this into a first implementation direction.
 Expected behavior:
 - a structured `Frontend handoff` should be allowed
 - the handoff should include locked direction, grounded product truths, and one recommended first build target
+- if any analysis blocker remains, the handoff should stay visibly blocked or provisional instead of pretending build-ready certainty
 - the answer should still mark what must not be invented
 
 ### AU-01 + frontend build follow-up
@@ -567,6 +578,7 @@ Expected behavior:
 - the handoff should stay screen-level
 - it should not widen into system-wide formation logic
 - it should name one screen-bounded build target and keep visual invention constrained
+- if the evidence is still too thin for build work, it should stay blocked instead of improvising missing product truths
 
 ### RF-16 + frontend build follow-up
 
