@@ -41,6 +41,7 @@ This playbook supports these modes:
 - one-off smoke check
 - standing maintainer gate
 - full-pack forward-test run
+- transcript-tour capture
 - reference-to-repo handoff check
 - recurring-review check
 - paired-skill handoff check
@@ -58,6 +59,12 @@ Use the standing maintainer gate when:
 Use the full-pack mode when:
 - you want one installed-runtime pass across all current contributor scenarios
 - you want a broad answer-shape read without running full evaluation scoring
+- you want a compact coverage ledger rather than a transcript archive
+
+Use the transcript-tour mode when:
+- you want to see how the skill actually sounds on representative prompts
+- you want a durable maintainer artifact that shows real answer shape across the primary modes
+- you want a readable companion to the compact full-pack ledger rather than a `55`-transcript archive
 
 Current live contributor scenario surface:
 - `AF-01` to `AF-04` from `05-contributor-app-fit-cases.md`
@@ -71,6 +78,11 @@ Keep specialty workflow probes separate from that baseline full-pack count:
 - client-repo dogfood checks
 - distribution-proof checks
 - structural validation slices that do not rerun prompt transcripts
+
+Role split for the maintainer QA artifacts:
+- `15-contributor-forward-test-results.md` owns the compact full coverage ledger
+- `28-contributor-real-world-transcript-tour.md` owns the human-readable real-life transcript tour
+- do not turn the results doc into a transcript dump
 
 Use the reference-to-repo handoff mode when:
 - you want to see how a reference-led answer behaves when the user clearly wants to apply it to a real repo or application
@@ -117,6 +129,46 @@ Mixed audit/reference note:
 - if `docs/design-system/audit-evidence.md` is part of the prompt bundle, treat it as current-state project context that outranks `docs/design-system/project-memory.md` but not fresher direct artifacts
 - if recurring review is explicit and `docs/design-system/review-brief.md` is part of the prompt bundle, treat it as scope context that sits after fresh evidence and before `audit-evidence.md`
 - if `docs/design-system/review-log.md` is part of the prompt bundle, treat it as continuity context for drift comparison rather than stronger truth than the current evidence
+
+---
+
+## Transcript-tour flow
+
+1. Sync the installed skill copy.
+   - command: `npm run sync:local`
+2. Validate the packaged runtime shape.
+   - command: `npm run validate`
+3. Use the installed runtime at `.agents/skills/ds-intent-analyzer/`.
+4. Rerun the fixed transcript-tour case set with fresh threads and raw prompt bundles only.
+5. Capture the observed assistant answer in `28-contributor-real-world-transcript-tour.md`.
+6. Keep the transcript readable:
+   - preserve the observed decision shell
+   - trim only obvious repetition when a packet is very long
+   - mark any trimmed bundle or answer explicitly
+7. Pair the transcript tour with a compact full-pack block in `15-contributor-forward-test-results.md`.
+
+Transcript-tour capture is still a manual maintainer workflow.
+It is not a benchmark harness and it should not be treated as an exact-prose oracle.
+
+Required fixed case set:
+- `AF-01`
+- `PF-02`
+- `PF-04`
+- `AU-01`
+- `AU-19`
+- `AU-21`
+- `AU-24`
+- `RF-02`
+- `RF-07`
+- `RF-16`
+- `RF-21`
+- `PF-02 + frontend-skill`
+
+The transcript tour exists to answer one maintainer question:
+- how does the skill behave in real life?
+
+The full-pack ledger exists to answer a different one:
+- does the installed runtime still cover the live scenario surface?
 
 ---
 

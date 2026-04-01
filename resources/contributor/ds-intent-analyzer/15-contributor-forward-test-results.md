@@ -2219,3 +2219,95 @@ The current live full-pack surface is:
 - Strongest pass signal: the proactive sub-agent guidance survives downstream install instead of existing only in the source repo
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Real-world transcript tour visibility run
+
+### Run header
+
+- Run label: `FT-2026-04-01-full-pack-transcript-tour`
+- Runtime target: installed `.agents/skills/ds-intent-analyzer/`
+- Sync command used: `npm run sync:local`
+- Validation command used: `npm run validate`
+- Temp-repo install sanity: clean local-path install plus `npx ds-intent-analyzer install` succeeded in a fresh temp repo on `2026-04-01`
+- Companion artifact: `28-contributor-real-world-transcript-tour.md`
+- Run date: `2026-04-01`
+- Notes: manual visibility rerun against the current live `55`-surface inventory after the latest QA and terminology corrections; this block stays compact by design and pairs with the transcript tour for human-readable answer shape; no automated transcript-grade prompt harness exists in the repo
+- Result: `54 pass / 1 partial pass / 0 regressions`
+
+### Full-pack compact ledger
+
+#### AF surfaces
+
+- `AF-01`: `pass` - `Intent Analysis`, `Confidence: E0 - very low, prompt only`
+- `AF-02`: `pass` - `Intent Analysis`, `Confidence: E2 - medium`
+- `AF-03`: `pass` - `Formation Recommendation`, `Confidence: E2 - medium`
+- `AF-04`: `pass` - `Formation Recommendation`, `Confidence: E2 - medium`
+
+#### PF surfaces
+
+- `PF-01`: `pass` - `Intent Analysis`, `Confidence: E1 - low, brief only`
+- `PF-02`: `pass` - `Formation Recommendation`, `Confidence: E2 - medium, brief only`
+- `PF-03`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, brief only`
+- `PF-04`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium, brief only`
+- `PF-02 + frontend-skill`: `pass` - bounded `Frontend handoff`, `Confidence: E2 - medium, brief only`
+
+#### AU surfaces
+
+- `AU-01`: `pass` - `UI / DS Audit`, `Confidence: E1 - low, one screen only`
+- `AU-02`: `pass` - `UI / DS Audit`, `Confidence: E1 - low`
+- `AU-03`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-04`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-05`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-06`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-07`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-08`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-09`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-10`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-11`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-12`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-13`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-14`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-15`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-16`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-17`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-18`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-19`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-20`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-21`: `pass` - recurring `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-22`: `pass` - recurring `UI / DS Audit`, `Confidence: E2 - medium`
+- `AU-23`: `pass` - `UI / DS Audit`, `Confidence: E1 - low, one frame only`
+- `AU-24`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium, design context only`
+- `AU-25`: `pass` - `UI / DS Audit`, `Confidence: E2 - medium`
+
+#### RF surfaces
+
+- `RF-01`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-02`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, still hybrid-sensitive`
+- `RF-03`: `pass` - `Comparative Reference Read`, `Confidence: E1 - low, unresolved reference`
+- `RF-04`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-05`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-06`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-07`: `partial pass` - `Comparative Reference Read`, `Confidence: E1 - low, brief only`
+- `RF-08`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-09`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-10`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, still hybrid-sensitive`
+- `RF-11`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, brief only`
+- `RF-12`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-13`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-14`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-15`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-16`: `pass` - `UI / DS Audit`, `Confidence: E1 - low, one page only`
+- `RF-17`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-18`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, still boundary-sensitive`
+- `RF-19`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-20`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium`
+- `RF-21`: `pass` - `Comparative Reference Read`, `Confidence: E2 - medium, brief only`, bounded `Audit handoff`
+
+### Outcome summary
+
+- Coverage artifact remains compact by design; use `28-contributor-real-world-transcript-tour.md` for transcript-style answer shape
+- The live surface is still healthy overall at `54 pass / 1 partial pass / 0 regressions`
+- Active watch case remains:
+  - `RF-07` still needs a sharper single first inspection target in implementation-framed comparison reads
