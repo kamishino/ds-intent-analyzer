@@ -27,6 +27,20 @@ const requiredReferenceCardKeys = [
   "borrow_carefully",
   "do_not_copy_blindly"
 ];
+const allowedOpenAiInterfaceKeys = [
+  "display_name",
+  "short_description",
+  "brand_color",
+  "default_prompt"
+];
+const requiredOpenAiInterfaceKeys = [
+  "display_name",
+  "short_description",
+  "default_prompt"
+];
+const allowedOpenAiPolicyKeys = ["allow_implicit_invocation"];
+const expectedBrandColor = "#2563EB";
+const expectedImplicitInvocation = true;
 
 function parseRootArg(args) {
   let rootDir = defaultRoot;
@@ -146,11 +160,13 @@ function parseSimpleNestedYaml(content, label) {
       }
 
       let value;
+      let quoted = false;
       if (
         (rawValue.startsWith("\"") && rawValue.endsWith("\"")) ||
         (rawValue.startsWith("'") && rawValue.endsWith("'"))
       ) {
         value = rawValue.slice(1, -1);
+        quoted = true;
       } else if (rawValue === "true") {
         value = true;
       } else if (rawValue === "false") {
@@ -159,7 +175,11 @@ function parseSimpleNestedYaml(content, label) {
         value = rawValue;
       }
 
-      result[activeSection][key] = value;
+      result[activeSection][key] = {
+        value,
+        raw_value: rawValue,
+        quoted
+      };
       continue;
     }
 
@@ -167,6 +187,16 @@ function parseSimpleNestedYaml(content, label) {
   }
 
   return result;
+}
+
+function extractSkillDisplayName(skillContent) {
+  const body = skillContent.replace(/^(?:\uFEFF)?---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, "");
+  const headingMatch = body.match(/^#\s+(.+)$/m);
+  if (!headingMatch) {
+    throw new Error('SKILL.md must contain a top-level "# ..." heading for display-name validation');
+  }
+
+  return headingMatch[1].trim();
 }
 
 async function collectRelativeFilePaths(rootDir, currentDir = rootDir) {
@@ -289,18 +319,6 @@ async function main(args) {
     "scripts/sync-skill.mjs",
     "resources/skills/ds-intent-analyzer/"
   ];
-  const expectedOpenAiMetadata = {
-    interface: {
-      display_name: "Design System Intent Analyzer",
-      short_description: "Decision-first UI and design-system analysis, guidance, and careful comparison",
-      brand_color: "#2563EB",
-      default_prompt:
-        "Use the ds-intent-analyzer skill to analyze this UI or design-system problem, recommend what to stabilize first, or compare references carefully."
-    },
-    policy: {
-      allow_implicit_invocation: true
-    }
-  };
   try {
     const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
 
@@ -498,47 +516,93 @@ async function main(args) {
   }
 
   try {
+    const skillContent = await readFile(skillPath, "utf8");
+    const expectedDisplayName = extractSkillDisplayName(skillContent);
     const openAiMetadataContent = await readFile(openAiMetadataPath, "utf8");
     const openAiMetadata = parseSimpleNestedYaml(openAiMetadataContent, "agents/openai.yaml");
 
-    for (const topLevelKey of ["interface", "policy"]) {
-      if (!Object.hasOwn(openAiMetadata, topLevelKey)) {
-        failures.push(`agents/openai.yaml must contain top-level section "${topLevelKey}"`);
-      }
+    const topLevelKeys = Object.keys(openAiMetadata).sort();
+    if (topLevelKeys.join("|") !== ["interface", "policy"].join("|")) {
+      failures.push(
+        `agents/openai.yaml must contain exactly the top-level sections "interface" and "policy"; found ${topLevelKeys.join(", ")}`
+      );
     }
 
     const actualInterfaceKeys = Object.keys(openAiMetadata.interface ?? {}).sort();
-    const expectedInterfaceKeys = Object.keys(expectedOpenAiMetadata.interface).sort();
-    if (actualInterfaceKeys.join("|") !== expectedInterfaceKeys.join("|")) {
+    if (actualInterfaceKeys.join("|") !== allowedOpenAiInterfaceKeys.slice().sort().join("|")) {
       failures.push(
-        `agents/openai.yaml interface keys must match the repo contract exactly: expected ${expectedInterfaceKeys.join(", ")}; found ${actualInterfaceKeys.join(", ")}`
+        `agents/openai.yaml interface keys must match the repo contract exactly: expected ${allowedOpenAiInterfaceKeys.join(", ")}; found ${actualInterfaceKeys.join(", ")}`
       );
     }
 
     const actualPolicyKeys = Object.keys(openAiMetadata.policy ?? {}).sort();
-    const expectedPolicyKeys = Object.keys(expectedOpenAiMetadata.policy).sort();
-    if (actualPolicyKeys.join("|") !== expectedPolicyKeys.join("|")) {
+    if (actualPolicyKeys.join("|") !== allowedOpenAiPolicyKeys.slice().sort().join("|")) {
       failures.push(
-        `agents/openai.yaml policy keys must match the repo contract exactly: expected ${expectedPolicyKeys.join(", ")}; found ${actualPolicyKeys.join(", ")}`
+        `agents/openai.yaml policy keys must match the repo contract exactly: expected ${allowedOpenAiPolicyKeys.join(", ")}; found ${actualPolicyKeys.join(", ")}`
       );
     }
 
-    for (const [key, expectedValue] of Object.entries(expectedOpenAiMetadata.interface)) {
-      const actualValue = openAiMetadata.interface?.[key];
-      if (actualValue !== expectedValue) {
-        failures.push(
-          `agents/openai.yaml interface.${key} must equal ${JSON.stringify(expectedValue)} but found ${JSON.stringify(actualValue)}`
-        );
+    for (const key of requiredOpenAiInterfaceKeys) {
+      if (!Object.hasOwn(openAiMetadata.interface ?? {}, key)) {
+        failures.push(`agents/openai.yaml interface.${key} must be present`);
       }
     }
 
-    for (const [key, expectedValue] of Object.entries(expectedOpenAiMetadata.policy)) {
-      const actualValue = openAiMetadata.policy?.[key];
-      if (actualValue !== expectedValue) {
-        failures.push(
-          `agents/openai.yaml policy.${key} must equal ${JSON.stringify(expectedValue)} but found ${JSON.stringify(actualValue)}`
-        );
+    const interfaceSection = openAiMetadata.interface ?? {};
+    const displayNameField = interfaceSection.display_name;
+    const shortDescriptionField = interfaceSection.short_description;
+    const brandColorField = interfaceSection.brand_color;
+    const defaultPromptField = interfaceSection.default_prompt;
+
+    for (const [fieldName, fieldValue] of Object.entries({
+      display_name: displayNameField,
+      short_description: shortDescriptionField,
+      brand_color: brandColorField,
+      default_prompt: defaultPromptField
+    })) {
+      if (!fieldValue || typeof fieldValue.value !== "string" || fieldValue.value.trim().length === 0) {
+        failures.push(`agents/openai.yaml interface.${fieldName} must be a non-empty string`);
+        continue;
       }
+
+      if (!fieldValue.quoted) {
+        failures.push(`agents/openai.yaml interface.${fieldName} must use a quoted string value`);
+      }
+    }
+
+    if (displayNameField?.value !== expectedDisplayName) {
+      failures.push(
+        `agents/openai.yaml interface.display_name must match the SKILL.md title ${JSON.stringify(expectedDisplayName)}`
+      );
+    }
+
+    if (
+      typeof shortDescriptionField?.value === "string" &&
+      (shortDescriptionField.value.length < 25 || shortDescriptionField.value.length > 64)
+    ) {
+      failures.push("agents/openai.yaml interface.short_description must stay between 25 and 64 characters");
+    }
+
+    if (brandColorField?.value !== expectedBrandColor) {
+      failures.push(
+        `agents/openai.yaml interface.brand_color must stay ${JSON.stringify(expectedBrandColor)} unless a product decision changes it`
+      );
+    }
+
+    if (
+      typeof defaultPromptField?.value === "string" &&
+      !defaultPromptField.value.includes("$ds-intent-analyzer")
+    ) {
+      failures.push("agents/openai.yaml interface.default_prompt must explicitly mention $ds-intent-analyzer");
+    }
+
+    const policyField = openAiMetadata.policy?.allow_implicit_invocation;
+    if (!policyField) {
+      failures.push("agents/openai.yaml policy.allow_implicit_invocation must be present");
+    } else if (policyField.value !== expectedImplicitInvocation) {
+      failures.push(
+        `agents/openai.yaml policy.allow_implicit_invocation must equal ${JSON.stringify(expectedImplicitInvocation)}`
+      );
     }
 
     if (failures.length === 0 || !failures.some((entry) => entry.includes("agents/openai.yaml"))) {

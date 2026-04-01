@@ -4,6 +4,30 @@ import { fileURLToPath } from "node:url";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, "..");
+const currentModulePath = fileURLToPath(import.meta.url);
+
+function parseRootArg(args) {
+  let rootDir = defaultRoot;
+  const remainingArgs = [];
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    if (arg === "--root") {
+      const value = args[index + 1];
+      if (!value) {
+        throw new Error("Missing value for --root");
+      }
+      rootDir = path.resolve(value);
+      index += 1;
+      continue;
+    }
+
+    remainingArgs.push(arg);
+  }
+
+  return { rootDir, remainingArgs };
+}
 
 function extractSection(content, startHeading, endHeading) {
   const startIndex = content.indexOf(startHeading);
@@ -170,8 +194,7 @@ export async function buildRuntimeIndex(rootDir = defaultRoot) {
   };
 }
 
-async function main(args) {
-  const rootDir = defaultRoot;
+export async function writeRuntimeIndex(rootDir = defaultRoot) {
   const runtimeIndex = await buildRuntimeIndex(rootDir);
   const payload = `${JSON.stringify(runtimeIndex, null, 2)}\n`;
   const outputPath = path.join(
@@ -183,16 +206,27 @@ async function main(args) {
     "14-runtime-index.json"
   );
 
-  if (args.includes("--stdout")) {
+  await writeFile(outputPath, payload, "utf8");
+  return { outputPath, payload };
+}
+
+async function main(args) {
+  const { rootDir, remainingArgs } = parseRootArg(args);
+
+  if (remainingArgs.includes("--stdout")) {
+    const runtimeIndex = await buildRuntimeIndex(rootDir);
+    const payload = `${JSON.stringify(runtimeIndex, null, 2)}\n`;
     process.stdout.write(payload);
     return;
   }
 
-  await writeFile(outputPath, payload, "utf8");
+  const { outputPath } = await writeRuntimeIndex(rootDir);
   process.stdout.write(`Wrote ${outputPath}\n`);
 }
 
-main(process.argv.slice(2)).catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === currentModulePath) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

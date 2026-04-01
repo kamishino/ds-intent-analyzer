@@ -2382,3 +2382,57 @@ The current live full-pack surface is:
 - Strongest pass signal: recurring review remains a separate compact workflow even after the execution-handoff tightening
 - Strongest miss: none noted
 - Outcome: `pass`
+
+---
+
+## Validation purity and metadata contract proof
+
+### Run header
+
+- Run label: `FT-2026-04-01-validation-purity`
+- Runtime target: maintainer tooling in the source repo
+- Commands used:
+  - `npm run build:index`
+  - `npm run validate`
+  - `npm run validate`
+  - `node --input-type=module -e "await import('./scripts/build-runtime-index.mjs')"`
+- Run date: `2026-04-01`
+- Notes: structural maintainer proof for validator purity and `agents/openai.yaml` contract alignment after the `skill-creator` review; this block verifies read-only validation, stale-index failure behavior, and metadata semantics rather than runtime prompt transcripts
+- Result: `5 pass / 0 partial pass / 0 regressions`
+
+### Targeted slice checks
+
+## VP-01 — repeated validate stays read-only
+- Runtime target: source repo
+- Observed behavior: `npm run validate` passed twice in succession without adding any tracked-file changes beyond the intentional slice edits already in the worktree
+- Strongest pass signal: `git diff --name-only` stayed fixed to the same 4 edited files before and after the repeated validations plus the import-safety check
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## VP-02 — import safety for runtime-index builder
+- Runtime target: source repo
+- Observed behavior: importing `scripts/build-runtime-index.mjs` directly no longer wrote `references/14-runtime-index.json`
+- Strongest pass signal: the module can now be used by `validate-skill.mjs` as a pure builder dependency
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## VP-03 — stale runtime-index detection
+- Runtime target: source repo
+- Observed behavior: after a temporary intentional stale-file mutation, `npm run validate` failed with the expected `npm run build:index` regeneration guidance
+- Strongest pass signal: freshness checks still fail on stale content even though validation is now read-only
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## VP-04 — metadata contract pass
+- Runtime target: source repo
+- Observed behavior: `agents/openai.yaml` passed the updated repo contract with quoted interface strings, a bounded `short_description`, and `default_prompt` explicitly naming `$ds-intent-analyzer`
+- Strongest pass signal: metadata validation now stays aligned with `skill-creator` semantics without relying on a full hard-coded snapshot
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## VP-05 — package/runtime behavior unchanged
+- Runtime target: source repo plus installed runtime shape
+- Observed behavior: the slice changed only maintainer tooling and metadata semantics; no shipped runtime contract or downstream path changed
+- Strongest pass signal: validation stayed green after the tooling correction without requiring runtime-source rewrites
+- Strongest miss: none noted
+- Outcome: `pass`
