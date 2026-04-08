@@ -1,6 +1,6 @@
 {
   "name": "ds-intent-analyzer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Standalone Codex skill package for intent-first design-system analysis and UI audit.",
   "type": "module",
