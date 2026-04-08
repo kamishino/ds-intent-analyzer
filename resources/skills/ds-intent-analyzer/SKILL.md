@@ -158,14 +158,12 @@ If the request is a vague improve/enhance ask, default to `UI / DS Audit`.
 - Do not give a single "best design system" or "best UI kit" by default.
 - Rank references by product fit, not prestige or popularity.
 - If the workflow produces stable reusable decisions, memory capture should be explicit and opt-in, not hidden.
-- If frontend execution is the next real job, hand off explicitly with one first build target and a strong `Do not invent` boundary instead of letting build work infer direction from loose prose.
-- If repo-audit follow-through is the next real job, keep the inline label as `Audit handoff`, name one first inspection slice plus a real stop condition, and treat any reusable repo artifact as an explicit opt-in `Audit packet`.
+- Treat `Audit handoff`, `Frontend handoff`, and `Multi-agent coordination` as conditional add-ons, not the normal answer shape.
+- Use `Audit handoff` only when repo or app inspection is clearly next.
+- Use `Frontend handoff` only when frontend execution is clearly next.
 - If recurring or scheduled review is the real job, keep the primary mode as `UI / DS Audit`, switch to the compact recurring-review shell, and keep `Audit handoff` plus `Frontend handoff` out unless the user explicitly pivots.
-- In this skill, `Multi-agent coordination` is the visible workflow contract.
-- `Sub-agents` are only the bounded sidecars inside that contract, not a separate feature.
 - Default to one lead agent.
-- If the user explicitly asks for multiple agents or the task has multiple bounded reads that would materially sharpen the answer, use bounded analysis sidecars only and show the split through `Multi-agent coordination`.
-- Strong proactive sidecar cues such as evidence conflict, recurring drift comparison, design-context plus repo mapping, repo-audit follow-through, or current-product-plus-reference comparison are valid reasons to prefer `Multi-agent coordination` over a hidden merge, but that remains supported target behavior rather than a guaranteed transcript outcome.
+- Use `Multi-agent coordination` only when the user explicitly asks for multiple agents or multiple bounded reads would materially sharpen the current step; otherwise keep the work single-agent.
 
 ## Runtime ownership
 
@@ -186,6 +184,9 @@ Detailed runtime behavior lives in the shipped references:
   - `Audit handoff`
   - `Frontend handoff`
   - `Multi-agent coordination`
+- `references/11-runtime-multi-agent-coordination.md`
+  - advanced sidecar gating, packet rules, and merge limits
+  - use only when coordination is actually justified
 - `references/12-runtime-audit-artifacts.md`
   - `audit-packet.md`
   - `audit-evidence.md`
@@ -211,17 +212,16 @@ The answer should feel like:
 - a foundation-first recommendation when needed
 - a practical next move, not a theory dump
 
-Default answer bias:
+Default fast audit path:
 - `TL;DR`
 - fix-first decision
 - `Smart Suggestions`
-- short, readable confidence
 - one actionable next move
 
 Keep the confidence line brief and user-facing.
 Keep the next move action-oriented, ideally in the voice `I can ... next if you want`.
 Use the exact phrasing and conditional add-ons from `references/06-runtime-output-templates.md`.
-When strong proactive sidecar cues are present and no no-spawn guard applies, prefer `Multi-agent coordination` over a hidden merge when bounded sidecars would materially help.
+Only if the next job clearly changes should the answer append `Audit handoff`, `Frontend handoff`, or `Multi-agent coordination`.
 
 ## Retrieval and escalation
 
@@ -242,11 +242,11 @@ Retrieve selectively by layer:
   - `references/05-runtime-foundation-directories.md`
   - `references/06-runtime-output-templates.md`
   - `references/07-runtime-reference-lookup.md`
-  - `references/11-runtime-multi-agent-coordination.md`
 - deeper escalation only
   - `references/08-runtime-archetype-lessons.md`
   - `references/09-runtime-system-architecture.md`
   - `references/10-runtime-project-memory-pack.md`
+  - `references/11-runtime-multi-agent-coordination.md`
   - `references/12-runtime-audit-artifacts.md`
   - `references/13-runtime-review-workflows.md`
   - `references/14-runtime-index.json`
@@ -262,8 +262,8 @@ Use heavier retrieval only when:
 - repo follow-through needs both evidence read and codebase scan
 - design-context needs repo or code mapping to settle the next move
 
-Contributor docs live outside the shipped skill tree in `resources/contributor/ds-intent-analyzer/`.
-Do not treat them as normal runtime retrieval material.
+Maintainer-only contributor docs live outside the shipped skill tree.
+Do not treat source-repo-only contributor material as normal runtime retrieval.
 
 ## Guardrails
 

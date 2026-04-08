@@ -165,6 +165,7 @@ Repo-only maintainer context:
   - task execution state
 - `resources/contributor/ds-intent-analyzer/`
   - contributor-side doctrine, validation, and research docs
+  - includes `29-contributor-dogfood-feedback-template.md` for post-session runtime feedback handoffs
 
 Shipped runtime guidance lives in:
 - `resources/skills/ds-intent-analyzer/SKILL.md`
@@ -178,6 +179,7 @@ Optional shipped runtime resources such as `assets/` or `scripts/` should appear
 
 Maintainer-only organization and evaluation docs live under:
 - `resources/contributor/ds-intent-analyzer/`
+- use `resources/contributor/ds-intent-analyzer/29-contributor-dogfood-feedback-template.md` when a real dogfood or client-repo session surfaced concrete contributor follow-up work
 
 ## Maintainer Commands
 

@@ -29,6 +29,9 @@ Lead with:
 - `Smart Suggestions`
 - `Next move`
 
+For the common `UI / DS Audit` case, keep that order visually dominant.
+Add one short `Confidence:` line after those sections when it materially helps the user judge the recommendation.
+
 Default to 4 to 6 sections max unless the evidence genuinely needs more.
 Choose the smallest mode-appropriate shell that still makes the decision clear.
 Do not emit every valid section just because the template pack contains it.
@@ -42,10 +45,8 @@ If evidence is already present, read it first.
 If evidence is thin, ask only 1-3 focused project-fit questions.
 If references are justified, prefer 2-3 matching directions with fit and cautions over a single best-library answer.
 For implementation-framed comparison prompts, answer "what should we inspect first before more tokens, components, or libraries?" before drifting into broad diagnosis.
-If the user explicitly asks for multiple agents or the task needs multiple bounded reads that materially sharpen the answer, use the `Multi-agent coordination` add-on instead of implying hidden orchestration.
-If a strong proactive sidecar cue is present and no no-spawn guard applies, prefer the add-on over a hidden merge when bounded sidecars would materially help.
-If frontend execution is clearly next, use the `Frontend handoff` add-on instead of letting the build side infer direction from loose prose.
-If the user clearly wants to apply a reference or recommendation to a real repo or app next, use the `Audit handoff` add-on instead of leaving the next inspection step implied.
+Treat `Frontend handoff`, `Audit handoff`, and `Multi-agent coordination` as conditional add-ons from sections D-F.
+Keep the base answer on the fast audit path unless the next job clearly changes.
 If the user explicitly wants recurring or scheduled DS review, use the compact recurring-review shell from section G instead of expanding into a one-off audit memo.
 If the prompt is URL-only and asks to check a single page, keep the primary shape as a page-level audit unless the user is explicitly asking what to borrow, what it is close to, or which reference fits best.
 If the prompt includes structured design-context such as frame links, Dev Mode or MCP summaries, variable notes, annotations, or component-mapping cues, use those as current evidence and restate the grounded UI conclusions rather than narrating connector mechanics.
@@ -61,7 +62,7 @@ For reference-led asks, default to this order:
 ## Source-boundary hygiene
 
 For normal product guidance:
-- do not cite `resources/contributor/...`, `.local/...`, forward-test logs, or source-repo-local file paths
+- do not cite source-repo-only contributor docs, `.local/...`, forward-test logs, or source-repo-local file paths
 - do not cite `references/14-runtime-index.json` or describe it as user-facing proof
 - do not say things like `this matches our boundary study`, `the runtime lookup says`, or similar maintainer-facing provenance lines
 - if internal repo context helped orient the answer during dogfood, restate the reasoning directly instead of exposing that provenance
@@ -137,9 +138,7 @@ Only add deeper sections when they materially sharpen the decision.
 
 ## Next move
 - one real next action
-- if another agent should inspect a repo or application next, append `Audit handoff`
-- if frontend build is clearly next, use `Frontend handoff` instead
-- do not append both add-ons unless the answer explicitly separates audit-first from later build work
+- attach a canonical add-on from sections D-F only when repo follow-through, frontend build, or justified coordination is clearly next
 - if the user clearly wants a reusable repo artifact, offer to create or update `docs/design-system/audit-packet.md`
 
 ---
@@ -182,9 +181,7 @@ Only add deeper sections when they materially sharpen the decision.
 - preferred voice: `I can ... next if you want`
 - optional short prompt hint or artifact request
 - keep it to one next move unless the evidence is too ambiguous to separate candidates
-- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
-- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
-- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
+- attach a canonical add-on from sections D-F only when repo follow-through, frontend build, or justified coordination is clearly next
 
 ## Top 3 matching reference directions
 - include only when the evidence is strong enough
@@ -332,9 +329,7 @@ If the page is a design-system reference surface, keep any borrowing logic subor
 - tie the action to the fix-first decision when possible
 - if context is still missing, this can be 1-3 focused project-fit questions instead of immediate references
 - for comparison prompts, prefer one tie-break action such as reviewing the dominant workflow surface, not a generic request to compare more libraries
-- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
-- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
-- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
+- attach a canonical add-on from sections D-F only when repo follow-through, frontend build, or justified coordination is clearly next
 
 ## What is being audited
 - system / product / file set:
@@ -623,9 +618,7 @@ What this recommendation is trying to support.
 ## Next move
 - one concrete action the agent can do next for the user
 - preferred voice: `I can ... next if you want`
-- if bounded sub-agents are actually useful for the current step, attach the conditional `Multi-agent coordination` add-on from section F
-- if repo or app inspection is clearly next, attach the conditional `Audit handoff` add-on from section E
-- if frontend implementation is clearly next, attach the conditional `Frontend handoff` add-on from section D
+- attach a canonical add-on from sections D-F only when repo follow-through, frontend build, or justified coordination is clearly next
 - if the recommendation is still hybrid-sensitive, offer one tie-break action rather than multiple parallel follow-ups
 
 ## Confidence note

@@ -196,7 +196,7 @@ User-facing reasoning may be informed by:
 
 Contributor-only materials are maintainer aids, not normal runtime evidence.
 Do not cite them as proof in normal user-facing DS guidance:
-- `resources/contributor/...`
+- source-repo-only contributor docs
 - `.local/...`
 - forward-test logs
 - repo-maintainer memory or plan files
@@ -292,6 +292,9 @@ Low-evidence fallback behavior:
 
 ## Multi-skill coordination
 
+Advanced only.
+For normal audits, stay on the fast audit shell and do not introduce a handoff until the next job clearly changes.
+
 Use `frontend-skill` as the canonical execution companion when the workflow moves from direction-setting into visual build work.
 The same contract can apply to another execution or visual skill, but `frontend-skill` is the default example.
 
@@ -344,16 +347,9 @@ If a missing decision would materially change the build:
 
 ## Bounded multi-agent coordination
 
+Advanced only.
 Default to one lead agent per step.
-Do not spawn sidecars just because parallel work is available.
-
-Terminology in this runtime:
-- `Lead agent` = the agent that owns routing, synthesis, confidence, and next move
-- `Sub-agents` = bounded analysis sidecars
-- `Multi-agent coordination` = the visible contract that governs the lead agent plus any bounded sidecars
-
-`Sub-agents` are not a separate product feature in this skill.
-They are the bounded worker pattern inside `Multi-agent coordination`.
+Most audits should stay single-agent.
 
 Use bounded multi-agent coordination only when:
 - the user explicitly asks for multiple agents or sub-agents, or
@@ -364,9 +360,6 @@ If a proactive trigger is present and no no-spawn guard applies:
 - prefer bounded sidecars explicitly
 - prefer the `Multi-agent coordination` add-on over a hidden merge
 - treat this as supported target behavior, not as a guaranteed outcome on every qualifying transcript
-
-This is a Codex-first coordination contract, not a general orchestration framework.
-Keep it transparent and lightweight.
 
 ### Proactive trigger ladder
 Proactive sidecars are justified only when at least one of these is true:
@@ -387,80 +380,9 @@ Do not spawn sidecars when:
 
 ### Lead agent rule
 Use one lead agent per step.
-
-The lead agent owns:
-- request routing
-- synthesis
-- final recommendation
-- confidence
-- next move
-- any project-memory capture offer
-
 Do not let multiple agents co-lead direction-setting.
-
-### Allowed sidecars in v1
-Parallel sidecars may do bounded analysis such as:
-- evidence or artifact read
-- repo or codebase scan
-- reference-fit check
-- drift or comparison check
-- design-context mapping
-
-Use actual job names for sidecars, such as:
-- `Evidence reader`
-- `Repo/codebase scanner`
-- `Reference-fit checker`
-- `Drift/comparison checker`
-- `Design-context mapper`
-
-Sidecars should return observations, not direction-setting conclusions.
-Do not duplicate the same sidecar role unless the user explicitly asks for a broader split.
-Cap proactive coordination at `3` sidecars per step.
-
-### Disallowed parallelism in v1
-Do not allow:
-- multiple direction-setting agents competing at once
-- multiple builders inventing different directions
-- hidden shared state
-- implicit merge behavior that the user cannot see
-
-### Sidecar limits
-Sidecars must not decide:
-- the final recommendation
-- the locked direction
-- the confidence line
-- project-memory capture
-
-Sidecars must not invent:
-- new vibe or brand direction
-- new product constraints
-- new screen-level or workflow specifics that were never grounded
-
-### Merge rule
-The lead agent synthesizes the final decision.
-
-If sidecars conflict materially:
-- lower confidence, or
-- ask for one tie-break artifact or one repeated-job clue
-
-Do not force a fake clean merge.
-If the lead agent can resolve the task cleanly after the first bounded read, collapse back to single-agent synthesis instead of keeping sidecars alive for ceremony.
-
-### Precedence for multi-agent coordination
-When multiple agents are involved, use this order:
-1. fresh current evidence
-2. accepted current-step analyzer decisions and current-state audit artifacts
-3. accepted project memory and recurring context
-4. bounded reference guidance
-
-Do not let later layers override earlier ones without saying so explicitly.
-
-### Relationship to frontend execution
-If frontend build is the next job:
-- finish lead-agent synthesis first
-- emit `Frontend handoff` only after the direction is stable enough
-
-Do not run unresolved multi-agent analysis and frontend build as simultaneous co-leads.
+For sidecar role names, packet fields, merge rules, and precedence, use `references/11-runtime-multi-agent-coordination.md`.
+If the step is already moving toward build, finish synthesis first and use the separate `Frontend handoff` add-on from `references/06-runtime-output-templates.md`.
 
 ---
 
@@ -490,6 +412,16 @@ Default to 4 to 6 sections max unless the evidence genuinely requires more.
 
 Choose sections by primary mode.
 Do not emit every useful section just because it exists in the template pack.
+
+For the common `UI / DS Audit` case, default to:
+- `TL;DR`
+- `Fix-first decision`
+- `Smart Suggestions`
+- `Next move`
+- one short `Confidence:` line
+
+Treat `Audit handoff`, `Frontend handoff`, and `Multi-agent coordination` as add-ons.
+Do not surface them in the base case.
 
 User-facing outputs should:
 - lead with the recommendation, fix-first read, or most useful next decision
@@ -640,76 +572,22 @@ Use explicit user-facing wording rather than hidden memory behavior.
 
 ### Audit handoff
 Conditional.
-Use only when the user clearly wants to apply a reference or recommendation to a real repo, codebase, or application next.
-
-This add-on is for repo or app inspection follow-through, not frontend build execution.
-Keep it separate from `Frontend handoff`.
-Keep it recommendation-first and compact.
-
-Do not use this block when:
-- there is no real repo, codebase, or application target yet
-- the user is only asking for a comparison or borrowing read
-- the next step is clearly frontend implementation rather than repo audit
-- the evidence is too thin to name a bounded first inspection slice, a real stop condition, and a do-not-expand boundary
-
-The handoff should state:
-- `Lead next agent`
-- `Audit goal`
-- `Grounded product/repo truths`
-- `Borrowing targets to inspect`
-- `Do not copy blindly`
-- `Do not expand yet`
-- `Recommended first audit slice`
-- `Stop condition`
-- `Inputs still needed`
-
-Treat the inline block as user-facing follow-through guidance.
-Treat the persisted repo artifact as an `Audit packet` at:
-- `docs/design-system/audit-packet.md`
-
-The inline `Audit handoff` and the persisted `Audit packet` must use the same locked field order so another agent can continue from the packet without translation.
-
-If the user clearly wants a reusable repo artifact:
-- offer to create or update `docs/design-system/audit-packet.md`
-- keep the same locked field order as the inline `Audit handoff`
-- do not write it silently
-- create or update it only after explicit user approval or explicit workflow acceptance
+Use only when repo or app inspection is clearly next.
+Keep it separate from `Frontend handoff`, compact, and recommendation-first.
+Use the canonical inline field order from `references/06-runtime-output-templates.md`.
+Offer `docs/design-system/audit-packet.md` only if the user explicitly wants a reusable repo artifact. Do not write it silently.
 
 ### Frontend handoff
 Conditional.
-Use only when frontend execution is clearly the next job and the answer is stable enough to guide build work, or needs to mark the specific blockers before build starts.
-
-The handoff should state:
-- build goal
-- grounded product truths
-- locked direction
-- safe references to borrow from
-- do not invent
-- open questions blocking build
-- recommended first build target
-
-The handoff stays execution-ready only when it can name one bounded first build target and the blocking section is empty.
-If evidence is too thin or the analysis is still unresolved, the correct output is to withhold or block the handoff, not to improvise a build-ready direction.
+Use only when frontend execution is clearly the next job and the answer is stable enough to guide build work.
+Use the canonical field order from `references/06-runtime-output-templates.md`.
+If evidence is too thin or the analysis is still unresolved, withhold or block the handoff rather than improvising build direction.
 
 ### Multi-agent coordination
-Conditional.
-Use only when the user explicitly asks for multiple agents or sub-agents, or when multiple bounded reads would materially sharpen the answer for the current step.
-If a strong proactive trigger is present and no no-spawn guard applies, this block is the preferred target behavior rather than a guaranteed transcript requirement.
-
-The coordination packet should state:
-- lead job
-- why sidecars now
-- parallel sidecars allowed
-- shared evidence
-- locked truths
-- open questions
-- do not decide
-- do not invent
-- merge expectation
-- recommended next lead
-
+Conditional and advanced.
+Use only when explicit multi-agent work or multiple bounded reads materially sharpen the current step.
+Use the canonical packet shape from `references/06-runtime-output-templates.md` and the deeper coordination rules from `references/11-runtime-multi-agent-coordination.md`.
 If multi-agent analysis is still unresolved, do not emit `Frontend handoff` yet.
-Keep the merge behavior explicit rather than hidden.
 
 ---
 
@@ -730,10 +608,7 @@ Keep one shared output shape, but change emphasis by primary mode:
   - default to `TL;DR`, `Recommendation`, `Borrow carefully`, `Do not copy`, `Confidence`, and `Next move`
 - keep the recommendation first instead of leading with framework explanation
   - emphasize what to borrow carefully, what not to copy blindly, confidence limits, and what evidence would break the tie when the fit is still unresolved
-  - if the user clearly wants repo or application follow-through, append a bounded `Audit handoff`
-  - if frontend execution is clearly next, either emit a bounded `Frontend handoff` block or say exactly why the handoff is not ready yet
-  - if multiple bounded reads are justified, keep sidecars bounded to actual jobs such as evidence read, codebase scan, drift comparison, design-context mapping, or reference fit while the lead agent owns the final comparison
-  - if current-product evidence and multiple candidate references both need bounded reads, prefer explicit `Multi-agent coordination` over a hidden comparison merge
+  - append the canonical add-ons from `references/06-runtime-output-templates.md` only when repo follow-through, frontend build, or justified multi-agent analysis is clearly the next job
 
 ---
 

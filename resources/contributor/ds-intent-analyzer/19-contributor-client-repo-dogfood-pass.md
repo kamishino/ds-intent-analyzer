@@ -144,6 +144,17 @@ Install sanity should state:
 - no unexpected extra installed skills appeared
 - the installed runtime was the surface actually used
 
+## Feedback intake
+
+If a dogfood run surfaces contributor follow-up work rather than a one-off miss, capture it with:
+- `29-contributor-dogfood-feedback-template.md`
+
+Use the readout above as evidence input, then add:
+- what helped
+- what felt heavy or confusing
+- what should change first
+- which shipped docs or runtime surfaces support the conclusion
+
 ---
 
 ## Acceptance rule

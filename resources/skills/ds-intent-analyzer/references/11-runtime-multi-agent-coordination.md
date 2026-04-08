@@ -5,6 +5,8 @@
 This file defines a bounded, explicit multi-agent coordination contract for `ds-intent-analyzer`.
 
 Use it when Codex or another agent runtime wants to split a design-system task into multiple workers without turning the skill into an orchestration framework.
+This is advanced support, not the normal audit path.
+Most UI / DS reads should stay single-agent and never need this file.
 
 This is:
 - Codex-first
@@ -23,6 +25,7 @@ This is not:
 ## Default rule
 
 Use one lead agent per step.
+If the task is still a normal page-level, screen-level, or early intent read, stop here and stay single-agent.
 
 The lead agent owns:
 - request routing
