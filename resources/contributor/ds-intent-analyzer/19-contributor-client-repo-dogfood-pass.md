@@ -181,3 +181,53 @@ If a repeated miss appears across the scenario pack:
 
 This protocol exists to prove downstream usefulness.
 It should not become a back door for unbounded runtime growth or one-off ad hoc debugging.
+
+---
+
+## Latest validation run
+
+### Run header
+
+- Run label: `CDOG-2026-04-08-runtime-default-path-simplification`
+- Runtime target: clean temp client repo using installed `.agents/skills/ds-intent-analyzer/`
+- Install source: local path `D:\Tools\ds-intent-analyzer`
+- Run date: `2026-04-08`
+- Result: `3 pass / 0 partial pass / 0 regressions`
+
+### Readouts
+
+## CD-01 — Workflow-Heavy Internal Product Brief
+- Runtime target: clean temp client repo using installed `.agents/skills/ds-intent-analyzer/`
+- Install sanity: install succeeded; installed runtime path existed; no unexpected extra installed skills appeared; the installed runtime was the surface exercised through `codex exec`
+- Observed primary mode: `Formation Recommendation`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` or `Frontend handoff`; the answer ended with one bounded builder-facing next move
+- Strongest pass signal: stabilizes review grammar before components and gives a practical vertical-slice builder sequence
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 — Healthcare Booking Mixed Audit With Reference Donor
+- Runtime target: clean temp client repo using installed `.agents/skills/ds-intent-analyzer/`
+- Install sanity: install succeeded; installed runtime path existed; no unexpected extra installed skills appeared; the installed runtime was the surface exercised through `codex exec`
+- Observed primary mode: `UI / DS Audit`
+- Observed confidence line: `Confidence: E2 - medium, brief only`
+- Observed handoff behavior: no `Audit handoff` in the base case; the answer stayed audit-first and only offered a repo-audit handoff if asked next
+- Strongest pass signal: audits the current direction first and treats Seeds as a bounded donor rather than a clone target
+- Strongest miss: none noted
+- Outcome: `pass`
+
+## CD-02 + repo-audit follow-up
+- Runtime target: clean temp client repo using installed `.agents/skills/ds-intent-analyzer/`
+- Install sanity: install succeeded; installed runtime path existed; no unexpected extra installed skills appeared; the installed runtime was the surface exercised through `codex exec`
+- Observed primary mode: bounded repo-audit follow-up using `Audit handoff`
+- Observed confidence line: not emitted in the handoff-only follow-up shape
+- Observed handoff behavior: emits a bounded `Audit handoff`, names one first repo inspection slice, and keeps `Frontend handoff` out of scope
+- Strongest pass signal: constrains another agent to the vertical booking slice with an explicit stop condition before token or component churn
+- Strongest miss: none noted
+- Outcome: `pass`
+
+### Decision
+
+- Repeated miss count: `0`
+- Contributor follow-up handoff: not opened
+- Next maintainer action: close the active simplification plan and use finish-status/release flow instead of opening a new runtime-hardening slice
